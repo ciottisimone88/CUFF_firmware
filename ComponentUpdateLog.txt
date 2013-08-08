@@ -1,0 +1,58 @@
+Last Modified Date & Time: 07/31/2013 14:13:21
+
+Project : firmware
+		Schematic : TopDesign/TopDesign.cysch
+
+		MOTOR_A1	v 1.70	v 1.90
+		MOTOR_EN	v 1.70	v 1.90
+		MOTOR_A2	v 1.70	v 1.90
+		RS485_RX	v 1.70	v 1.90
+		RS485_TX	v 1.70	v 1.90
+		RS_485_EN	v 1.70	v 1.90
+		Signal_1_C	v 1.70	v 1.90
+		CURRENT_SENSE_2	v 1.70	v 1.90
+		CURRENT_SENSE_1	v 1.70	v 1.90
+		MOTOR_B1	v 1.70	v 1.90
+		MOTOR_B2	v 1.70	v 1.90
+		Signal_3_C	v 1.70	v 1.90
+		Signal_2_C	v 1.70	v 1.90
+		USB_VDD	v 1.70	v 1.90
+		FTDI_ENABLE	v 1.70	v 1.90
+		VOLTAGE_SENSE	v 1.70	v 1.90
+		Signal_3_B	v 1.70	v 1.90
+		Signal_1_B	v 1.70	v 1.90
+		Signal_2_B	v 1.70	v 1.90
+		Signal_4_B	v 1.70	v 1.90
+		Signal_4_C	v 1.70	v 1.90
+		Signal_4_A	v 1.70	v 1.90
+		Signal_3_A	v 1.70	v 1.90
+		Signal_1_A	v 1.70	v 1.90
+		Signal_2_A	v 1.70	v 1.90
+		UART_RS485	v 2.20	v 2.30
+		PWM_MOTOR_A	v 2.20	v 2.40
+		CLOCK_12_MHz	v 1.70	v 2.0
+		CLOCK_CONTROL	v 1.70	v 2.0
+		CLOCK_MEASUREMENTS	v 1.70	v 2.0
+		CLOCK_UART	v 1.70	v 2.0
+		CLOCK_ENCODERS	v 1.70	v 2.0
+		CLOCK_CONTROL_1	v 1.70	v 2.0
+		AMUXSEQ_MOTORS	v 1.60	v 1.70
+		ISR_RS485_RX	v 1.60	v 1.70
+		ISR_MOTORS_CONTROL	v 1.60	v 1.70
+		ISR_MEASUREMENTS	v 1.60	v 1.70
+		ISR_ENCODER	v 1.60	v 1.70
+		cydff_2	v 1.20	v 1.30
+		cydff_1	v 1.20	v 1.30
+		COUNTER_ENC	v 2.20	v 2.40
+		SHIFTREG_ENC_1	v 2.10	v 2.20
+		SHIFTREG_ENC_2	v 2.10	v 2.20
+		SHIFTREG_ENC_3	v 2.10	v 2.20
+		SHIFTREG_ENC_4	v 2.10	v 2.20
+		EEPROM	v 2.0	v 2.10
+
+Project : firmware
+		Design Wide APIs
+
+		cy_boot	v 3.10	v 3.40
+
+
