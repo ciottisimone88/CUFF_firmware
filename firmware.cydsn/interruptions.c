@@ -153,8 +153,8 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
 
-	int32 error_1, error_2
-	int32 sum_err_1, sum_err_2
+	int32 error_1, error_2;
+	static int32 sum_err_1, sum_err_2;
 	
     /////////   use third encoder as input for both motors   //////////
     if( c_mem.mode == INPUT_MODE_ENCODER3 )

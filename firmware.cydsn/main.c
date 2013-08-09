@@ -100,7 +100,8 @@ void main()
 	g_ref.onoff 		= c_mem.activ;
 
 	for (i = 0; i < NUM_OF_SENSORS; i++) {
-		g_meas.pos[i] = 0;	
+		g_meas.pos[i] = 0;
+		g_meas.rot[i] = 0;	
 	}
 
 	g_rx.length			= 0;
