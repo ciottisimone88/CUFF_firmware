@@ -129,7 +129,7 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 
 /////////////////////////   other device is receving    ////////////////////////
 			case 4:
-				if(--data_packet.length) {
+				if(!(--data_packet.length)) {
 					data_packet.ind    = 0;
 					data_packet.length = -1;
                     RS485_CTS_Write(1);
@@ -153,9 +153,8 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
 
-	// integral_error_a, integral_error_b
-	//static int32 int_err_a = 0;
-	//static int32 int_err_b = 0;
+	int32 error_1, error_2
+	int32 sum_err_1, sum_err_2
 	
     /////////   use third encoder as input for both motors   //////////
     if( c_mem.mode == INPUT_MODE_ENCODER3 )
@@ -173,14 +172,14 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	#if (CONTROL_MODE == CONTROL_CURRENT)
 		if(g_ref.onoff & 1)
 		{
-		//int_err_a += (c_mem.k * (g_ref.pos_a - g_meas.curr_a)) / 65536;
-		//int_err_b += (c_mem.k * (g_ref.pos_b - g_meas.curr_b)) / 65536;
+			error_1 = g_ref.pos[0] - g_meas.curr[0];
+			error_2 = g_ref.pos[1] - g_meas.curr[1];
 
-		// input_a = ((c_mem.k * (g_ref.pos_a - g_meas.curr_a)) / 65536) + int_err_a;
-		// input_b = ((c_mem.k * (g_ref.pos_b - g_meas.curr_b)) / 65536) + int_err_b;
+			sum_err_1 += error_1;
+			sum_err_2 += error_2;
 
-			input_1 = ((c_mem.k * (g_ref.pos[0] - g_meas.curr[0])) / 65536);
-			input_2 = ((c_mem.k * (g_ref.pos[1] - g_meas.curr[1])) / 65536);
+			input_1 += ((c_mem.k * (error_1)) / 65536) + sum_err_1;
+			input_2 += ((c_mem.k * (error_2)) / 65536) + sum_err_2;
 		} 
 		else
 		{
@@ -238,13 +237,13 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
 				device.tension = (24543*(value - 1648))/1648;
 			break;
             case 1:
-				g_meas.curr[0] =  (2430 * (value - 1648))/1648;
+				g_meas.curr[0] =  (2430 * (value - 1648))/824;
 				if(g_meas.curr[0] < 30)
 					sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
 				g_meas.curr[0] = g_meas.curr[0] * sign_1;
 			break;			
             case 2:			
-			g_meas.curr[1] = (2430 * (value - 1648))/1648;
+			g_meas.curr[1] = (2430 * (value - 1648))/824;
 			if(g_meas.curr[1] < 30)
 				sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02)? 1 : -1;
 			g_meas.curr[1] = g_meas.curr[1] * sign_2;
