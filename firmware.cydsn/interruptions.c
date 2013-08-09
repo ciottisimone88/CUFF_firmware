@@ -162,12 +162,14 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
         g_ref.pos[0] = g_meas.pos[2];
 	    g_ref.pos[1] = g_meas.pos[2];
     }
-	//////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////     CONTROL_ANGLE
 	
     #if (CONTROL_MODE == CONTROL_ANGLE)
-		input_1 = 	(c_mem.k * (g_ref.pos[0] - g_meas.pos[0])) / 65536;
-		input_2 = 	(c_mem.k * (g_ref.pos[1] - g_meas.pos[1])) / 65536;
+		input_1 = (c_mem.k * (g_ref.pos[0] - g_meas.pos[0])) / 65536;
+		input_2 = (c_mem.k * (g_ref.pos[1] - g_meas.pos[1])) / 65536;
     #endif
+
+	////////////////////////////////////////////////////////     CONTROL_CURRENT
 
 	#if (CONTROL_MODE == CONTROL_CURRENT)
 		if(g_ref.onoff & 1)
@@ -188,6 +190,8 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 		} 
 		
 	#endif
+
+	////////////////////////////////////////////////////////////     CONTROL_PWM
 
 	#if (CONTROL_MODE == CONTROL_PWM)
 		input_1 = g_ref.pos[0];

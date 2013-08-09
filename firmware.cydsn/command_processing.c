@@ -94,6 +94,14 @@ void commProcess(void){
 		    g_ref.pos[1] = *((int16 *) &g_rx.buffer[3]);   // motor 2
 		    g_ref.pos[1] = g_ref.pos[1] << g_mem.res[1];
 
+            if (c_mem.pos_lim_flag) {                      // pos limiting
+                if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
+                if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+
+                if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
+                if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+            }
+
     		break;
 
 //=====================================================     CMD_GET_MEASUREMENTS
@@ -199,6 +207,14 @@ void commProcess(void){
         
 			        g_ref.pos[0] +=  g_mem.m_off[0] - off_1;
 			        g_ref.pos[1] +=  g_mem.m_off[1] - off_2;
+
+                    if (c_mem.pos_lim_flag) {                   // position limiting
+                        if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
+                        if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+
+                        if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
+                        if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+                    }
 			    }
 
 			    memStore();
@@ -441,10 +457,10 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string,str); 
     strcat(info_string,"\r\n");  
     sprintf(str,"Motor 1 enabled: %d\r\n", 
-        (g_ref.onoff & 0x02) ? 1 : 0);
+        (g_ref.onoff & 0x02) ? (int)1 : (int)0);
     strcat(info_string, str);
     sprintf(str,"Motor 2 enabled: %d\r\n",
-        (g_ref.onoff & 0x01) ? 1 : 0);
+        (g_ref.onoff & 0x01) ? (int)1 : (int)0);
     strcat(info_string, str); 
 
     strcat(info_string,"\r\nMEASUREMENTS INFO\r\n");
@@ -507,6 +523,24 @@ void infoPrepare(unsigned char *info_string)
     {
         sprintf(str,"Measurement Multiplier %d: %f", (int) i, 
             (double) c_mem.m_mult[i]);
+        strcat(info_string, str); 
+        strcat(info_string,"\r\n");
+    }
+
+    sprintf(str, "Position limit active: %d", (int)g_mem.pos_lim_flag);
+    strcat(info_string, str); 
+    strcat(info_string,"\r\n");
+
+    for (i = 0; i < NUM_OF_MOTORS; i++) {
+        sprintf(str, "Position limit inf motor %d: %d", (int)(i + 1),
+                (int)g_mem.pos_lim_inf[i]);
+        strcat(info_string, str); 
+        strcat(info_string,"\r\n");
+    }
+
+    for (i = 0; i < NUM_OF_MOTORS; i++) {
+        sprintf(str, "Position limit sup motor %d: %d", (int)(i + 1),
+                (int)g_mem.pos_lim_sup[i]);
         strcat(info_string, str); 
         strcat(info_string,"\r\n");
     }
@@ -579,7 +613,6 @@ uint8 LCRChecksum(uint8 *data_array, uint8 data_length){
 void memStore(void)
 {	
     uint8 writeStatus;
-    uint8 status = 0;
     int i;
     int pages;
 
@@ -597,15 +630,9 @@ void memStore(void)
     for(i = 0; i < pages; ++i)
     {
         writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i);
-        status = status || (writeStatus != CYRET_SUCCESS);
         if(writeStatus!=CYRET_SUCCESS)
         {
-                memcpy( &g_mem, &c_mem, sizeof(g_mem) );
-                // CyPins_ClearPin(LED_0);                
-                ISR_RS485_RX_Enable();      
-                ISR_MOTORS_CONTROL_Enable();
-                ISR_ENCODER_Enable();
-                return;
+                break;
         }
     }
     
@@ -660,7 +687,14 @@ void memRestore(void)
     g_mem.activ    = 	0;
     g_mem.mode     = 	0;
 	g_mem.filt     = 	0;
-    g_mem.dead     = 	0;  
+    g_mem.dead     = 	0;
+
+    g_mem.pos_lim_flag = 1;
+
+    for (i = 0; i < NUM_OF_MOTORS; i++) {
+        g_mem.pos_lim_inf[i] = -30000;
+        g_mem.pos_lim_sup[i] =  30000;
+    }  
  
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {

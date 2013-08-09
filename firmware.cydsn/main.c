@@ -126,6 +126,8 @@ void main()
  		CyPins_ClearPin(MOTOR_EN_A);
 	}
 
+	
+
 
 //=========================================================     application loop
 

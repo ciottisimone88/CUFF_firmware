@@ -94,16 +94,19 @@ struct st_data {
 //============================================     settings stored on the memory 
 
 struct st_mem {
-    uint8 	flag; 					// Device has been configured 
-	uint8 	id;						// device ID
-	int32 	k;						// Proportional constant
-    uint8   activ;     				// Activation upon startup
-    uint8   mode;       			// Input mode
-    uint8   res[NUM_OF_SENSORS];    // Angle resolution
-    float   filt;       			// Measurement filter
-    float   dead;       			// Control deadzone
-    int32   m_off[NUM_OF_SENSORS];	// Measurement offset
-    float   m_mult[NUM_OF_SENSORS];	// Measurement multiplier
+    uint8 	flag; 						// Device has been configured 
+	uint8 	id;							// device ID
+	int32 	k;							// Proportional constant
+    uint8   activ;     					// Activation upon startup
+    uint8   mode;       				// Input mode
+    uint8   res[NUM_OF_SENSORS];    	// Angle resolution
+    float   filt;       				// Measurement filter
+    float   dead;       				// Control deadzone
+    int32   m_off[NUM_OF_SENSORS];		// Measurement offset
+    float   m_mult[NUM_OF_SENSORS];		// Measurement multiplier
+    uint8	pos_lim_flag;				// Position limit active/inactive
+    int32	pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors
+    int32	pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors
 };
 
 //=================================================     device related variables
