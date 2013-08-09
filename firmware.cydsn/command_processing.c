@@ -301,11 +301,6 @@ void paramSet(uint16 param_type)
             }
             break;
 
-        case PARAM_POS_MULTIPLIER:
-            g_mem.p_mult =
-                *((double *) &g_rx.buffer[3]);
-            break;
-
         case PARAM_MEAS_FILTER:
             g_mem.filt =
                 *((double *) &g_rx.buffer[3]);                
@@ -377,11 +372,6 @@ void paramGet(uint16 param_type)
             for (i = 0; i < NUM_OF_SENSORS; i++) {
                 packet_data[i+1] = c_mem.res[i];
             }
-            packet_lenght = 6;
-            break;
-
-        case PARAM_POS_MULTIPLIER:
-            *((double *) (packet_data + 1)) = c_mem.p_mult;
             packet_lenght = 6;
             break;
 
@@ -485,9 +475,6 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
     sprintf(str,"Input Mode: %d", (int) c_mem.mode);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
-    sprintf(str,"Position Multiplier: %f", (double) c_mem.p_mult);
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
     sprintf(str,"Measurement filter: %f", (double) c_mem.filt);
@@ -672,7 +659,6 @@ void memRestore(void)
 	g_mem.k        = 	0.05 * 65536;
     g_mem.activ    = 	0;
     g_mem.mode     = 	0;
-    g_mem.p_mult   = 	1;
 	g_mem.filt     = 	0;
     g_mem.dead     = 	0;  
  

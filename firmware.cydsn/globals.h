@@ -91,7 +91,7 @@ struct st_data {
 	uint8 	ready;							// Flag
 };
 
-//===========================================     settings stored on the memory 
+//============================================     settings stored on the memory 
 
 struct st_mem {
     uint8 	flag; 					// Device has been configured 
@@ -100,14 +100,13 @@ struct st_mem {
     uint8   activ;     				// Activation upon startup
     uint8   mode;       			// Input mode
     uint8   res[NUM_OF_SENSORS];    // Angle resolution
-    double  p_mult;     			// Multiplier constant
     float   filt;       			// Measurement filter
     float   dead;       			// Control deadzone
     int32   m_off[NUM_OF_SENSORS];	// Measurement offset
     float   m_mult[NUM_OF_SENSORS];	// Measurement multiplier
 };
 
-//====================================      device related variables
+//=================================================     device related variables
 
 struct st_dev{
 	int32	tension;				// Power supply tension
@@ -125,7 +124,7 @@ extern struct st_dev	device;			//device related variables
 	
 
 
-// ----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
 
 
 #endif
