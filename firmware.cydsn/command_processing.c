@@ -346,6 +346,17 @@ void paramSet(uint16 param_type)
                     *((double *) &g_rx.buffer[3 + i * 4]);
             }
             break;
+
+        case PARAM_POS_LIMIT_FLAG:
+            g_mem.pos_lim_flag = (uint8) &g_rx.buffer[3];
+            break;
+
+        case PARAM_POS_LIMIT:
+            for (i = 0; i < NUM_OF_MOTORS; i++) {
+                g_mem.pos_lim_inf[i] = (int32) &g_rx.buffer[3 + (i * 2 * 4)];
+                g_mem.pos_lim_sup[i] = (int32) &g_rx.buffer[3 + (i * 2 * 4) + 4];
+            }
+            break;
     }
 }
 
@@ -400,8 +411,8 @@ void paramGet(uint16 param_type)
             *((double *) (packet_data + 1)) = c_mem.dead;
             packet_lenght = 6;
             break;
+
         case PARAM_MEASUREMENT_OFFSET:
-        
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
                 *((int16 *) ( packet_data + 1 + (i * 2) )) = (int16) (c_mem.m_off[i] >> c_mem.res[i]);
@@ -410,8 +421,8 @@ void paramGet(uint16 param_type)
 
             packet_lenght = 2 + NUM_OF_SENSORS * 2;            
             break;
+
         case PARAM_MEASUREMENT_MULTIPLIER:
-        
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
                 *((double *) ( packet_data + 1 + (i * 4) )) = 
@@ -420,6 +431,22 @@ void paramGet(uint16 param_type)
 
             packet_lenght = 2 + NUM_OF_SENSORS * 4;  
             break;
+
+        case PARAM_POS_LIMIT_FLAG:
+            packet_data[1] = c_mem.pos_lim_flag;
+            packet_lenght = 3;
+            break;
+
+        case PARAM_POS_LIMIT:
+            for (i = 0; i < NUM_OF_MOTORS; i++) {
+                *((int32 *)( packet_data + 1 + (i * 2 * 4) )) =
+                    c_mem.pos_lim_inf[i];
+                *((int32 *)( packet_data + 1 + (i * 2 * 4) + 4)) =
+                    c_mem.pos_lim_sup[i];
+            }
+            packet_lenght = 2 + (NUM_OF_MOTORS * 2 * 4);
+            break;
+
     }
     
     packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
