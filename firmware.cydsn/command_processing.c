@@ -16,7 +16,7 @@
 
 //=================================================================     includes
 #include <command_processing.h>
-#include <commands.h>
+#include "/qbmoveAPI/commands.h"
 #include <stdio.h>
 
 //================================================================     variables
@@ -348,13 +348,13 @@ void paramSet(uint16 param_type)
             break;
 
         case PARAM_POS_LIMIT_FLAG:
-            g_mem.pos_lim_flag = (uint8) &g_rx.buffer[3];
+            g_mem.pos_lim_flag = *((uint8 *) &g_rx.buffer[3]);
             break;
 
         case PARAM_POS_LIMIT:
             for (i = 0; i < NUM_OF_MOTORS; i++) {
-                g_mem.pos_lim_inf[i] = (int32) &g_rx.buffer[3 + (i * 2 * 4)];
-                g_mem.pos_lim_sup[i] = (int32) &g_rx.buffer[3 + (i * 2 * 4) + 4];
+                g_mem.pos_lim_inf[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4)]);
+                g_mem.pos_lim_sup[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4) + 4]);
             }
             break;
     }
@@ -559,17 +559,13 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string,"\r\n");
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
-        sprintf(str, "Position limit inf motor %d: %d", (int)(i + 1),
-                (int)g_mem.pos_lim_inf[i]);
-        strcat(info_string, str); 
-        strcat(info_string,"\r\n");
-    }
+        sprintf(str, "Position limit inf motor %d: %ld\r\n", (int)(i + 1),
+                (int32)g_mem.pos_lim_inf[i]);
+        strcat(info_string, str);
 
-    for (i = 0; i < NUM_OF_MOTORS; i++) {
-        sprintf(str, "Position limit sup motor %d: %d", (int)(i + 1),
-                (int)g_mem.pos_lim_sup[i]);
-        strcat(info_string, str); 
-        strcat(info_string,"\r\n");
+        sprintf(str, "Position limit sup motor %d: %ld\r\n", (int)(i + 1),
+                (int32)g_mem.pos_lim_sup[i]);
+        strcat(info_string, str);
     }
 
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);

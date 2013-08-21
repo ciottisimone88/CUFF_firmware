@@ -20,7 +20,7 @@
 #include <device.h>
 #include "stdlib.h"
 #include "math.h"
-#include "commands.h"
+#include "/qbmoveAPI/commands.h"
 
 //==============================================================================
 //                                                                        DEVICE
