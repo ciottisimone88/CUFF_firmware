@@ -94,7 +94,7 @@ void main()
 //========================================     initializations - clean variables
 
 
-    for (i = 0; i < NUM_OF_SENSORS; i++) {
+    for (i = 0; i < NUM_OF_MOTORS; i++) {
     	g_ref.pos[i] = 0;	
     }
 	g_ref.onoff 		= c_mem.activ;
