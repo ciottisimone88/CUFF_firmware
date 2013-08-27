@@ -237,7 +237,7 @@ void commProcess(void){
 //==============================================================================
 
 void infoSend(void){
-    unsigned char packet_string[1000];    
+    unsigned char packet_string[1100];    
     infoPrepare(packet_string);
     UART_RS485_PutString(packet_string);
 }
@@ -399,7 +399,7 @@ void paramGet(uint16 param_type)
             for (i = 0; i < NUM_OF_SENSORS; i++) {
                 packet_data[i+1] = c_mem.res[i];
             }
-            packet_lenght = 6;
+            packet_lenght = NUM_OF_SENSORS + 2;
             break;
 
         case PARAM_MEAS_FILTER:

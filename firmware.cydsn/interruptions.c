@@ -274,11 +274,11 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 {
 	int i;              //iterator
 
-	int32 data_encoder[4];
-	int32 value_encoder[4];
+	int32 data_encoder[NUM_OF_SENSORS];
+	int32 value_encoder[NUM_OF_SENSORS];
 	int32 aux;
 
-	static int32 last_value_encoder[4];
+	static int32 last_value_encoder[NUM_OF_SENSORS];
 	
 
 //==========================================================     reading sensors

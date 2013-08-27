@@ -78,7 +78,9 @@ void main()
 	SHIFTREG_ENC_1_Start();
 	SHIFTREG_ENC_2_Start();
 	SHIFTREG_ENC_3_Start();
-	SHIFTREG_ENC_4_Start();
+	#if NUM_OF_SENSORS == 4
+		SHIFTREG_ENC_4_Start();	
+	#endif
 	ISR_ENCODER_StartEx(ISR_ENCODER_ExInterrupt);
 		
 	// ADC
