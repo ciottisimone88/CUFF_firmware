@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "0.2 beta 1"
+#define VERSION         "QBMMP v1.0.1"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -60,7 +60,7 @@
 #define FALSE			0
 #define TRUE			1
 
-#define PWM_LIMIT       200
+#define PWM_LIMIT       120
 
 //==============================================================================
 //                                                        structures definitions

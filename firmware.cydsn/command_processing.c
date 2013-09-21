@@ -336,6 +336,8 @@ void paramSet(uint16 param_type)
                     *((int16 *) &g_rx.buffer[3 + i * 2]);
                 g_mem.m_off[i] =
                     g_mem.m_off[i] << g_mem.res[i];
+
+                g_meas.rot[i] = 0;
             }
             break;
 
@@ -465,14 +467,18 @@ void infoPrepare(unsigned char *info_string)
     unsigned char str[50];    
     strcpy(info_string, "");        
     strcat(info_string, "\r\n");
-    strcat(info_string, "Qbot firmware version: ");
+    strcat(info_string, "Firmware version: ");
     strcat(info_string, VERSION);
     strcat(info_string, ".\r\n\r\n");
 
     strcat(info_string,"DEVICE INFO\r\n");                       
-    sprintf(str,"ID: %d",(int) c_mem.id);        
-    strcat(info_string,str); 
-    strcat(info_string,"\r\n\r\n");  
+    sprintf(str,"ID: %d\r\n",(int) c_mem.id);        
+    strcat(info_string,str);
+    sprintf(str,"Number of sensors: %d\r\n",(int) NUM_OF_SENSORS);        
+    strcat(info_string,str);
+    sprintf(str,"PWM Limit: %d\r\n",(int) PWM_LIMIT);        
+    strcat(info_string,str);
+    strcat(info_string,"\r\n");  
 
     strcat(info_string,"MOTORS INFO\r\n");                       
     sprintf(str,"Motor 1 reference: %d",
@@ -482,12 +488,22 @@ void infoPrepare(unsigned char *info_string)
     sprintf(str,"Motor 2 reference: %d",
         (int) g_ref.pos[1] >> c_mem.res[1]);
     strcat(info_string,str); 
-    strcat(info_string,"\r\n");  
-    sprintf(str,"Motor 1 enabled: %d\r\n", 
-        (g_ref.onoff & 0x02) ? (int)1 : (int)0);
+    strcat(info_string,"\r\n");
+    
+    sprintf(str,"Motor 1 enabled: ");     
+    if (g_ref.onoff & 0x02) {
+        strcat(str,"YES\r\n");
+    } else {
+        strcat(str,"NO\r\n");
+    }
     strcat(info_string, str);
-    sprintf(str,"Motor 2 enabled: %d\r\n",
-        (g_ref.onoff & 0x01) ? (int)1 : (int)0);
+    
+    sprintf(str,"Motor 2 enabled: ");     
+    if (g_ref.onoff & 0x01) {
+        strcat(str,"YES\r\n");
+    } else {
+        strcat(str,"NO\r\n");
+    }
     strcat(info_string, str); 
 
     strcat(info_string,"\r\nMEASUREMENTS INFO\r\n");

@@ -310,6 +310,8 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 			value_encoder[i] = (aux - 0x20000) >> 2;	// subtract half of max value
 													// and shift to have 16 bit val
 
+			value_encoder[i]  = (int16)(value_encoder[i] + g_mem.m_off[i]);
+
 			// take care of rotations
 			aux = value_encoder[i] - last_value_encoder[i];					
 			if (aux > 32768)
@@ -320,7 +322,7 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 			last_value_encoder[i] = value_encoder[i];	
 			
 	        value_encoder[i] += g_meas.rot[i] * 65536;			                 
-	        value_encoder[i] += g_mem.m_off[i];
+	        //value_encoder[i] += g_mem.m_off[i];
 	        value_encoder[i] *= c_mem.m_mult[i];
 		}
 		
