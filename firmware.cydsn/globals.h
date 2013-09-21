@@ -60,7 +60,7 @@
 #define FALSE			0
 #define TRUE			1
 
-#define PWM_LIMIT       120
+#define PWM_LIMIT       200
 
 //==============================================================================
 //                                                        structures definitions

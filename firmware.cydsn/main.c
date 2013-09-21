@@ -99,7 +99,7 @@ void main()
     for (i = 0; i < NUM_OF_MOTORS; i++) {
     	g_ref.pos[i] = 0;	
     }
-	g_ref.onoff 		= c_mem.activ;
+	g_ref.onoff = c_mem.activ;
 
 	for (i = 0; i < NUM_OF_SENSORS; i++) {
 		g_meas.pos[i] = 0;
@@ -109,11 +109,11 @@ void main()
 	g_rx.length			= 0;
 	g_rx.ready			= 0;
 
-	strcpy(g_rx.buffer,"");
+	//strcpy(g_rx.buffer,"");
 	
 	// Activating motors
 	
-    g_ref.onoff = g_rx.buffer[1];
+    //g_ref.onoff = g_rx.buffer[1];
     if (g_ref.onoff & 0x01) {				// motor 2
  		g_ref.pos[1] = g_meas.pos[1]; 				        
     	CyPins_SetPin(MOTOR_EN_B);
