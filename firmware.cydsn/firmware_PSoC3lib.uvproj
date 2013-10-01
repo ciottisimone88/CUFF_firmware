@@ -1123,6 +1123,21 @@
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Signal_1_B.h</FilePath>
             </File>
+            <File>
+              <FileName>cydisabledsheets.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.h</FilePath>
+            </File>
           </Files>
         </Group>
       </Groups>
@@ -2247,6 +2262,21 @@
               <FileName>Signal_1_B.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\Signal_1_B.h</FilePath>
+            </File>
+            <File>
+              <FileName>cydisabledsheets.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\cydisabledsheets.h</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_IRQ.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.c</FilePath>
+            </File>
+            <File>
+              <FileName>ADC_IRQ.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.h</FilePath>
             </File>
           </Files>
         </Group>

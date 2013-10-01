@@ -108,12 +108,8 @@ void main()
 
 	g_rx.length			= 0;
 	g_rx.ready			= 0;
-
-	//strcpy(g_rx.buffer,"");
 	
 	// Activating motors
-	
-    //g_ref.onoff = g_rx.buffer[1];
     if (g_ref.onoff & 0x01) {				// motor 2
  		g_ref.pos[1] = g_meas.pos[1]; 				        
     	CyPins_SetPin(MOTOR_EN_B);
@@ -127,6 +123,9 @@ void main()
 	} else {
  		CyPins_ClearPin(MOTOR_EN_A);
 	}
+
+	// Calculate conversion factor
+	device.tension_conv_factor = ((0.25 * 101.0 * 1000) / 1638.4); //derives from datasheet calculations
 
 	
 

@@ -56,3 +56,31 @@ Project : firmware
 		cy_boot	v 3.10	v 3.40
 
 
+Last Modified Date & Time: 10/01/2013 01:02:21
+
+Project : firmware
+		Schematic : TopDesign
+
+		PWM_MOTOR_A	v 2.40tv 3.0
+		CLOCK_12_MHz	v 2.0tv 2.10
+		CLOCK_CONTROL	v 2.0tv 2.10
+		CLOCK_MEASUREMENTS	v 2.0tv 2.10
+		CLOCK_UART	v 2.0tv 2.10
+		CLOCK_ENCODERS	v 2.0tv 2.10
+		CLOCK_CONTROL_1	v 2.0tv 2.10
+		AMUXSEQ_MOTORS	v 1.70tv 1.80
+		SHIFTREG_ENC_1	v 2.20tv 2.30
+		SHIFTREG_ENC_2	v 2.20tv 2.30
+		SHIFTREG_ENC_3	v 2.20tv 2.30
+		SHIFTREG_ENC_4	v 2.20tv 2.30
+		ADC	v 2.30tv 3.0
+
+Project : firmware
+		Design Wide APIs
+
+		cy_boot	v 3.40	v 4.0
+
+
+Last Modified Date & Time: 10/01/2013 01:02:47
+
+

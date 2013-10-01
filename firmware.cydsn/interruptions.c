@@ -238,19 +238,19 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
 		ADC_StopConvert();		
 		switch(ind){
 			case 0:
-				device.tension = (24543*(value - 1648))/1648;
+				device.tension = (value - 1638) * device.tension_conv_factor;
 			break;
             case 1:
-				g_meas.curr[0] =  (2430 * (value - 1648))/824;
-				if(g_meas.curr[0] < 30)
+				g_meas.curr[0] =  ((value - 1638) * 5000) / 1638;
+				if(g_meas.curr[0] < 10)
 					sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
 				g_meas.curr[0] = g_meas.curr[0] * sign_1;
 			break;			
             case 2:			
-			g_meas.curr[1] = (2430 * (value - 1648))/824;
-			if(g_meas.curr[1] < 30)
-				sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02)? 1 : -1;
-			g_meas.curr[1] = g_meas.curr[1] * sign_2;
+				g_meas.curr[1] =  ((value - 1638) * 5000) / 1638;
+				if(g_meas.curr[1] < 10)
+					sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02)? 1 : -1;
+				g_meas.curr[1] = g_meas.curr[1] * sign_2;
             break;
 		}
 		AMUXSEQ_MOTORS_Next();		

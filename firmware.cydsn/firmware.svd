@@ -4036,7 +4036,7 @@
     <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x647B</baseAddress>
+      <baseAddress>0x647D</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -4117,7 +4117,7 @@
         <register>
           <name>PWM_MOTOR_A_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x5E</addressOffset>
+          <addressOffset>0x61</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4418,7 +4418,7 @@
       <baseAddress>0x6423</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x47</size>
+        <size>0x49</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4452,7 +4452,7 @@
         <register>
           <name>TX_UART_RS485_TX_DATA</name>
           <description>TX Data Register</description>
-          <addressOffset>0x26</addressOffset>
+          <addressOffset>0x25</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4521,7 +4521,7 @@
         <register>
           <name>TX_UART_RS485_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x46</addressOffset>
+          <addressOffset>0x48</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4562,10 +4562,10 @@
     <peripheral>
       <name>COUNTER_ENC</name>
       <description>No description available</description>
-      <baseAddress>0x6408</baseAddress>
+      <baseAddress>0x6409</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x174</size>
+        <size>0x173</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4599,7 +4599,7 @@
         <register>
           <name>COUNTER_ENC_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x83</addressOffset>
+          <addressOffset>0x80</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4659,7 +4659,7 @@
         <register>
           <name>COUNTER_ENC_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x93</addressOffset>
+          <addressOffset>0x90</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4784,7 +4784,7 @@
         <register>
           <name>COUNTER_ENC_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x173</addressOffset>
+          <addressOffset>0x172</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4818,7 +4818,7 @@
     <peripheral>
       <name>CONTROL_REG_MOTORS</name>
       <description>No description available</description>
-      <baseAddress>0x647E</baseAddress>
+      <baseAddress>0x6579</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>

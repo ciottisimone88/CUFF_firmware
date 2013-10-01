@@ -335,7 +335,7 @@ void paramSet(uint16 param_type)
                 g_mem.m_off[i] = 
                     *((int16 *) &g_rx.buffer[3 + i * 2]);
                 g_mem.m_off[i] =
-                    g_mem.m_off[i] << g_mem.res[i];
+                        g_mem.m_off[i] << g_mem.res[i];
 
                 g_meas.rot[i] = 0;
             }
@@ -513,15 +513,15 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, str);
         strcat(info_string, "\r\n");
     }
-    sprintf(str,"Voltage: %f", (double) device.tension );
+    sprintf(str,"Voltage (mV): %ld", (int32) device.tension );
     strcat(info_string, str);
     strcat(info_string,"\r\n"); 
 
-    sprintf(str,"Current_1: %d", (int) g_meas.curr[0] );
+    sprintf(str,"Current 1 (mA): %ld", (int32) g_meas.curr[0] );
     strcat(info_string, str);
     strcat(info_string,"\r\n"); 
 
-    sprintf(str,"Current_2: %d", (int) g_meas.curr[1] );
+    sprintf(str,"Current 2 (mA): %ld", (int32) g_meas.curr[1] );
     strcat(info_string, str);
     strcat(info_string,"\r\n"); 
  
@@ -556,8 +556,8 @@ void infoPrepare(unsigned char *info_string)
 	
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
-        sprintf(str,"Measurement Offset %d: %d", (int) i, 
-            (int) c_mem.m_off[i] >> c_mem.res[i]);
+        sprintf(str,"Measurement Offset %d: %ld", (int) i, 
+            (int32) c_mem.m_off[i] >> c_mem.res[i]);
         strcat(info_string, str); 
         strcat(info_string,"\r\n");
     }
@@ -669,7 +669,7 @@ void memStore(void)
     for(i = 0; i < pages; ++i)
     {
         writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i);
-        if(writeStatus!=CYRET_SUCCESS)
+        if(writeStatus != CYRET_SUCCESS)
         {
                 break;
         }
@@ -721,8 +721,8 @@ void memRestore(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	'A';
-	g_mem.k        = 	0.05 * 65536;
+	g_mem.id       = 	37;             ////////////
+	g_mem.k        = 	0.1 * 65536;
     g_mem.activ    = 	0;
     g_mem.mode     = 	0;
 	g_mem.filt     = 	0;
@@ -737,10 +737,13 @@ void memRestore(void)
  
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
-        g_mem.m_off[i] = 0;
         g_mem.m_mult[i] = 1;
-        g_mem.res[i] = 0;
+        g_mem.res[i] = 1;
     }
+    
+    g_mem.m_off[0] = (int32)-9400 << g_mem.res[0];          ////////////
+    g_mem.m_off[1] = (int32)-8192 << g_mem.res[1];       /////////////
+    g_mem.m_off[2] = (int32)-5152 << g_mem.res[2];           /////////////
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;
