@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.0.2"
+#define VERSION         "QBMMP v1.0.3"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -115,6 +115,7 @@ struct st_mem {
 struct st_dev{
 	int32	tension;				// Power supply tension
     float   tension_conv_factor;    // Used to calculate input tension
+    uint8    tension_valid;
 };
 
 //====================================      external global variables definition

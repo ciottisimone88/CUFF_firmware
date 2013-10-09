@@ -228,6 +228,11 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
 	int32 value;
 	static int sign_1 = 1;
 	static int sign_2 = 1;
+	static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over
+								// the first counter values of current
+	static int32 mean_value_1;
+	static int32 mean_value_2;
+
 	
 	ADC_StartConvert();
 
@@ -237,21 +242,51 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
 		value = (int32) ADC_GetResult16();
 		ADC_StopConvert();		
 		switch(ind){
+			// --- Input tension ---
 			case 0:
 				device.tension = (value - 1638) * device.tension_conv_factor;
-			break;
+				if (device.tension < 0) { //until there is no valid input tension repeat this measurment
+					AMUXSEQ_MOTORS_Stop();
+					AMUXSEQ_MOTORS_Next();
+					counter = SAMPLES_FOR_MEAN;
+					mean_value_1 = 0;
+					mean_value_2 = 0;
+					device.tension_valid = FALSE;
+				} else {
+					device.tension_valid = TRUE;
+				}
+				break;
+
+			// --- Current motor 1 ---
             case 1:
-				g_meas.curr[0] =  ((value - 1638) * 5000) / 1638;
-				if(g_meas.curr[0] < 10)
-					sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
-				g_meas.curr[0] = g_meas.curr[0] * sign_1;
-			break;			
-            case 2:			
-				g_meas.curr[1] =  ((value - 1638) * 5000) / 1638;
-				if(g_meas.curr[1] < 10)
-					sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02)? 1 : -1;
-				g_meas.curr[1] = g_meas.curr[1] * sign_2;
-            break;
+            	if (counter > 0) {
+            		mean_value_1 += value;
+            		if (counter == 1) {
+            			mean_value_1 = mean_value_1 / SAMPLES_FOR_MEAN;
+            		}
+            	} else {
+            		g_meas.curr[0] =  ((value - mean_value_1) * 5000) / mean_value_1;
+					if(g_meas.curr[0] < 10)
+						sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
+					g_meas.curr[0] = g_meas.curr[0] * sign_1;
+            	}
+				break;
+
+			// --- Current motor 2 ---
+            case 2:
+            	if (counter > 0) {
+            		mean_value_2 += value;
+            		if (counter == 1) {
+            			mean_value_2 = mean_value_2 / SAMPLES_FOR_MEAN;
+            		}
+            		counter--;
+            	} else {	
+					g_meas.curr[1] =  ((value - mean_value_2) * 5000) / mean_value_2;
+					if(g_meas.curr[1] < 10)
+						sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02) ? 1 : -1;
+					g_meas.curr[1] = g_meas.curr[1] * sign_2;
+				}
+            	break;
 		}
 		AMUXSEQ_MOTORS_Next();		
 	}
