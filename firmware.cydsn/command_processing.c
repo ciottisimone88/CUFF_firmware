@@ -64,25 +64,12 @@ void commProcess(void){
 		case CMD_ACTIVATE:
 		    g_ref.onoff = g_rx.buffer[1];
 
-		    if (g_ref.onoff & 0x01) {                   // on-off for motor 2
-				#if (CONTROL_MODE == CONTROL_ANGLE)
-					g_ref.pos[1] = g_meas.pos[1]; 				        
-				#endif
-		    	CyPins_SetPin(MOTOR_EN_B);
-			} else {
-		 		CyPins_ClearPin(MOTOR_EN_B);
-            }
 
-
-		    if (g_ref.onoff & 0x02) {                   // on-off for motor 1
-				#if (CONTROL_MODE == CONTROL_ANGLE)				
-					g_ref.pos[0] = g_meas.pos[0];
-				#endif					
-		    	CyPins_SetPin(MOTOR_EN_A);    	
-			} else {
-		 		CyPins_ClearPin(MOTOR_EN_A);
-            }
-
+            #if (CONTROL_MODE == CONTROL_ANGLE)
+                g_ref.pos[0] = g_meas.pos[0];
+                g_ref.pos[1] = g_meas.pos[1];                       
+            #endif
+            MOTOR_ON_OFF_Write(g_ref.onoff);
 
     		break;
 //===========================================================     CMD_SET_INPUTS
@@ -659,8 +646,8 @@ void memStore(void)
     ISR_MOTORS_CONTROL_Disable();
     ISR_ENCODER_Disable();
 
-    PWM_MOTOR_A_WriteCompare1(0);
-	PWM_MOTOR_A_WriteCompare2(0);    
+    PWM_MOTORS_WriteCompare1(0);
+	PWM_MOTORS_WriteCompare2(0); 
         
     memcpy( &c_mem, &g_mem, sizeof(g_mem) );
 

@@ -384,21 +384,6 @@
               <FilePath>.\Generated_Source\PSoC3\cyfitter.h</FilePath>
             </File>
             <File>
-              <FileName>MOTOR_A1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A1_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>MOTOR_EN.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\MOTOR_EN.c</FilePath>
@@ -412,21 +397,6 @@
               <FileName>MOTOR_EN_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\MOTOR_EN_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2_aliases.h</FilePath>
             </File>
             <File>
               <FileName>UART_RS485.c</FileName>
@@ -462,31 +432,6 @@
               <FileName>RS_485_EN_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\RS_485_EN_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A.h</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A_PM.c</FilePath>
-            </File>
-            <File>
-              <FileName>CLOCK_12_MHz.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CLOCK_12_MHz.c</FilePath>
-            </File>
-            <File>
-              <FileName>CLOCK_12_MHz.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CLOCK_12_MHz.h</FilePath>
             </File>
             <File>
               <FileName>AMUXSEQ_MOTORS.c</FileName>
@@ -602,46 +547,6 @@
               <FileName>CLOCK_UART.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\CLOCK_UART.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>CONTROL_REG_MOTORS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CONTROL_REG_MOTORS.c</FilePath>
-            </File>
-            <File>
-              <FileName>CONTROL_REG_MOTORS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CONTROL_REG_MOTORS.h</FilePath>
             </File>
             <File>
               <FileName>COUNTER_ENC.c</FileName>
@@ -1137,6 +1042,111 @@
               <FileName>ADC_IRQ.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS.c</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>CLOCK_PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\CLOCK_PWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>CLOCK_PWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\CLOCK_PWM.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_DIR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_DIR.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_DIR.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_DIR.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_ON_OFF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_ON_OFF.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_ON_OFF.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_ON_OFF.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -1524,21 +1534,6 @@
               <FilePath>.\Generated_Source\PSoC3\cyfitter.h</FilePath>
             </File>
             <File>
-              <FileName>MOTOR_A1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A1_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A1_aliases.h</FilePath>
-            </File>
-            <File>
               <FileName>MOTOR_EN.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Generated_Source\PSoC3\MOTOR_EN.c</FilePath>
@@ -1552,21 +1547,6 @@
               <FileName>MOTOR_EN_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\MOTOR_EN_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_A2_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_A2_aliases.h</FilePath>
             </File>
             <File>
               <FileName>UART_RS485.c</FileName>
@@ -1602,31 +1582,6 @@
               <FileName>RS_485_EN_aliases.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\RS_485_EN_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A.c</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A.h</FilePath>
-            </File>
-            <File>
-              <FileName>PWM_MOTOR_A_PM.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\PWM_MOTOR_A_PM.c</FilePath>
-            </File>
-            <File>
-              <FileName>CLOCK_12_MHz.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CLOCK_12_MHz.c</FilePath>
-            </File>
-            <File>
-              <FileName>CLOCK_12_MHz.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CLOCK_12_MHz.h</FilePath>
             </File>
             <File>
               <FileName>AMUXSEQ_MOTORS.c</FileName>
@@ -1742,46 +1697,6 @@
               <FileName>CLOCK_UART.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\CLOCK_UART.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B1_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B1_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2.c</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2.h</FilePath>
-            </File>
-            <File>
-              <FileName>MOTOR_B2_aliases.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\MOTOR_B2_aliases.h</FilePath>
-            </File>
-            <File>
-              <FileName>CONTROL_REG_MOTORS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CONTROL_REG_MOTORS.c</FilePath>
-            </File>
-            <File>
-              <FileName>CONTROL_REG_MOTORS.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>.\Generated_Source\PSoC3\CONTROL_REG_MOTORS.h</FilePath>
             </File>
             <File>
               <FileName>COUNTER_ENC.c</FileName>
@@ -2277,6 +2192,111 @@
               <FileName>ADC_IRQ.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Generated_Source\PSoC3\ADC_IRQ.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1A_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1A_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2A_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2A_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS.c</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS.h</FilePath>
+            </File>
+            <File>
+              <FileName>PWM_MOTORS_PM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\PWM_MOTORS_PM.c</FilePath>
+            </File>
+            <File>
+              <FileName>CLOCK_PWM.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\CLOCK_PWM.c</FilePath>
+            </File>
+            <File>
+              <FileName>CLOCK_PWM.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\CLOCK_PWM.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_1B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_1B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_2B_aliases.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_2B_aliases.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_DIR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_DIR.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_DIR.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_DIR.h</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_ON_OFF.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_ON_OFF.c</FilePath>
+            </File>
+            <File>
+              <FileName>MOTOR_ON_OFF.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Generated_Source\PSoC3\MOTOR_ON_OFF.h</FilePath>
             </File>
           </Files>
         </Group>

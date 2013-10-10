@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.0.3"
+#define VERSION         "QBMMP v1.0.4"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -51,7 +51,8 @@
 //==================================================     control type definition
 
 //#define CONTROL_MODE			CONTROL_CURRENT
-#define CONTROL_MODE			CONTROL_ANGLE
+//#define CONTROL_MODE			CONTROL_ANGLE
+#define CONTROL_MODE            CONTROL_PWM
 
 //==============================================================================
 //                                                                         OTHER
@@ -60,7 +61,9 @@
 #define FALSE			0
 #define TRUE			1
 
-#define PWM_LIMIT       200
+#define PWM_LIMIT       100
+
+#define SAMPLES_FOR_MEAN 250
 
 //==============================================================================
 //                                                        structures definitions

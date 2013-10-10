@@ -204,9 +204,10 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     if(input_1 < -PWM_LIMIT) input_1 = -PWM_LIMIT;
     if(input_2 < -PWM_LIMIT) input_2 = -PWM_LIMIT;
 
-	PWM_MOTOR_A_WriteCompare1(abs(input_1));
-	PWM_MOTOR_A_WriteCompare2(abs(input_2));
-	CONTROL_REG_MOTORS_Write((input_1 > 0) + ((input_2 > 0) << 1));
+	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
+	PWM_MOTORS_WriteCompare1(abs(input_1));
+	PWM_MOTORS_WriteCompare2(abs(input_2));
+	
 	
 	/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
 	#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
@@ -267,7 +268,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             	} else {
             		g_meas.curr[0] =  ((value - mean_value_1) * 5000) / mean_value_1;
 					if(g_meas.curr[0] < 10)
-						sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
+						sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
 					g_meas.curr[0] = g_meas.curr[0] * sign_1;
             	}
 				break;
@@ -283,7 +284,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             	} else {	
 					g_meas.curr[1] =  ((value - mean_value_2) * 5000) / mean_value_2;
 					if(g_meas.curr[1] < 10)
-						sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02) ? 1 : -1;
+						sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
 					g_meas.curr[1] = g_meas.curr[1] * sign_2;
 				}
             	break;

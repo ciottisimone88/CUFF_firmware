@@ -66,11 +66,12 @@ void main()
 
 	// PWM
     
-	PWM_MOTOR_A_Start();
+	PWM_MOTORS_Start();
 	ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);
-	PWM_MOTOR_A_WriteCompare1(0);
-	PWM_MOTOR_A_WriteCompare2(0);
-	CONTROL_REG_MOTORS_Write(0);	
+	PWM_MOTORS_WriteCompare1(0);
+	PWM_MOTORS_WriteCompare2(0);
+	MOTOR_DIR_Write(0);
+	MOTOR_ON_OFF_Write(0x00);	
 	
 	// SSI encoder initializations
 	
@@ -110,19 +111,9 @@ void main()
 	g_rx.ready			= 0;
 	
 	// Activating motors
-    if (g_ref.onoff & 0x01) {				// motor 2
- 		g_ref.pos[1] = g_meas.pos[1]; 				        
-    	CyPins_SetPin(MOTOR_EN_B);
-	} else {
- 		CyPins_ClearPin(MOTOR_EN_B);
-	}
-
-    if (g_ref.onoff & 0x02) {				// motor 1
- 		g_ref.pos[0] = g_meas.pos[0];         
-    	CyPins_SetPin(MOTOR_EN_A);    	
-	} else {
- 		CyPins_ClearPin(MOTOR_EN_A);
-	}
+	g_ref.pos[0] = g_meas.pos[0];
+	g_ref.pos[1] = g_meas.pos[1];
+	MOTOR_ON_OFF_Write(g_ref.onoff);
 
 	// Calculate conversion factor
 	device.tension_conv_factor = ((0.25 * 101.0 * 1000) / 1638.4); //derives from datasheet calculations
