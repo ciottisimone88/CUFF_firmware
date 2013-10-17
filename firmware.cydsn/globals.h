@@ -51,8 +51,8 @@
 //==================================================     control type definition
 
 //#define CONTROL_MODE			CONTROL_CURRENT
-//#define CONTROL_MODE			CONTROL_ANGLE
-#define CONTROL_MODE            CONTROL_PWM
+#define CONTROL_MODE			CONTROL_ANGLE
+//#define CONTROL_MODE            CONTROL_PWM
 
 //==============================================================================
 //                                                                         OTHER

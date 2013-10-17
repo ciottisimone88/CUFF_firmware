@@ -153,6 +153,10 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
 
+	static int32 k_d = 85196;
+
+	static int32 prev_pos[NUM_OF_MOTORS];
+
 	int32 error_1, error_2;
 	static int32 sum_err_1, sum_err_2;
 	
@@ -162,11 +166,20 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
         g_ref.pos[0] = g_meas.pos[2];
 	    g_ref.pos[1] = g_meas.pos[2];
     }
-	//////////////////////////////////////////////////////////     CONTROL_ANGLE
+	///////////////////////////////////////////////////////     CONTROL_ANGLE PD
 	
     #if (CONTROL_MODE == CONTROL_ANGLE)
+    	// Proportional part
 		input_1 = (c_mem.k * (g_ref.pos[0] - g_meas.pos[0])) / 65536;
 		input_2 = (c_mem.k * (g_ref.pos[1] - g_meas.pos[1])) / 65536;
+
+		// Derivative part
+		input_1 += (k_d * (prev_pos[0] - g_meas.pos[0])) / 65536;
+		input_2 += (k_d * (prev_pos[1] - g_meas.pos[1])) / 65536;
+
+		// Update previous measurements
+		prev_pos[0] = g_meas.pos[0];
+		prev_pos[1] = g_meas.pos[1];
     #endif
 
 	////////////////////////////////////////////////////////     CONTROL_CURRENT
