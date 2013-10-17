@@ -266,7 +266,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             		}
             	} else {
             		g_meas.curr[0] =  ((value - mean_value_1) * 5000) / mean_value_1;
-					if(g_meas.curr[0] < 10)
+					if(g_meas.curr[0] < 20)
 						sign_1 = (CONTROL_REG_MOTORS_Read() & 0x01) ? 1 : -1;
 					g_meas.curr[0] = g_meas.curr[0] * sign_1;
             	}
@@ -282,7 +282,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             		counter--;
             	} else {	
 					g_meas.curr[1] =  ((value - mean_value_2) * 5000) / mean_value_2;
-					if(g_meas.curr[1] < 10)
+					if(g_meas.curr[1] < 20)
 						sign_2 = (CONTROL_REG_MOTORS_Read() & 0x02) ? 1 : -1;
 					g_meas.curr[1] = g_meas.curr[1] * sign_2;
 				}
