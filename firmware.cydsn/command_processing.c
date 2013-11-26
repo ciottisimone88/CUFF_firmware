@@ -142,29 +142,29 @@ void commProcess(void){
 
 //====================================================     CMD_GET_CURR_AND_MEAS
 
-        // case CMD_GET_CURR_AND_MEAS:
-        //     //Packet: header + curr_meas(int16) + pos_meas(int16) + CRC
-        //     //packet_lenght = 1 + 2 * 2 + (NUM_OF_SENSORS * 2) + 1;
-        //     packet_lenght = 6 + (NUM_OF_SENSORS * 2);
+        case CMD_GET_CURR_AND_MEAS:
+            //Packet: header + curr_meas(int16) + pos_meas(int16) + CRC
+            //packet_lenght = 1 + 2 * 2 + (NUM_OF_SENSORS * 2) + 1;
+            packet_lenght = 6 + (NUM_OF_SENSORS * 2);
 
-        //     packet_data[0] = CMD_GET_CURR_AND_MEAS;
+            packet_data[0] = CMD_GET_CURR_AND_MEAS;
 
-        //     // Currents
-        //     *((int16 *) &packet_data[1]) = (int16) g_meas.curr[0];
-        //     *((int16 *) &packet_data[3]) = (int16) g_meas.curr[1];
+            // Currents
+            *((int16 *) &packet_data[1]) = (int16) g_meas.curr[0];
+            *((int16 *) &packet_data[3]) = (int16) g_meas.curr[1];
 
-        //     // Positions
-        //     for (i = 0; i < NUM_OF_SENSORS; i++) {
-        //         *((int16 *) &packet_data[(i*2) + 5]) = (int16)
-        //         (g_meas.pos[i] >> g_mem.res[i]);
-        //     }
+            // Positions
+            for (i = 0; i < NUM_OF_SENSORS; i++) {
+                *((int16 *) &packet_data[(i*2) + 5]) = (int16)
+                (g_meas.pos[i] >> g_mem.res[i]);
+            }
 
-        //     packet_data[packet_lenght - 1] =
-        //         LCRChecksum (packet_data,packet_lenght - 1);
+            packet_data[packet_lenght - 1] =
+                LCRChecksum (packet_data,packet_lenght - 1);
 
-        //     //commWrite(packet_data, packet_lenght);
-        //     commWrite(packet_data, packet_lenght);
-        // break;
+            //commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght);
+        break;
 
 //=========================================================     CMD_GET_ACTIVATE
 		
