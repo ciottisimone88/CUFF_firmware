@@ -1,3 +1,0 @@
-[submodule "firmware.cydsn/qbmoveAPI"]
-	path = firmware.cydsn/qbmoveAPI
-	url = git@server.qbrobotics.com:/var/git/qbmoveAPI.git

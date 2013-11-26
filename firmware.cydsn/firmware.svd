@@ -7,6 +7,27 @@
   <width>32</width>
   <peripherals>
     <peripheral>
+      <name>RS485_CTS</name>
+      <description>No description available</description>
+      <baseAddress>0x6577</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RS485_CTS_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>ADC</name>
       <description>No description available</description>
       <baseAddress>0x43AA</baseAddress>
@@ -4030,27 +4051,6 @@
               </enumeratedValues>
             </field>
           </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>RS485_CTS</name>
-      <description>No description available</description>
-      <baseAddress>0x6577</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RS485_CTS_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
         </register>
       </registers>
     </peripheral>

@@ -153,8 +153,11 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
 
+	
+	static int32 pos_prec_1, pos_prec_2;
 	int32 error_1, error_2;
-	static int32 sum_err_1, sum_err_2;
+	static int32 err_sum_1, err_sum_2;
+
 	
     /////////   use third encoder as input for both motors   //////////
     if( c_mem.mode == INPUT_MODE_ENCODER3 )
@@ -165,8 +168,28 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	//////////////////////////////////////////////////////////     CONTROL_ANGLE
 	
     #if (CONTROL_MODE == CONTROL_ANGLE)
-		input_1 = (c_mem.k * (g_ref.pos[0] - g_meas.pos[0])) / 65536;
-		input_2 = (c_mem.k * (g_ref.pos[1] - g_meas.pos[1])) / 65536;
+    	error_1 = g_ref.pos[0] - g_meas.pos[0];
+    	error_2 = g_ref.pos[1] - g_meas.pos[1];
+
+    	err_sum_1 += error_1;
+    	err_sum_2 += error_2;
+
+    	// Proportional
+		input_1 = (int32)(c_mem.k_p * error_1) >> 16;
+		input_2 = (int32)(c_mem.k_p * error_2) >> 16;
+
+		// Integrative
+		input_1 += (int32)(c_mem.k_i * err_sum_1) >> 16;
+		input_2 += (int32)(c_mem.k_i * err_sum_2) >> 16;
+
+		// Derivative
+		input_1 += (int32)(c_mem.k_d * (pos_prec_1 - g_meas.pos[0])) >> 16;
+		input_2 += (int32)(c_mem.k_d * (pos_prec_2 - g_meas.pos[1])) >> 16;
+
+		// Update measure
+		pos_prec_1 = g_meas.pos[0];
+		pos_prec_2 = g_meas.pos[1];
+
     #endif
 
 	////////////////////////////////////////////////////////     CONTROL_CURRENT
@@ -177,11 +200,11 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 			error_1 = g_ref.pos[0] - g_meas.curr[0];
 			error_2 = g_ref.pos[1] - g_meas.curr[1];
 
-			sum_err_1 += error_1;
-			sum_err_2 += error_2;
+			err_sum_1 += error_1;
+			err_sum_2 += error_2;
 
-			input_1 += ((c_mem.k * (error_1)) / 65536) + sum_err_1;
-			input_2 += ((c_mem.k * (error_2)) / 65536) + sum_err_2;
+			input_1 += ((c_mem.k_p * (error_1)) / 65536) + err_sum_1;
+			input_2 += ((c_mem.k_p * (error_2)) / 65536) + err_sum_2;
 		} 
 		else
 		{
@@ -197,7 +220,14 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 		input_1 = g_ref.pos[0];
 		input_2 = g_ref.pos[1];
 	#endif
-		
+	
+
+	if (input_1 > 0) {
+		input_1 += PWM_DEAD;
+	} else if (input_1 < 0) {
+		input_1 -= PWM_DEAD;
+	}
+
 		
     if(input_1 >  PWM_LIMIT) input_1 =  PWM_LIMIT;
     if(input_2 >  PWM_LIMIT) input_2 =  PWM_LIMIT;

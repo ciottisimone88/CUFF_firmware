@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------
+	// ----------------------------------------------------------------------------
 // Copyright (C)  qbrobotics. All rights reserved.
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
@@ -16,7 +16,7 @@
 
 //=================================================================     includes
 #include <command_processing.h>
-#include "/qbmoveAPI/commands.h"
+#include "commands.h"
 #include <stdio.h>
 
 //================================================================     variables
@@ -40,7 +40,7 @@ void commProcess(void){
     int i;              //iterator
 	uint8 rx_cmd;
 	uint8 aux_checksum; 
-	uint8 packet_data[10];
+	uint8 packet_data[16];
 	uint8 packet_lenght;
     int32 pos_1, pos_2;	
     uint32 off_1, off_2;
@@ -107,7 +107,7 @@ void commProcess(void){
 //=====================================================     CMD_GET_MEASUREMENTS
 
 		case CMD_GET_MEASUREMENTS:
-			// Packet: header + measure(int16) + crc
+			// Packet: header + measure(int16) + CRC
             packet_lenght = 1 + (NUM_OF_SENSORS * 2) + 1;
 
 			packet_data[0] = CMD_GET_MEASUREMENTS;   //header
@@ -123,8 +123,11 @@ void commProcess(void){
 		    commWrite(packet_data, packet_lenght);
 
 		break;
+
 //=========================================================     CMD_GET_CURRENTS
+
 		case CMD_GET_CURRENTS:
+            //Packt: header + measure(int16) + CRC
 			packet_lenght = 6;
 			
 			packet_data[0] = CMD_GET_CURRENTS;				
@@ -135,8 +138,33 @@ void commProcess(void){
 			packet_data[5] = LCRChecksum (packet_data,packet_lenght - 1);
 
 			commWrite(packet_data, packet_lenght);
-
 		break;
+
+//====================================================     CMD_GET_CURR_AND_MEAS
+
+        // case CMD_GET_CURR_AND_MEAS:
+        //     //Packet: header + curr_meas(int16) + pos_meas(int16) + CRC
+        //     //packet_lenght = 1 + 2 * 2 + (NUM_OF_SENSORS * 2) + 1;
+        //     packet_lenght = 6 + (NUM_OF_SENSORS * 2);
+
+        //     packet_data[0] = CMD_GET_CURR_AND_MEAS;
+
+        //     // Currents
+        //     *((int16 *) &packet_data[1]) = (int16) g_meas.curr[0];
+        //     *((int16 *) &packet_data[3]) = (int16) g_meas.curr[1];
+
+        //     // Positions
+        //     for (i = 0; i < NUM_OF_SENSORS; i++) {
+        //         *((int16 *) &packet_data[(i*2) + 5]) = (int16)
+        //         (g_meas.pos[i] >> g_mem.res[i]);
+        //     }
+
+        //     packet_data[packet_lenght - 1] =
+        //         LCRChecksum (packet_data,packet_lenght - 1);
+
+        //     //commWrite(packet_data, packet_lenght);
+        //     commWrite(packet_data, packet_lenght);
+        // break;
 
 //=========================================================     CMD_GET_ACTIVATE
 		
@@ -225,6 +253,10 @@ void commProcess(void){
         case CMD_RESTORE_PARAMS:
 				memRestore();
                 break;
+
+        case CMD_BOOTLOADER:
+                Bootloadable_Load();
+                break;
                 
 	}
 
@@ -299,8 +331,10 @@ void paramSet(uint16 param_type)
         	g_mem.id = g_rx.buffer[3];        
             break;
 
-        case PARAM_CONTROL_K:
-            g_mem.k = *((double *) &g_rx.buffer[3]) * 65536;
+        case PARAM_PID_CONTROL:
+            g_mem.k_p = *((double *) &g_rx.buffer[3]) * 65536;
+            g_mem.k_i = *((double *) &g_rx.buffer[3 + 4]) * 65536;
+            g_mem.k_d = *((double *) &g_rx.buffer[3 + 8]) * 65536;
             break;
 
         case PARAM_STARTUP_ACTIVATION:
@@ -382,9 +416,11 @@ void paramGet(uint16 param_type)
             packet_lenght = 3;        
             break;
 
-        case PARAM_CONTROL_K:
-            *((double *) (packet_data + 1)) = (double) c_mem.k / 65536;
-            packet_lenght = 6;
+        case PARAM_PID_CONTROL:
+            *((double *) (packet_data + 1)) = (double) c_mem.k_p / 65536;
+            *((double *) (packet_data + 5)) = (double) c_mem.k_i / 65536;
+            *((double *) (packet_data + 9)) = (double) c_mem.k_d / 65536;
+            packet_lenght = 14;
             break;
 
         case PARAM_STARTUP_ACTIVATION:
@@ -527,7 +563,7 @@ void infoPrepare(unsigned char *info_string)
  
 
     strcat(info_string,"\r\nDEVICE PARAMETERS\r\n");
-    sprintf(str,"Control K: %f", (double) c_mem.k / 65536);
+    sprintf(str,"PID Controller: \r\n%f\t%f\t%f", ((double) c_mem.k_p / 65536), ((double)c_mem.k_i / 65536), ((double)c_mem.k_d / 65536));
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
     sprintf(str,"Startup activation: %d", (int) c_mem.activ);
@@ -606,7 +642,7 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
     // frame - ID                               
     UART_RS485_PutChar (g_mem.id);
     // frame - length
-    UART_RS485_PutChar(packet_lenght);
+    UART_RS485_PutChar((uint8)packet_lenght);
     // frame - packet data
     for(i = 0; i < packet_lenght; ++i)
     {
@@ -721,14 +757,16 @@ void memRestore(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	37;             ////////////
-	g_mem.k        = 	0.1 * 65536;
+	g_mem.id       = 	47;             ////////////
+	g_mem.k_p      = 	0.1 * 65536;
+    g_mem.k_i      =    0 * 65536;
+    g_mem.k_d      =    0.8 * 65536;
     g_mem.activ    = 	0;
     g_mem.mode     = 	0;
 	g_mem.filt     = 	0;
     g_mem.dead     = 	0;
 
-    g_mem.pos_lim_flag = 1;
+    g_mem.pos_lim_flag = 0;
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_mem.pos_lim_inf[i] = -30000;
@@ -741,9 +779,13 @@ void memRestore(void)
         g_mem.res[i] = 1;
     }
     
-    g_mem.m_off[0] = (int32)-9400 << g_mem.res[0];          ////////////
-    g_mem.m_off[1] = (int32)-8192 << g_mem.res[1];       /////////////
-    g_mem.m_off[2] = (int32)-5152 << g_mem.res[2];           /////////////
+    //g_mem.m_off[0] = (int32)0 << g_mem.res[0];          ////////////
+    //g_mem.m_off[1] = (int32)0 << g_mem.res[1];       /////////////
+    //g_mem.m_off[2] = (int32)0 << g_mem.res[2];           /////////////
+	
+	g_mem.m_off[0] = (int32)-15536 << g_mem.res[0];          ////////////
+    g_mem.m_off[1] = (int32)-9928 << g_mem.res[1];       /////////////
+    g_mem.m_off[2] = (int32)13064 << g_mem.res[2];           /////////////
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;
