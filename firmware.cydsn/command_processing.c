@@ -757,7 +757,7 @@ void memRestore(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	47;             ////////////
+	g_mem.id       = 	48;             ////////////
 	g_mem.k_p      = 	0.1 * 65536;
     g_mem.k_i      =    0 * 65536;
     g_mem.k_d      =    0.8 * 65536;
@@ -766,7 +766,7 @@ void memRestore(void)
 	g_mem.filt     = 	0;
     g_mem.dead     = 	0;
 
-    g_mem.pos_lim_flag = 0;
+    g_mem.pos_lim_flag = 1;
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_mem.pos_lim_inf[i] = -30000;
@@ -783,9 +783,9 @@ void memRestore(void)
     //g_mem.m_off[1] = (int32)0 << g_mem.res[1];       /////////////
     //g_mem.m_off[2] = (int32)0 << g_mem.res[2];           /////////////
 	
-	g_mem.m_off[0] = (int32)-15536 << g_mem.res[0];          ////////////
-    g_mem.m_off[1] = (int32)-9928 << g_mem.res[1];       /////////////
-    g_mem.m_off[2] = (int32)13064 << g_mem.res[2];           /////////////
+	g_mem.m_off[0] = (int32)144 << g_mem.res[0];          ////////////
+    g_mem.m_off[1] = (int32)12944 << g_mem.res[1];       /////////////
+    g_mem.m_off[2] = (int32)19400 << g_mem.res[2];           /////////////
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;

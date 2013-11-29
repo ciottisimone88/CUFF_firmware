@@ -174,6 +174,19 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     	err_sum_1 += error_1;
     	err_sum_2 += error_2;
 
+    	// anti-windup
+    	if (err_sum_1 > ANTI_WINDUP) {
+    		err_sum_1 = ANTI_WINDUP;
+    	} else if (err_sum_1 < -ANTI_WINDUP) {
+    		err_sum_1 = -ANTI_WINDUP;
+    	}
+
+    	if (err_sum_2 > ANTI_WINDUP) {
+    		err_sum_2 = ANTI_WINDUP;
+    	} else if (err_sum_2 < -ANTI_WINDUP) {
+    		err_sum_2 = -ANTI_WINDUP;
+    	}
+
     	// Proportional
 		input_1 = (int32)(c_mem.k_p * error_1) >> 16;
 		input_2 = (int32)(c_mem.k_p * error_2) >> 16;

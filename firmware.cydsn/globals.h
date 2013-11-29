@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.1.0"
+#define VERSION         "QBMMP v1.1.1"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -60,8 +60,10 @@
 #define FALSE			0
 #define TRUE			1
 
-#define PWM_LIMIT       60
-#define PWM_DEAD        0
+#define PWM_LIMIT       100
+#define PWM_DEAD        15
+
+#define ANTI_WINDUP     1000
 	
 #define SAMPLES_FOR_MEAN 200
 
