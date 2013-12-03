@@ -20,13 +20,13 @@
 #include <device.h>
 #include "stdlib.h"
 #include "math.h"
-#include "/qbmoveAPI/commands.h"
+#include "commands.h"
 
 //==============================================================================
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.0.4"
+#define VERSION         "QBMMP v1.1.1"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -52,7 +52,6 @@
 
 //#define CONTROL_MODE			CONTROL_CURRENT
 #define CONTROL_MODE			CONTROL_ANGLE
-//#define CONTROL_MODE            CONTROL_PWM
 
 //==============================================================================
 //                                                                         OTHER
@@ -62,8 +61,11 @@
 #define TRUE			1
 
 #define PWM_LIMIT       100
+#define PWM_DEAD        0
 
-#define SAMPLES_FOR_MEAN 250
+#define ANTI_WINDUP     1000
+	
+#define SAMPLES_FOR_MEAN 200
 
 //==============================================================================
 //                                                        structures definitions
@@ -100,7 +102,11 @@ struct st_data {
 struct st_mem {
     uint8 	flag; 						// Device has been configured 
 	uint8 	id;							// device ID
-	int32 	k;							// Proportional constant
+
+	int32 	k_p;						// Proportional constant
+    int32   k_i;                        // Derivative constant
+    int32   k_d;                        // Integrative constant
+
     uint8   activ;     					// Activation upon startup
     uint8   mode;       				// Input mode
     uint8   res[NUM_OF_SENSORS];    	// Angle resolution
