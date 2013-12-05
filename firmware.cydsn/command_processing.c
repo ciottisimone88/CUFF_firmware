@@ -22,11 +22,6 @@
 //================================================================     variables
 
 reg8 * EEPROM_ADDR = (reg8 *) CYDEV_EE_BASE;
-reg8 * memoryPointer = &g_mem.flag;
-
-//==================================================================     defines
-
-#define EEPROM_CONFIG_LOCATION 0x00
  
 //==============================================================================
 //                                                            RX DATA PROCESSING
@@ -702,6 +697,8 @@ void memStore(void)
 
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
 
+    CySetTemp();
+
     for(i = 0; i < pages; ++i)
     {
         writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i);
@@ -757,7 +754,7 @@ void memRestore(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	48;             ////////////
+	g_mem.id       = 	24;             ////////////
 	g_mem.k_p      = 	0.1 * 65536;
     g_mem.k_i      =    0 * 65536;
     g_mem.k_d      =    0.8 * 65536;
@@ -779,13 +776,13 @@ void memRestore(void)
         g_mem.res[i] = 1;
     }
     
-    //g_mem.m_off[0] = (int32)0 << g_mem.res[0];          ////////////
-    //g_mem.m_off[1] = (int32)0 << g_mem.res[1];       /////////////
-    //g_mem.m_off[2] = (int32)0 << g_mem.res[2];           /////////////
+    g_mem.m_off[0] = (int32)0 << g_mem.res[0];          ////////////
+    g_mem.m_off[1] = (int32)0 << g_mem.res[1];       /////////////
+    g_mem.m_off[2] = (int32)0 << g_mem.res[2];           /////////////
 	
-	g_mem.m_off[0] = (int32)144 << g_mem.res[0];          ////////////
-    g_mem.m_off[1] = (int32)12944 << g_mem.res[1];       /////////////
-    g_mem.m_off[2] = (int32)19400 << g_mem.res[2];           /////////////
+	//g_mem.m_off[0] = (int32)144 << g_mem.res[0];          ////////////
+    //g_mem.m_off[1] = (int32)12944 << g_mem.res[1];       /////////////
+    //g_mem.m_off[2] = (int32)19400 << g_mem.res[2];           /////////////
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;
