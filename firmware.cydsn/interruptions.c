@@ -235,6 +235,10 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	#endif
 	
 
+
+
+	
+
 	if (input_1 > 0) {
 		input_1 += PWM_DEAD;
 	} else if (input_1 < 0) {

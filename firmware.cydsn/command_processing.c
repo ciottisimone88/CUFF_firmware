@@ -1,4 +1,4 @@
-	// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Copyright (C)  qbrobotics. All rights reserved.
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
@@ -102,7 +102,7 @@ void commProcess(void){
 //=====================================================     CMD_GET_MEASUREMENTS
 
 		case CMD_GET_MEASUREMENTS:
-			// Packet: header + measure(int16) + CRC
+			// Packet: header + measure(int16) + crc
             packet_lenght = 1 + (NUM_OF_SENSORS * 2) + 1;
 
 			packet_data[0] = CMD_GET_MEASUREMENTS;   //header
@@ -206,52 +206,62 @@ void commProcess(void){
 
 //=================================================================     CMD_PING
         case CMD_PING:
-		        packet_lenght = 2;
-				
-		        packet_data[0] = CMD_PING;
-		        packet_data[1] = CMD_PING;
-				
-		        commWrite(packet_data, packet_lenght);
-                break;
+	        packet_lenght = 2;
+			
+	        packet_data[0] = CMD_PING;
+	        packet_data[1] = CMD_PING;
+			
+	        commWrite(packet_data, packet_lenght);
+            break;
 
 //=========================================================     CMD_STORE_PARAMS
         case CMD_STORE_PARAMS:
-			    if( c_mem.mode == INPUT_MODE_EXTERNAL )
-			    {
-			        off_1 = c_mem.m_off[0];
-			        off_2 = c_mem.m_off[1];
-			        mult_1 = c_mem.m_mult[0];
-			        mult_2 = c_mem.m_mult[1];
-     
-				    g_ref.pos[0] /= mult_1;
-			        g_ref.pos[1] /= mult_2;
-			        g_ref.pos[0] *= g_mem.m_mult[0];
-			        g_ref.pos[1] *= g_mem.m_mult[1];
-        
-			        g_ref.pos[0] +=  g_mem.m_off[0] - off_1;
-			        g_ref.pos[1] +=  g_mem.m_off[1] - off_2;
+		    if( c_mem.mode == INPUT_MODE_EXTERNAL )
+		    {
+		        off_1 = c_mem.m_off[0];
+		        off_2 = c_mem.m_off[1];
+		        mult_1 = c_mem.m_mult[0];
+		        mult_2 = c_mem.m_mult[1];
+ 
+			    g_ref.pos[0] /= mult_1;
+		        g_ref.pos[1] /= mult_2;
+		        g_ref.pos[0] *= g_mem.m_mult[0];
+		        g_ref.pos[1] *= g_mem.m_mult[1];
+    
+		        g_ref.pos[0] +=  g_mem.m_off[0] - off_1;
+		        g_ref.pos[1] +=  g_mem.m_off[1] - off_2;
 
-                    if (c_mem.pos_lim_flag) {                   // position limiting
-                        if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
-                        if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+                if (c_mem.pos_lim_flag) {                   // position limiting
+                    if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
+                    if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
 
-                        if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
-                        if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
-                    }
-			    }
+                    if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
+                    if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+                }
+		    }
 
-			    memStore();
-                break;
+		    memStore(0);
+            sendAcknowledgment();
+            break;
+
+//=================================================     CMD_STORE_DEFAULT_PARAMS
+        case CMD_STORE_DEFAULT_PARAMS:
+            memStore(DEFAULT_EEPROM_DISPLACEMENT);
+            sendAcknowledgment();
+            break;
 
 //=======================================================     CMD_RESTORE_PARAMS
 
         case CMD_RESTORE_PARAMS:
-				memRestore();
-                break;
+			memRestore();
+            sendAcknowledgment();
+            break;
 
+//==========================================================     CMD_BOOTLOADER
         case CMD_BOOTLOADER:
-                Bootloadable_Load();
-                break;
+            sendAcknowledgment();
+            Bootloadable_Load();
+            break;
                 
 	}
 
@@ -276,7 +286,7 @@ void infoSend(void){
 void infoGet(uint16 info_type, uint8 page){
     unsigned char packet_lenght;
     unsigned char packet_data[256];
-    static unsigned char packet_string[1000];    
+    static unsigned char packet_string[1100];    
     uint8 pages;
     uint32 aux_int;    
     
@@ -346,18 +356,6 @@ void paramSet(uint16 param_type)
             }
             break;
 
-        case PARAM_MEAS_FILTER:
-            g_mem.filt =
-                *((double *) &g_rx.buffer[3]);                
-            if (g_mem.filt > 1) g_mem.filt = 1;
-            if (g_mem.filt < 0) g_mem.filt = 0;
-            break;
-
-        case PARAM_CONTROL_DEADZONE:
-            g_mem.dead =
-                *((double *) &g_rx.buffer[3]);
-            break;
-
         case PARAM_MEASUREMENT_OFFSET:
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
@@ -389,6 +387,7 @@ void paramSet(uint16 param_type)
             }
             break;
     }
+    sendAcknowledgment();
 }
 
 
@@ -433,16 +432,6 @@ void paramGet(uint16 param_type)
                 packet_data[i+1] = c_mem.res[i];
             }
             packet_lenght = NUM_OF_SENSORS + 2;
-            break;
-
-        case PARAM_MEAS_FILTER:
-            *((double *) (packet_data + 1)) = c_mem.filt;
-            packet_lenght = 6;
-            break;
-
-        case PARAM_CONTROL_DEADZONE:
-            *((double *) (packet_data + 1)) = c_mem.dead;
-            packet_lenght = 6;
             break;
 
         case PARAM_MEASUREMENT_OFFSET:
@@ -567,12 +556,6 @@ void infoPrepare(unsigned char *info_string)
     sprintf(str,"Input Mode: %d", (int) c_mem.mode);
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
-    sprintf(str,"Measurement filter: %f", (double) c_mem.filt);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
-    sprintf(str,"Control Dead Zone: %f", (double) c_mem.dead);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
 	
 
 
@@ -660,7 +643,7 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 //                                                             CHECKSUM FUNCTION
 //==============================================================================
 
-uint8 LCRChecksum(uint8 *data_array, uint8 data_length){
+uint8 LCRChecksum(uint8 *data_array, uint8 data_length) {
 	uint8 i;
 	uint8 checksum = 0x00;
 	for(i = 0; i < data_length; ++i)
@@ -671,16 +654,30 @@ uint8 LCRChecksum(uint8 *data_array, uint8 data_length){
 }
 
 
+//==============================================================================
+//                                                       ACKNOWLEDGMENT FUNCTION
+//==============================================================================
+
+void sendAcknowledgment() {
+    int packet_lenght = 2;
+    uint8 packet_data[2];
+
+    packet_data[0] = 1;
+    packet_data[1] = 1;
+
+    commWrite(packet_data, packet_lenght);
+}
 
 //==============================================================================
 //                                                                  STORE MEMORY
 //==============================================================================
 
 /**
-* This function stores current memory settings on the eeprom.
+* This function stores current memory settings on the eeprom with the specified
+* displacement
 **/
 
-void memStore(void)
+void memStore(int displacement)
 {	
     uint8 writeStatus;
     int i;
@@ -698,13 +695,10 @@ void memStore(void)
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
 
     CySetTemp();
-
-    for(i = 0; i < pages; ++i)
-    {
-        writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i);
-        if(writeStatus != CYRET_SUCCESS)
-        {
-                break;
+    for(i = 0; i < pages; ++i) {
+        writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i + displacement);
+        if(writeStatus != CYRET_SUCCESS) {
+            break;
         }
     }
     
@@ -721,28 +715,23 @@ void memStore(void)
 //==============================================================================
 
 /**
-* This function loads memory settings from the eeprom.
+* This function loads user settings from the eeprom.
 **/
 
 void memRecall(void)
 {
 	uint16 i;
 	
-    // EEPROM_Start();
-	
-	for(i = 0; i < sizeof(g_mem); i++)
-	{
+	for (i = 0; i < sizeof(g_mem); i++) {
 		((reg8 *) &g_mem.flag)[i] = EEPROM_ADDR[i];
 	}
-    
-    #ifdef RESET
-        g_mem.flag = FALSE;
-    #endif
 
 	//check for initialization
-    if(!g_mem.flag) memRestore();
-	
-    memcpy( &c_mem, &g_mem, sizeof(g_mem) );	
+    if (g_mem.flag == FALSE) {
+        memRestore();   
+    } else {
+        memcpy( &c_mem, &g_mem, sizeof(g_mem) );    
+    }
 }
 
 
@@ -750,18 +739,43 @@ void memRecall(void)
 //                                                                RESTORE MEMORY
 //==============================================================================
 
-void memRestore(void)
+/**
+* This function loads default settings from the eeprom.
+**/
+
+void memRestore(void) {
+    uint16 i;
+
+    for (i = 0; i < sizeof(g_mem); i++) {
+        ((reg8 *) &g_mem.flag)[i] = EEPROM_ADDR[i + (DEFAULT_EEPROM_DISPLACEMENT * 16)];
+    }
+
+    //check for initialization
+    if (g_mem.flag == FALSE) {
+        memInit();   
+    } else {
+        memStore(0);    
+    }
+}
+
+//==============================================================================
+//                                                                   MEMORY INIT
+//==============================================================================
+
+/**
+* This function initialize memory when eeprom is compromised.
+**/
+
+void memInit(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	24;             ////////////
+	g_mem.id       = 	1;             ////////////
 	g_mem.k_p      = 	0.1 * 65536;
     g_mem.k_i      =    0 * 65536;
     g_mem.k_d      =    0.8 * 65536;
     g_mem.activ    = 	0;
     g_mem.mode     = 	0;
-	g_mem.filt     = 	0;
-    g_mem.dead     = 	0;
 
     g_mem.pos_lim_flag = 1;
 
@@ -776,19 +790,16 @@ void memRestore(void)
         g_mem.res[i] = 1;
     }
     
-    g_mem.m_off[0] = (int32)0 << g_mem.res[0];          ////////////
-    g_mem.m_off[1] = (int32)0 << g_mem.res[1];       /////////////
-    g_mem.m_off[2] = (int32)0 << g_mem.res[2];           /////////////
-	
-	//g_mem.m_off[0] = (int32)144 << g_mem.res[0];          ////////////
-    //g_mem.m_off[1] = (int32)12944 << g_mem.res[1];       /////////////
-    //g_mem.m_off[2] = (int32)19400 << g_mem.res[2];           /////////////
+    g_mem.m_off[0] = (int32)0 << g_mem.res[0];
+    g_mem.m_off[1] = (int32)0 << g_mem.res[1];
+    g_mem.m_off[2] = (int32)0 << g_mem.res[2];
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;
 
 	//write that configuration to EEPROM
-	memStore();
+	memStore(0);
+    memStore(DEFAULT_EEPROM_DISPLACEMENT);
 }
 
 /* [] END OF FILE */

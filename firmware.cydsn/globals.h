@@ -26,17 +26,10 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.1.2"
+#define VERSION         "QBMMP v1.2.1"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
-
-//==============================================================================
-//                                           CONDITIONAL COMPILATION DEFINITIONS
-//==============================================================================
-
-//#define RESET                       	// Resets the memory with standard
-//                                    	// parameters
 
 //==============================================================================
 //                                                                       CONTROL
@@ -57,11 +50,13 @@
 //                                                                         OTHER
 //==============================================================================
 
-#define FALSE			0
-#define TRUE			1
+#define FALSE           0
+#define TRUE            1
 
-#define PWM_LIMIT       100
-#define PWM_DEAD        15
+#define DEFAULT_EEPROM_DISPLACEMENT 8 //in pages
+
+#define PWM_LIMIT       60
+#define PWM_DEAD        0
 
 #define ANTI_WINDUP     1000
 	
@@ -109,9 +104,8 @@ struct st_mem {
 
     uint8   activ;     					// Activation upon startup
     uint8   mode;       				// Input mode
+
     uint8   res[NUM_OF_SENSORS];    	// Angle resolution
-    float   filt;       				// Measurement filter
-    float   dead;       				// Control deadzone
     int32   m_off[NUM_OF_SENSORS];		// Measurement offset
     float   m_mult[NUM_OF_SENSORS];		// Measurement multiplier
     uint8	pos_lim_flag;				// Position limit active/inactive
