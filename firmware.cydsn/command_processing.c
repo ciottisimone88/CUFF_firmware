@@ -257,6 +257,13 @@ void commProcess(void){
             sendAcknowledgment();
             break;
 
+//============================================================     CMD_INIT_MEM        
+
+        case CMD_INIT_MEM:
+            memInit();
+            sendAcknowledgment();
+            break;
+            
 //==========================================================     CMD_BOOTLOADER
         case CMD_BOOTLOADER:
             sendAcknowledgment();
