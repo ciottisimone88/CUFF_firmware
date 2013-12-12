@@ -68,6 +68,8 @@ enum qbmove_command
 
     CMD_BOOTLOADER              = 9,
 
+    CMD_INIT_MEM                = 10,
+
 
 //=========================================================     QB Move commands
 
