@@ -1,0 +1,586 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"aux",
+				"aux_string"
+			],
+			[
+				"corre",
+				"correction_factor"
+			],
+			[
+				"commGetCurr",
+				"commGetCurrAndMeas"
+			],
+			[
+				"retrie",
+				"retrieved_values"
+			],
+			[
+				"retri",
+				"retrieved_values"
+			],
+			[
+				"meas",
+				"measurements_1"
+			],
+			[
+				"devi",
+				"device_id_1"
+			],
+			[
+				"global",
+				"global_args_1"
+			],
+			[
+				"comm_se",
+				"comm_settings_1"
+			],
+			[
+				"file",
+				"file_handle"
+			],
+			[
+				"comm_Se",
+				"comm_settings_t"
+			],
+			[
+				"packa",
+				"package_size"
+			],
+			[
+				"size",
+				"sizeof"
+			],
+			[
+				"data",
+				"data_out"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "command_processing.c",
+			"settings":
+			{
+				"buffer_size": 24164,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "command_processing.h",
+			"settings":
+			{
+				"buffer_size": 1982,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "commands.h",
+			"settings":
+			{
+				"buffer_size": 6687,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "device.h",
+			"settings":
+			{
+				"buffer_size": 755,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "globals.c",
+			"settings":
+			{
+				"buffer_size": 801,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "globals.h",
+			"settings":
+			{
+				"buffer_size": 4962,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "interruptions.h",
+			"settings":
+			{
+				"buffer_size": 1104,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "interruptions.c",
+			"settings":
+			{
+				"buffer_size": 12335,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "main.c",
+			"settings":
+			{
+				"buffer_size": 3245,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/laurentio/Desktop/P.PNT",
+		"/Users/laurentio/Desktop/prova.c",
+		"/Users/laurentio/Desktop/PUNTI.csv.1",
+		"/Users/laurentio/Downloads/PUNTI.csv.1",
+		"/Users/laurentio/Downloads/Sublime Text 3/nfo.nfo"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 105.0,
+		"where_history":
+		[
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"changing",
+			"device",
+			"activate",
+			"culo",
+			"measurement_offset",
+			"measurements_offset",
+			"global_args_1",
+			"global_args_2",
+			"port_1",
+			"serialport",
+			"port_2",
+			"port_2_enabled",
+			"port_2_ena",
+			"comm_settings_2",
+			"comm_settings_1",
+			"measurements_1",
+			"measurements[",
+			"measurements",
+			"measurements[",
+			"measurements",
+			"measurements_1",
+			"measurements_2",
+			"device_id_1",
+			"device_id_2",
+			"aux_string",
+			"ping",
+			"get_mea",
+			"test_mo",
+			"commgetcurrand",
+			"currents",
+			"aux_string",
+			"info",
+			"get meas",
+			"commgetcurrand",
+			"file",
+			"read",
+			"could'n conne",
+			"serial port",
+			"RS485InitCommSettings",
+			"nonblock",
+			"boot",
+			"PARAM_CONTROL",
+			"c_mem.k",
+			"g_mem.k"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"global_args",
+			"port",
+			"measurements",
+			"glob_measurements[",
+			"measurements",
+			"device_id"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 8,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "command_processing.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24164,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "command_processing.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1982,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "commands.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6687,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "device.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 755,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "globals.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 801,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "globals.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "interruptions.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1104,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "interruptions.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12335,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "main.c",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3245,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"project": "firmware.sublime-project",
+	"replace":
+	{
+		"height": 72.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": false,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
