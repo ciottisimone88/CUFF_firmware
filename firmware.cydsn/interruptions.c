@@ -150,8 +150,8 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 {	
 
-	static int32 max_step_pos = 100;
-	static int32 max_step_neg = -100;
+	static int32 max_step_pos = 20;
+	static int32 max_step_neg = -20;
 
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
@@ -170,37 +170,19 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     	// positive
        	if ((g_meas.pos[2] - g_ref.pos[0]) > max_step_pos) {
 			g_ref.pos[0] += max_step_pos;
-       	} 
-
-       	// else {
-       	// 	g_ref.pos[0] = g_meas.pos[2];
-       	// }
-
-       	if ((g_meas.pos[2] - g_ref.pos[1]) > max_step_pos) {
-			g_ref.pos[1] += max_step_pos;
-       	}
-
-       	// else {
-       	// 	g_ref.pos[1] = g_meas.pos[2];
-       	// }
-
-       	// negative
-       	if ((g_meas.pos[2] - g_ref.pos[0]) < max_step_neg) {
+       	} else if ((g_meas.pos[2] - g_ref.pos[0]) < max_step_neg) {
 			g_ref.pos[0] += max_step_neg;
-       	}
+	    } else {
+       		g_ref.pos[0] = g_meas.pos[2];
+	    }
 
-       	// else {
-       	// 	g_ref.pos[0] = g_meas.pos[2];
-       	// }
-
-       	if ((g_meas.pos[2] - g_ref.pos[1]) < max_step_neg) {
+	    if ((g_meas.pos[2] - g_ref.pos[1]) > max_step_pos) {
+			g_ref.pos[1] += max_step_pos;
+       	} else if ((g_meas.pos[2] - g_ref.pos[1]) < max_step_neg) {
 			g_ref.pos[1] += max_step_neg;
-       	}
-
-       	// else {
-       	// 	g_ref.pos[1] = g_meas.pos[2];
-       	// }
-
+	    } else {
+       		g_ref.pos[1] = g_meas.pos[2];
+	    }
 
        	// old version
      	// g_ref.pos[0] = g_meas.pos[2];
