@@ -37,7 +37,9 @@ void commProcess(void){
 	uint8 aux_checksum; 
 	uint8 packet_data[16];
 	uint8 packet_lenght;
-    int32 pos_1, pos_2;	
+    int32 pos_1, pos_2;
+    double d_pos_1, d_pos_2;
+    int32  pos, stiff;
     uint32 off_1, off_2;
     uint32 mult_1, mult_2;
 	    
@@ -85,6 +87,38 @@ void commProcess(void){
             }
 
     		break;
+
+//========================================================     CMD_SET_POS_STIFF
+
+        case CMD_SET_POS_STIFF:
+            d_pos_1 = *((double *) &g_rx.buffer[1]);   // eq position
+            d_pos_2 = *((double *) &g_rx.buffer[5]);   // stiffness
+
+            // position in ticks
+            pos = d_pos_1 * (65536.0 / 360.0);
+
+            // check pos_2 is between 0 - 100
+            if (d_pos_2 < 0) {
+                d_pos_2 = 0.0;
+            } else if (d_pos_2 > 100) {
+                d_pos_2 = 100.0;
+            }
+
+            // remap 0 - 100 to 0 - MAX_STIFFNESS
+            stiff = (int32)((MAX_STIFFNESS / 100.0) * d_pos_2);
+
+            // pos stiff rule
+            g_ref.pos[0] = pos + stiff;
+            g_ref.pos[1] = pos - stiff;
+
+            // position limit
+            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+
+            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
+            if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+
+            break;
 
 //=====================================================     CMD_GET_MEASUREMENTS
 
@@ -323,6 +357,7 @@ void infoGet(uint16 info_type, uint8 page){
 void paramSet(uint16 param_type)
 {
     uint8 i;
+    int32 aux_int;
     
     switch(param_type)
     {
@@ -380,6 +415,21 @@ void paramSet(uint16 param_type)
                 g_mem.pos_lim_sup[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4) + 4]);
             }
             break;
+
+        case PARAM_MAX_STEP_POS:
+            aux_int = *((int32 *) &g_rx.buffer[3]);
+            if (aux_int >= 0) {
+                g_mem.max_step_pos = aux_int;    
+            }
+            break;
+
+        case PARAM_MAX_STEP_NEG:
+            aux_int = *((int32 *) &g_rx.buffer[3]);
+            if (aux_int <= 0) {
+                g_mem.max_step_neg = aux_int;    
+            }
+            break;
+
     }
     sendAcknowledgment();
 }
@@ -461,6 +511,16 @@ void paramGet(uint16 param_type)
                     c_mem.pos_lim_sup[i];
             }
             packet_lenght = 2 + (NUM_OF_MOTORS * 2 * 4);
+            break;
+
+        case PARAM_MAX_STEP_POS:
+            *((int32 *)(packet_data + 1)) = c_mem.max_step_pos;
+            packet_lenght = 6;
+            break;
+
+        case PARAM_MAX_STEP_NEG:
+            *((int32 *)(packet_data + 1)) = c_mem.max_step_neg;
+            packet_lenght = 6;
             break;
 
     }
@@ -591,6 +651,10 @@ void infoPrepare(unsigned char *info_string)
                 (int32)g_mem.pos_lim_sup[i]);
         strcat(info_string, str);
     }
+
+    sprintf(str, "Max step pos and neg: %d %d", (int)g_mem.max_step_pos, (int)g_mem.max_step_neg);
+    strcat(info_string, str); 
+    strcat(info_string,"\r\n");
 
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
     sprintf(str,"Debug: %d",(int) pages);
@@ -786,6 +850,9 @@ void memInit(void)
     g_mem.m_off[0] = (int32)0 << g_mem.res[0];
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];
     g_mem.m_off[2] = (int32)0 << g_mem.res[2];
+
+    g_mem.max_step_pos = 0;
+    g_mem.max_step_neg = 0;
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;

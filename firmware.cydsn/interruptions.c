@@ -149,10 +149,6 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 
 CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 {	
-
-	static int32 max_step_pos = 20;
-	static int32 max_step_neg = -20;
-
 	static int32 input_1 = 0;
 	static int32 input_2 = 0;
 
@@ -167,28 +163,26 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     {
     	//--- speed control in both directions ---//
 
-    	// positive
-       	if ((g_meas.pos[2] - g_ref.pos[0]) > max_step_pos) {
-			g_ref.pos[0] += max_step_pos;
-       	} else if ((g_meas.pos[2] - g_ref.pos[0]) < max_step_neg) {
-			g_ref.pos[0] += max_step_neg;
+    	// motor 1
+       	if (((g_meas.pos[2] - g_ref.pos[0]) > c_mem.max_step_pos)   &&   (c_mem.max_step_pos != 0)) {
+			g_ref.pos[0] += c_mem.max_step_pos;
+       	} else if (((g_meas.pos[2] - g_ref.pos[0]) < c_mem.max_step_neg)   &&   (c_mem.max_step_neg != 0)) {
+			g_ref.pos[0] += c_mem.max_step_neg;
 	    } else {
        		g_ref.pos[0] = g_meas.pos[2];
 	    }
 
-	    if ((g_meas.pos[2] - g_ref.pos[1]) > max_step_pos) {
-			g_ref.pos[1] += max_step_pos;
-       	} else if ((g_meas.pos[2] - g_ref.pos[1]) < max_step_neg) {
-			g_ref.pos[1] += max_step_neg;
+	    // motor 2
+	    if (((g_meas.pos[2] - g_ref.pos[1]) > c_mem.max_step_pos)   &&   (c_mem.max_step_pos != 0)) {
+			g_ref.pos[1] += c_mem.max_step_pos;
+       	} else if (((g_meas.pos[2] - g_ref.pos[1]) < c_mem.max_step_neg)   &&   (c_mem.max_step_neg != 0)) {
+			g_ref.pos[1] += c_mem.max_step_neg;
 	    } else {
        		g_ref.pos[1] = g_meas.pos[2];
 	    }
 
-       	// old version
-     	// g_ref.pos[0] = g_meas.pos[2];
-	    // g_ref.pos[1] = g_meas.pos[2];
-
-	    if (c_mem.pos_lim_flag) {                      // pos limiting
+	    // position limit
+	    if (c_mem.pos_lim_flag) {
             if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
             if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
 
