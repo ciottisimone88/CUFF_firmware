@@ -40,6 +40,7 @@
 #ifndef COM_COMMANDS_DEFINITIONS_H_INCLUDED
 #define COM_COMMANDS_DEFINITIONS_H_INCLUDED
 
+
 //==============================================================================
 //                                                                      COMMANDS
 //==============================================================================
@@ -60,15 +61,18 @@ enum qbmove_command
     CMD_GET_PARAM               = 2,    ///< Command for getting stored parameters    
     CMD_STORE_PARAMS            = 3,    ///< Stores all parameters in memory and 
                                         ///  loads them
-    CMD_STORE_DEFAULT_PARAMS    = 4,
+    CMD_STORE_DEFAULT_PARAMS    = 4,    ///< Store current parameters as factory parameters
     CMD_RESTORE_PARAMS          = 5,    ///< Restore default factory parameters
     CMD_GET_INFO                = 6,    ///< Asks for a string of information about
+
     CMD_SET_VALUE               = 7,
     CMD_GET_VALUE               = 8,
 
     CMD_BOOTLOADER              = 9,
 
     CMD_INIT_MEM                = 10,
+
+    CMD_CALIBRATE               = 11,
 
 
 //=========================================================     QB Move commands
@@ -83,8 +87,9 @@ enum qbmove_command
     								///  position measurements
     CMD_GET_CURRENTS    	= 133,  ///< Command for asking device's
     								///  current measurements
-    CMD_GET_CURR_AND_MEAS   = 134  ///< Command for asking device's
+    CMD_GET_CURR_AND_MEAS   = 134,  ///< Command for asking device's
                                     ///  measurements and currents
+    CMD_SET_POS_STIFF       = 135
 };
 
 /** \} */
@@ -96,14 +101,11 @@ enum qbmove_command
 
 enum qbmove_parameter
 {
-    //////////////////////////   implemented   //////////////////////////
     
     PARAM_ID		    	     = 0,	///< Device's ID number
     PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant
     PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte
     PARAM_INPUT_MODE             = 3,	///< Input mode
-
-    /////////////////////////   not implemented   ////////////////////////
     
     PARAM_POS_RESOLUTION         = 4,	///< Angle resolution for inputs and
                                         ///  measurements. Used during
@@ -113,9 +115,12 @@ enum qbmove_parameter
     PARAM_MEASUREMENT_MULTIPLIER = 6,   ///< Adds a multiplier to the 
                                         ///  measurements
     PARAM_POS_LIMIT_FLAG         = 7,   ///< Enable/disable position limiting
-    PARAM_POS_LIMIT				 = 8	///< Position limit values
+    PARAM_POS_LIMIT				 = 8,	///< Position limit values
     									///  | int32     | int32     | int32     | int32     | 
     									///  | INF_LIM_1 | SUP_LIM_1 | INF_LIM_2 | SUP_LIM_2 |
+
+    PARAM_MAX_STEP_POS           = 9,
+    PARAM_MAX_STEP_NEG           = 10
 };
 
 

@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.2.1"
+#define VERSION         "QBMMP v1.3.0"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -55,10 +55,11 @@
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 //in pages
 
-#define PWM_LIMIT       60
+#define PWM_LIMIT       100
 #define PWM_DEAD        0
 
 #define ANTI_WINDUP     1000
+#define MAX_STIFFNESS   3500
 	
 #define SAMPLES_FOR_MEAN 200
 
@@ -111,6 +112,9 @@ struct st_mem {
     uint8	pos_lim_flag;				// Position limit active/inactive
     int32	pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors
     int32	pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors
+
+    int32   max_step_pos;               // Maximum number of step per cylce when
+    int32   max_step_neg;               // using sensor 3 as input
 };
 
 //=================================================     device related variables
