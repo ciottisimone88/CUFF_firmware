@@ -98,14 +98,14 @@ void commProcess(void){
             pos = d_pos_1 * (65536.0 / 360.0);
 
             // check pos_2 is between 0 - 100
-            if (d_pos_2 < 0) {
+            if (d_pos_2 < 0.0) {
                 d_pos_2 = 0.0;
-            } else if (d_pos_2 > 100) {
+            } else if (d_pos_2 > 100.0) {
                 d_pos_2 = 100.0;
             }
 
             // remap 0 - 100 to 0 - MAX_STIFFNESS
-            stiff = (int32)((MAX_STIFFNESS / 100.0) * d_pos_2);
+            stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);
 
             // pos stiff rule
             g_ref.pos[0] = pos + stiff;
@@ -278,19 +278,25 @@ void commProcess(void){
             sendAcknowledgment();
             break;
 
-//============================================================     CMD_INIT_MEM        
+//=============================================================     CMD_INIT_MEM        
 
         case CMD_INIT_MEM:
             memInit();
             sendAcknowledgment();
             break;
             
-//==========================================================     CMD_BOOTLOADER
+//===========================================================     CMD_BOOTLOADER
         case CMD_BOOTLOADER:
             sendAcknowledgment();
             Bootloadable_Load();
             break;
-                
+
+//============================================================     CMD_CALIBRATE
+        case CMD_CALIBRATE:
+            CALIB_TRIGG_Write(1);
+            sendAcknowledgment();
+            CALIB_TRIGG_Write(0);
+            break;
 	}
 
 	g_rx.ready = 0;	
@@ -656,6 +662,10 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
 
+    sprintf(str, "Max stiffness: %d", (int)g_mem.max_stiffness);
+    strcat(info_string, str); 
+    strcat(info_string,"\r\n");
+
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
     sprintf(str,"Debug: %d",(int) pages);
     strcat(info_string, str); 
@@ -744,9 +754,13 @@ void memStore(int displacement)
     ISR_RS485_RX_Disable();
     ISR_MOTORS_CONTROL_Disable();
     ISR_ENCODER_Disable();
+    ISR_MEASUREMENTS_Disable();
 
     PWM_MOTORS_WriteCompare1(0);
-	PWM_MOTORS_WriteCompare2(0); 
+	PWM_MOTORS_WriteCompare2(0);
+
+    // Retrieve temperature for better writing performance
+    CySetTemp();
         
     memcpy( &c_mem, &g_mem, sizeof(g_mem) );
 
@@ -763,7 +777,8 @@ void memStore(int displacement)
 
     ISR_RS485_RX_Enable();      
     ISR_MOTORS_CONTROL_Enable();
-    ISR_ENCODER_Enable();    
+    ISR_ENCODER_Enable();
+    ISR_MEASUREMENTS_Enable();
 }
 
 
@@ -853,6 +868,8 @@ void memInit(void)
 
     g_mem.max_step_pos = 0;
     g_mem.max_step_neg = 0;
+
+    g_mem.max_stiffness = 3000;
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;

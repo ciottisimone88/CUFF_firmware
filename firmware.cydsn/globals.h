@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v1.3.0"
+#define VERSION         "QBMMP v2.0.0"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -45,7 +45,8 @@
 
 //#define CONTROL_MODE			CONTROL_CURRENT
 #define CONTROL_MODE			CONTROL_ANGLE
-
+//#define CONTROL_MODE			CONTROL_PWM
+    
 //==============================================================================
 //                                                                         OTHER
 //==============================================================================
@@ -53,15 +54,17 @@
 #define FALSE           0
 #define TRUE            1
 
-#define DEFAULT_EEPROM_DISPLACEMENT 8 //in pages
+#define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
 
-#define PWM_LIMIT       100
-#define PWM_DEAD        0
+#define PWM_LIMIT       100           // PWM is from 0 to 100, this value is used
+                                      // to limit this value
+#define PWM_DEAD        0             // deadband value, is directly added to the
+                                      // value of PWM always limited to 100
 
 #define ANTI_WINDUP     1000
-#define MAX_STIFFNESS   3500
+#define MAX_CURRENT     1000          // Max current for calibration (mA) 
 	
-#define SAMPLES_FOR_MEAN 200
+#define SAMPLES_FOR_MEAN 100
 
 //==============================================================================
 //                                                        structures definitions
@@ -115,6 +118,8 @@ struct st_mem {
 
     int32   max_step_pos;               // Maximum number of step per cylce when
     int32   max_step_neg;               // using sensor 3 as input
+
+    uint16  max_stiffness;              // Max stiffness value obtained in calibration
 };
 
 //=================================================     device related variables

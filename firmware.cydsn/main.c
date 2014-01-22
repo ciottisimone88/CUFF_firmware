@@ -51,8 +51,6 @@ int i;			//iterator
 void main()
 {
 //====================================     initializations - psoc and components
-		
-	CYGlobalIntEnable; 									// enable interrupts
 	
 	// EEPROM
 	
@@ -91,8 +89,18 @@ void main()
 	// measurements isr function
     ISR_MEASUREMENTS_StartEx(ISR_MEASUREMENTS_ExInterrupt);
     AMUXSEQ_MOTORS_Start();                              // start mux
+
+    // Calibrate interrupt init
+    ISR_CALIBRATE_StartEx(ISR_CALIBRATE_ExInterrupt);
+
+    // Timer init
+    MY_TIMER_Init();
+    MY_TIMER_Stop();
+    ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);
 	
-    RS485_CTS_Write(0);           
+    RS485_CTS_Write(0);   
+
+    CYGlobalIntEnable; 									// enable interrupts        
 
 //========================================     initializations - clean variables
 

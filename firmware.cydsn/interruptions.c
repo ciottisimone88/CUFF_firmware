@@ -18,6 +18,18 @@
 #include <command_processing.h>
 #include "globals.h"
 
+//==================================================================     defines
+
+#define TIMER_CLOCK 24000
+
+//===================================================================     global
+
+uint8 timer_flag = 0;
+
+//=============================================================     decalrations
+
+void ms_delay(uint32 ms);
+
 
 //==============================================================================
 //                                                            RS485 RX INTERRUPT
@@ -339,7 +351,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             		}
             	} else {
             		g_meas.curr[0] =  ((value - mean_value_1) * 5000) / mean_value_1;
-					if(g_meas.curr[0] < 10)
+					if(g_meas.curr[0] < 60)
 						sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
 					g_meas.curr[0] = g_meas.curr[0] * sign_1;
             	}
@@ -355,7 +367,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             		counter--;
             	} else {	
 					g_meas.curr[1] =  ((value - mean_value_2) * 5000) / mean_value_2;
-					if(g_meas.curr[1] < 10)
+					if(g_meas.curr[1] < 60)
 						sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
 					g_meas.curr[1] = g_meas.curr[1] * sign_2;
 				}
@@ -448,6 +460,114 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 
 }
 
+
+//==============================================================================
+//                                                        	 CALIBRATE INTERRUPT
+//==============================================================================
+// TODO: DESCRIPTION
+//==============================================================================
+
+
+CY_ISR(ISR_CALIBRATE_ExInterrupt)
+{
+	int i = 0;
+	int16 mean_curr_1, mean_curr_2;
+
+	// save old PID values
+	int32 old_k_p = c_mem.k_p;
+    int32 old_k_i = c_mem.k_i;
+    int32 old_k_d = c_mem.k_d;
+
+	// goto to zero position
+	g_ref.pos[0] = 0;
+	g_ref.pos[1] = 0;
+
+	// Activate motors
+	if (!(g_ref.onoff & 0x03)) {
+		MOTOR_ON_OFF_Write(0x03);	
+	}
+	
+	// wait for motors to reach zero position
+	ms_delay(1000);
+
+	// set new temp values for PID parameters
+    c_mem.k_p = 0.1 * 65536;
+    c_mem.k_i = 0;
+	c_mem.k_d = 0.3 * 65536;
+
+	// increase stiffness until one of the two motors reach the threshold
+	while((mean_curr_1 < MAX_CURRENT) && (abs(mean_curr_2) < MAX_CURRENT)) {
+		g_ref.pos[0] += 65536 / 720;
+		g_ref.pos[1] -= 65536 / 720;
+
+		ms_delay(100);
+
+		// Current measurement
+		mean_curr_1 = 0;
+		mean_curr_2 = 0;
+		for (i = 0; i < 10; i++) {
+			mean_curr_1 += g_meas.curr[0];
+			mean_curr_2 += g_meas.curr[1];
+			ms_delay(10);
+		}
+		mean_curr_1 = mean_curr_1 / 10;
+		mean_curr_2 = mean_curr_2 / 10;
+	}
+
+	// save current value as MAX_STIFFNESS
+	g_mem.max_stiffness = g_ref.pos[0];
+
+	// reset old values for PID parameters
+	c_mem.k_p = old_k_p;
+    c_mem.k_i = old_k_i;
+	c_mem.k_d = old_k_d;
+
+	// go back to zero position
+	g_ref.pos[0] = 0;
+	g_ref.pos[1] = 0;
+
+	// wait for motors to reach zero position
+	ms_delay(1000);
+
+	// Deactivate motors
+	if (!(g_ref.onoff & 0x03)) {
+		MOTOR_ON_OFF_Write(0x00);	
+	}
+
+	// store memory to save MAX_STIFFNESS as default value
+	memStore(DEFAULT_EEPROM_DISPLACEMENT);
+	memStore(0);
+
+/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_ENCODER__ES2_PATCH ))      
+        ISR_ENCODER_ISR_PATCH();
+    #endif
+#endif
+
+}
+
+//==============================================================================
+//                                                        	     DELAY INTERRUPT
+//==============================================================================
+// TODO: DESCRIPTION
+//==============================================================================
+
+
+CY_ISR(ISR_DELAY_ExInterrupt)
+{
+
+	timer_flag = 1;
+
+/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
+#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
+    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_ENCODER__ES2_PATCH ))      
+        ISR_ENCODER_ISR_PATCH();
+    #endif
+#endif
+
+}
+
 //==============================================================================
 //																	BIT CHECKSUM
 //==============================================================================
@@ -463,6 +583,21 @@ uint8 BITChecksum(uint32 mydata){
 	}
 	return checksum;
 }
+
+//==============================================================================
+//																	    MS_DELAY
+//==============================================================================
+
+
+void ms_delay(uint32 ms) {
+	uint32 period = (TIMER_CLOCK / 1000) * ms;
+    MY_TIMER_WritePeriod(period);
+    MY_TIMER_Enable(); // start the timeout counter
+    while(!timer_flag);
+    MY_TIMER_Stop();
+    timer_flag = 0;
+}
+
 
 
 /* [] END OF FILE */
