@@ -38,7 +38,6 @@ void commProcess(void){
 	uint8 packet_data[16];
 	uint8 packet_lenght;
     int32 pos_1, pos_2;
-    double d_pos_1, d_pos_2;
     int32  pos, stiff;
     uint32 off_1, off_2;
     uint32 mult_1, mult_2;
@@ -91,32 +90,26 @@ void commProcess(void){
 //========================================================     CMD_SET_POS_STIFF
 
         case CMD_SET_POS_STIFF:
-            d_pos_1 = *((double *) &g_rx.buffer[1]);   // eq position
-            d_pos_2 = *((double *) &g_rx.buffer[5]);   // stiffness
+            pos = *((int16 *) &g_rx.buffer[1]);   // eq position
+            stiff = *((int16 *) &g_rx.buffer[3]);   // stiffness
 
             // position in ticks
-            pos = d_pos_1 * (65536.0 / 360.0);
+            pos = pos << g_mem.res[0];
 
-            // check pos_2 is between 0 - 100
-            if (d_pos_2 < 0.0) {
-                d_pos_2 = 0.0;
-            } else if (d_pos_2 > 100.0) {
-                d_pos_2 = 100.0;
-            }
+            // position limit
+            if (pos > (c_mem.pos_lim_sup[0] - c_mem.max_stiffness))
+                pos = c_mem.pos_lim_sup[0] - c_mem.max_stiffness;
 
-            // remap 0 - 100 to 0 - MAX_STIFFNESS
-            stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);
+            if (pos < (c_mem.pos_lim_inf[0] + c_mem.max_stiffness))
+                pos = c_mem.pos_lim_inf[0] + c_mem.max_stiffness;
+
+            // stiffness is intended between -32768 and 32767
+            // remap  stiff value between -MAX_STIFFNESS and MAX_STIFFNESS
+            stiff = (int32)(((float)c_mem.max_stiffness / 32768.0) * stiff);
 
             // pos stiff rule
             g_ref.pos[0] = pos + stiff;
             g_ref.pos[1] = pos - stiff;
-
-            // position limit
-            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
-            if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
-
-            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
-            if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
 
             break;
 
@@ -417,8 +410,12 @@ void paramSet(uint16 param_type)
 
         case PARAM_POS_LIMIT:
             for (i = 0; i < NUM_OF_MOTORS; i++) {
-                g_mem.pos_lim_inf[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4)]);
-                g_mem.pos_lim_sup[i] = *((int32 *) &g_rx.buffer[3 + (i * 2 * 4) + 4]);
+                g_mem.pos_lim_inf[i] = *((int16 *) &g_rx.buffer[3 + (i * 4)]);
+                g_mem.pos_lim_sup[i] = *((int16 *) &g_rx.buffer[3 + (i * 4) + 2]);
+
+                g_mem.pos_lim_inf[i] = g_mem.pos_lim_inf[i] << g_mem.res[i];
+                g_mem.pos_lim_sup[i] = g_mem.pos_lim_sup[i] << g_mem.res[i];
+
             }
             break;
 
@@ -650,11 +647,11 @@ void infoPrepare(unsigned char *info_string)
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         sprintf(str, "Position limit inf motor %d: %ld\r\n", (int)(i + 1),
-                (int32)g_mem.pos_lim_inf[i]);
+                (int32)g_mem.pos_lim_inf[i] >> g_mem.res[i]);
         strcat(info_string, str);
 
         sprintf(str, "Position limit sup motor %d: %ld\r\n", (int)(i + 1),
-                (int32)g_mem.pos_lim_sup[i]);
+                (int32)g_mem.pos_lim_sup[i] >> g_mem.res[i]);
         strcat(info_string, str);
     }
 
@@ -662,7 +659,7 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
 
-    sprintf(str, "Max stiffness: %d", (int)g_mem.max_stiffness);
+    sprintf(str, "Max stiffness: %d", (int)g_mem.max_stiffness >> g_mem.res[0]);
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
 
@@ -869,7 +866,7 @@ void memInit(void)
     g_mem.max_step_pos = 0;
     g_mem.max_step_neg = 0;
 
-    g_mem.max_stiffness = 3000;
+    g_mem.max_stiffness = (int32)3000 << g_mem.res[0];
  
 	//set the initialized flag to show EEPROM has been populated
 	g_mem.flag = TRUE;

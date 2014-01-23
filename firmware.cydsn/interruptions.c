@@ -1,4 +1,4 @@
-// ----------------------------------------------------------------------------
+ // ----------------------------------------------------------------------------
 // Copyright (C)  qbrobotics. All rights reserved.
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
@@ -20,7 +20,7 @@
 
 //==================================================================     defines
 
-#define TIMER_CLOCK 24000
+#define TIMER_CLOCK 10000
 
 //===================================================================     global
 
@@ -497,6 +497,7 @@ CY_ISR(ISR_CALIBRATE_ExInterrupt)
 
 	// increase stiffness until one of the two motors reach the threshold
 	while((mean_curr_1 < MAX_CURRENT) && (abs(mean_curr_2) < MAX_CURRENT)) {
+		// increment of 0.5 degree
 		g_ref.pos[0] += 65536 / 720;
 		g_ref.pos[1] -= 65536 / 720;
 
@@ -527,12 +528,12 @@ CY_ISR(ISR_CALIBRATE_ExInterrupt)
 	g_ref.pos[1] = 0;
 
 	// wait for motors to reach zero position
-	ms_delay(1000);
+	ms_delay(3000);
 
-	// Deactivate motors
-	if (!(g_ref.onoff & 0x03)) {
-		MOTOR_ON_OFF_Write(0x00);	
-	}
+	//Deactivate motors
+	// if (!(g_ref.onoff & 0x03)) {
+	// 	MOTOR_ON_OFF_Write(0x00);	
+	// }
 
 	// store memory to save MAX_STIFFNESS as default value
 	memStore(DEFAULT_EEPROM_DISPLACEMENT);
