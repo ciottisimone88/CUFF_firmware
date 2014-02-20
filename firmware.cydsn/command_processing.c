@@ -312,7 +312,7 @@ void infoSend(void){
 
 void infoGet(uint16 info_type, uint8 page){
     unsigned char packet_lenght;
-    unsigned char packet_data[256];
+    unsigned char packet_data[1300];
     static unsigned char packet_string[1100];    
     uint8 pages;
     uint32 aux_int;    
@@ -666,6 +666,7 @@ void infoPrepare(unsigned char *info_string)
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
     sprintf(str,"Debug: %d",(int) pages);
     strcat(info_string, str); 
+    strcat(info_string,"\r\n");
     
 }
 

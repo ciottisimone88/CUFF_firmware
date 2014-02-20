@@ -9,7 +9,7 @@
     <peripheral>
       <name>CALIB_TRIGG</name>
       <description>No description available</description>
-      <baseAddress>0x6474</baseAddress>
+      <baseAddress>0x6476</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -322,7 +322,7 @@
     <peripheral>
       <name>MOTOR_ON_OFF</name>
       <description>No description available</description>
-      <baseAddress>0x6479</baseAddress>
+      <baseAddress>0x6577</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -4370,7 +4370,7 @@
     <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x6577</baseAddress>
+      <baseAddress>0x6474</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -4394,7 +4394,7 @@
       <baseAddress>0x642F</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x13B</size>
+        <size>0x13A</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4428,7 +4428,7 @@
         <register>
           <name>RX_UART_RS485_RX_STATUS</name>
           <description>RX status register</description>
-          <addressOffset>0x3F</addressOffset>
+          <addressOffset>0x3C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4497,7 +4497,7 @@
         <register>
           <name>TX_UART_RS485_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x13A</addressOffset>
+          <addressOffset>0x139</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4538,17 +4538,49 @@
     <peripheral>
       <name>PWM_MOTORS</name>
       <description>No description available</description>
-      <baseAddress>0x642A</baseAddress>
+      <baseAddress>0x6473</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x14F</size>
+        <size>0x125</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
+          <name>PWM_MOTORS_Control_Reg</name>
+          <description>UDB Control Register - Assigned Control Register Value</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTRL_ENABLE</name>
+              <description>Enable the PWM</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE2</name>
+              <description>Compare mode 2</description>
+              <lsb>3</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE1</name>
+              <description>Compare mode 1</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
           <name>PWM_MOTORS__COMPARE1</name>
           <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0xB4</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4557,7 +4589,7 @@
         <register>
           <name>PWM_MOTORS__COMPARE2</name>
           <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0x10</addressOffset>
+          <addressOffset>0xC4</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4566,7 +4598,7 @@
         <register>
           <name>PWM_MOTORS_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x70</addressOffset>
+          <addressOffset>0x124</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4688,38 +4720,6 @@
             </field>
           </fields>
         </register>
-        <register>
-          <name>PWM_MOTORS_Control_Reg</name>
-          <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x14E</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>CTRL_ENABLE</name>
-              <description>Enable the PWM</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE2</name>
-              <description>Compare mode 2</description>
-              <lsb>3</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE1</name>
-              <description>Compare mode 1</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
       </registers>
     </peripheral>
     <peripheral>
@@ -4762,7 +4762,7 @@
         <register>
           <name>COUNTER_ENC_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x71</addressOffset>
+          <addressOffset>0x70</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4981,7 +4981,7 @@
     <peripheral>
       <name>MOTOR_DIR</name>
       <description>No description available</description>
-      <baseAddress>0x6579</baseAddress>
+      <baseAddress>0x647D</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>

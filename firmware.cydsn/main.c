@@ -59,7 +59,13 @@ void main()
 
 	// RS485
 	
+	UART_RS485_Stop();									// stop UART
 	UART_RS485_Start();									// start UART
+	UART_RS485_Init();
+
+	UART_RS485_ClearRxBuffer();
+	UART_RS485_ClearTxBuffer();
+
 	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    
 
 	// PWM
