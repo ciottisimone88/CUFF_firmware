@@ -9,7 +9,7 @@
     <peripheral>
       <name>CALIB_TRIGG</name>
       <description>No description available</description>
-      <baseAddress>0x6476</baseAddress>
+      <baseAddress>0x6474</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -322,7 +322,7 @@
     <peripheral>
       <name>MOTOR_ON_OFF</name>
       <description>No description available</description>
-      <baseAddress>0x6577</baseAddress>
+      <baseAddress>0x6479</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -4368,9 +4368,30 @@
       </registers>
     </peripheral>
     <peripheral>
+      <name>FTDI_ENABLE_REG</name>
+      <description>No description available</description>
+      <baseAddress>0x6578</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x1</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>FTDI_ENABLE_REG_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x6474</baseAddress>
+      <baseAddress>0x6575</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>
@@ -4391,10 +4412,10 @@
     <peripheral>
       <name>UART_RS485</name>
       <description>UART</description>
-      <baseAddress>0x642F</baseAddress>
+      <baseAddress>0x6428</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x13A</size>
+        <size>0x140</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4417,6 +4438,15 @@
           <resetMask>0</resetMask>
         </register>
         <register>
+          <name>TX_UART_RS485_TX_DATA</name>
+          <description>TX Data Register</description>
+          <addressOffset>0x1F</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
           <name>RX_UART_RS485_RX_DATA</name>
           <description>RX Data Register</description>
           <addressOffset>0x20</addressOffset>
@@ -4428,7 +4458,7 @@
         <register>
           <name>RX_UART_RS485_RX_STATUS</name>
           <description>RX status register</description>
-          <addressOffset>0x3C</addressOffset>
+          <addressOffset>0x40</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4486,18 +4516,9 @@
           </fields>
         </register>
         <register>
-          <name>TX_UART_RS485_TX_DATA</name>
-          <description>TX Data Register</description>
-          <addressOffset>0x119</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
           <name>TX_UART_RS485_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x139</addressOffset>
+          <addressOffset>0x13F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4538,17 +4559,35 @@
     <peripheral>
       <name>PWM_MOTORS</name>
       <description>No description available</description>
-      <baseAddress>0x6473</baseAddress>
+      <baseAddress>0x6429</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x125</size>
+        <size>0x71</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
+          <name>PWM_MOTORS__COMPARE1</name>
+          <description>UDB.D0 - Assigned Compare1 Value</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>PWM_MOTORS__COMPARE2</name>
+          <description>UDB.D1 - Assigned Compare2 Value</description>
+          <addressOffset>0x10</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
           <name>PWM_MOTORS_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x51</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4578,27 +4617,9 @@
           </fields>
         </register>
         <register>
-          <name>PWM_MOTORS__COMPARE1</name>
-          <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0xB4</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>PWM_MOTORS__COMPARE2</name>
-          <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0xC4</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
           <name>PWM_MOTORS_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x124</addressOffset>
+          <addressOffset>0x70</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4725,7 +4746,7 @@
     <peripheral>
       <name>COUNTER_ENC</name>
       <description>No description available</description>
-      <baseAddress>0x6402</baseAddress>
+      <baseAddress>0x650B</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x91</size>
@@ -4981,7 +5002,7 @@
     <peripheral>
       <name>MOTOR_DIR</name>
       <description>No description available</description>
-      <baseAddress>0x647D</baseAddress>
+      <baseAddress>0x647E</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x1</size>

@@ -56,6 +56,9 @@ void main()
 	
 	EEPROM_Start();
 	memRecall();                                     	// recall configuration
+    
+    CyDelay(100);
+    FTDI_ENABLE_REG_Write(0x01);
 
 	// RS485
 	
