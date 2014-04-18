@@ -60,25 +60,12 @@ void commProcess(void){
 		case CMD_ACTIVATE:
 		    g_ref.onoff = g_rx.buffer[1];
 
-		    if (g_ref.onoff & 0x01) {                   // on-off for motor 2
-				#if (CONTROL_MODE == CONTROL_ANGLE)
-					g_ref.pos[1] = g_meas.pos[1]; 				        
-				#endif
-		    	CyPins_SetPin(MOTOR_EN_B);
-			} else {
-		 		CyPins_ClearPin(MOTOR_EN_B);
-            }
 
-
-		    if (g_ref.onoff & 0x02) {                   // on-off for motor 1
-				#if (CONTROL_MODE == CONTROL_ANGLE)				
-					g_ref.pos[0] = g_meas.pos[0];
-				#endif					
-		    	CyPins_SetPin(MOTOR_EN_A);    	
-			} else {
-		 		CyPins_ClearPin(MOTOR_EN_A);
-            }
-
+            #if (CONTROL_MODE == CONTROL_ANGLE)
+                g_ref.pos[0] = g_meas.pos[0];
+                g_ref.pos[1] = g_meas.pos[1];                       
+            #endif
+            MOTOR_ON_OFF_Write(g_ref.onoff);
 
     		break;
 //===========================================================     CMD_SET_INPUTS
@@ -284,23 +271,25 @@ void commProcess(void){
             sendAcknowledgment();
             break;
 
-//============================================================     CMD_INIT_MEM        
+//=============================================================     CMD_INIT_MEM        
 
         case CMD_INIT_MEM:
             memInit();
             sendAcknowledgment();
             break;
             
-//==========================================================     CMD_BOOTLOADER
+//===========================================================     CMD_BOOTLOADER
         case CMD_BOOTLOADER:
             sendAcknowledgment();
             Bootloadable_Load();
             break;
 
+//============================================================     CMD_CALIBRATE
         case CMD_CALIBRATE:
-            // calibrate();
+            CALIB_TRIGG_Write(1);
+            sendAcknowledgment();
+            CALIB_TRIGG_Write(0);
             break;
-                
 	}
 
 	g_rx.ready = 0;	
@@ -323,7 +312,7 @@ void infoSend(void){
 
 void infoGet(uint16 info_type, uint8 page){
     unsigned char packet_lenght;
-    unsigned char packet_data[256];
+    unsigned char packet_data[1300];
     static unsigned char packet_string[1100];    
     uint8 pages;
     uint32 aux_int;    
@@ -676,7 +665,7 @@ void infoPrepare(unsigned char *info_string)
 
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
     sprintf(str,"Debug: %d",(int) pages);
-    strcat(info_string, str);
+    strcat(info_string, str); 
     strcat(info_string,"\r\n");
     
 }
@@ -765,8 +754,9 @@ void memStore(int displacement)
     ISR_ENCODER_Disable();
     ISR_MEASUREMENTS_Disable();
 
-    PWM_MOTOR_A_WriteCompare1(0);
-	PWM_MOTOR_A_WriteCompare2(0);    
+    PWM_MOTORS_WriteCompare1(0);
+	PWM_MOTORS_WriteCompare2(0);
+
     // Retrieve temperature for better writing performance
     CySetTemp();
         

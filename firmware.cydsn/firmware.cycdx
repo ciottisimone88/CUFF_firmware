@@ -1,42 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <blockRegMap version="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cypress.com/xsd/cyblockregmap cyblockregmap.xsd" xmlns="http://cypress.com/xsd/cyblockregmap">
-  <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SHIFTREG_ENC_2" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  </block>
+  <block name="VOLTAGE_SENSE" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_3_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="USB_VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="FTDI_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="SHIFTREG_ENC_3" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  </block>
-  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_3_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_2_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="VOLTAGE_SENSE" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_1_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_2_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_4_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_3_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CLOCK_CONTROL_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Bootloadable" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="RS485_CTS" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <register name="RS485_CTS_CONTROL_REG" address="0x6577" bitWidth="8" desc="" />
-  </block>
-  <block name="OneTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_4_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_4_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Signal_2_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="SHIFTREG_ENC_4" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -44,8 +14,98 @@
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   </block>
-  <block name="Signal_3_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_2_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="SHIFTREG_ENC_3" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  </block>
+  <block name="SHIFTREG_ENC_2" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  </block>
+  <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Bootloadable" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ISR_CALIBRATE" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="nand_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="nand_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CALIB_TRIGG" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="CALIB_TRIGG_CONTROL_REG" address="0x6474" bitWidth="8" desc="" />
+  </block>
+  <block name="MY_TIMER" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="VirtualMux_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="TimerHW" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="MY_TIMER_GLOBAL_ENABLE" address="0x43A3" bitWidth="8" desc="PM.ACT.CFG">
+      <field name="en_timer" from="3" to="0" access="RW" resetVal="" desc="Enable timer/counters." />
+    </register>
+    <register name="MY_TIMER_CONTROL" address="0x4F00" bitWidth="8" desc="TMRx.CFG0">
+      <field name="EN" from="0" to="0" access="RW" resetVal="" desc="Enables timer/comparator." />
+      <field name="MODE" from="1" to="1" access="RW" resetVal="" desc="Mode. (0 = Timer; 1 = Comparator)">
+        <value name="Timer" value="0" desc="Timer mode. CNT/CMP register holds timer count value." />
+        <value name="Comparator" value="1" desc="Comparator mode. CNT/CMP register holds comparator threshold value." />
+      </field>
+      <field name="ONESHOT" from="2" to="2" access="RW" resetVal="" desc="Timer stops upon reaching stop condition defined by TMR_CFG bits. Can be restarted by asserting TIMER RESET or disabling and re-enabling block." />
+      <field name="CMP_BUFF" from="3" to="3" access="RW" resetVal="" desc="Buffer compare register. Compare register updates only on timer terminal count." />
+      <field name="INV" from="4" to="4" access="RW" resetVal="" desc="Invert sense of TIMEREN signal" />
+      <field name="DB" from="5" to="5" access="RW" resetVal="" desc="Deadband mode--Deadband phases phi1 and phi2 are outputted on CMP and TC output pins respectively.">
+        <value name="Timer" value="0" desc="CMP and TC are output." />
+        <value name="Deadband" value="1" desc="PHI1 (instead of CMP) and PHI2 (instead of TC) are output." />
+      </field>
+      <field name="DEADBAND_PERIOD" from="7" to="6" access="RW" resetVal="" desc="Deadband Period" />
+    </register>
+    <register name="MY_TIMER_CONTROL2" address="0x4F01" bitWidth="8" desc="TMRx.CFG1">
+      <field name="IRQ_SEL" from="0" to="0" access="RW" resetVal="" desc="Irq selection. (0 = raw interrupts; 1 = status register interrupts)" />
+      <field name="FTC" from="1" to="1" access="RW" resetVal="" desc="First Terminal Count (FTC). Setting this bit forces a single pulse on the TC pin when first enabled.">
+        <value name="Disable FTC" value="0" desc="Disable the single cycle pulse, which signifies the timer is starting." />
+        <value name="Enable FTC" value="1" desc="Enable the single cycle pulse, which signifies the timer is starting." />
+      </field>
+      <field name="DCOR" from="2" to="2" access="RW" resetVal="" desc="Disable Clear on Read (DCOR) of Status Register SR0." />
+      <field name="DBMODE" from="3" to="3" access="RW" resetVal="" desc="Deadband mode (asynchronous/synchronous). CMP output pin is also affected when not in deadband mode (CFG0.DEADBAND)." />
+      <field name="CLK_BUS_EN_SEL" from="6" to="4" access="RW" resetVal="" desc="Digital Global Clock selection." />
+      <field name="BUS_CLK_SEL" from="7" to="7" access="RW" resetVal="" desc="Bus Clock selection." />
+    </register>
+    <register name="MY_TIMER_CONTROL3_" address="0x4F02" bitWidth="8" desc="TMRx.CFG2">
+      <field name="TMR_CFG" from="1" to="0" access="RW" resetVal="" desc="Timer configuration (MODE = 0): 000 = Continuous; 001 = Pulsewidth; 010 = Period; 011 = Stop on IRQ">
+        <value name="Continuous" value="0" desc="Timer runs while EN bit of CFG0 register is set to '1'." />
+        <value name="Pulsewidth" value="1" desc="Timer runs from positive to negative edge of TIMEREN." />
+        <value name="Period" value="10" desc="Timer runs from positive to positive edge of TIMEREN." />
+        <value name="Irq" value="11" desc="Timer runs until IRQ." />
+      </field>
+      <field name="COD" from="2" to="2" access="RW" resetVal="" desc="Clear On Disable (COD). Clears or gates outputs to zero." />
+      <field name="ROD" from="3" to="3" access="RW" resetVal="" desc="Reset On Disable (ROD). Resets internal state of output logic" />
+      <field name="CMP_CFG" from="6" to="4" access="RW" resetVal="" desc="Comparator configurations">
+        <value name="Equal" value="0" desc="Compare Equal " />
+        <value name="Less than" value="1" desc="Compare Less Than " />
+        <value name="Less than or equal" value="10" desc="Compare Less Than or Equal ." />
+        <value name="Greater" value="11" desc="Compare Greater Than ." />
+        <value name="Greater than or equal" value="100" desc="Compare Greater Than or Equal " />
+      </field>
+      <field name="HW_EN" from="7" to="7" access="RW" resetVal="" desc="When set Timer Enable controls counting." />
+    </register>
+    <register name="MY_TIMER_PERIOD" address="0x4F04" bitWidth="16" desc="TMRx.PER0 - Assigned Period" />
+    <register name="MY_TIMER_COUNTER" address="0x4F06" bitWidth="16" desc="TMRx.CNT_CMP0 - Current Down Counter Value" />
+  </block>
+  <block name="ISR_DELAY" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_8" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="timer_clock" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_ON_OFF" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="MOTOR_ON_OFF_CONTROL_REG" address="0x6479" bitWidth="8" desc="" />
+  </block>
+  <block name="Signal_4_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_3_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="not_7" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true">
     <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" />
@@ -868,81 +928,36 @@
       </field>
     </register>
   </block>
-  <block name="Signal_4_B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="Signal_4_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ISR_ENCODER" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="AMUXSEQ_MOTORS" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="PWM_MOTOR_A" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="PWM_MOTOR_A__COMPARE1" address="0x6422" bitWidth="8" desc="UDB.D0 - Assigned Compare1 Value" />
-    <register name="PWM_MOTOR_A__COMPARE2" address="0x6432" bitWidth="8" desc="UDB.D1 - Assigned Compare2 Value" />
-    <register name="PWM_MOTOR_A_Control_Reg" address="0x6472" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
-      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" />
-      <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" />
-      <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" />
-    </register>
-    <register name="PWM_MOTOR_A_STATUS_MASK" address="0x6482" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
-      <field name="PWM_STS_CMP1" from="0" to="0" access="R" resetVal="" desc="Enables the Interrupt on Compare 1" />
-      <field name="PWM_STS_CMP2" from="1" to="1" access="R" resetVal="" desc="Enables the Interrupt on Compare 2" />
-      <field name="PWM_STS_TC" from="2" to="2" access="R" resetVal="" desc="Enables the Interrupt on Terminal Count" />
-      <field name="PWM_STS_FIFO_FULL" from="3" to="3" access="R" resetVal="" desc="FIFO Full Status Mask " />
-      <field name="PWM_STS_KILL" from="5" to="5" access="R" resetVal="" desc="Enables the Interrupt on Kill" />
-    </register>
-    <register name="PWM_MOTOR_A_STATUS_AUX_CTRL" address="0x6492" bitWidth="8" desc="UDB Auxilliary Control Register">
-      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear">
-        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
-        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
-      </field>
-      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
-        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
-        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
-      </field>
-      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="">
-        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
-        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
-      </field>
-      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
-        <value name="E_CNT_START0" value="0" desc="Disable counter" />
-        <value name="E_CNT_START1" value="1" desc="Enable counter" />
-      </field>
-    </register>
+  <block name="Signal_1_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="FTDI_ENABLE_REG" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="FTDI_ENABLE_REG_CONTROL_REG" address="0x6578" bitWidth="8" desc="" />
   </block>
-  <block name="CLOCK_12_MHz" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CURRENT_SENSE_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CURRENT_SENSE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CLOCK_ENCODER_READ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_2_A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RS485_CTS" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="RS485_CTS_CONTROL_REG" address="0x6575" bitWidth="8" desc="" />
+  </block>
   <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="Signal_1_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="xor_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="MOTOR_A2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="MOTOR_A1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="AMUXSEQ_MOTORS" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CURRENT_SENSE_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ISR_RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ISR_MOTORS_CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CURRENT_SENSE_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CLOCK_CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="CLOCK_PWM" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_6" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_2A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_1A" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="MOTOR_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="RS485_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="RS_485_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="UART_RS485" BASE="0x0" SIZE="0x0" desc="UART" visible="true">
     <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="BUART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="RX_UART_RS485_RX_ADDRESS1" address="0x6428" bitWidth="8" desc="RX Address1 Register" />
+    <register name="RX_UART_RS485_RX_ADDRESS2" address="0x6438" bitWidth="8" desc="RX Address2 Register" />
     <register name="TX_UART_RS485_TX_DATA" address="0x6447" bitWidth="8" desc="TX Data Register" />
-    <register name="TX_UART_RS485_TX_STATUS" address="0x6467" bitWidth="8" desc="TX status register">
-      <field name="UART_RS485_TX_STS_COMPLETE" from="0" to="0" access="R" resetVal="" desc="" />
-      <field name="UART_RS485_TX_STS_FIFO_EMPTY" from="1" to="1" access="R" resetVal="" desc="" />
-      <field name="UART_RS485_TX_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="" />
-      <field name="UART_RS485_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" />
-    </register>
+    <register name="RX_UART_RS485_RX_DATA" address="0x6448" bitWidth="8" desc="RX Data Register" />
     <register name="RX_UART_RS485_RX_STATUS" address="0x6468" bitWidth="8" desc="RX status register">
       <field name="UART_RS485_RX_STS_MRKSPC" from="0" to="0" access="R" resetVal="" desc="" />
       <field name="UART_RS485_RX_STS_BREAK" from="1" to="1" access="R" resetVal="" desc="" />
@@ -952,40 +967,30 @@
       <field name="UART_RS485_RX_STS_FIFO_NOTEMPTY" from="5" to="5" access="R" resetVal="" desc="" />
       <field name="UART_RS485_RX_STS_ADDR_MATCH" from="6" to="6" access="R" resetVal="" desc="" />
     </register>
-    <register name="RX_UART_RS485_RX_ADDRESS1" address="0x6528" bitWidth="8" desc="RX Address1 Register" />
-    <register name="RX_UART_RS485_RX_ADDRESS2" address="0x6538" bitWidth="8" desc="RX Address2 Register" />
-    <register name="RX_UART_RS485_RX_DATA" address="0x6548" bitWidth="8" desc="RX Data Register" />
+    <register name="TX_UART_RS485_TX_STATUS" address="0x6567" bitWidth="8" desc="TX status register">
+      <field name="UART_RS485_TX_STS_COMPLETE" from="0" to="0" access="R" resetVal="" desc="" />
+      <field name="UART_RS485_TX_STS_FIFO_EMPTY" from="1" to="1" access="R" resetVal="" desc="" />
+      <field name="UART_RS485_TX_STS_FIFO_FULL" from="2" to="2" access="R" resetVal="" desc="" />
+      <field name="UART_RS485_TX_STS_FIFO_NOT_FULL" from="3" to="3" access="R" resetVal="" desc="" />
+    </register>
   </block>
-  <block name="RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CLOCK_CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="cydff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="COUNTER_ENC" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RS_485_EN" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="PWM_MOTORS" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="vmIRQ" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="vmTC" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="FFKillMux" BASE="0x0" SIZE="0x0" desc="" visible="true" />
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="vmEnableMode" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-    <register name="COUNTER_ENC_COUNTER" address="0x6506" bitWidth="8" desc="UDB.A0 - Current Counter Value" />
-    <register name="COUNTER_ENC_PERIOD" address="0x6526" bitWidth="8" desc="UDB.D0 - Assigned Period" />
-    <register name="COUNTER_ENC_COMPARE" address="0x6536" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" />
-    <register name="COUNTER_ENC_Control_Reg" address="0x6576" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
-      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" />
-      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" />
-      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" />
+    <block name="vmCompare" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="PWMUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="PWM_MOTORS__COMPARE1" address="0x6429" bitWidth="8" desc="UDB.D0 - Assigned Compare1 Value" />
+    <register name="PWM_MOTORS__COMPARE2" address="0x6439" bitWidth="8" desc="UDB.D1 - Assigned Compare2 Value" />
+    <register name="PWM_MOTORS_Control_Reg" address="0x647A" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable the PWM" />
+      <field name="CTRL_CMPMODE2" from="5" to="3" access="RW" resetVal="" desc="Compare mode 2" />
+      <field name="CTRL_CMPMODE1" from="2" to="0" access="RW" resetVal="" desc="Compare mode 1" />
     </register>
-    <register name="COUNTER_ENC_STATUS_MASK" address="0x6586" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
-      <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" />
-      <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" />
-      <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " />
-      <field name="COUNTER_STS_UNDERFLOW" from="3" to="3" access="RW" resetVal="" desc="Underflow status " />
-      <field name="COUNTER_STS_CAPTURE" from="4" to="4" access="RW" resetVal="" desc="Capture Status" />
-      <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " />
-      <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " />
-    </register>
-    <register name="COUNTER_ENC_STATUS_AUX_CTRL" address="0x6596" bitWidth="8" desc="UDB Auxilliary Control Register">
+    <register name="PWM_MOTORS_STATUS_AUX_CTRL" address="0x6499" bitWidth="8" desc="UDB Auxilliary Control Register">
       <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
         <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
         <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
@@ -1012,10 +1017,8 @@
       </field>
     </register>
   </block>
-  <block name="CONTROL_REG_MOTORS" BASE="0x0" SIZE="0x0" desc="" visible="true">
-    <register name="CONTROL_REG_MOTORS_CONTROL_REG" address="0x647D" bitWidth="8" desc="" />
-  </block>
-  <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="RS485_TX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="SHIFTREG_ENC_1" BASE="0x0" SIZE="0x0" desc="" visible="true">
@@ -1025,12 +1028,73 @@
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   </block>
   <block name="CLOCK_ENCODERS" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ISR_ENCODER" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="Signal_3_C" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="COUNTER_ENC" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <block name="VirtualMux_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="vmEnableMode" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="ZeroTerminal_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="CounterUDB" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <block name="int_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+    <register name="COUNTER_ENC_COUNTER" address="0x650B" bitWidth="8" desc="UDB.A0 - Current Counter Value" />
+    <register name="COUNTER_ENC_PERIOD" address="0x652B" bitWidth="8" desc="UDB.D0 - Assigned Period" />
+    <register name="COUNTER_ENC_COMPARE" address="0x653B" bitWidth="8" desc="UDB.D1 - Assigned Compare Value" />
+    <register name="COUNTER_ENC_Control_Reg" address="0x657B" bitWidth="8" desc="UDB Control Register - Assigned Control Register Value">
+      <field name="CTRL_ENABLE" from="7" to="7" access="RW" resetVal="" desc="Enable Counter" />
+      <field name="CTRL_CAPMODE" from="4" to="3" access="RW" resetVal="" desc="Capture mode" />
+      <field name="CTRL_CMPMODE" from="2" to="0" access="RW" resetVal="" desc="Compare mode" />
+    </register>
+    <register name="COUNTER_ENC_STATUS_MASK" address="0x658B" bitWidth="8" desc="UDB Status bits Interrupt Mask Enable Register">
+      <field name="COUNTER_STS_CMP" from="0" to="0" access="RW" resetVal="" desc="Compare output status" />
+      <field name="COUNTER_STS_A0ZERO" from="1" to="1" access="RW" resetVal="" desc="A0 Zero ouput status" />
+      <field name="COUNTER_STS_OVERFLOW" from="2" to="2" access="RW" resetVal="" desc="Overflow status " />
+      <field name="COUNTER_STS_UNDERFLOW" from="3" to="3" access="RW" resetVal="" desc="Underflow status " />
+      <field name="COUNTER_STS_CAPTURE" from="4" to="4" access="RW" resetVal="" desc="Capture Status" />
+      <field name="COUNTER_STS_FIFO_FULL" from="5" to="5" access="RW" resetVal="" desc="FIFO Full Status " />
+      <field name="COUNTER_STS_FIFO_NEMPTY" from="6" to="6" access="RW" resetVal="" desc="FIFO Not Empty Status " />
+    </register>
+    <register name="COUNTER_ENC_STATUS_AUX_CTRL" address="0x659B" bitWidth="8" desc="UDB Auxilliary Control Register">
+      <field name="FIFO0_CLR" from="0" to="0" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO1_CLR" from="1" to="1" access="RW" resetVal="" desc="FIFO1 clear">
+        <value name="E_FIFO_CLR_0" value="0" desc="Normal FIFO operation" />
+        <value name="E_FIFO_CLR_1" value="1" desc="Clear FIFO state" />
+      </field>
+      <field name="FIFO0_LVL" from="2" to="2" access="RW" resetVal="" desc="FIFO level">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="FIFO1_LVL" from="3" to="3" access="RW" resetVal="" desc="FIFO level">
+        <value name="E_FIFO_LVL_0" value="0" desc="FIFO LVL: input mode: FIFO not full; output mode: FIFO not empty" />
+        <value name="E_FIFO_LVL_1" value="1" desc="FIFO LVL: input mode: FIFO at least 1/2 empty; output mode: FIFO at least 1/2 full" />
+      </field>
+      <field name="INT_EN" from="4" to="4" access="RW" resetVal="" desc="">
+        <value name="E_INT_EN0" value="0" desc="Interrupt disabled" />
+        <value name="E_INT_EN1" value="1" desc="Interrupt enabled" />
+      </field>
+      <field name="CNT_START" from="5" to="5" access="RW" resetVal="" desc="FIFO0 clear">
+        <value name="E_CNT_START0" value="0" desc="Disable counter" />
+        <value name="E_CNT_START1" value="1" desc="Enable counter" />
+      </field>
+    </register>
+  </block>
+  <block name="CLOCK_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="ISR_MEASUREMENTS" BASE="0x0" SIZE="0x0" desc="" visible="true" />
   <block name="CLOCK_MEASUREMENTS" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ISR_RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="ISR_MOTORS_CONTROL" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="MOTOR_B1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="MOTOR_B2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="CLOCK_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" />
-  <block name="xor_1" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_1B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="cydff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_2B" BASE="0x0" SIZE="0x0" desc="" visible="true" />
+  <block name="MOTOR_DIR" BASE="0x0" SIZE="0x0" desc="" visible="true">
+    <register name="MOTOR_DIR_CONTROL_REG" address="0x647E" bitWidth="8" desc="" />
+  </block>
 </blockRegMap>
