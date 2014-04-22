@@ -4,12 +4,16 @@
 		"selected_items":
 		[
 			[
-				"info",
-				"info_string"
+				"PWM",
+				"PWM_MAX_VALUE"
 			],
 			[
-				"NUM",
-				"NUM_OF_MOTORS"
+				"input",
+				"input_1"
+			],
+			[
+				"info",
+				"info_string"
 			],
 			[
 				"UART",
@@ -107,7 +111,7 @@
 			"file": "command_processing.c",
 			"settings":
 			{
-				"buffer_size": 27175,
+				"buffer_size": 27961,
 				"line_ending": "Unix"
 			}
 		},
@@ -123,7 +127,7 @@
 			"file": "commands.h",
 			"settings":
 			{
-				"buffer_size": 6605,
+				"buffer_size": 6838,
 				"line_ending": "Unix"
 			}
 		},
@@ -147,7 +151,7 @@
 			"file": "globals.h",
 			"settings":
 			{
-				"buffer_size": 5160,
+				"buffer_size": 5050,
 				"line_ending": "Windows"
 			}
 		},
@@ -163,15 +167,15 @@
 			"file": "interruptions.c",
 			"settings":
 			{
-				"buffer_size": 17006,
+				"buffer_size": 18281,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 9 files for \"calibrate_trigger\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  294  //============================================================     CMD_CALIBRATE\n  295          case CMD_CALIBRATE:\n  296:             CALIBRATE_TRIGGER_Write(1);\n  297              sendAcknowledgment();\n  298:             CALIBRATE_TRIGGER_Write(0);\n  299              break;\n  300  	}\n\n2 matches in 1 file\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((MAX_STIFFNESS / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\n\\Searching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n8 matches across 3 files\n\n\nSearching 9 files for \"c_ref.onoff\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n8 matches across 3 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n  ...\n  485  \n  486  	// Activate motors\n  487: 	if (g_ref.onoff)\n  488  	MOTOR_ON_OFF_Write(0x03);\n  489  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n9 matches across 3 files\n\n\nSearching 9 files for \"commsetposstiff\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"commsetpo\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"commsetpo\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"set_pos_st\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   89      		break;\n   90  \n   91: //========================================================     CMD_SET_POS_STIFF\n   92  \n   93:         case CMD_SET_POS_STIFF:\n   94              d_pos_1 = *((double *) &g_rx.buffer[1]);   // eq position\n   95              d_pos_2 = *((double *) &g_rx.buffer[5]);   // stiffness\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   90      CMD_GET_CURR_AND_MEAS   = 134,  ///< Command for asking device's\n   91                                      ///  measurements and currents\n   92:     CMD_SET_POS_STIFF       = 135\n   93  };\n   94  \n\n3 matches across 2 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   98  \n   99              // position limit\n  100:             if (pos > (c_mem.pos_lim_sup[0] - c_mem.max_stiffness))\n  101:                 pos = c_mem.pos_lim_sup[0] - c_mem.max_stiffness;\n  102  \n  103:             if (pos < (c_mem.pos_lim_inf[0] + c_mem.max_stiffness))\n  104:                 pos = c_mem.pos_lim_inf[0] + c_mem.max_stiffness;\n  105  \n  106              // stiffness is intended between -32768 and 32767\n  107:             // remap  stiff value between -MAX_STIFFNESS and MAX_STIFFNESS\n  108:             stiff = (int32)(((float)c_mem.max_stiffness / 32768.0) * stiff);\n  109  \n  110              // pos stiff rule\n  ...\n  660      strcat(info_string,\"\\r\\n\");\n  661  \n  662:     sprintf(str, \"Max stiffness: %d\", (int)g_mem.max_stiffness);\n  663      strcat(info_string, str); \n  664      strcat(info_string,\"\\r\\n\");\n  ...\n  867      g_mem.max_step_neg = 0;\n  868  \n  869:     g_mem.max_stiffness = 3000;\n  870   \n  871  	//set the initialized flag to show EEPROM has been populated\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  120      int32   max_step_neg;               // using sensor 3 as input\n  121  \n  122:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  123  };\n  124  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  515  	}\n  516  \n  517: 	// save current value as MAX_STIFFNESS\n  518: 	g_mem.max_stiffness = g_ref.pos[0];\n  519  \n  520  	// reset old values for PID parameters\n  ...\n  535  	}\n  536  \n  537: 	// store memory to save MAX_STIFFNESS as default value\n  538  	memStore(DEFAULT_EEPROM_DISPLACEMENT);\n  539  	memStore(0);\n\n13 matches across 3 files\n\n\nSearching 9 files for \"motor_on\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   66                  g_ref.pos[1] = g_meas.pos[1];                       \n   67              #endif\n   68:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   69  \n   70      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  485  	// Activate motors\n  486  	if (!(g_ref.onoff & 0x03)) {\n  487: 		MOTOR_ON_OFF_Write(0x03);	\n  488  	}\n  489  	\n  ...\n  533  	//Deactivate motors\n  534  	// if (!(g_ref.onoff & 0x03)) {\n  535: 	// 	MOTOR_ON_OFF_Write(0x00);	\n  536  	// }\n  537  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n5 matches across 3 files\n\n\nSearching 9 files for \"isr_cali\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  468  \n  469  \n  470: // CY_ISR(ISR_CALIBRATE_ExInterrupt)\n  471  // {\n  472  // 	int i = 0;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.h:\n   25  CY_ISR_PROTO(ISR_MEASUREMENTS_ExInterrupt);\n   26  CY_ISR_PROTO(ISR_ENCODER_ExInterrupt);\n   27: CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);\n   28  CY_ISR_PROTO(ISR_DELAY_ExInterrupt);\n   29  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   91  \n   92      // Calibrate interrupt init\n   93:     ISR_CALIBRATE_StartEx(ISR_CALIBRATE_ExInterrupt);\n   94  \n   95      // Timer init\n\n4 matches across 3 files\n\n\nSearching 9 files for \"isr_del\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  555  \n  556  \n  557: CY_ISR(ISR_DELAY_ExInterrupt)\n  558  {\n  559  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.h:\n   26  CY_ISR_PROTO(ISR_ENCODER_ExInterrupt);\n   27  CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);\n   28: CY_ISR_PROTO(ISR_DELAY_ExInterrupt);\n   29  \n   30  uint8 BITChecksum(uint32 mydata);\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   96      MY_TIMER_Init();\n   97      MY_TIMER_Stop();\n   98:     ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);\n   99  	\n  100      RS485_CTS_Write(0);   \n\n4 matches across 3 files\n\n\nSearching 9 files for \"my_timer\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  592  // void ms_delay(uint32 ms) {\n  593  // 	uint32 period = (TIMER_CLOCK / 1000) * ms;\n  594: //     MY_TIMER_WritePeriod(period);\n  595: //     MY_TIMER_Enable(); // start the timeout counter\n  596  //     while(!timer_flag);\n  597: //     MY_TIMER_Stop();\n  598  //     timer_flag = 0;\n  599  // }\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   94  \n   95      // Timer init\n   96:     MY_TIMER_Init();\n   97:     MY_TIMER_Stop();\n   98      // ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);\n   99  	\n\n5 matches across 2 files\n\n\nSearching 9 files for \"calibrate\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  298              break;\n  299  \n  300:         case CMD_CALIBRATE:\n  301:             calibrate();\n  302              break;\n  303                  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   73      CMD_INIT_MEM                = 10,\n   74  \n   75:     CMD_CALIBRATE               = 11,\n   76  \n   77  \n\n3 matches across 2 files\n\n\nSearching 9 files for \"calibra\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  298              break;\n  299  \n  300:         case CMD_CALIBRATE:\n  301:             calibrate();\n  302              break;\n  303                  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   73      CMD_INIT_MEM                = 10,\n   74  \n   75:     CMD_CALIBRATE               = 11,\n   76  \n   77  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n   63  \n   64  #define ANTI_WINDUP     1000\n   65: #define MAX_CURRENT     1000          // Max current for calibration (mA) \n   66  	\n   67  #define SAMPLES_FOR_MEAN 100\n   ..\n  120      int32   max_step_neg;               // using sensor 3 as input\n  121  \n  122:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  123  };\n  124  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  309  	static int sign_1 = 1;\n  310  	static int sign_2 = 1;\n  311: 	static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over\n  312  								// the first counter values of current\n  313  	static int32 mean_value_1;\n\n6 matches across 4 files\n\n\nSearching 9 files for \"info_all\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  324        switch (info_type)\n  325          {\n  326:         case INFO_ALL:\n  327              infoPrepare(packet_string);\n  328              break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  156  /** \\name QB Move Information Strings */\n  157  /** \\{ */\n  158: #define INFO_ALL        0 ///< All system information.\n  159  \n  160  /** \\} */\n\n2 matches across 2 files\n\n\nSearching 9 files for \"info_all\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  324        switch (info_type)\n  325          {\n  326:         case INFO_ALL:\n  327              infoPrepare(packet_string);\n  328              break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  156  /** \\name QB Move Information Strings */\n  157  /** \\{ */\n  158: #define INFO_ALL        0 ///< All system information.\n  159  \n  160  /** \\} */\n\n2 matches across 2 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"g_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  376  \n  377          case PARAM_INPUT_MODE:\n  378:         	g_mem.mode = g_rx.buffer[3];\n  379              break;\n  380  \n  ...\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n2 matches in 1 file\n\n\nSearching 9 files for \"g_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  376  \n  377          case PARAM_INPUT_MODE:\n  378:         	g_mem.mode = g_rx.buffer[3];\n  379              break;\n  380  \n  ...\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n2 matches in 1 file\n\n\nSearching 9 files for \"g_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n1 match in 1 file\n\n\nSearching 9 files for \"mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   62  \n   63  \n   64:             #if (CONTROL_MODE == CONTROL_ANGLE)\n   65                  g_ref.pos[0] = g_meas.pos[0];\n   66                  g_ref.pos[1] = g_meas.pos[1];                       \n   ..\n  231  //=========================================================     CMD_STORE_PARAMS\n  232          case CMD_STORE_PARAMS:\n  233: 		    if( c_mem.mode == INPUT_MODE_EXTERNAL )\n  234  		    {\n  235  		        off_1 = c_mem.m_off[0];\n  ...\n  375              break;        \n  376  \n  377:         case PARAM_INPUT_MODE:\n  378:         	g_mem.input_mode = g_rx.buffer[3];\n  379              break;\n  380  \n  381:         case PARAM_CONTROL_MODE:\n  382  \n  383  \n  ...\n  473              break;   \n  474              \n  475:         case PARAM_INPUT_MODE:\n  476:             packet_data[1] = c_mem.mode;\n  477              packet_lenght = 3;                \n  478              break;  \n  ...\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n  ...\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.input_mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  106      PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant\n  107      PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte\n  108:     PARAM_INPUT_MODE             = 3,	///< Input mode\n  109      \n  110:     PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between\n  111                                          ///  position control, current control\n  112                                          ///  or direct PWM value input\n  ...\n  143  };\n  144  \n  145: //==============================================================     input modes\n  146  \n  147: enum qbmove_mode\n  148  {\n  149:     INPUT_MODE_EXTERNAL = 0,        ///< References through external\n  150                                      ///  commands (default)\n  151:     INPUT_MODE_ENCODER3 = 1         ///< Encoder 3 drives all inputs\n  152  };\n  153  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n   36  //==============================================================================\n   37  \n   38: //=======================================================     control mode types\n   39  \n   40  #define CONTROL_ANGLE		    0\n   ..\n   44  //==================================================     control type definition\n   45  \n   46: //#define CONTROL_MODE			CONTROL_CURRENT\n   47: #define CONTROL_MODE			CONTROL_ANGLE\n   48: //#define CONTROL_MODE			CONTROL_PWM\n   49      \n   50  //==============================================================================\n   ..\n  108  \n  109      uint8   activ;     					// Activation upon startup\n  110:     uint8   mode;       				// Input mode\n  111  \n  112      uint8   res[NUM_OF_SENSORS];    	// Angle resolution\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n  ...\n  205  	//////////////////////////////////////////////////////////     CONTROL_ANGLE\n  206  	\n  207:     #if (CONTROL_MODE == CONTROL_ANGLE)\n  208      	error_1 = g_ref.pos[0] - g_meas.pos[0];\n  209      	error_2 = g_ref.pos[1] - g_meas.pos[1];\n  ...\n  245  	////////////////////////////////////////////////////////     CONTROL_CURRENT\n  246  \n  247: 	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248  		if(g_ref.onoff & 1)\n  249  		{\n  ...\n  267  	////////////////////////////////////////////////////////////     CONTROL_PWM\n  268  \n  269: 	#if (CONTROL_MODE == CONTROL_PWM)\n  270  		input_1 = g_ref.pos[0];\n  271  		input_2 = g_ref.pos[1];\n\n29 matches across 4 files\n\n\nSearching 9 files for \"c_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  231  //=========================================================     CMD_STORE_PARAMS\n  232          case CMD_STORE_PARAMS:\n  233: 		    if( c_mem.mode == INPUT_MODE_EXTERNAL )\n  234  		    {\n  235  		        off_1 = c_mem.m_off[0];\n  ...\n  474              \n  475          case PARAM_INPUT_MODE:\n  476:             packet_data[1] = c_mem.mode;\n  477              packet_lenght = 3;                \n  478              break;  \n  ...\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n\n4 matches across 2 files\n\n\nSearching 9 files for \"c_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  474              \n  475          case PARAM_INPUT_MODE:\n  476:             packet_data[1] = c_mem.mode;\n  477              packet_lenght = 3;                \n  478              break;  \n  ...\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n\n3 matches across 2 files\n\n\nSearching 9 files for \"c_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n\n2 matches across 2 files\n\n\nSearching 9 files for \"c_mem.mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n\n1 match in 1 file\n\n\nSearching 9 files for \"c_mem.mode\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"c_mem.mode\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   62  \n   63  \n   64:             #if (CONTROL_MODE == CONTROL_ANGLE)\n   65                  g_ref.pos[0] = g_meas.pos[0];\n   66                  g_ref.pos[1] = g_meas.pos[1];                       \n   ..\n  231  //=========================================================     CMD_STORE_PARAMS\n  232          case CMD_STORE_PARAMS:\n  233: 		    if( c_mem.input_mode == INPUT_MODE_EXTERNAL )\n  234  		    {\n  235  		        off_1 = c_mem.m_off[0];\n  ...\n  375              break;        \n  376  \n  377:         case PARAM_INPUT_MODE:\n  378:         	g_mem.input_mode = g_rx.buffer[3];\n  379              break;\n  380  \n  381:         case PARAM_CONTROL_MODE:\n  382  \n  383  \n  ...\n  473              break;   \n  474              \n  475:         case PARAM_INPUT_MODE:\n  476:             packet_data[1] = c_mem.input_mode;\n  477              packet_lenght = 3;                \n  478              break;  \n  ...\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.input_mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n  ...\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.input_mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  106      PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant\n  107      PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte\n  108:     PARAM_INPUT_MODE             = 3,	///< Input mode\n  109      \n  110:     PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between\n  111                                          ///  position control, current control\n  112                                          ///  or direct PWM value input\n  ...\n  143  };\n  144  \n  145: //==============================================================     input modes\n  146  \n  147: enum qbmove_mode\n  148  {\n  149:     INPUT_MODE_EXTERNAL = 0,        ///< References through external\n  150                                      ///  commands (default)\n  151:     INPUT_MODE_ENCODER3 = 1         ///< Encoder 3 drives all inputs\n  152  };\n  153  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n   36  //==============================================================================\n   37  \n   38: //=======================================================     control mode types\n   39  \n   40  #define CONTROL_ANGLE		    0\n   ..\n   44  //==================================================     control type definition\n   45  \n   46: //#define CONTROL_MODE			CONTROL_CURRENT\n   47: #define CONTROL_MODE			CONTROL_ANGLE\n   48: //#define CONTROL_MODE			CONTROL_PWM\n   49      \n   50  //==============================================================================\n   ..\n  108  \n  109      uint8   activ;     					// Activation upon startup\n  110:     uint8   mode;       				// Input mode\n  111  \n  112      uint8   res[NUM_OF_SENSORS];    	// Angle resolution\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.input_mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n  ...\n  205  	//////////////////////////////////////////////////////////     CONTROL_ANGLE\n  206  	\n  207:     #if (CONTROL_MODE == CONTROL_ANGLE)\n  208      	error_1 = g_ref.pos[0] - g_meas.pos[0];\n  209      	error_2 = g_ref.pos[1] - g_meas.pos[1];\n  ...\n  245  	////////////////////////////////////////////////////////     CONTROL_CURRENT\n  246  \n  247: 	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248  		if(g_ref.onoff & 1)\n  249  		{\n  ...\n  267  	////////////////////////////////////////////////////////////     CONTROL_PWM\n  268  \n  269: 	#if (CONTROL_MODE == CONTROL_PWM)\n  270  		input_1 = g_ref.pos[0];\n  271  		input_2 = g_ref.pos[1];\n\n29 matches across 4 files\n\n\nSearching 9 files for \"mode\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   62  \n   63  \n   64:             #if (CONTROL_MODE == CONTROL_ANGLE)\n   65                  g_ref.pos[0] = g_meas.pos[0];\n   66                  g_ref.pos[1] = g_meas.pos[1];                       \n   ..\n  231  //=========================================================     CMD_STORE_PARAMS\n  232          case CMD_STORE_PARAMS:\n  233: 		    if( c_mem.input_mode == INPUT_MODE_EXTERNAL )\n  234  		    {\n  235  		        off_1 = c_mem.m_off[0];\n  ...\n  375              break;        \n  376  \n  377:         case PARAM_INPUT_MODE:\n  378:         	g_mem.input_mode = g_rx.buffer[3];\n  379              break;\n  380  \n  381:         case PARAM_CONTROL_MODE:\n  382  \n  383  \n  ...\n  473              break;   \n  474              \n  475:         case PARAM_INPUT_MODE:\n  476:             packet_data[1] = c_mem.input_mode;\n  477              packet_lenght = 3;                \n  478              break;  \n  ...\n  614      strcat(info_string, str); \n  615      strcat(info_string,\"\\r\\n\");\n  616:     sprintf(str,\"Input Mode: %d\", (int) c_mem.input_mode);\n  617      strcat(info_string, str); \n  618      strcat(info_string,\"\\r\\n\");\n  ...\n  849      g_mem.k_d      =    0.8 * 65536;\n  850      g_mem.activ    = 	0;\n  851:     g_mem.input_mode     = 	0;\n  852  \n  853      g_mem.pos_lim_flag = 1;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  106      PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant\n  107      PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte\n  108:     PARAM_INPUT_MODE             = 3,	///< Input mode\n  109      \n  110:     PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between\n  111                                          ///  position control, current control\n  112                                          ///  or direct PWM value input\n  ...\n  143  };\n  144  \n  145: //==============================================================     input modes\n  146  \n  147: enum qbmove_mode\n  148  {\n  149:     INPUT_MODE_EXTERNAL = 0,        ///< References through external\n  150                                      ///  commands (default)\n  151:     INPUT_MODE_ENCODER3 = 1         ///< Encoder 3 drives all inputs\n  152  };\n  153  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n   36  //==============================================================================\n   37  \n   38: //=======================================================     control mode types\n   39  \n   40  #define CONTROL_ANGLE		    0\n   ..\n   44  //==================================================     control type definition\n   45  \n   46: //#define CONTROL_MODE			CONTROL_CURRENT\n   47: #define CONTROL_MODE			CONTROL_ANGLE\n   48: //#define CONTROL_MODE			CONTROL_PWM\n   49      \n   50  //==============================================================================\n   ..\n  108  \n  109      uint8   activ;     					// Activation upon startup\n  110:     uint8   input_mode;       				// Input mode\n  111  \n  112      uint8   res[NUM_OF_SENSORS];    	// Angle resolution\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  172  	\n  173      /////////   use third encoder as input for both motors   //////////\n  174:     if( c_mem.input_mode == INPUT_MODE_ENCODER3 )\n  175      {\n  176      	//--- speed control in both directions ---//\n  ...\n  205  	//////////////////////////////////////////////////////////     CONTROL_ANGLE\n  206  	\n  207:     #if (CONTROL_MODE == CONTROL_ANGLE)\n  208      	error_1 = g_ref.pos[0] - g_meas.pos[0];\n  209      	error_2 = g_ref.pos[1] - g_meas.pos[1];\n  ...\n  245  	////////////////////////////////////////////////////////     CONTROL_CURRENT\n  246  \n  247: 	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248  		if(g_ref.onoff & 1)\n  249  		{\n  ...\n  267  	////////////////////////////////////////////////////////////     CONTROL_PWM\n  268  \n  269: 	#if (CONTROL_MODE == CONTROL_PWM)\n  270  		input_1 = g_ref.pos[0];\n  271  		input_2 = g_ref.pos[1];\n\n29 matches across 4 files\n\n\nSearching 9 files for \"PARAM_INPUT_MODE\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  375              break;        \n  376  \n  377:         case PARAM_INPUT_MODE:\n  378          	g_mem.input_mode = g_rx.buffer[3];\n  379              break;\n  ...\n  474              break;   \n  475              \n  476:         case PARAM_INPUT_MODE:\n  477              packet_data[1] = c_mem.input_mode;\n  478              packet_lenght = 3;                \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  106      PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant\n  107      PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte\n  108:     PARAM_INPUT_MODE             = 3,	///< Input mode\n  109      \n  110      PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between\n\n3 matches across 2 files\n",
+			"contents": "Searching 9 files for \"calibrate_trigger\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  294  //============================================================     CMD_CALIBRATE\n  295          case CMD_CALIBRATE:\n  296:             CALIBRATE_TRIGGER_Write(1);\n  297              sendAcknowledgment();\n  298:             CALIBRATE_TRIGGER_Write(0);\n  299              break;\n  300  	}\n\n2 matches in 1 file\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"MOTOR_ON_OFF_Write\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n3 matches across 2 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((MAX_STIFFNESS / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\n\\Searching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  105              }\n  106  \n  107:             // remap 0 - 100 to 0 - MAX_STIFFNESS\n  108:             stiff = (int32)((c_mem.max_stiffness / 100.0) * d_pos_2);\n  109  \n  110              // pos stiff rule\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  119      int32   max_step_neg;               // using sensor 3 as input\n  120  \n  121:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  122  };\n  123  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  499  	}\n  500  \n  501: 	// save current value as MAX_STIFFNESS\n  502  	\n  503  \n\n4 matches across 3 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n8 matches across 3 files\n\n\nSearching 9 files for \"c_ref.onoff\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n8 matches across 3 files\n\n\nSearching 9 files for \"g_ref.onoff\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   60  //=============================================================     CMD_ACTIVATE		\n   61  		case CMD_ACTIVATE:\n   62: 		    g_ref.onoff = g_rx.buffer[1];\n   63  \n   64  \n   ..\n   67                  g_ref.pos[1] = g_meas.pos[1];                       \n   68              #endif\n   69:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   70  \n   71      		break;\n   ..\n  189  \n  190  		    packet_data[0] = CMD_GET_ACTIVATE;\n  191: 		    packet_data[1] = g_ref.onoff;\n  192  		    packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);\n  193  		    commWrite(packet_data, packet_lenght);\n  ...\n  572      \n  573      sprintf(str,\"Motor 1 enabled: \");     \n  574:     if (g_ref.onoff & 0x02) {\n  575          strcat(str,\"YES\\r\\n\");\n  576      } else {\n  ...\n  580      \n  581      sprintf(str,\"Motor 2 enabled: \");     \n  582:     if (g_ref.onoff & 0x01) {\n  583          strcat(str,\"YES\\r\\n\");\n  584      } else {\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  246  \n  247  	#if (CONTROL_MODE == CONTROL_CURRENT)\n  248: 		if(g_ref.onoff & 1)\n  249  		{\n  250  			error_1 = g_ref.pos[0] - g_meas.curr[0];\n  ...\n  485  \n  486  	// Activate motors\n  487: 	if (g_ref.onoff)\n  488  	MOTOR_ON_OFF_Write(0x03);\n  489  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n  109      	g_ref.pos[i] = 0;	\n  110      }\n  111: 	g_ref.onoff = c_mem.activ;\n  112  \n  113  	for (i = 0; i < NUM_OF_SENSORS; i++) {\n  ...\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n9 matches across 3 files\n\n\nSearching 9 files for \"commsetposstiff\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"commsetpo\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"commsetpo\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"set_pos_st\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   89      		break;\n   90  \n   91: //========================================================     CMD_SET_POS_STIFF\n   92  \n   93:         case CMD_SET_POS_STIFF:\n   94              d_pos_1 = *((double *) &g_rx.buffer[1]);   // eq position\n   95              d_pos_2 = *((double *) &g_rx.buffer[5]);   // stiffness\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   90      CMD_GET_CURR_AND_MEAS   = 134,  ///< Command for asking device's\n   91                                      ///  measurements and currents\n   92:     CMD_SET_POS_STIFF       = 135\n   93  };\n   94  \n\n3 matches across 2 files\n\n\nSearching 9 files for \"max_stiffness\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   98  \n   99              // position limit\n  100:             if (pos > (c_mem.pos_lim_sup[0] - c_mem.max_stiffness))\n  101:                 pos = c_mem.pos_lim_sup[0] - c_mem.max_stiffness;\n  102  \n  103:             if (pos < (c_mem.pos_lim_inf[0] + c_mem.max_stiffness))\n  104:                 pos = c_mem.pos_lim_inf[0] + c_mem.max_stiffness;\n  105  \n  106              // stiffness is intended between -32768 and 32767\n  107:             // remap  stiff value between -MAX_STIFFNESS and MAX_STIFFNESS\n  108:             stiff = (int32)(((float)c_mem.max_stiffness / 32768.0) * stiff);\n  109  \n  110              // pos stiff rule\n  ...\n  660      strcat(info_string,\"\\r\\n\");\n  661  \n  662:     sprintf(str, \"Max stiffness: %d\", (int)g_mem.max_stiffness);\n  663      strcat(info_string, str); \n  664      strcat(info_string,\"\\r\\n\");\n  ...\n  867      g_mem.max_step_neg = 0;\n  868  \n  869:     g_mem.max_stiffness = 3000;\n  870   \n  871  	//set the initialized flag to show EEPROM has been populated\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n  120      int32   max_step_neg;               // using sensor 3 as input\n  121  \n  122:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  123  };\n  124  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  515  	}\n  516  \n  517: 	// save current value as MAX_STIFFNESS\n  518: 	g_mem.max_stiffness = g_ref.pos[0];\n  519  \n  520  	// reset old values for PID parameters\n  ...\n  535  	}\n  536  \n  537: 	// store memory to save MAX_STIFFNESS as default value\n  538  	memStore(DEFAULT_EEPROM_DISPLACEMENT);\n  539  	memStore(0);\n\n13 matches across 3 files\n\n\nSearching 9 files for \"motor_on\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n   66                  g_ref.pos[1] = g_meas.pos[1];                       \n   67              #endif\n   68:             MOTOR_ON_OFF_Write(g_ref.onoff);\n   69  \n   70      		break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  485  	// Activate motors\n  486  	if (!(g_ref.onoff & 0x03)) {\n  487: 		MOTOR_ON_OFF_Write(0x03);	\n  488  	}\n  489  	\n  ...\n  533  	//Deactivate motors\n  534  	// if (!(g_ref.onoff & 0x03)) {\n  535: 	// 	MOTOR_ON_OFF_Write(0x00);	\n  536  	// }\n  537  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   70  	PWM_MOTORS_WriteCompare2(0);\n   71  	MOTOR_DIR_Write(0);\n   72: 	MOTOR_ON_OFF_Write(0x00);	\n   73  	\n   74  	// SSI encoder initializations\n   ..\n  122  	g_ref.pos[0] = g_meas.pos[0];\n  123  	g_ref.pos[1] = g_meas.pos[1];\n  124: 	MOTOR_ON_OFF_Write(g_ref.onoff);\n  125  \n  126  	// Calculate conversion factor\n\n5 matches across 3 files\n\n\nSearching 9 files for \"isr_cali\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  468  \n  469  \n  470: // CY_ISR(ISR_CALIBRATE_ExInterrupt)\n  471  // {\n  472  // 	int i = 0;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.h:\n   25  CY_ISR_PROTO(ISR_MEASUREMENTS_ExInterrupt);\n   26  CY_ISR_PROTO(ISR_ENCODER_ExInterrupt);\n   27: CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);\n   28  CY_ISR_PROTO(ISR_DELAY_ExInterrupt);\n   29  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   91  \n   92      // Calibrate interrupt init\n   93:     ISR_CALIBRATE_StartEx(ISR_CALIBRATE_ExInterrupt);\n   94  \n   95      // Timer init\n\n4 matches across 3 files\n\n\nSearching 9 files for \"isr_del\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  555  \n  556  \n  557: CY_ISR(ISR_DELAY_ExInterrupt)\n  558  {\n  559  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.h:\n   26  CY_ISR_PROTO(ISR_ENCODER_ExInterrupt);\n   27  CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);\n   28: CY_ISR_PROTO(ISR_DELAY_ExInterrupt);\n   29  \n   30  uint8 BITChecksum(uint32 mydata);\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   96      MY_TIMER_Init();\n   97      MY_TIMER_Stop();\n   98:     ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);\n   99  	\n  100      RS485_CTS_Write(0);   \n\n4 matches across 3 files\n\n\nSearching 9 files for \"my_timer\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  592  // void ms_delay(uint32 ms) {\n  593  // 	uint32 period = (TIMER_CLOCK / 1000) * ms;\n  594: //     MY_TIMER_WritePeriod(period);\n  595: //     MY_TIMER_Enable(); // start the timeout counter\n  596  //     while(!timer_flag);\n  597: //     MY_TIMER_Stop();\n  598  //     timer_flag = 0;\n  599  // }\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   94  \n   95      // Timer init\n   96:     MY_TIMER_Init();\n   97:     MY_TIMER_Stop();\n   98      // ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);\n   99  	\n\n5 matches across 2 files\n\n\nSearching 9 files for \"calibrate\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  298              break;\n  299  \n  300:         case CMD_CALIBRATE:\n  301:             calibrate();\n  302              break;\n  303                  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   73      CMD_INIT_MEM                = 10,\n   74  \n   75:     CMD_CALIBRATE               = 11,\n   76  \n   77  \n\n3 matches across 2 files\n\n\nSearching 9 files for \"calibra\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  298              break;\n  299  \n  300:         case CMD_CALIBRATE:\n  301:             calibrate();\n  302              break;\n  303                  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n   73      CMD_INIT_MEM                = 10,\n   74  \n   75:     CMD_CALIBRATE               = 11,\n   76  \n   77  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/globals.h:\n   63  \n   64  #define ANTI_WINDUP     1000\n   65: #define MAX_CURRENT     1000          // Max current for calibration (mA) \n   66  	\n   67  #define SAMPLES_FOR_MEAN 100\n   ..\n  120      int32   max_step_neg;               // using sensor 3 as input\n  121  \n  122:     uint16  max_stiffness;              // Max stiffness value obtained in calibration\n  123  };\n  124  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n  309  	static int sign_1 = 1;\n  310  	static int sign_2 = 1;\n  311: 	static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over\n  312  								// the first counter values of current\n  313  	static int32 mean_value_1;\n\n6 matches across 4 files\n\n\nSearching 9 files for \"info_all\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  324        switch (info_type)\n  325          {\n  326:         case INFO_ALL:\n  327              infoPrepare(packet_string);\n  328              break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  156  /** \\name QB Move Information Strings */\n  157  /** \\{ */\n  158: #define INFO_ALL        0 ///< All system information.\n  159  \n  160  /** \\} */\n\n2 matches across 2 files\n\n\nSearching 9 files for \"info_all\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  324        switch (info_type)\n  325          {\n  326:         case INFO_ALL:\n  327              infoPrepare(packet_string);\n  328              break;\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/commands.h:\n  156  /** \\name QB Move Information Strings */\n  157  /** \\{ */\n  158: #define INFO_ALL        0 ///< All system information.\n  159  \n  160  /** \\} */\n\n2 matches across 2 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"uart_rs485\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/command_processing.c:\n  304      unsigned char packet_string[1100];    \n  305      infoPrepare(packet_string);\n  306:     UART_RS485_PutString(packet_string);\n  307  }\n  308  \n  ...\n  679      uint16 i;\n  680      \n  681:     // UART_RS485_LoadTxConfig();\n  682      \n  683      // frame - start\n  684:     UART_RS485_PutChar(':');\n  685:     UART_RS485_PutChar(':'); \n  686      // frame - ID                               \n  687:     UART_RS485_PutChar (g_mem.id);\n  688      // frame - length\n  689:     UART_RS485_PutChar((uint8)packet_lenght);\n  690      // frame - packet data\n  691      for(i = 0; i < packet_lenght; ++i)\n  692      {\n  693:         UART_RS485_PutChar(packet_data[i]); \n  694      }\n  695  	\n  ...\n  697  	i = 0;\n  698  	\n  699: 	while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}\n  700  	\n  701      RS485_CTS_Write(1);\n  ...\n  703  	\n  704          \n  705:     // UART_RS485_LoadRxConfig();\n  706  }\n  707  \n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/interruptions.c:\n   60  \n   61  // get data while rx fifo is not empty\n   62: 	while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {\n   63: 		rx_data = UART_RS485_GetChar();				\n   64  		switch (state){\n   65  ///////////////////////////   wait for frame start   ///////////////////////////			\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/main.c:\n   60  	// RS485\n   61  	\n   62: 	UART_RS485_Start();									// start UART\n   63  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   64  \n   ..\n  135  	for(;;)\n  136  	{\n  137: 	    if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)\n  138:             UART_RS485_ClearRxBuffer();\n  139  	}\n  140  }\n\n17 matches across 3 files\n\n\nSearching 9 files for \"pwm\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  563      sprintf(str,\"Number of sensors: %d\\r\\n\",(int) NUM_OF_SENSORS);        \n  564      strcat(info_string,str);\n  565:     sprintf(str,\"PWM Limit: %d\\r\\n\",(int) PWM_LIMIT);        \n  566      strcat(info_string,str);\n  567      strcat(info_string,\"\\r\\n\");\n  ...\n  638              break;\n  639          case 1:\n  640:             strcat(info_string, \"PWM\\r\\n\");\n  641              break;\n  642          case 2:\n  ...\n  788      ISR_MEASUREMENTS_Disable();\n  789  \n  790:     PWM_MOTORS_WriteCompare1(0);\n  791: 	PWM_MOTORS_WriteCompare2(0);\n  792  \n  793      // Retrieve temperature for better writing performance\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/commands.h:\n  110      PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between\n  111                                          ///  position control, current control\n  112:                                         ///  or direct PWM value input\n  113      PARAM_MEASUREMENT_OFFSET     = 5,   ///< Adds a constant offset to the\n  114                                          ///  measurements\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/globals.h:\n   39  \n   40  #define CONTROL_ANGLE		    0\n   41: #define CONTROL_PWM				1\n   42  #define CONTROL_CURRENT			2\n   43      \n   ..\n   51  #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages\n   52  \n   53: #define PWM_LIMIT       100           // PWM is from 0 to 100, this value is used\n   54                                        // to limit this value\n   55: #define PWM_DEAD        0             // deadband value, is directly added to the\n   56:                                       // value of PWM always limited to 100\n   57  \n   58  #define ANTI_WINDUP     1000\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  271  	}\n  272  \n  273: 	////////////////////////////////////////////////////////////     CONTROL_PWM\n  274  \n  275: 	if (c_mem.control_mode == CONTROL_PWM) {\n  276  \n  277  		input_1 = g_ref.pos[0];\n  ...\n  285  \n  286  	if (input_1 > 0) {\n  287: 		input_1 += PWM_DEAD;\n  288  	} else if (input_1 < 0) {\n  289: 		input_1 -= PWM_DEAD;\n  290  	}\n  291  \n  292  		\n  293:     if(input_1 >  PWM_LIMIT) input_1 =  PWM_LIMIT;\n  294:     if(input_2 >  PWM_LIMIT) input_2 =  PWM_LIMIT;\n  295:     if(input_1 < -PWM_LIMIT) input_1 = -PWM_LIMIT;\n  296:     if(input_2 < -PWM_LIMIT) input_2 = -PWM_LIMIT;\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n  299: 	PWM_MOTORS_WriteCompare1(abs(input_1));\n  300: 	PWM_MOTORS_WriteCompare2(abs(input_2));\n  301  	\n  302  	\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/main.c:\n   73  	ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);		// RS485 isr function    \n   74  \n   75: 	// PWM\n   76      \n   77: 	PWM_MOTORS_Start();\n   78  	ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);\n   79: 	PWM_MOTORS_WriteCompare1(0);\n   80: 	PWM_MOTORS_WriteCompare2(0);\n   81  	MOTOR_DIR_Write(0);\n   82  	MOTOR_ON_OFF_Write(0x00);	\n\n29 matches across 5 files\n\n\nSearching 9 files for \"pwm_motors\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  788      ISR_MEASUREMENTS_Disable();\n  789  \n  790:     PWM_MOTORS_WriteCompare1(0);\n  791: 	PWM_MOTORS_WriteCompare2(0);\n  792  \n  793      // Retrieve temperature for better writing performance\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n  299: 	PWM_MOTORS_WriteCompare1(abs(input_1));\n  300: 	PWM_MOTORS_WriteCompare2(abs(input_2));\n  301  	\n  302  	\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/main.c:\n   75  	// PWM\n   76      \n   77: 	PWM_MOTORS_Start();\n   78  	ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);\n   79: 	PWM_MOTORS_WriteCompare1(0);\n   80: 	PWM_MOTORS_WriteCompare2(0);\n   81  	MOTOR_DIR_Write(0);\n   82  	MOTOR_ON_OFF_Write(0x00);	\n\n7 matches across 3 files\n\n\nSearching 9 files for \"pwm_motors\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  788      ISR_MEASUREMENTS_Disable();\n  789  \n  790:     PWM_MOTORS_WriteCompare1(0);\n  791: 	PWM_MOTORS_WriteCompare2(0);\n  792  \n  793      // Retrieve temperature for better writing performance\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n  299: 	PWM_MOTORS_WriteCompare1(abs(input_1));\n  300: 	PWM_MOTORS_WriteCompare2(abs(input_2));\n  301  	\n  302  	\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/main.c:\n   75  	// PWM\n   76      \n   77: 	PWM_MOTORS_Start();\n   78  	ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);\n   79: 	PWM_MOTORS_WriteCompare1(0);\n   80: 	PWM_MOTORS_WriteCompare2(0);\n   81  	MOTOR_DIR_Write(0);\n   82  	MOTOR_ON_OFF_Write(0x00);	\n\n7 matches across 3 files\n\n\nSearching 9 files for \"pwm_motors\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  788      ISR_MEASUREMENTS_Disable();\n  789  \n  790:     PWM_MOTORS_WriteCompare1(0);\n  791: 	PWM_MOTORS_WriteCompare2(0);\n  792  \n  793      // Retrieve temperature for better writing performance\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n  299: 	PWM_MOTORS_WriteCompare1(abs(input_1));\n  300: 	PWM_MOTORS_WriteCompare2(abs(input_2));\n  301  	\n  302  	\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/main.c:\n   75  	// PWM\n   76      \n   77: 	PWM_MOTORS_Start();\n   78  	ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);\n   79: 	PWM_MOTORS_WriteCompare1(0);\n   80: 	PWM_MOTORS_WriteCompare2(0);\n   81  	MOTOR_DIR_Write(0);\n   82  	MOTOR_ON_OFF_Write(0x00);	\n\n7 matches across 3 files\n\n\nSearching 9 files for \"pwm_limit\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  563      sprintf(str,\"Number of sensors: %d\\r\\n\",(int) NUM_OF_SENSORS);        \n  564      strcat(info_string,str);\n  565:     sprintf(str,\"PWM Limit: %d\\r\\n\",(int) PWM_LIMIT);        \n  566      strcat(info_string,str);\n  567      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/globals.h:\n   51  #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages\n   52  \n   53: #define PWM_LIMIT       100           // PWM is from 0 to 100, this value is used\n   54                                        // to limit this value\n   55  #define PWM_DEAD        0             // deadband value, is directly added to the\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  291  \n  292  		\n  293:     if(input_1 >  PWM_LIMIT) input_1 =  PWM_LIMIT;\n  294:     if(input_2 >  PWM_LIMIT) input_2 =  PWM_LIMIT;\n  295:     if(input_1 < -PWM_LIMIT) input_1 = -PWM_LIMIT;\n  296:     if(input_2 < -PWM_LIMIT) input_2 = -PWM_LIMIT;\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n\n10 matches across 3 files\n\n\nSearching 9 files for \"pwm_limit\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  563      sprintf(str,\"Number of sensors: %d\\r\\n\",(int) NUM_OF_SENSORS);        \n  564      strcat(info_string,str);\n  565:     sprintf(str,\"PWM Limit: %d\\r\\n\",(int) PWM_LIMIT);        \n  566      strcat(info_string,str);\n  567      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/interruptions.c:\n  291  \n  292  		\n  293:     if(input_1 >  PWM_LIMIT) input_1 =  PWM_LIMIT;\n  294:     if(input_2 >  PWM_LIMIT) input_2 =  PWM_LIMIT;\n  295:     if(input_1 < -PWM_LIMIT) input_1 = -PWM_LIMIT;\n  296:     if(input_2 < -PWM_LIMIT) input_2 = -PWM_LIMIT;\n  297  \n  298  	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));\n\n9 matches across 2 files\n\n\nSearching 9 files for \"pwm_limit\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  563      sprintf(str,\"Number of sensors: %d\\r\\n\",(int) NUM_OF_SENSORS);        \n  564      strcat(info_string,str);\n  565:     sprintf(str,\"PWM Limit: %d\\r\\n\",(int) PWM_LIMIT);        \n  566      strcat(info_string,str);\n  567      strcat(info_string,\"\\r\\n\");\n\n1 match in 1 file\n\n\nSearching 9 files for \"pwm_limit\"\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/command_processing.c:\n  563      sprintf(str,\"Number of sensors: %d\\r\\n\",(int) NUM_OF_SENSORS);        \n  564      strcat(info_string,str);\n  565:     sprintf(str,\"PWM Limit: %d\\r\\n\",(int) PWM_LIMIT);        \n  566      strcat(info_string,str);\n  567      strcat(info_string,\"\\r\\n\");\n\n/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware pwm su in1/firmware.cydsn/globals.h:\n  124      float   tension_conv_factor;    // Used to calculate input tension\n  125      uint8   tension_valid;\n  126:     uint8   pwm_limit;\n  127  };\n  128  \n\n2 matches across 2 files\n",
 			"settings":
 			{
-				"buffer_size": 48238,
+				"buffer_size": 39918,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
@@ -181,7 +185,7 @@
 			"file": "main.c",
 			"settings":
 			{
-				"buffer_size": 3561,
+				"buffer_size": 3640,
 				"line_ending": "Unix"
 			}
 		}
@@ -213,6 +217,7 @@
 	},
 	"file_history":
 	[
+		"/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_simulink/library/qbmove.cpp",
 		"/Users/laurentio/Dropbox/Centro Piaggio/QB/qbrobotics_git/qbmove_firmware/firmware.cydsn/firmware.rpt",
 		"/Users/laurentio/Desktop/P.PNT",
 		"/Users/laurentio/Desktop/prova.c",
@@ -237,13 +242,14 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"PARAM_INPUT_MODE",
-			"param",
-			"mode",
-			"c_mem.mode",
-			"mode",
-			"g_mem.mode",
-			"mode",
+			"input mode",
+			"tensio",
+			"device.pwm",
+			"tensio",
+			"pwm_limit",
+			"pwm_motors",
+			"pwm",
+			"control",
 			"commwrite",
 			"uart_rs485",
 			"infosend",
@@ -367,15 +373,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 27175,
+						"buffer_size": 27961,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								22173,
-								21999
+								20312,
+								20312
 							]
 						],
 						"settings":
@@ -389,7 +395,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 12571.0,
+						"translation.y": 11428.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -420,7 +426,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
@@ -429,15 +435,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6605,
+						"buffer_size": 6838,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5505,
-								5505
+								4472,
+								4472
 							]
 						],
 						"settings":
@@ -447,10 +453,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1559.0,
+						"translation.y": 1572.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
@@ -515,15 +521,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5160,
+						"buffer_size": 5050,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1469,
-								1469
+								4601,
+								4601
 							]
 						],
 						"settings":
@@ -533,10 +539,10 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 288.0,
+						"translation.y": 1704.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
@@ -573,15 +579,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 17006,
+						"buffer_size": 18281,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8121,
-								8121
+								8640,
+								8718
 							]
 						],
 						"settings":
@@ -590,10 +596,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 4394.0,
+						"translation.y": 11270.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -601,7 +607,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 48238,
+						"buffer_size": 39918,
 						"regions":
 						{
 							"match":
@@ -1330,424 +1336,292 @@
 										29969
 									],
 									[
-										30244,
-										30254
+										30328,
+										30331
 									],
 									[
-										30400,
-										30410
+										30353,
+										30356
 									],
 									[
-										30696,
-										30706
+										30543,
+										30546
 									],
 									[
-										30852,
-										30862
+										30667,
+										30670
 									],
 									[
-										31173,
-										31183
+										30704,
+										30707
 									],
 									[
-										31447,
-										31451
+										31155,
+										31158
 									],
 									[
-										31754,
-										31758
+										31497,
+										31500
 									],
 									[
-										31768,
-										31772
+										31639,
+										31642
 									],
 									[
-										31920,
-										31924
+										31672,
+										31675
 									],
 									[
-										31954,
-										31958
+										31796,
+										31799
 									],
 									[
-										32045,
-										32049
+										31927,
+										31930
 									],
 									[
-										32154,
-										32158
+										32214,
+										32217
 									],
 									[
-										32202,
-										32206
+										32268,
+										32271
 									],
 									[
-										32403,
-										32407
+										32377,
+										32380
 									],
 									[
-										32426,
-										32430
+										32441,
+										32444
 									],
 									[
-										32615,
-										32619
+										32504,
+										32507
 									],
 									[
-										32957,
-										32961
+										32526,
+										32529
 									],
 									[
-										32990,
-										32994
+										32562,
+										32565
 									],
 									[
-										33032,
-										33036
+										32584,
+										32587
 									],
 									[
-										33364,
-										33368
+										32620,
+										32623
 									],
 									[
-										33397,
-										33401
+										32642,
+										32645
 									],
 									[
-										33428,
-										33432
+										32678,
+										32681
 									],
 									[
-										33571,
-										33575
+										32700,
+										32703
 									],
 									[
-										33922,
-										33926
+										32792,
+										32795
 									],
 									[
-										34104,
-										34108
+										32840,
+										32843
 									],
 									[
-										34150,
-										34154
+										33109,
+										33112
 									],
 									[
-										34196,
-										34200
+										33133,
+										33136
 									],
 									[
-										34410,
-										34414
+										33229,
+										33232
 									],
 									[
-										34435,
-										34439
+										33266,
+										33269
 									],
 									[
-										34728,
-										34732
+										33603,
+										33613
 									],
 									[
-										34742,
-										34746
+										33640,
+										33650
 									],
 									[
-										34952,
-										34956
+										33942,
+										33952
 									],
 									[
-										35199,
-										35203
+										33990,
+										34000
 									],
 									[
-										35384,
-										35388
+										34192,
+										34202
 									],
 									[
-										35790,
-										35800
+										34288,
+										34298
 									],
 									[
-										35982,
-										35992
+										34325,
+										34335
 									],
 									[
-										36206,
-										36216
+										34661,
+										34671
 									],
 									[
-										36506,
-										36516
+										34698,
+										34708
 									],
 									[
-										36881,
-										36891
+										35000,
+										35010
 									],
 									[
-										37105,
-										37115
+										35048,
+										35058
 									],
 									[
-										37405,
-										37415
+										35250,
+										35260
 									],
 									[
-										37810,
-										37820
+										35346,
+										35356
 									],
 									[
-										38110,
-										38120
+										35383,
+										35393
 									],
 									[
-										38489,
-										38499
+										35719,
+										35729
 									],
 									[
-										38931,
-										38935
+										35756,
+										35766
 									],
 									[
-										39244,
-										39248
+										36058,
+										36068
 									],
 									[
-										39258,
-										39262
+										36106,
+										36116
 									],
 									[
-										39410,
-										39414
+										36308,
+										36318
 									],
 									[
-										39444,
-										39448
+										36404,
+										36414
 									],
 									[
-										39535,
-										39539
+										36441,
+										36451
 									],
 									[
-										39644,
-										39648
+										36885,
+										36894
 									],
 									[
-										39698,
-										39702
+										37172,
+										37181
 									],
 									[
-										39899,
-										39903
+										37564,
+										37573
 									],
 									[
-										39928,
-										39932
+										37586,
+										37595
 									],
 									[
-										40117,
-										40121
+										37622,
+										37631
 									],
 									[
-										40459,
-										40463
+										37644,
+										37653
 									],
 									[
-										40492,
-										40496
+										37680,
+										37689
 									],
 									[
-										40534,
-										40538
+										37702,
+										37711
 									],
 									[
-										40866,
-										40870
+										37738,
+										37747
 									],
 									[
-										40899,
-										40903
+										37760,
+										37769
 									],
 									[
-										40930,
-										40934
+										38197,
+										38206
 									],
 									[
-										41073,
-										41077
+										38453,
+										38462
 									],
 									[
-										41424,
-										41428
+										38475,
+										38484
 									],
 									[
-										41606,
-										41610
+										38511,
+										38520
 									],
 									[
-										41652,
-										41656
+										38533,
+										38542
 									],
 									[
-										41698,
-										41702
+										38569,
+										38578
 									],
 									[
-										41912,
-										41916
+										38591,
+										38600
 									],
 									[
-										41937,
-										41941
+										38627,
+										38636
 									],
 									[
-										42236,
-										42240
+										38649,
+										38658
 									],
 									[
-										42250,
-										42254
+										39085,
+										39094
 									],
 									[
-										42460,
-										42464
+										39525,
+										39534
 									],
 									[
-										42707,
-										42711
-									],
-									[
-										42892,
-										42896
-									],
-									[
-										43197,
-										43201
-									],
-									[
-										43510,
-										43514
-									],
-									[
-										43524,
-										43528
-									],
-									[
-										43676,
-										43680
-									],
-									[
-										43710,
-										43714
-									],
-									[
-										43801,
-										43805
-									],
-									[
-										43910,
-										43914
-									],
-									[
-										43964,
-										43968
-									],
-									[
-										44165,
-										44169
-									],
-									[
-										44194,
-										44198
-									],
-									[
-										44383,
-										44387
-									],
-									[
-										44725,
-										44729
-									],
-									[
-										44758,
-										44762
-									],
-									[
-										44800,
-										44804
-									],
-									[
-										45132,
-										45136
-									],
-									[
-										45165,
-										45169
-									],
-									[
-										45196,
-										45200
-									],
-									[
-										45339,
-										45343
-									],
-									[
-										45690,
-										45694
-									],
-									[
-										45872,
-										45876
-									],
-									[
-										45918,
-										45922
-									],
-									[
-										45964,
-										45968
-									],
-									[
-										46184,
-										46188
-									],
-									[
-										46209,
-										46213
-									],
-									[
-										46508,
-										46512
-									],
-									[
-										46522,
-										46526
-									],
-									[
-										46732,
-										46736
-									],
-									[
-										46979,
-										46983
-									],
-									[
-										47164,
-										47168
-									],
-									[
-										47495,
-										47511
-									],
-									[
-										47665,
-										47681
-									],
-									[
-										48063,
-										48079
+										39863,
+										39872
 									]
 								],
 								"scope": ""
@@ -1756,15 +1630,15 @@
 						"selection":
 						[
 							[
-								47672,
-								47672
+								39532,
+								39532
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
 							"line_numbers": false,
-							"output_tag": 42,
+							"output_tag": 37,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -1772,10 +1646,10 @@
 							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 27645.0,
+						"translation.y": 23028.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
@@ -1784,15 +1658,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3561,
+						"buffer_size": 3640,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1594,
-								1594
+								3400,
+								3400
 							]
 						],
 						"settings":
@@ -1801,10 +1675,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1865.0,
+						"translation.y": 1810.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

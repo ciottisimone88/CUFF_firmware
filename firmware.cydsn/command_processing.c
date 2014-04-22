@@ -230,7 +230,7 @@ void commProcess(void){
 
 //=========================================================     CMD_STORE_PARAMS
         case CMD_STORE_PARAMS:
-		    if( c_mem.mode == INPUT_MODE_EXTERNAL )
+		    if( c_mem.input_mode == INPUT_MODE_EXTERNAL )
 		    {
 		        off_1 = c_mem.m_off[0];
 		        off_2 = c_mem.m_off[1];
@@ -375,8 +375,12 @@ void paramSet(uint16 param_type)
             break;        
 
         case PARAM_INPUT_MODE:
-        	g_mem.mode = g_rx.buffer[3];
-            break;            
+        	g_mem.input_mode = g_rx.buffer[3];
+            break;
+
+        case PARAM_CONTROL_MODE:
+            g_mem.control_mode = g_rx.buffer[3];
+            break;
 
         case PARAM_POS_RESOLUTION:
             for (i =0; i < NUM_OF_SENSORS; i++) {
@@ -470,9 +474,14 @@ void paramGet(uint16 param_type)
             break;   
             
         case PARAM_INPUT_MODE:
-            packet_data[1] = c_mem.mode;
+            packet_data[1] = c_mem.input_mode;
             packet_lenght = 3;                
-            break;  
+            break;
+
+        case PARAM_CONTROL_MODE:
+            packet_data[1] = c_mem.control_mode;
+            packet_lenght = 3;
+            break;
                         
         case PARAM_POS_RESOLUTION:
             for (i = 0; i < NUM_OF_SENSORS; i++) {
@@ -553,39 +562,33 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string,str);
     sprintf(str,"Number of sensors: %d\r\n",(int) NUM_OF_SENSORS);        
     strcat(info_string,str);
-    sprintf(str,"PWM Limit: %d\r\n",(int) PWM_LIMIT);        
+    sprintf(str,"PWM Limit: %d\r\n",(int) device.pwm_limit);        
     strcat(info_string,str);
-    strcat(info_string,"\r\n");  
+    strcat(info_string,"\r\n");
 
-    strcat(info_string,"MOTORS INFO\r\n");                       
-    sprintf(str,"Motor 1 reference: %d",
-        (int) g_ref.pos[0] >> c_mem.res[0]);
-    strcat(info_string,str); 
-    strcat(info_string,"\r\n");  
-    sprintf(str,"Motor 2 reference: %d",
-        (int) g_ref.pos[1] >> c_mem.res[1]);
-    strcat(info_string,str); 
+    strcat(info_string, "MOTOR INFO\r\n");
+    strcat(info_string, "Motor references: ");
+    for (i = 0; i < NUM_OF_MOTORS; i++) {
+        sprintf(str, "%d ", (int)(g_ref.pos[i] >> c_mem.res[i]));
+        strcat(info_string,str);
+    }
     strcat(info_string,"\r\n");
     
-    sprintf(str,"Motor 1 enabled: ");     
-    if (g_ref.onoff & 0x02) {
+
+    sprintf(str, "Motor enabled: ");
+    if (g_ref.onoff & 0x03) {
         strcat(str,"YES\r\n");
     } else {
         strcat(str,"NO\r\n");
     }
     strcat(info_string, str);
-    
-    sprintf(str,"Motor 2 enabled: ");     
-    if (g_ref.onoff & 0x01) {
-        strcat(str,"YES\r\n");
-    } else {
-        strcat(str,"NO\r\n");
-    }
-    strcat(info_string, str); 
+    strcat(info_string,"\r\n");
+
 
     strcat(info_string,"\r\nMEASUREMENTS INFO\r\n");
+    strcat(info_string, "Sensor value:\r\n");
     for (i = 0; i < NUM_OF_SENSORS; i++) {
-        sprintf(str,"Sensor %d value: %d", i+1,
+        sprintf(str,"%d -> %d", i+1,
             (int) g_meas.pos[i] >> c_mem.res[i]);
         strcat(info_string, str);
         strcat(info_string, "\r\n");
@@ -603,39 +606,69 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string,"\r\n"); 
  
 
-    strcat(info_string,"\r\nDEVICE PARAMETERS\r\n");
-    sprintf(str,"PID Controller: \r\n%f\t%f\t%f", ((double) c_mem.k_p / 65536), ((double)c_mem.k_i / 65536), ((double)c_mem.k_d / 65536));
+    strcat(info_string, "\r\nDEVICE PARAMETERS\r\n");
+    strcat(info_string, "PID Controller:\r\n");
+    sprintf(str,"P -> %f\r\n", ((double) c_mem.k_p / 65536));
+    strcat(info_string, str);
+    sprintf(str,"I -> %f\r\n", ((double) c_mem.k_i / 65536));
+    strcat(info_string, str);
+    sprintf(str,"D -> %f\r\n", ((double) c_mem.k_d / 65536));
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
-    sprintf(str,"Startup activation: %d", (int) c_mem.activ);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
-    sprintf(str,"Input Mode: %d", (int) c_mem.mode);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
+
+    if (c_mem.activ == 0x03) {
+        strcat(info_string, "Startup activation: YES\r\n");
+    } else {
+        strcat(info_string, "Startup activation: NO\r\n");
+    }
+
+    switch(c_mem.input_mode) {
+        case 0:
+            strcat(info_string, "Input mode: USB\r\n");
+            break;
+        case 1:
+            strcat(info_string, "Input mode: Sensor 3\r\n");
+            break;
+    }
+
+    strcat(info_string, "Control Mode: ");
+    switch(c_mem.control_mode) {
+        case 0:
+            strcat(info_string, "Position\r\n");
+            break;
+        case 1:
+            strcat(info_string, "PWM\r\n");
+            break;
+        case 2:
+            strcat(info_string, "Current\r\n");
+            break;
+    }
 	
 
 
+    strcat(info_string, "Sensor resolution:\r\n");
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
-        sprintf(str,"Position resolution sensor %d: %d", (int) i, 
+        sprintf(str,"%d -> %d", (int) (i + 1), 
             (int) c_mem.res[i]);
         strcat(info_string, str); 
         strcat(info_string,"\r\n");
     }
 
-	
+
+    strcat(info_string, "Measurement Offset:\r\n");	
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
-        sprintf(str,"Measurement Offset %d: %ld", (int) i, 
+        sprintf(str,"%d -> %ld", (int) (i + 1), 
             (int32) c_mem.m_off[i] >> c_mem.res[i]);
         strcat(info_string, str); 
         strcat(info_string,"\r\n");
     }
 
+    strcat(info_string, "Measurement Multiplier:\r\n");
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
-        sprintf(str,"Measurement Multiplier %d: %f", (int) i, 
+        sprintf(str,"%d -> %f", (int)(i + 1), 
             (double) c_mem.m_mult[i]);
         strcat(info_string, str); 
         strcat(info_string,"\r\n");
@@ -646,11 +679,11 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string,"\r\n");
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
-        sprintf(str, "Position limit inf motor %d: %ld\r\n", (int)(i + 1),
+        sprintf(str, "Position limit motor %d: inf -> %ld  ", (int)(i + 1),
                 (int32)g_mem.pos_lim_inf[i] >> g_mem.res[i]);
         strcat(info_string, str);
 
-        sprintf(str, "Position limit sup motor %d: %ld\r\n", (int)(i + 1),
+        sprintf(str, "sup -> %ld\r\n",
                 (int32)g_mem.pos_lim_sup[i] >> g_mem.res[i]);
         strcat(info_string, str);
     }
@@ -663,10 +696,10 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
 
-    pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
-    sprintf(str,"Debug: %d",(int) pages);
-    strcat(info_string, str); 
-    strcat(info_string,"\r\n");
+    // pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
+    // sprintf(str,"Debug: %d",(int) pages);
+    // strcat(info_string, str); 
+    // strcat(info_string,"\r\n");
     
 }
 
@@ -840,12 +873,13 @@ void memInit(void)
 {
     uint8 i;
 	//initialize memory settings
-	g_mem.id       = 	1;             ////////////
-	g_mem.k_p      = 	0.1 * 65536;
-    g_mem.k_i      =    0 * 65536;
-    g_mem.k_d      =    0.8 * 65536;
-    g_mem.activ    = 	0;
-    g_mem.mode     = 	0;
+	g_mem.id            = 	1;
+	g_mem.k_p           = 	0.1 * 65536;
+    g_mem.k_i           =   0 * 65536;
+    g_mem.k_d           =   0.8 * 65536;
+    g_mem.activ         = 	0;
+    g_mem.input_mode    = 	0;
+    g_mem.control_mode  =   0;
 
     g_mem.pos_lim_flag = 1;
 

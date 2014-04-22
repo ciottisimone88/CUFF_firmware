@@ -56,11 +56,12 @@ void main()
 	
 	EEPROM_Start();
 	memRecall();                                     	// recall configuration
-    
+
+	// RS485
+
     CyDelay(100);
     FTDI_ENABLE_REG_Write(0x01);
 
-	// RS485
 	
 	UART_RS485_Stop();									// stop UART
 	UART_RS485_Start();									// start UART
@@ -135,6 +136,7 @@ void main()
 	// Calculate conversion factor
 	device.tension_conv_factor = ((0.25 * 101.0 * 1000) / 1638.4); //derives from datasheet calculations
 	device.tension_valid = FALSE;
+    device.pwm_limit = 0;
 
 	
 

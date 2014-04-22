@@ -26,7 +26,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v2.1.1"
+#define VERSION         "QBMMP v3.0.0"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -40,12 +40,6 @@
 #define CONTROL_ANGLE		    0
 #define CONTROL_PWM				1
 #define CONTROL_CURRENT			2
-
-//==================================================     control type definition
-
-//#define CONTROL_MODE			CONTROL_CURRENT
-#define CONTROL_MODE			CONTROL_ANGLE
-//#define CONTROL_MODE			CONTROL_PWM
     
 //==============================================================================
 //                                                                         OTHER
@@ -56,7 +50,7 @@
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
 
-#define PWM_LIMIT       100           // PWM is from 0 to 100, this value is used
+#define PWM_MAX_VALUE       100           // PWM is from 0 to 100, this value is used
                                       // to limit this value
 #define PWM_DEAD        0             // deadband value, is directly added to the
                                       // value of PWM always limited to 100
@@ -107,7 +101,8 @@ struct st_mem {
     int32   k_d;                        // Integrative constant
 
     uint8   activ;     					// Activation upon startup
-    uint8   mode;       				// Input mode
+    uint8   input_mode;       			// Input mode
+    uint8   control_mode;               // Control mode
 
     uint8   res[NUM_OF_SENSORS];    	// Angle resolution
     int32   m_off[NUM_OF_SENSORS];		// Measurement offset
@@ -128,6 +123,7 @@ struct st_dev{
 	int32	tension;				// Power supply tension
     float   tension_conv_factor;    // Used to calculate input tension
     uint8   tension_valid;
+    uint8   pwm_limit;
 };
 
 //====================================      external global variables definition

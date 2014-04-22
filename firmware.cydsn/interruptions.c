@@ -29,6 +29,7 @@ uint8 timer_flag = 0;
 //=============================================================     decalrations
 
 void ms_delay(uint32 ms);
+void pwm_limit_search();
 
 
 //==============================================================================
@@ -171,7 +172,7 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 
 	
     /////////   use third encoder as input for both motors   //////////
-    if( c_mem.mode == INPUT_MODE_ENCODER3 )
+    if( c_mem.input_mode == INPUT_MODE_ENCODER3 )
     {
     	//--- speed control in both directions ---//
 
@@ -204,7 +205,8 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     }
 	//////////////////////////////////////////////////////////     CONTROL_ANGLE
 	
-    #if (CONTROL_MODE == CONTROL_ANGLE)
+    if (c_mem.control_mode == CONTROL_ANGLE) {
+
     	error_1 = g_ref.pos[0] - g_meas.pos[0];
     	error_2 = g_ref.pos[1] - g_meas.pos[1];
 
@@ -225,26 +227,32 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     	}
 
     	// Proportional
-		input_1 = (int32)(c_mem.k_p * error_1) >> 16;
-		input_2 = (int32)(c_mem.k_p * error_2) >> 16;
+    	if (c_mem.k_p != 0) {
+			input_1 = (int32)(c_mem.k_p * error_1) >> 16;
+			input_2 = (int32)(c_mem.k_p * error_2) >> 16;
+		}
 
 		// Integrative
-		input_1 += (int32)(c_mem.k_i * err_sum_1) >> 16;
-		input_2 += (int32)(c_mem.k_i * err_sum_2) >> 16;
+		if (c_mem.k_i != 0) {
+			input_1 += (int32)(c_mem.k_i * err_sum_1) >> 16;
+			input_2 += (int32)(c_mem.k_i * err_sum_2) >> 16;
+		}
 
 		// Derivative
-		input_1 += (int32)(c_mem.k_d * (pos_prec_1 - g_meas.pos[0])) >> 16;
-		input_2 += (int32)(c_mem.k_d * (pos_prec_2 - g_meas.pos[1])) >> 16;
+		if (c_mem.k_d != 0) {
+			input_1 += (int32)(c_mem.k_d * (pos_prec_1 - g_meas.pos[0])) >> 16;
+			input_2 += (int32)(c_mem.k_d * (pos_prec_2 - g_meas.pos[1])) >> 16;
+		}
 
 		// Update measure
 		pos_prec_1 = g_meas.pos[0];
 		pos_prec_2 = g_meas.pos[1];
-
-    #endif
+	}
 
 	////////////////////////////////////////////////////////     CONTROL_CURRENT
 
-	#if (CONTROL_MODE == CONTROL_CURRENT)
+	if (c_mem.control_mode == CONTROL_CURRENT) {
+
 		if(g_ref.onoff & 1)
 		{
 			error_1 = g_ref.pos[0] - g_meas.curr[0];
@@ -260,20 +268,16 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 		{
 			input_1 = 0;
 			input_2 = 0;
-		} 
-		
-	#endif
+		}
+	}
 
 	////////////////////////////////////////////////////////////     CONTROL_PWM
 
-	#if (CONTROL_MODE == CONTROL_PWM)
+	if (c_mem.control_mode == CONTROL_PWM) {
+
 		input_1 = g_ref.pos[0];
 		input_2 = g_ref.pos[1];
-	#endif
-	
-
-
-
+	}
 	
 
 	if (input_1 > 0) {
@@ -283,12 +287,16 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
 	}
 
 		
-    if(input_1 >  PWM_LIMIT) input_1 =  PWM_LIMIT;
-    if(input_2 >  PWM_LIMIT) input_2 =  PWM_LIMIT;
-    if(input_1 < -PWM_LIMIT) input_1 = -PWM_LIMIT;
-    if(input_2 < -PWM_LIMIT) input_2 = -PWM_LIMIT;
+    if(input_1 >  PWM_MAX_VALUE) input_1 =  PWM_MAX_VALUE;
+    if(input_2 >  PWM_MAX_VALUE) input_2 =  PWM_MAX_VALUE;
+    if(input_1 < -PWM_MAX_VALUE) input_1 = -PWM_MAX_VALUE;
+    if(input_2 < -PWM_MAX_VALUE) input_2 = -PWM_MAX_VALUE;
 
 	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
+
+	input_1 = (((input_1 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
+	input_2 = (((input_2 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
+
 	PWM_MOTORS_WriteCompare1(abs(input_1));
 	PWM_MOTORS_WriteCompare2(abs(input_2));
 	
@@ -339,6 +347,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
 					device.tension_valid = FALSE;
 				} else {
 					device.tension_valid = TRUE;
+					pwm_limit_search();
 				}
 				break;
 
@@ -599,6 +608,37 @@ void ms_delay(uint32 ms) {
     timer_flag = 0;
 }
 
+//==============================================================================
+//																PWM_LIMIT_SEARCH
+//==============================================================================
+
+void pwm_limit_search() {
+	if (device.tension > 13000) {
+		device.pwm_limit = 0;
+	} else if (device.tension > 12500) {
+		device.pwm_limit = 64;
+	} else if (device.tension > 12000) {
+		device.pwm_limit = 66;
+	} else if (device.tension > 11500) {
+		device.pwm_limit = 68;
+	} else if (device.tension > 11000) {
+		device.pwm_limit = 69;
+	} else if (device.tension > 10500) {
+		device.pwm_limit = 71;
+	} else if (device.tension > 10000) {
+		device.pwm_limit = 72;
+	} else if (device.tension > 9500) {
+		device.pwm_limit = 74;
+	} else if (device.tension > 9000) {
+		device.pwm_limit = 75;
+	} else if (device.tension > 8500) {
+		device.pwm_limit = 76;
+	} else if (device.tension > 8000) {
+		device.pwm_limit = 80;
+	} else {
+		device.pwm_limit = 100;
+	}
+}
 
 
 /* [] END OF FILE */
