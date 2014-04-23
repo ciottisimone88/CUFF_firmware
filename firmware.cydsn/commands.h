@@ -77,16 +77,16 @@ enum qbmove_command
 
 //=========================================================     QB Move commands
 
-    CMD_ACTIVATE		    = 128,  ///< Command for activating/deactivating 
+    CMD_ACTIVATE            = 128,  ///< Command for activating/deactivating 
                                     ///  the device
-    CMD_GET_ACTIVATE	    = 129,  ///< Command for getting device activation
+    CMD_GET_ACTIVATE        = 129,  ///< Command for getting device activation
                                     ///  state
-    CMD_SET_INPUTS		    = 130,  ///< Command for setting reference inputs
-    CMD_GET_INPUTS		    = 131,  ///< Command for getting reference inputs
+    CMD_SET_INPUTS          = 130,  ///< Command for setting reference inputs
+    CMD_GET_INPUTS          = 131,  ///< Command for getting reference inputs
     CMD_GET_MEASUREMENTS    = 132,  ///< Command for asking device's
-    								///  position measurements
-    CMD_GET_CURRENTS    	= 133,  ///< Command for asking device's
-    								///  current measurements
+                                    ///  position measurements
+    CMD_GET_CURRENTS        = 133,  ///< Command for asking device's
+                                    ///  current measurements
     CMD_GET_CURR_AND_MEAS   = 134,  ///< Command for asking device's
                                     ///  measurements and currents
     CMD_SET_POS_STIFF       = 135
@@ -102,10 +102,10 @@ enum qbmove_command
 enum qbmove_parameter
 {
     
-    PARAM_ID		    	     = 0,	///< Device's ID number
-    PARAM_PID_CONTROL            = 1,	///< PID Control proportional constant
-    PARAM_STARTUP_ACTIVATION     = 2,	///< Start up activation byte
-    PARAM_INPUT_MODE             = 3,	///< Input mode
+    PARAM_ID                     = 0,   ///< Device's ID number
+    PARAM_PID_CONTROL            = 1,   ///< PID Control proportional constant
+    PARAM_STARTUP_ACTIVATION     = 2,   ///< Start up activation byte
+    PARAM_INPUT_MODE             = 3,   ///< Input mode
     
     PARAM_CONTROL_MODE           = 4,   ///< Choose the kind of control between
                                         ///  position control, current control
@@ -115,9 +115,9 @@ enum qbmove_parameter
     PARAM_MEASUREMENT_MULTIPLIER = 6,   ///< Adds a multiplier to the 
                                         ///  measurements
     PARAM_POS_LIMIT_FLAG         = 7,   ///< Enable/disable position limiting
-    PARAM_POS_LIMIT				 = 8,	///< Position limit values
-    									///  | int32     | int32     | int32     | int32     | 
-    									///  | INF_LIM_1 | SUP_LIM_1 | INF_LIM_2 | SUP_LIM_2 |
+    PARAM_POS_LIMIT              = 8,   ///< Position limit values
+                                        ///  | int32     | int32     | int32     | int32     | 
+                                        ///  | INF_LIM_1 | SUP_LIM_1 | INF_LIM_2 | SUP_LIM_2 |
 
     PARAM_MAX_STEP_POS           = 9,
     PARAM_MAX_STEP_NEG           = 10,

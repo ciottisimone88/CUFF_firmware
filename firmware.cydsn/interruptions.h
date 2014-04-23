@@ -4,12 +4,12 @@
 // ----------------------------------------------------------------------------
 
 /** 
-* \file 		interruptions.h
+* \file         interruptions.h
 *
-* \brief 		Interruptions header file.
-* \date 		Feb 06, 2012
-* \author 		qbrobotics
-* \copyright	(C)  qbrobotics. All rights reserved.
+* \brief        Interruptions header file.
+* \date         Feb 06, 2012
+* \author       qbrobotics
+* \copyright    (C)  qbrobotics. All rights reserved.
 */
 
 #ifndef INTERRUPTIONS_H_INCLUDED
