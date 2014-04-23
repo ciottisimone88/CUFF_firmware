@@ -408,11 +408,35 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 	int32 aux;
 
 	static int32 last_value_encoder[NUM_OF_SENSORS];
-	
+	static int8 only_first_time = 1;
+
+
+// Discard first reading
+    if (only_first_time) {
+        for (i = 0; i < NUM_OF_SENSORS; i++) {
+            switch(i) {
+                case 0: {
+                    data_encoder[i] = SHIFTREG_ENC_1_ReadData();
+                    break;
+                }
+                case 1: {
+                    data_encoder[i] = SHIFTREG_ENC_2_ReadData();
+                    break;
+                }
+                case 2: {
+                    data_encoder[i] = SHIFTREG_ENC_3_ReadData();
+                    break;
+                }
+                case 3: {
+                    data_encoder[i] = SHIFTREG_ENC_4_ReadData();
+                    break;
+                }
+            }
+        }
+        only_first_time = 0;
+    }
 
 //==========================================================     reading sensors
-
-
 	for (i = 0; i < NUM_OF_SENSORS; i++) {
 		switch(i) {
 			case 0: {
