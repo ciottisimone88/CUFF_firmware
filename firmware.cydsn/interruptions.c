@@ -292,7 +292,8 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     if(input_1 < -PWM_MAX_VALUE) input_1 = -PWM_MAX_VALUE;
     if(input_2 < -PWM_MAX_VALUE) input_2 = -PWM_MAX_VALUE;
 
-	MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
+	//MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
+	MOTOR_DIR_Write((input_1 < 0) + ((input_2 < 0) << 1));
 
 	input_1 = (((input_1 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
 	input_2 = (((input_2 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
@@ -462,6 +463,8 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
 			aux = data_encoder[i] & 0x3FFC0;			// reset last 6 bit
 			value_encoder[i] = (aux - 0x20000) >> 2;	// subtract half of max value
 													// and shift to have 16 bit val
+
+			value_encoder[i] = -value_encoder[i];	//invert sign of sensor
 
 			value_encoder[i]  = (int16)(value_encoder[i] + g_mem.m_off[i]);
 
