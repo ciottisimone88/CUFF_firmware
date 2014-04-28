@@ -27,7 +27,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v3.0.2"
+#define VERSION         "QBMMP v4.0.0"
 
 #define NUM_OF_MOTORS   2
 #define NUM_OF_SENSORS  3
@@ -136,8 +136,8 @@ extern struct st_meas   g_meas;         // measurements
 extern struct st_data   g_rx;           // income data
 extern struct st_mem    g_mem, c_mem;   // memory
 extern struct st_dev    device;         //device related variables
-    
 
+extern uint16 timer_value;
 
 // -----------------------------------------------------------------------------
 

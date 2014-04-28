@@ -53,16 +53,19 @@ void main()
 //====================================     initializations - psoc and components
     
     // EEPROM
-    
+
     EEPROM_Start();
     memRecall();                                        // recall configuration
 
-    // RS485
+
+    // FTDI chip enable
 
     CyDelay(100);
     FTDI_ENABLE_REG_Write(0x01);
 
-    
+
+    // RS485
+
     UART_RS485_Stop();                                  // stop UART
     UART_RS485_Start();                                 // start UART
     UART_RS485_Init();
@@ -72,17 +75,18 @@ void main()
 
     ISR_RS485_RX_StartEx(ISR_RS485_RX_ExInterrupt);     // RS485 isr function    
 
+
     // PWM
-    
+
     PWM_MOTORS_Start();
-    ISR_MOTORS_CONTROL_StartEx(ISR_MOTORS_CONTROL_ExInterrupt);
     PWM_MOTORS_WriteCompare1(0);
     PWM_MOTORS_WriteCompare2(0);
     MOTOR_DIR_Write(0);
-    MOTOR_ON_OFF_Write(0x00);   
-    
+    MOTOR_ON_OFF_Write(0x00);
+
+
     // SSI encoder initializations
-    
+
     COUNTER_ENC_Start();
     SHIFTREG_ENC_1_Start();
     SHIFTREG_ENC_2_Start();
@@ -90,25 +94,26 @@ void main()
     #if NUM_OF_SENSORS == 4
         SHIFTREG_ENC_4_Start(); 
     #endif
-    ISR_ENCODER_StartEx(ISR_ENCODER_ExInterrupt);
-        
-    // ADC
-    
+
+
+    // ADC + MUX
+
     ADC_Start();                                     // start ADC
     ADC_StartConvert();
-    // measurements isr function
-    ISR_MEASUREMENTS_StartEx(ISR_MEASUREMENTS_ExInterrupt);
     AMUXSEQ_MOTORS_Start();                              // start mux
 
+
     // Calibrate interrupt init
+
     ISR_CALIBRATE_StartEx(ISR_CALIBRATE_ExInterrupt);
 
-    // Timer init
-    MY_TIMER_Init();
-    MY_TIMER_Stop();
-    ISR_DELAY_StartEx(ISR_DELAY_ExInterrupt);
-    
-    RS485_CTS_Write(0);   
+
+    RS485_CTS_Write(0);
+
+    //XXXXXXX
+    MY_TIMER_Start();
+
+    PACER_TIMER_Start();
 
     CYGlobalIntEnable;                                  // enable interrupts        
 
@@ -118,19 +123,18 @@ void main()
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_ref.pos[i] = 0;   
     }
-    g_ref.onoff = c_mem.activ;
 
     for (i = 0; i < NUM_OF_SENSORS; i++) {
         g_meas.pos[i] = 0;
         g_meas.rot[i] = 0;  
     }
 
+    g_ref.onoff = c_mem.activ;
+
     g_rx.length         = 0;
     g_rx.ready          = 0;
     
     // Activating motors
-    g_ref.pos[0] = g_meas.pos[0];
-    g_ref.pos[1] = g_meas.pos[1];
     MOTOR_ON_OFF_Write(g_ref.onoff);
 
     // Calculate conversion factor
@@ -138,13 +142,21 @@ void main()
     device.tension_valid = FALSE;
     device.pwm_limit = 0;
 
-    
-
 
 //=========================================================     application loop
 
     for(;;)
     {
+        RESET_FF_Write(0x00);
+
+        measurements_int();
+
+        while(FF_STATUS_Read() == 0);
+
+        RESET_FF_Write(0x01);
+
+        while(FF_STATUS_Read() == 1);
+
         if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)
             UART_RS485_ClearRxBuffer();
     }

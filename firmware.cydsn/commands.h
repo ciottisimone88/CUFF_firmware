@@ -101,7 +101,6 @@ enum qbmove_command
 
 enum qbmove_parameter
 {
-    
     PARAM_ID                     = 0,   ///< Device's ID number
     PARAM_PID_CONTROL            = 1,   ///< PID Control proportional constant
     PARAM_STARTUP_ACTIVATION     = 2,   ///< Start up activation byte
@@ -161,7 +160,7 @@ enum qbmove_mode
 #define INFO_ALL        0 ///< All system information.
 
 /** \} */
-    
+
 // ----------------------------------------------------------------------------
 #endif
 /* [] END OF FILE */

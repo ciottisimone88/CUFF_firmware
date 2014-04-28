@@ -26,10 +26,49 @@
 
 uint8 timer_flag = 0;
 
+static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
+                                            76,
+                                            71,
+                                            69,
+                                            67,
+                                            65,     //5 (10500)
+                                            63,
+                                            61,
+                                            60,
+                                            58,
+                                            57,     //10 (13000)
+                                            56,
+                                            55,
+                                            54,
+                                            53,
+                                            52,     //15 (15500)
+                                            51,
+                                            50,
+                                            49,
+                                            49,
+                                            48,     //20 (18000)
+                                            47,
+                                            47,
+                                            46,
+                                            45,
+                                            45,     //25 (20500)
+                                            45,
+                                            44,
+                                            44,
+                                            43,
+                                            43,     //30 (23000)
+                                            43,
+                                            43,
+                                            42,
+                                            42,
+                                            42};    //35 (25500)
+
 //=============================================================     decalrations
 
-void ms_delay(uint32 ms);
 void pwm_limit_search();
+
+void encoder_reading(void);
+void motor_control(void);
 
 
 //==============================================================================
@@ -155,22 +194,22 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 }
 
 //==============================================================================
-//                                                      MOTORS CONTROL INTERRUPT
+//                                                                MOTORS CONTROL
 //==============================================================================
 // Motors control
 //==============================================================================
 
-CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
-{   
+void motor_control(void)
+{
     static int32 input_1 = 0;
     static int32 input_2 = 0;
 
-    
+
     static int32 pos_prec_1, pos_prec_2;
     int32 error_1, error_2;
     static int32 err_sum_1, err_sum_2;
 
-    
+
     /////////   use third encoder as input for both motors   //////////
     if( c_mem.input_mode == INPUT_MODE_ENCODER3 )
     {
@@ -203,8 +242,9 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
             if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
         }
     }
+
     //////////////////////////////////////////////////////////     CONTROL_ANGLE
-    
+
     if (c_mem.control_mode == CONTROL_ANGLE) {
 
         error_1 = g_ref.pos[0] - g_meas.pos[0];
@@ -280,11 +320,15 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     }
     
 
-    if (input_1 > 0) {
-        input_1 += PWM_DEAD;
-    } else if (input_1 < 0) {
-        input_1 -= PWM_DEAD;
-    }
+    #if PWM_DEAD != 0
+
+        if (input_1 > 0) {
+            input_1 += PWM_DEAD;
+        } else if (input_1 < 0) {
+            input_1 -= PWM_DEAD;
+        }
+
+    #endif
 
         
     if(input_1 >  PWM_MAX_VALUE) input_1 =  PWM_MAX_VALUE;
@@ -295,28 +339,23 @@ CY_ISR(ISR_MOTORS_CONTROL_ExInterrupt)
     //MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
     MOTOR_DIR_Write((input_1 < 0) + ((input_2 < 0) << 1));
 
-    input_1 = (((input_1 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
-    input_2 = (((input_2 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
+    if (c_mem.control_mode != CONTROL_PWM) {
+        input_1 = (((input_1 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
+        input_2 = (((input_2 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
+    }
 
     PWM_MOTORS_WriteCompare1(abs(input_1));
     PWM_MOTORS_WriteCompare2(abs(input_2));
-    
-    
-    /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
-    #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-        #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_MOTORS_CONTROL__ES2_PATCH ))      
-            ISR_MOTORS_CONTROL_ISR_PATCH();
-        #endif
-    #endif
+
 }
 
 //==============================================================================
-//                                                        MEASUREMENTS INTERRUPT
+//                                                           ANALOG MEASUREMENTS
 //==============================================================================
 // TODO: DESCRIPTION
 //==============================================================================
 
-CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
+void measurements_int(void)
 {
     static uint8 ind;
     int32 value;
@@ -327,7 +366,34 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
     static int32 mean_value_1;
     static int32 mean_value_2;
 
-    
+    static uint8 counter_encoder_read = 1;
+    static uint8 counter_motor_control = 1;
+
+    static uint16 timer_counter = 1;
+
+    if (timer_counter < 3000) {
+        timer_counter++;
+    } else if (timer_counter == 3000) {
+        timer_value = (uint16)MY_TIMER_ReadCounter();
+        MY_TIMER_WriteCounter(65535);
+        timer_counter = 1;
+    }
+
+
+    if (counter_encoder_read == 3) {
+        encoder_reading();
+        counter_encoder_read = 0;
+    }
+
+    if (counter_motor_control == 6) {
+        motor_control();
+        counter_motor_control = 0;
+    }
+
+    counter_motor_control++;
+    counter_encoder_read++;
+
+
     ADC_StartConvert();
 
     if (ADC_IsEndConversion(ADC_RETURN_STATUS)) {
@@ -339,7 +405,7 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
             // --- Input tension ---
             case 0:
                 device.tension = (value - 1638) * device.tension_conv_factor;
-                if (device.tension < 0) { //until there is no valid input tension repeat this measurment
+                if (device.tension < 0) { //until there is no valid input tension repeat this measurement
                     AMUXSEQ_MOTORS_Stop();
                     AMUXSEQ_MOTORS_Next();
                     counter = SAMPLES_FOR_MEAN;
@@ -385,22 +451,15 @@ CY_ISR(ISR_MEASUREMENTS_ExInterrupt)
         }
         AMUXSEQ_MOTORS_Next();      
     }
-
-    #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-        #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_MEASUREMENTS__ES2_PATCH ))      
-            ISR_MEASUREMENTS_ISR_PATCH();
-        #endif
-    #endif
 }
 
 //==============================================================================
-//                                                             ENCODER INTERRUPT
+//                                                               ENCODER READING
 //==============================================================================
 // TODO: DESCRIPTION
 //==============================================================================
 
-
-CY_ISR(ISR_ENCODER_ExInterrupt)
+void encoder_reading(void)
 {
     int i;              //iterator
 
@@ -483,17 +542,7 @@ CY_ISR(ISR_ENCODER_ExInterrupt)
         }
         
         g_meas.pos[i] = value_encoder[i];
-
     }
-
-
-/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
-#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_ENCODER__ES2_PATCH ))      
-        ISR_ENCODER_ISR_PATCH();
-    #endif
-#endif
-
 }
 
 
@@ -518,88 +567,73 @@ CY_ISR(ISR_CALIBRATE_ExInterrupt)
     g_ref.pos[0] = 0;
     g_ref.pos[1] = 0;
 
-    // Activate motors
-    if (!(g_ref.onoff & 0x03)) {
-        MOTOR_ON_OFF_Write(0x03);   
-    }
+    // // Activate motors
+    // if (!(g_ref.onoff & 0x03)) {
+    //     MOTOR_ON_OFF_Write(0x03);   
+    // }
     
     // wait for motors to reach zero position
-    ms_delay(1000);
+    CyDelay(1000);
 
-    // set new temp values for PID parameters
-    c_mem.k_p = 0.1 * 65536;
-    c_mem.k_i = 0;
-    c_mem.k_d = 0.3 * 65536;
 
-    // increase stiffness until one of the two motors reach the threshold
-    while((mean_curr_1 < MAX_CURRENT) && (abs(mean_curr_2) < MAX_CURRENT)) {
-        // increment of 0.5 degree
-        g_ref.pos[0] += 65536 / 720;
-        g_ref.pos[1] -= 65536 / 720;
+    // XXXXXXXXX
+    g_ref.pos[0] = 5000;
+    g_ref.pos[1] = 5000;
+    // XXXXXXXXXX
 
-        ms_delay(100);
+    // // set new temp values for PID parameters
+    // c_mem.k_p = 0.1 * 65536;
+    // c_mem.k_i = 0;
+    // c_mem.k_d = 0.3 * 65536;
 
-        // Current measurement
-        mean_curr_1 = 0;
-        mean_curr_2 = 0;
-        for (i = 0; i < 10; i++) {
-            mean_curr_1 += g_meas.curr[0];
-            mean_curr_2 += g_meas.curr[1];
-            ms_delay(10);
-        }
-        mean_curr_1 = mean_curr_1 / 10;
-        mean_curr_2 = mean_curr_2 / 10;
-    }
+    // // increase stiffness until one of the two motors reach the threshold
+    // while((mean_curr_1 < MAX_CURRENT) && (abs(mean_curr_2) < MAX_CURRENT)) {
+    //     // increment of 0.5 degree
+    //     g_ref.pos[0] += 65536 / 720;
+    //     g_ref.pos[1] -= 65536 / 720;
 
-    // save current value as MAX_STIFFNESS
-    g_mem.max_stiffness = g_ref.pos[0];
+    //     CyDelay(100);
 
-    // reset old values for PID parameters
-    c_mem.k_p = old_k_p;
-    c_mem.k_i = old_k_i;
-    c_mem.k_d = old_k_d;
-
-    // go back to zero position
-    g_ref.pos[0] = 0;
-    g_ref.pos[1] = 0;
-
-    // wait for motors to reach zero position
-    ms_delay(3000);
-
-    //Deactivate motors
-    // if (!(g_ref.onoff & 0x03)) {
-    //  MOTOR_ON_OFF_Write(0x00);   
+    //     // Current measurement
+    //     mean_curr_1 = 0;
+    //     mean_curr_2 = 0;
+    //     for (i = 0; i < 10; i++) {
+    //         mean_curr_1 += g_meas.curr[0];
+    //         mean_curr_2 += g_meas.curr[1];
+    //         CyDelay(10);
+    //     }
+    //     mean_curr_1 = mean_curr_1 / 10;
+    //     mean_curr_2 = mean_curr_2 / 10;
     // }
 
-    // store memory to save MAX_STIFFNESS as default value
-    memStore(DEFAULT_EEPROM_DISPLACEMENT);
-    memStore(0);
+    // // save current value as MAX_STIFFNESS
+    // g_mem.max_stiffness = g_ref.pos[0];
+
+    // // reset old values for PID parameters
+    // c_mem.k_p = old_k_p;
+    // c_mem.k_i = old_k_i;
+    // c_mem.k_d = old_k_d;
+
+    // // go back to zero position
+    // g_ref.pos[0] = 0;
+    // g_ref.pos[1] = 0;
+
+    // // wait for motors to reach zero position
+    // CyDelay(3000);
+
+    // //Deactivate motors
+    // // if (!(g_ref.onoff & 0x03)) {
+    // //  MOTOR_ON_OFF_Write(0x00);   
+    // // }
+
+    // // store memory to save MAX_STIFFNESS as default value
+    // memStore(DEFAULT_EEPROM_DISPLACEMENT);
+    // memStore(0);
 
 /* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
 #if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_ENCODER__ES2_PATCH ))      
-        ISR_ENCODER_ISR_PATCH();
-    #endif
-#endif
-
-}
-
-//==============================================================================
-//                                                               DELAY INTERRUPT
-//==============================================================================
-// TODO: DESCRIPTION
-//==============================================================================
-
-
-CY_ISR(ISR_DELAY_ExInterrupt)
-{
-
-    timer_flag = 1;
-
-/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
-#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_ENCODER__ES2_PATCH ))      
-        ISR_ENCODER_ISR_PATCH();
+    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_CALIBRATE__ES2_PATCH ))      
+        ISR_CALIBRATE_ISR_PATCH();
     #endif
 #endif
 
@@ -622,48 +656,19 @@ uint8 BITChecksum(uint32 mydata){
 }
 
 //==============================================================================
-//                                                                      MS_DELAY
-//==============================================================================
-
-
-void ms_delay(uint32 ms) {
-    uint32 period = (TIMER_CLOCK / 1000) * ms;
-    MY_TIMER_WritePeriod(period);
-    MY_TIMER_Enable(); // start the timeout counter
-    while(!timer_flag);
-    MY_TIMER_Stop();
-    timer_flag = 0;
-}
-
-//==============================================================================
 //                                                              PWM_LIMIT_SEARCH
 //==============================================================================
 
 void pwm_limit_search() {
-    if (device.tension > 13000) {
+    uint8 index;
+
+    if (device.tension > 25500) {
         device.pwm_limit = 0;
-    } else if (device.tension > 12500) {
-        device.pwm_limit = 64;
-    } else if (device.tension > 12000) {
-        device.pwm_limit = 66;
-    } else if (device.tension > 11500) {
-        device.pwm_limit = 68;
-    } else if (device.tension > 11000) {
-        device.pwm_limit = 69;
-    } else if (device.tension > 10500) {
-        device.pwm_limit = 71;
-    } else if (device.tension > 10000) {
-        device.pwm_limit = 72;
-    } else if (device.tension > 9500) {
-        device.pwm_limit = 74;
-    } else if (device.tension > 9000) {
-        device.pwm_limit = 75;
-    } else if (device.tension > 8500) {
-        device.pwm_limit = 76;
-    } else if (device.tension > 8000) {
-        device.pwm_limit = 80;
-    } else {
+    } else if (device.tension < 8000) {
         device.pwm_limit = 100;
+    } else {
+        index = (uint8)((device.tension - 8000) / 500);
+        device.pwm_limit = pwm_preload_values[index];
     }
 }
 

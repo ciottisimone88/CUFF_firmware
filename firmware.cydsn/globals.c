@@ -23,3 +23,6 @@ struct st_meas  g_meas;                 // measurements
 struct st_data  g_rx;                   // income data
 struct st_mem   g_mem, c_mem;           // memory
 struct st_dev   device;                 // device related variables
+
+
+uint16 timer_value;

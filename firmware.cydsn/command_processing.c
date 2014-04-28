@@ -696,11 +696,9 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str); 
     strcat(info_string,"\r\n");
 
-    // pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
-    // sprintf(str,"Debug: %d",(int) pages);
-    // strcat(info_string, str); 
-    // strcat(info_string,"\r\n");
-    
+    sprintf(str, "timer_value: %ld", 65536 - (uint32)timer_value);
+    strcat(info_string, str); 
+    strcat(info_string,"\r\n");
 }
 
 //==============================================================================
@@ -777,22 +775,19 @@ void sendAcknowledgment() {
 **/
 
 void memStore(int displacement)
-{   
+{
     uint8 writeStatus;
     int i;
     int pages;
 
     ISR_RS485_RX_Disable();
-    ISR_MOTORS_CONTROL_Disable();
-    ISR_ENCODER_Disable();
-    ISR_MEASUREMENTS_Disable();
 
     PWM_MOTORS_WriteCompare1(0);
     PWM_MOTORS_WriteCompare2(0);
 
     // Retrieve temperature for better writing performance
     CySetTemp();
-        
+
     memcpy( &c_mem, &g_mem, sizeof(g_mem) );
 
     pages = sizeof(g_mem) / 16 + (sizeof(g_mem) % 16 > 0);
@@ -803,13 +798,10 @@ void memStore(int displacement)
             break;
         }
     }
-    
+
     memcpy( &g_mem, &c_mem, sizeof(g_mem) );
 
-    ISR_RS485_RX_Enable();      
-    ISR_MOTORS_CONTROL_Enable();
-    ISR_ENCODER_Enable();
-    ISR_MEASUREMENTS_Enable();
+    ISR_RS485_RX_Enable();
 }
 
 

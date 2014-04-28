@@ -21,12 +21,10 @@
 
 //=====================================================     function definitions
 CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
-CY_ISR_PROTO(ISR_MOTORS_CONTROL_ExInterrupt);
-CY_ISR_PROTO(ISR_MEASUREMENTS_ExInterrupt);
-CY_ISR_PROTO(ISR_ENCODER_ExInterrupt);
 CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);
-CY_ISR_PROTO(ISR_DELAY_ExInterrupt);
 
+
+void measurements_int(void);
 uint8 BITChecksum(uint32 mydata);
 
 // ----------------------------------------------------------------------------
