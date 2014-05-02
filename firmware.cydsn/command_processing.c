@@ -847,9 +847,9 @@ void memRestore(void) {
 
     //check for initialization
     if (g_mem.flag == FALSE) {
-        memInit();   
+        memInit();
     } else {
-        memStore(0);    
+        memStore(0);
     }
 }
 

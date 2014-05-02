@@ -149,7 +149,7 @@ void main()
     {
         RESET_FF_Write(0x00);
 
-        measurements_int();
+        function_scheduler();
 
         while(FF_STATUS_Read() == 0);
 

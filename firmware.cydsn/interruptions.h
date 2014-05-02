@@ -19,12 +19,18 @@
 //=================================================================     includes
 #include <globals.h> // ALL GLOBAL DEFINITIONS, STRUCTURES AND MACROS HERE
 
-//=====================================================     function definitions
+//=====================================================     function declaration
 CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
 CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);
 
 
-void measurements_int(void);
+void function_scheduler(void);
+
+void analog_measurements(void);
+void encoder_reading(void);
+void motor_control(void);
+
+void pwm_limit_search();
 uint8 BITChecksum(uint32 mydata);
 
 // ----------------------------------------------------------------------------

@@ -63,14 +63,6 @@ static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
                                             42,
                                             42};    //35 (25500)
 
-//=============================================================     decalrations
-
-void pwm_limit_search();
-
-void encoder_reading(void);
-void motor_control(void);
-
-
 //==============================================================================
 //                                                            RS485 RX INTERRUPT
 //==============================================================================
@@ -192,6 +184,55 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
         }       
     }
 }
+
+//==============================================================================
+//                                                            FUNCTION SCHEDULER
+//==============================================================================
+// Call all the function with the right frequency
+//==============================================================================
+
+void function_scheduler(void) {
+    // Base frequency 3000 Hz
+
+    static uint8 counter_analog_measurements = 1;
+    static uint8 counter_encoder_read = 1;
+    static uint8 counter_motor_control = 1;
+
+    static uint16 timer_counter = 1;
+
+    // Divider 1, freq = 3000 Hz
+    if (counter_analog_measurements == 1) {
+        analog_measurements();
+        counter_analog_measurements = 0;
+    }
+    counter_analog_measurements++;
+
+    // Divider 3, freq = 1000 Hz
+    if (counter_encoder_read == 3) {
+        encoder_reading();
+        counter_encoder_read = 0;
+    }
+    counter_encoder_read++;
+
+    // Divider 6, freq = 500 Hz
+    if (counter_motor_control == 6) {
+        motor_control();
+        counter_motor_control = 0;
+    }
+    counter_motor_control++;
+
+
+    // User MY_TIMER to store the execution time of 3000 executions
+    // to check the base frequency
+    if (timer_counter < 3000) {
+        timer_counter++;
+    } else if (timer_counter == 3000) {
+        timer_value = (uint16)MY_TIMER_ReadCounter();
+        MY_TIMER_WriteCounter(65535);
+        timer_counter = 1;
+    }
+}
+
 
 //==============================================================================
 //                                                                MOTORS CONTROL
@@ -355,7 +396,7 @@ void motor_control(void)
 // TODO: DESCRIPTION
 //==============================================================================
 
-void measurements_int(void)
+void analog_measurements(void)
 {
     static uint8 ind;
     int32 value;
@@ -365,33 +406,6 @@ void measurements_int(void)
                                 // the first counter values of current
     static int32 mean_value_1;
     static int32 mean_value_2;
-
-    static uint8 counter_encoder_read = 1;
-    static uint8 counter_motor_control = 1;
-
-    static uint16 timer_counter = 1;
-
-    if (timer_counter < 3000) {
-        timer_counter++;
-    } else if (timer_counter == 3000) {
-        timer_value = (uint16)MY_TIMER_ReadCounter();
-        MY_TIMER_WriteCounter(65535);
-        timer_counter = 1;
-    }
-
-
-    if (counter_encoder_read == 3) {
-        encoder_reading();
-        counter_encoder_read = 0;
-    }
-
-    if (counter_motor_control == 6) {
-        motor_control();
-        counter_motor_control = 0;
-    }
-
-    counter_motor_control++;
-    counter_encoder_read++;
 
 
     ADC_StartConvert();
@@ -449,7 +463,7 @@ void measurements_int(void)
                 }
                 break;
         }
-        AMUXSEQ_MOTORS_Next();      
+        AMUXSEQ_MOTORS_Next();
     }
 }
 
@@ -579,6 +593,16 @@ CY_ISR(ISR_CALIBRATE_ExInterrupt)
     // XXXXXXXXX
     g_ref.pos[0] = 5000;
     g_ref.pos[1] = 5000;
+    // XXXXXXXXXX
+
+
+    // wait for motors to reach zero position
+    CyDelay(1000);
+
+
+    // XXXXXXXXX
+    g_ref.pos[0] = 0;
+    g_ref.pos[1] = 0;
     // XXXXXXXXXX
 
     // // set new temp values for PID parameters
