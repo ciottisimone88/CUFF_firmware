@@ -84,3 +84,45 @@ Project : firmware
 Last Modified Date & Time: 10/01/2013 01:02:47
 
 
+Last Modified Date & Time: 05/15/2014 11:14:32
+
+Project : firmware
+		Schematic : TopDesign
+
+		MOTOR_1A	v 1.90tv 2.0
+		MOTOR_EN	v 1.90tv 2.0
+		MOTOR_2A	v 1.90tv 2.0
+		RS485_RX	v 1.90tv 2.0
+		RS485_TX	v 1.90tv 2.0
+		RS_485_EN	v 1.90tv 2.0
+		Signal_1_C	v 1.90tv 2.0
+		CURRENT_SENSE_2	v 1.90tv 2.0
+		CURRENT_SENSE_1	v 1.90tv 2.0
+		MOTOR_1B	v 1.90tv 2.0
+		MOTOR_2B	v 1.90tv 2.0
+		Signal_3_C	v 1.90tv 2.0
+		Signal_2_C	v 1.90tv 2.0
+		USB_VDD	v 1.90tv 2.0
+		FTDI_ENABLE	v 1.90tv 2.0
+		VOLTAGE_SENSE	v 1.90tv 2.0
+		Signal_3_B	v 1.90tv 2.0
+		Signal_1_B	v 1.90tv 2.0
+		Signal_2_B	v 1.90tv 2.0
+		Signal_4_B	v 1.90tv 2.0
+		Signal_4_C	v 1.90tv 2.0
+		Signal_4_A	v 1.90tv 2.0
+		Signal_3_A	v 1.90tv 2.0
+		Signal_1_A	v 1.90tv 2.0
+		Signal_2_A	v 1.90tv 2.0
+		CLOCK_PWM	v 2.10tv 2.20
+		CLOCK_UART	v 2.10tv 2.20
+		CLOCK_ENCODERS	v 2.10tv 2.20
+		timer_clock	v 2.10tv 2.20
+		timer_clock_1	v 2.10tv 2.20
+
+Project : firmware
+		Design Wide APIs
+
+		cy_boot	v 4.0	v 4.10
+
+

@@ -377,8 +377,8 @@ void motor_control(void)
     if(input_1 < -PWM_MAX_VALUE) input_1 = -PWM_MAX_VALUE;
     if(input_2 < -PWM_MAX_VALUE) input_2 = -PWM_MAX_VALUE;
 
-    //MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
-    MOTOR_DIR_Write((input_1 < 0) + ((input_2 < 0) << 1));
+    MOTOR_DIR_Write((input_1 >= 0) + ((input_2 >= 0) << 1));
+    //MOTOR_DIR_Write((input_1 < 0) + ((input_2 < 0) << 1));
 
     if (c_mem.control_mode != CONTROL_PWM) {
         input_1 = (((input_1 * 1024) / PWM_MAX_VALUE) * device.pwm_limit) / 1024;
@@ -440,10 +440,10 @@ void analog_measurements(void)
                         mean_value_1 = mean_value_1 / SAMPLES_FOR_MEAN;
                     }
                 } else {
-                    g_meas.curr[0] =  ((value - mean_value_1) * 5000) / mean_value_1;
-                    if(g_meas.curr[0] < 60)
-                        sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
-                    g_meas.curr[0] = g_meas.curr[0] * sign_1;
+                    g_meas.curr[0] =  ((value - 1638) * 4000) / (1638);
+                    // if(g_meas.curr[0] < 60)
+                    //     sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
+                    // g_meas.curr[0] = g_meas.curr[0] * sign_1;
                 }
                 break;
 
@@ -455,11 +455,11 @@ void analog_measurements(void)
                         mean_value_2 = mean_value_2 / SAMPLES_FOR_MEAN;
                     }
                     counter--;
-                } else {    
-                    g_meas.curr[1] =  ((value - mean_value_2) * 5000) / mean_value_2;
-                    if(g_meas.curr[1] < 60)
-                        sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
-                    g_meas.curr[1] = g_meas.curr[1] * sign_2;
+                } else {
+                    g_meas.curr[1] =  ((value - 1638) * 4000) / (1638);
+                    // if(g_meas.curr[1] < 60)
+                    //     sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
+                    // g_meas.curr[1] = g_meas.curr[1] * sign_2;
                 }
                 break;
         }
