@@ -16,8 +16,10 @@
 
 //=================================================================     includes
 #include <command_processing.h>
-#include "commands.h"
 #include <stdio.h>
+
+#include "commands.h"
+#include "utils.h"
 
 //================================================================     variables
 
@@ -732,20 +734,6 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
     
         
     // UART_RS485_LoadRxConfig();
-}
-
-//==============================================================================
-//                                                             CHECKSUM FUNCTION
-//==============================================================================
-
-uint8 LCRChecksum(uint8 *data_array, uint8 data_length) {
-    uint8 i;
-    uint8 checksum = 0x00;
-    for(i = 0; i < data_length; ++i)
-    {
-       checksum = checksum ^ data_array[i];
-    }
-    return checksum;
 }
 
 

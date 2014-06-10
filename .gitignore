@@ -863,3 +863,5 @@ firmware.cydsn/DP8051_Keil_951/Debug/USB_VDD.lst
 firmware.cydsn/DP8051_Keil_951/Debug/USB_VDD.obj
 firmware.cydsn/DP8051_Keil_951/Debug/VOLTAGE_SENSE.lst
 firmware.cydsn/DP8051_Keil_951/Debug/VOLTAGE_SENSE.obj
+firmware.cydsn/DP8051_Keil_951/Release/utils.lst
+firmware.cydsn/DP8051_Keil_951/Release/utils.obj

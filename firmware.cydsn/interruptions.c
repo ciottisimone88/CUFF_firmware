@@ -16,11 +16,9 @@
 //=================================================================     includes
 #include <interruptions.h>
 #include <command_processing.h>
+
 #include "globals.h"
-
-//==================================================================     defines
-
-#define TIMER_CLOCK 10000
+#include "utils.h"
 
 //===================================================================     global
 
@@ -446,7 +444,7 @@ void analog_measurements(void)
                         mean_value_1 = mean_value_1 / SAMPLES_FOR_MEAN;
                     }
                 } else {
-                    g_meas.curr[0] =  ((value - 1638) * 4000) / (1638);
+                    g_meas.curr[0] =  filter_i1(abs(((value - 1638) * 4000) / (1638)));
                     // if(g_meas.curr[0] < 60)
                     //     sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
                     // g_meas.curr[0] = g_meas.curr[0] * sign_1;
@@ -462,7 +460,7 @@ void analog_measurements(void)
                     }
                     counter--;
                 } else {
-                    g_meas.curr[1] =  ((value - 1638) * 4000) / (1638);
+                    g_meas.curr[1] =  filter_i2(abs(((value - 1638) * 4000) / (1638)));
                     // if(g_meas.curr[1] < 60)
                     //     sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
                     // g_meas.curr[1] = g_meas.curr[1] * sign_2;
@@ -670,22 +668,6 @@ void calibration()
     }
 }
 
-
-//==============================================================================
-//                                                                  BIT CHECKSUM
-//==============================================================================
-
-
-uint8 BITChecksum(uint32 mydata){
-    uint8 i;
-    uint8 checksum = 0;
-    for(i = 0; i < 31; ++i)
-    {
-        checksum = checksum ^ (mydata & 1);
-        mydata = mydata >> 1;
-    }
-    return checksum;
-}
 
 //==============================================================================
 //                                                              PWM_LIMIT_SEARCH

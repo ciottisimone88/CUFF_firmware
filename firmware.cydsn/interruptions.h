@@ -32,7 +32,6 @@ void motor_control(void);
 void calibration(void);
 
 void pwm_limit_search();
-uint8 BITChecksum(uint32 mydata);
 
 // ----------------------------------------------------------------------------
 #endif
