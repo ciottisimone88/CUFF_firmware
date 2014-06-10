@@ -103,11 +103,6 @@ void main()
     AMUXSEQ_MOTORS_Start();                              // start mux
 
 
-    // Calibrate interrupt init
-
-    ISR_CALIBRATE_StartEx(ISR_CALIBRATE_ExInterrupt);
-
-
     RS485_CTS_Write(0);
 
     //XXXXXXX
@@ -141,6 +136,8 @@ void main()
     device.tension_conv_factor = ((0.25 * 101.0 * 1000) / 1638.4); //derives from datasheet calculations
     device.tension_valid = FALSE;
     device.pwm_limit = 0;
+
+    calibration_flag = STOP;
 
 
 //=========================================================     application loop

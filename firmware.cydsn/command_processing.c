@@ -286,9 +286,8 @@ void commProcess(void){
 
 //============================================================     CMD_CALIBRATE
         case CMD_CALIBRATE:
-            CALIB_TRIGG_Write(1);
+            calibration_flag = START;
             sendAcknowledgment();
-            CALIB_TRIGG_Write(0);
             break;
     }
 
@@ -548,7 +547,6 @@ void paramGet(uint16 param_type)
 void infoPrepare(unsigned char *info_string)
 {
     int i;
-    int pages;
     
     unsigned char str[50];    
     strcpy(info_string, "");        

@@ -194,32 +194,42 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 void function_scheduler(void) {
     // Base frequency 3000 Hz
 
-    static uint8 counter_analog_measurements = 1;
-    static uint8 counter_encoder_read = 1;
-    static uint8 counter_motor_control = 1;
+    static uint8 counter_analog_measurements = DIV_INIT_VALUE;
+    static uint8 counter_encoder_read        = DIV_INIT_VALUE;
+    static uint8 counter_motor_control       = DIV_INIT_VALUE;
+    static uint16 counter_calibration        = DIV_INIT_VALUE;
 
     static uint16 timer_counter = 1;
 
     // Divider 1, freq = 3000 Hz
-    if (counter_analog_measurements == 1) {
+    if (counter_analog_measurements == ANALOG_MEASUREMENTS_DIV) {
         analog_measurements();
         counter_analog_measurements = 0;
     }
     counter_analog_measurements++;
 
     // Divider 3, freq = 1000 Hz
-    if (counter_encoder_read == 3) {
+    if (counter_encoder_read == ENCODER_READ_DIV) {
         encoder_reading();
         counter_encoder_read = 0;
     }
     counter_encoder_read++;
 
     // Divider 6, freq = 500 Hz
-    if (counter_motor_control == 6) {
+    if (counter_motor_control == MOTOR_CONTROL_DIV) {
         motor_control();
         counter_motor_control = 0;
     }
     counter_motor_control++;
+
+    // Divider 300, freq = 10 Hz
+    if (calibration_flag != STOP) {
+        if (counter_calibration == CALIBRATION_DIV) {
+            calibration();
+            counter_calibration = 0;
+        }
+        counter_calibration++;
+    }
 
 
     // User MY_TIMER to store the execution time of 3000 executions
@@ -236,8 +246,6 @@ void function_scheduler(void) {
 
 //==============================================================================
 //                                                                MOTORS CONTROL
-//==============================================================================
-// Motors control
 //==============================================================================
 
 void motor_control(void)
@@ -393,8 +401,6 @@ void motor_control(void)
 //==============================================================================
 //                                                           ANALOG MEASUREMENTS
 //==============================================================================
-// TODO: DESCRIPTION
-//==============================================================================
 
 void analog_measurements(void)
 {
@@ -469,8 +475,6 @@ void analog_measurements(void)
 
 //==============================================================================
 //                                                               ENCODER READING
-//==============================================================================
-// TODO: DESCRIPTION
 //==============================================================================
 
 void encoder_reading(void)
@@ -561,107 +565,111 @@ void encoder_reading(void)
 
 
 //==============================================================================
-//                                                           CALIBRATE INTERRUPT
-//==============================================================================
-// TODO: DESCRIPTION
+//                                                          CALIBRATION FUNCTION
 //==============================================================================
 
-
-CY_ISR(ISR_CALIBRATE_ExInterrupt)
+void calibration()
 {
-    int i = 0;
-    int16 mean_curr_1, mean_curr_2;
+    static int32 old_k_p;
+    static int32 old_k_i;
+    static int32 old_k_d;
 
-    // save old PID values
-    int32 old_k_p = c_mem.k_p;
-    int32 old_k_i = c_mem.k_i;
-    int32 old_k_d = c_mem.k_d;
+    static uint8 pause_counter = 0;
 
-    // goto to zero position
-    g_ref.pos[0] = 0;
-    g_ref.pos[1] = 0;
+    switch(calibration_flag) {
+        case START:
+        {
+            ISR_RS485_RX_Disable();
 
-    // // Activate motors
-    // if (!(g_ref.onoff & 0x03)) {
-    //     MOTOR_ON_OFF_Write(0x03);   
-    // }
-    
-    // wait for motors to reach zero position
-    CyDelay(1000);
+            // save old PID values
+            old_k_p = c_mem.k_p;
+            old_k_i = c_mem.k_i;
+            old_k_d = c_mem.k_d;
 
+            // goto to zero position
+            g_ref.pos[0] = 0;
+            g_ref.pos[1] = 0;
 
-    // XXXXXXXXX
-    g_ref.pos[0] = 5000;
-    g_ref.pos[1] = 5000;
-    // XXXXXXXXXX
+            // Activate motors
+            if (!(g_ref.onoff & 0x03)) {
+                MOTOR_ON_OFF_Write(0x03);
+            }
 
+            // wait for motors to reach zero position
+            calibration_flag = PAUSE_1;
+            break;
+        }
 
-    // wait for motors to reach zero position
-    CyDelay(1000);
+        case PAUSE_1:
+            pause_counter++;
 
+            if (pause_counter == 10) {
+                pause_counter = 0;
 
-    // XXXXXXXXX
-    g_ref.pos[0] = 0;
-    g_ref.pos[1] = 0;
-    // XXXXXXXXXX
+                // set new temp values for PID parameters
+                c_mem.k_p = 0.1 * 65536;
+                c_mem.k_i = 0;
+                c_mem.k_d = 0.3 * 65536;
 
-    // // set new temp values for PID parameters
-    // c_mem.k_p = 0.1 * 65536;
-    // c_mem.k_i = 0;
-    // c_mem.k_d = 0.3 * 65536;
+                calibration_flag = CONTINUE_1;
+            }
+            break;
 
-    // // increase stiffness until one of the two motors reach the threshold
-    // while((mean_curr_1 < MAX_CURRENT) && (abs(mean_curr_2) < MAX_CURRENT)) {
-    //     // increment of 0.5 degree
-    //     g_ref.pos[0] += 65536 / 720;
-    //     g_ref.pos[1] -= 65536 / 720;
+        case CONTINUE_1:
+            // increment of 0.5 degree
+            g_ref.pos[0] += 65536 / 720;
+            g_ref.pos[1] -= 65536 / 720;
 
-    //     CyDelay(100);
+            // check if one of the motors reach the threashold
+            if ((g_meas.curr[0] > MAX_CURRENT) || (g_meas.curr[1] > MAX_CURRENT)) {
+                // save current value as MAX_STIFFNESS
+                g_mem.max_stiffness = g_ref.pos[0];
 
-    //     // Current measurement
-    //     mean_curr_1 = 0;
-    //     mean_curr_2 = 0;
-    //     for (i = 0; i < 10; i++) {
-    //         mean_curr_1 += g_meas.curr[0];
-    //         mean_curr_2 += g_meas.curr[1];
-    //         CyDelay(10);
-    //     }
-    //     mean_curr_1 = mean_curr_1 / 10;
-    //     mean_curr_2 = mean_curr_2 / 10;
-    // }
+                // reset old values for PID parameters
+                c_mem.k_p = old_k_p;
+                c_mem.k_i = old_k_i;
+                c_mem.k_d = old_k_d;
 
-    // // save current value as MAX_STIFFNESS
-    // g_mem.max_stiffness = g_ref.pos[0];
+                // go back to zero position
+                g_ref.pos[0] = 0;
+                g_ref.pos[1] = 0;
 
-    // // reset old values for PID parameters
-    // c_mem.k_p = old_k_p;
-    // c_mem.k_i = old_k_i;
-    // c_mem.k_d = old_k_d;
+                // wait for motors to reach zero position
+                calibration_flag = PAUSE_2;
+            }
+            break;
 
-    // // go back to zero position
-    // g_ref.pos[0] = 0;
-    // g_ref.pos[1] = 0;
+        case PAUSE_2:
+            pause_counter++;
 
-    // // wait for motors to reach zero position
-    // CyDelay(3000);
+            if (pause_counter == 10) {
+                pause_counter =0;
 
-    // //Deactivate motors
-    // // if (!(g_ref.onoff & 0x03)) {
-    // //  MOTOR_ON_OFF_Write(0x00);   
-    // // }
+                calibration_flag = CONTINUE_2;
+            }
+            break;
 
-    // // store memory to save MAX_STIFFNESS as default value
-    // memStore(DEFAULT_EEPROM_DISPLACEMENT);
-    // memStore(0);
+        case CONTINUE_2:
+            // Deactivate motors
+            if (!(g_ref.onoff & 0x03)) {
+                MOTOR_ON_OFF_Write(0x00);   
+            }
 
-/* PSoC3 ES1, ES2 RTC ISR PATCH  */ 
-#if(CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3)
-    #if((CYDEV_CHIP_REVISION_USED <= CYDEV_CHIP_REVISION_3A_ES2) && (ISR_CALIBRATE__ES2_PATCH ))      
-        ISR_CALIBRATE_ISR_PATCH();
-    #endif
-#endif
+            // store memory to save MAX_STIFFNESS as default value
+            memStore(DEFAULT_EEPROM_DISPLACEMENT);
+            memStore(0);
 
+            calibration_flag = STOP;
+
+            ISR_RS485_RX_Enable();
+            break;
+
+        case STOP:
+        default:
+            break;
+    }
 }
+
 
 //==============================================================================
 //                                                                  BIT CHECKSUM

@@ -36,12 +36,34 @@
 //                                                                       CONTROL
 //==============================================================================
 
+#define PWM_MAX_VALUE   100         // PWM is from 0 to 100, this value is used
+                                    // to limit this value
+#define PWM_DEAD        0           // deadband value, is directly added to the
+                                    // value of PWM always limited to 100
+
+#define ANTI_WINDUP     1000
+#define MAX_CURRENT     1000        // Max current for calibration (mA)
+
 //=======================================================     control mode types
 
 #define CONTROL_ANGLE           0
 #define CONTROL_PWM             1
 #define CONTROL_CURRENT         2
-    
+
+
+//==============================================================================
+//                                                               SYNCHRONIZATION
+//==============================================================================
+
+//Main frequency 3000 Hz
+
+#define ANALOG_MEASUREMENTS_DIV 1       // 3000 Hz
+#define ENCODER_READ_DIV        3       // 1000 Hz
+#define MOTOR_CONTROL_DIV       6       // 500 Hz
+#define CALIBRATION_DIV         300     // 10 Hz
+
+#define DIV_INIT_VALUE          1
+
 //==============================================================================
 //                                                                         OTHER
 //==============================================================================
@@ -50,15 +72,7 @@
 #define TRUE            1
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
-
-#define PWM_MAX_VALUE       100           // PWM is from 0 to 100, this value is used
-                                      // to limit this value
-#define PWM_DEAD        0             // deadband value, is directly added to the
-                                      // value of PWM always limited to 100
-
-#define ANTI_WINDUP     1000
-#define MAX_CURRENT     1000          // Max current for calibration (mA) 
-    
+   
 #define SAMPLES_FOR_MEAN 100
 
 //==============================================================================
@@ -127,6 +141,16 @@ struct st_dev{
     uint8   pwm_limit;
 };
 
+
+enum calibration_status {
+    STOP        = 0,
+    START       = 1,
+    CONTINUE_1  = 2,
+    CONTINUE_2  = 3,
+    PAUSE_1     = 4,
+    PAUSE_2     = 5
+};
+
 //====================================      external global variables definition
 
 
@@ -138,6 +162,8 @@ extern struct st_mem    g_mem, c_mem;   // memory
 extern struct st_dev    device;         //device related variables
 
 extern uint16 timer_value;
+
+extern uint8 calibration_flag;
 
 // -----------------------------------------------------------------------------
 

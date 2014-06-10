@@ -21,7 +21,6 @@
 
 //=====================================================     function declaration
 CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
-CY_ISR_PROTO(ISR_CALIBRATE_ExInterrupt);
 
 
 void function_scheduler(void);
@@ -29,6 +28,8 @@ void function_scheduler(void);
 void analog_measurements(void);
 void encoder_reading(void);
 void motor_control(void);
+
+void calibration(void);
 
 void pwm_limit_search();
 uint8 BITChecksum(uint32 mydata);
