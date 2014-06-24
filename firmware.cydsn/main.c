@@ -105,9 +105,7 @@ void main()
 
     RS485_CTS_Write(0);
 
-    //XXXXXXX
     MY_TIMER_Start();
-
     PACER_TIMER_Start();
 
     CYGlobalIntEnable;                                  // enable interrupts        
@@ -144,14 +142,19 @@ void main()
 
     for(;;)
     {
+        // Put the FF reset pin to LOW
         RESET_FF_Write(0x00);
 
+        // Call function scheduler
         function_scheduler();
 
+        //  Wait until the FF is set to 1
         while(FF_STATUS_Read() == 0);
 
+        // Command a FF reset
         RESET_FF_Write(0x01);
 
+        // Wait for FF to be reset
         while(FF_STATUS_Read() == 1);
 
         if(UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_SOFT_BUFF_OVER)

@@ -362,10 +362,9 @@ void motor_control(void)
 
     if (c_mem.control_mode == CONTROL_PWM) {
 
-        input_1 = g_ref.pos[0];
-        input_2 = g_ref.pos[1];
+        input_1 = g_ref.pos[0] >> g_mem.res[0];
+        input_2 = g_ref.pos[1] >> g_mem.res[1];
     }
-    
 
     #if PWM_DEAD != 0
 
