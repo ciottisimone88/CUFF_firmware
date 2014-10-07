@@ -177,6 +177,25 @@ void commProcess(void){
             commWrite(packet_data, packet_lenght);
         break;
 
+//=======================================================     CMD_GET_VELOCITIES
+
+        case CMD_GET_VELOCITIES:
+            // Packet: header + measure(int16) + crc
+            packet_lenght = 1 + (NUM_OF_SENSORS * 2) + 1;
+
+            packet_data[0] = CMD_GET_VELOCITIES;   //header
+
+            for (i = 0; i < NUM_OF_SENSORS; i++) {
+                *((int16 *) &packet_data[(i*2) + 1]) = (int16)(g_meas.vel[i]);
+            }
+
+            packet_data[packet_lenght - 1] = 
+                    LCRChecksum (packet_data,packet_lenght - 1);
+
+            commWrite(packet_data, packet_lenght);
+
+        break;
+
 //=========================================================     CMD_GET_ACTIVATE
         
         case CMD_GET_ACTIVATE:

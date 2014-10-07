@@ -1,4 +1,4 @@
- // ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
 // Copyright (C)  qbrobotics. All rights reserved.
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
@@ -483,6 +483,10 @@ void encoder_reading(void)
     int32 aux;
 
     static int32 last_value_encoder[NUM_OF_SENSORS];
+
+    static int32 l_value[NUM_OF_SENSORS];   //last value for vel
+    static int32 ll_value[NUM_OF_SENSORS];  //last last value for vel
+    static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
     static int8 only_first_time = 1;
 
 
@@ -557,6 +561,27 @@ void encoder_reading(void)
         }
         
         g_meas.pos[i] = value_encoder[i];
+
+        // velocity calculation
+        switch(i) {
+            case 0: {
+                g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+                break;
+            }
+            case 1: {
+                g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+                break;
+            }
+            case 2: {
+                g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+                break;
+            }
+        }
+
+        // update old values
+        lll_value[i] = ll_value[i];
+        ll_value[i] = l_value[i];
+        l_value[i] = value_encoder[i];
     }
 }
 
