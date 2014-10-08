@@ -562,26 +562,26 @@ void encoder_reading(void)
         
         g_meas.pos[i] = value_encoder[i];
 
-        // velocity calculation
-        switch(i) {
-            case 0: {
-                g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-                break;
-            }
-            case 1: {
-                g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-                break;
-            }
-            case 2: {
-                g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-                break;
-            }
-        }
+        // // velocity calculation
+        // switch(i) {
+        //     case 0: {
+        //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         break;
+        //     }
+        //     case 1: {
+        //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         break;
+        //     }
+        //     case 2: {
+        //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         break;
+        //     }
+        // }
 
-        // update old values
-        lll_value[i] = ll_value[i];
-        ll_value[i] = l_value[i];
-        l_value[i] = value_encoder[i];
+        // // update old values
+        // lll_value[i] = ll_value[i];
+        // ll_value[i] = l_value[i];
+        // l_value[i] = value_encoder[i];
     }
 }
 
