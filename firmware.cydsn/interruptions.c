@@ -315,8 +315,19 @@ void motor_control(void)
 
         // Proportional
         if (c_mem.k_p != 0) {
-            input_1 = (int32)(c_mem.k_p * error_1) >> 16;
-            input_2 = (int32)(c_mem.k_p * error_2) >> 16;
+            if ((error_1 > 131072) || (error_1 < -131072)) {  //if grater than 2^17
+                input_1 = (int32)(c_mem.k_p * (error_1 >> 8)) >> 8;
+            } else {
+                input_1 = (int32)(c_mem.k_p * error_1) >> 16;
+            }
+
+            if ((error_2 > 131072) || (error_2 < -131072)) {  //if grater than 2^17
+                input_2 = (int32)(c_mem.k_p * (error_2 >> 8)) >> 8;
+            } else {
+                input_2 = (int32)(c_mem.k_p * error_2) >> 16;
+            }
+            // input_1 = (int32)(c_mem.k_p * error_1) >> 16;
+            // input_2 = (int32)(c_mem.k_p * error_2) >> 16;
         }
 
         // Integrative
@@ -540,26 +551,26 @@ void encoder_reading(void)
         {
             aux = data_encoder[i] & 0x3FFC0;            // reset last 6 bit
             value_encoder[i] = (aux - 0x20000) >> 2;    // subtract half of max value
-                                                    // and shift to have 16 bit val
+                                                        // and shift to have 16 bit val
 
-            value_encoder[i] = -value_encoder[i];   //invert sign of sensor
+            value_encoder[i] = -value_encoder[i];       //invert sign of sensor
 
             value_encoder[i]  = (int16)(value_encoder[i] + g_mem.m_off[i]);
 
             // take care of rotations
-            aux = value_encoder[i] - last_value_encoder[i];                 
+            aux = value_encoder[i] - last_value_encoder[i];
             if (aux > 32768)
                 g_meas.rot[i]--;
             if (aux < -32768)
-                g_meas.rot[i]++;    
+                g_meas.rot[i]++;
 
             last_value_encoder[i] = value_encoder[i];   
-            
-            value_encoder[i] += g_meas.rot[i] * 65536;                           
+
+            value_encoder[i] += g_meas.rot[i] * 65536;
             //value_encoder[i] += g_mem.m_off[i];
             value_encoder[i] *= c_mem.m_mult[i];
         }
-        
+
         g_meas.pos[i] = value_encoder[i];
 
         // // velocity calculation
