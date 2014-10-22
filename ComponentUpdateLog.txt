@@ -126,3 +126,43 @@ Project : firmware
 		cy_boot	v 4.0	v 4.10
 
 
+Last Modified Date & Time: 10/22/2014 19:19:34
+
+Project : firmware
+		Schematic : TopDesign
+
+		MOTOR_1A	v 2.0tv 2.5
+		MOTOR_EN	v 2.0tv 2.5
+		MOTOR_2A	v 2.0tv 2.5
+		RS485_RX	v 2.0tv 2.5
+		RS485_TX	v 2.0tv 2.5
+		RS_485_EN	v 2.0tv 2.5
+		Signal_1_C	v 2.0tv 2.5
+		CURRENT_SENSE_2	v 2.0tv 2.5
+		CURRENT_SENSE_1	v 2.0tv 2.5
+		MOTOR_1B	v 2.0tv 2.5
+		MOTOR_2B	v 2.0tv 2.5
+		Signal_3_C	v 2.0tv 2.5
+		Signal_2_C	v 2.0tv 2.5
+		USB_VDD	v 2.0tv 2.5
+		FTDI_ENABLE	v 2.0tv 2.5
+		VOLTAGE_SENSE	v 2.0tv 2.5
+		Signal_3_B	v 2.0tv 2.5
+		Signal_1_B	v 2.0tv 2.5
+		Signal_2_B	v 2.0tv 2.5
+		Signal_4_B	v 2.0tv 2.5
+		Signal_4_C	v 2.0tv 2.5
+		Signal_4_A	v 2.0tv 2.5
+		Signal_3_A	v 2.0tv 2.5
+		Signal_1_A	v 2.0tv 2.5
+		Signal_2_A	v 2.0tv 2.5
+		ADC	v 3.0tv 3.10
+		MY_TIMER	v 2.50tv 2.60
+		PACER_TIMER	v 2.50tv 2.60
+
+Project : firmware
+		Design Wide APIs
+
+		cy_boot	v 4.10	v 4.11
+
+
