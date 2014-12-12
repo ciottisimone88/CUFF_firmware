@@ -867,3 +867,7 @@ firmware.cydsn/DP8051_Keil_951/Release/utils.lst
 firmware.cydsn/DP8051_Keil_951/Release/utils.obj
 Archive/firmware.cywrk.Archive01.zip
 Backup/firmware._3.0_SP1.zip
+firmware.cydsn/DP8051_Keil_951/Release/AMUX.lst
+firmware.cydsn/DP8051_Keil_951/Release/AMUX.obj
+firmware.cydsn/Generated_Source/PSoC3/AMUX.c
+firmware.cydsn/Generated_Source/PSoC3/AMUX.h
