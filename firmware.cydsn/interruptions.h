@@ -3,7 +3,7 @@
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
 
-/** 
+/**
 * \file         interruptions.h
 *
 * \brief        Interruptions header file.

@@ -3,7 +3,7 @@
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
 
-/** 
+/**
 * \file         interruptions.c
 *
 * \brief        Interruption functions are in this file.

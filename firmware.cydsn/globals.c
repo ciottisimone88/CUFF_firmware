@@ -3,7 +3,7 @@
 // www.qbrobotics.com
 // ----------------------------------------------------------------------------
 
-/** 
+/**
 * \file         globals.c
 *
 * \brief        Global variables.

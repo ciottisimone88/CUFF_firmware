@@ -6,18 +6,18 @@
 //
 // Description: Data processing functions.
 // ----------------------------------------------------------------------------
-//  
+//
 // Project:             qbotFirmware
 // Project Manager(s):  Fabio Bonomo and Felipe Belo
 //
 // Soft. Ver:           0.1b4
 // Date:                2012-02-06
-// 
+//
 // This version changes:
 //      - not reported
 //
 // ----------------------------------------------------------------------------
-// Copyright (C)  qbrobotics. All rights reserved.          
+// Copyright (C)  qbrobotics. All rights reserved.
 // ----------------------------------------------------------------------------
 // Permission is granted to copy, modify and redistribute this file, provided
 // header message is retained.

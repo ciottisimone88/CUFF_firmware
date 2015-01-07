@@ -3,7 +3,7 @@
 // www.qbrobotics.com
 // -----------------------------------------------------------------------------
 
-/** 
+/**
 * \file 		utils.h
 *
 * \brief 		Declaration of utility functions.
