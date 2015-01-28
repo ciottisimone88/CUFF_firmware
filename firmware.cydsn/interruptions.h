@@ -25,8 +25,11 @@ CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
 
 void function_scheduler(void);
 
-void analog_measurements(void);
-void encoder_reading(void);
+// void analog_measurements(void);
+void analog_read_init(uint8 index);
+void analog_read_end(uint8 index);
+
+void encoder_reading(uint8 i);
 void motor_control(void);
 
 void calibration(void);

@@ -191,6 +191,7 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 
 void function_scheduler(void) {
     // Base frequency 1000 Hz
+    static uint8 i;
 
     static uint8 counter_analog_measurements = DIV_INIT_VALUE;
     static uint8 counter_encoder_read        = DIV_INIT_VALUE;
@@ -199,35 +200,45 @@ void function_scheduler(void) {
 
     static uint16 timer_counter = 1;
 
-    // Divider 1, freq = 1000 Hz
-    if (counter_analog_measurements == ANALOG_MEASUREMENTS_DIV) {
-        analog_measurements();
-        counter_analog_measurements = 0;
-    }
-    counter_analog_measurements++;
 
-    // Divider 1, freq = 1000 Hz
-    if (counter_encoder_read == ENCODER_READ_DIV) {
-        encoder_reading();
-        counter_encoder_read = 0;
+    for (i = 0; i < 3; i++) {
+        analog_read_init(i);
+        encoder_reading(i);
+        analog_read_end(i);
     }
-    counter_encoder_read++;
+    motor_control();
 
-    // Divider 1, freq = 1000 Hz
-    if (counter_motor_control == MOTOR_CONTROL_DIV) {
-        motor_control();
-        counter_motor_control = 0;
-    }
-    counter_motor_control++;
 
-    // Divider 100, freq = 10 Hz
-    if (calibration_flag != STOP) {
-        if (counter_calibration == CALIBRATION_DIV) {
-            calibration();
-            counter_calibration = 0;
-        }
-        counter_calibration++;
-    }
+
+    // // Divider 1, freq = 1000 Hz
+    // if (counter_analog_measurements == ANALOG_MEASUREMENTS_DIV) {
+    //     analog_measurements();
+    //     counter_analog_measurements = 0;
+    // }
+    // counter_analog_measurements++;
+
+    // // Divider 1, freq = 1000 Hz
+    // if (counter_encoder_read == ENCODER_READ_DIV) {
+    //     encoder_reading();
+    //     counter_encoder_read = 0;
+    // }
+    // counter_encoder_read++;
+
+    // // Divider 1, freq = 1000 Hz
+    // if (counter_motor_control == MOTOR_CONTROL_DIV) {
+    //     motor_control();
+    //     counter_motor_control = 0;
+    // }
+    // counter_motor_control++;
+
+    // // Divider 100, freq = 10 Hz
+    // if (calibration_flag != STOP) {
+    //     if (counter_calibration == CALIBRATION_DIV) {
+    //         calibration();
+    //         counter_calibration = 0;
+    //     }
+    //     counter_calibration++;
+    // }
 
 
     // User MY_TIMER to store the execution time of 3000 executions
@@ -410,64 +421,132 @@ void motor_control(void)
 //                                                           ANALOG MEASUREMENTS
 //==============================================================================
 
-void analog_measurements(void)
-{
-    static uint8 i;
+void analog_read_init(uint8 index) {
+
+    // should I execute the function for this index?
+    if(index >= NUM_OF_ANALOG_INPUTS)
+        return;
+
+    AMUX_FastSelect(index);
+    ADC_StartConvert();
+}
+
+
+void analog_read_end(uint8 index) {
+
     static int32 value;
 
     static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over
-                                // the first counter values of current
+                                              // the first counter values of current
     static int32 mean_value_1;
     static int32 mean_value_2;
 
+    // should I execute the function for this index?
+    if(index >= NUM_OF_ANALOG_INPUTS)
+        return;
 
-    for (i = 0; i < NUM_OF_ANALOG_INPUTS; i++) {
+    if (ADC_IsEndConversion(ADC_WAIT_FOR_RESULT)) {
 
-        AMUX_FastSelect(i);
-        ADC_StartConvert();
+        value = (int32) ADC_GetResult16();
+        ADC_StopConvert();
 
-        if (ADC_IsEndConversion(ADC_WAIT_FOR_RESULT)) {
+        value -= 1638;
 
-            value = (int32) ADC_GetResult16();
-            ADC_StopConvert();
+        switch(index) {
 
-            switch(i) {
+            // --- Input tension ---
+            case 0:
+                device.tension = value * device.tension_conv_factor;
+                //until there is no valid input tension repeat this measurement
+                if (device.tension < 0) {
+                    device.tension_valid = FALSE;
+                } else {
+                    device.tension_valid = TRUE;
+                    pwm_limit_search();
+                }
+                break;
 
-                // --- Input tension ---
-                case 0:
-                    device.tension = (value - 1638) * device.tension_conv_factor;
-                    //until there is no valid input tension repeat this measurement
-                    if (device.tension < 0) {
-                        i = NUM_OF_ANALOG_INPUTS;
-                        device.tension_valid = FALSE;
-                    } else {
-                        device.tension_valid = TRUE;
-                        pwm_limit_search();
-                    }
-                    break;
+            // --- Current motor 1 ---
+            case 1:
+                if (device.tension_valid) {
+                    // g_meas.curr[0] =  filter_i1(abs(((value - 1638) * 4000) / (1638)));
+                    g_meas.curr[0] =  filter_i1(abs((value * 39) >> 4));
+                } else {
+                    g_meas.curr[0] = 0;
+                }
+                break;
 
-                // --- Current motor 1 ---
-                case 1:
-                    g_meas.curr[0] =  filter_i1(abs(((value - 1638) * 4000) / (1638)));
-                    break;
-
-                // --- Current motor 2 ---
-                case 2:
-                    g_meas.curr[1] =  filter_i2(abs(((value - 1638) * 4000) / (1638)));
-                    break;
-            }
+            // --- Current motor 2 ---
+            case 2:
+                if (device.tension_valid) {
+                    // g_meas.curr[1] =  filter_i2(abs(((value - 1638) * 4000) / (1638)));
+                    g_meas.curr[1] =  filter_i2(abs((value * 39) >> 4));
+                } else {
+                    g_meas.curr[1] = 0;
+                }
+                break;
         }
     }
 }
+
+// void analog_measurements(void)
+// {
+//     static uint8 i;
+//     static int32 value;
+
+//     static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over
+//                                 // the first counter values of current
+//     static int32 mean_value_1;
+//     static int32 mean_value_2;
+
+
+//     for (i = 0; i < NUM_OF_ANALOG_INPUTS; i++) {
+
+//         AMUX_FastSelect(i);
+//         ADC_StartConvert();
+
+//         if (ADC_IsEndConversion(ADC_WAIT_FOR_RESULT)) {
+
+//             value = (int32) ADC_GetResult16();
+//             ADC_StopConvert();
+
+//             switch(i) {
+
+//                 // --- Input tension ---
+//                 case 0:
+//                     device.tension = (value - 1638) * device.tension_conv_factor;
+//                     //until there is no valid input tension repeat this measurement
+//                     if (device.tension < 0) {
+//                         i = NUM_OF_ANALOG_INPUTS;
+//                         device.tension_valid = FALSE;
+//                     } else {
+//                         device.tension_valid = TRUE;
+//                         pwm_limit_search();
+//                     }
+//                     break;
+
+//                 // --- Current motor 1 ---
+//                 case 1:
+//                     g_meas.curr[0] =  filter_i1(abs(((value - 1638) * 4000) / (1638)));
+//                     break;
+
+//                 // --- Current motor 2 ---
+//                 case 2:
+//                     g_meas.curr[1] =  filter_i2(abs(((value - 1638) * 4000) / (1638)));
+//                     break;
+//             }
+//         }
+//     }
+// }
 
 //==============================================================================
 //                                                               ENCODER READING
 //==============================================================================
 
-void encoder_reading(void)
-{
-    static uint8 i;              //iterator
 
+void encoder_reading(uint8 i)
+{
+    static uint8 jj;
     static int32 data_encoder;
     static int32 value_encoder;
     static int32 aux;
@@ -479,13 +558,15 @@ void encoder_reading(void)
     static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
     static int8 only_first_time = 1;
 
+    if (i >= NUM_OF_SENSORS)
+        return;
 
-// Discard first reading
+    // Discard first reading
     if (only_first_time) {
-        for (i = 0; i < NUM_OF_SENSORS; i++) {
-            last_value_encoder[i] = 0;
+        for (jj = 0; jj < NUM_OF_SENSORS; jj++) {
+            last_value_encoder[jj] = 0;
 
-            switch(i) {
+            switch(jj) {
                 case 0: {
                     data_encoder = SHIFTREG_ENC_1_ReadData();
                     break;
@@ -508,77 +589,191 @@ void encoder_reading(void)
         CyDelay(1); //Wait to be sure the shift register is updated with a new valid measure
     }
 
-//==========================================================     reading sensors
-    for (i = 0; i < NUM_OF_SENSORS; i++) {
-        switch(i) {
-            case 0: {
-                data_encoder = SHIFTREG_ENC_1_ReadData();
-                break;
-            }
-            case 1: {
-                data_encoder = SHIFTREG_ENC_2_ReadData();
-                break;
-            }
-            case 2: {
-                data_encoder = SHIFTREG_ENC_3_ReadData();
-                break;
-            }
-            case 3: {
-                data_encoder = SHIFTREG_ENC_4_ReadData();
-                break;
-            }
+    //======================================================     reading sensors
+    switch(i) {
+        case 0: {
+            data_encoder = SHIFTREG_ENC_1_ReadData();
+            break;
         }
-
-
-        if (check_enc_data(&data_encoder)) {
-
-            aux = data_encoder & 0x3FFC0;               // reset last 6 bit
-            value_encoder = 32768 - (aux >> 2);         // shift to have 16 bit val and
-                                                        // subtract half of max value and
-                                                        // invert sign of sensor
-
-            value_encoder  = (int16)(value_encoder + g_mem.m_off[i]);
-
-            // take care of rotations
-            aux = value_encoder - last_value_encoder[i];
-            if (aux > 32768)
-                g_meas.rot[i]--;
-            if (aux < -32768)
-                g_meas.rot[i]++;
-
-            last_value_encoder[i] = value_encoder;
-
-            value_encoder += g_meas.rot[i] * 65536;
-
-            value_encoder *= c_mem.m_mult[i];
-
-            g_meas.pos[i] = value_encoder;
-        } else {
-            g_meas.pos[i] = last_value_encoder[i];
+        case 1: {
+            data_encoder = SHIFTREG_ENC_2_ReadData();
+            break;
         }
-
-        // // velocity calculation
-        // switch(i) {
-        //     case 0: {
-        //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-        //         break;
-        //     }
-        //     case 1: {
-        //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-        //         break;
-        //     }
-        //     case 2: {
-        //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
-        //         break;
-        //     }
-        // }
-
-        // // update old values
-        // lll_value[i] = ll_value[i];
-        // ll_value[i] = l_value[i];
-        // l_value[i] = value_encoder;
+        case 2: {
+            data_encoder = SHIFTREG_ENC_3_ReadData();
+            break;
+        }
+        case 3: {
+            data_encoder = SHIFTREG_ENC_4_ReadData();
+            break;
+        }
     }
+
+
+    if (check_enc_data(&data_encoder)) {
+
+        aux = data_encoder & 0x3FFC0;               // reset last 6 bit
+        value_encoder = 32768 - (aux >> 2);         // shift to have 16 bit val and
+                                                    // subtract half of max value and
+                                                    // invert sign of sensor
+
+        value_encoder  = (int16)(value_encoder + g_mem.m_off[i]);
+
+        // take care of rotations
+        aux = value_encoder - last_value_encoder[i];
+        if (aux > 32768)
+            g_meas.rot[i]--;
+        if (aux < -32768)
+            g_meas.rot[i]++;
+
+        last_value_encoder[i] = value_encoder;
+
+        value_encoder += g_meas.rot[i] * 65536;
+
+        value_encoder *= c_mem.m_mult[i];
+
+        g_meas.pos[i] = value_encoder;
+    } else {
+        g_meas.pos[i] = last_value_encoder[i];
+    }
+
+    // // velocity calculation
+    // switch(i) {
+    //     case 0: {
+    //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+    //         break;
+    //     }
+    //     case 1: {
+    //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+    //         break;
+    //     }
+    //     case 2: {
+    //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+    //         break;
+    //     }
+    // }
+
+    // // update old values
+    // lll_value[i] = ll_value[i];
+    // ll_value[i] = l_value[i];
+    // l_value[i] = value_encoder;
 }
+
+// void encoder_reading(void)
+// {
+//     static uint8 i;              //iterator
+
+//     static int32 data_encoder;
+//     static int32 value_encoder;
+//     static int32 aux;
+
+//     static int32 last_value_encoder[NUM_OF_SENSORS];
+
+//     static int32 l_value[NUM_OF_SENSORS];   //last value for vel
+//     static int32 ll_value[NUM_OF_SENSORS];  //last last value for vel
+//     static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
+//     static int8 only_first_time = 1;
+
+
+// // Discard first reading
+//     if (only_first_time) {
+//         for (i = 0; i < NUM_OF_SENSORS; i++) {
+//             last_value_encoder[i] = 0;
+
+//             switch(i) {
+//                 case 0: {
+//                     data_encoder = SHIFTREG_ENC_1_ReadData();
+//                     break;
+//                 }
+//                 case 1: {
+//                     data_encoder = SHIFTREG_ENC_2_ReadData();
+//                     break;
+//                 }
+//                 case 2: {
+//                     data_encoder = SHIFTREG_ENC_3_ReadData();
+//                     break;
+//                 }
+//                 case 3: {
+//                     data_encoder = SHIFTREG_ENC_4_ReadData();
+//                     break;
+//                 }
+//             }
+//         }
+//         only_first_time = 0;
+//         CyDelay(1); //Wait to be sure the shift register is updated with a new valid measure
+//     }
+
+// //==========================================================     reading sensors
+//     for (i = 0; i < NUM_OF_SENSORS; i++) {
+//         switch(i) {
+//             case 0: {
+//                 data_encoder = SHIFTREG_ENC_1_ReadData();
+//                 break;
+//             }
+//             case 1: {
+//                 data_encoder = SHIFTREG_ENC_2_ReadData();
+//                 break;
+//             }
+//             case 2: {
+//                 data_encoder = SHIFTREG_ENC_3_ReadData();
+//                 break;
+//             }
+//             case 3: {
+//                 data_encoder = SHIFTREG_ENC_4_ReadData();
+//                 break;
+//             }
+//         }
+
+
+//         if (check_enc_data(&data_encoder)) {
+
+//             aux = data_encoder & 0x3FFC0;               // reset last 6 bit
+//             value_encoder = 32768 - (aux >> 2);         // shift to have 16 bit val and
+//                                                         // subtract half of max value and
+//                                                         // invert sign of sensor
+
+//             value_encoder  = (int16)(value_encoder + g_mem.m_off[i]);
+
+//             // take care of rotations
+//             aux = value_encoder - last_value_encoder[i];
+//             if (aux > 32768)
+//                 g_meas.rot[i]--;
+//             if (aux < -32768)
+//                 g_meas.rot[i]++;
+
+//             last_value_encoder[i] = value_encoder;
+
+//             value_encoder += g_meas.rot[i] * 65536;
+
+//             value_encoder *= c_mem.m_mult[i];
+
+//             g_meas.pos[i] = value_encoder;
+//         } else {
+//             g_meas.pos[i] = last_value_encoder[i];
+//         }
+
+//         // // velocity calculation
+//         // switch(i) {
+//         //     case 0: {
+//         //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+//         //         break;
+//         //     }
+//         //     case 1: {
+//         //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+//         //         break;
+//         //     }
+//         //     case 2: {
+//         //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+//         //         break;
+//         //     }
+//         // }
+
+//         // // update old values
+//         // lll_value[i] = ll_value[i];
+//         // ll_value[i] = l_value[i];
+//         // l_value[i] = value_encoder;
+//     }
+// }
 
 
 //==============================================================================
