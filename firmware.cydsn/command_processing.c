@@ -696,7 +696,7 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 
-    sprintf(str, "timer_value: %ld", 65536 - (uint32)timer_value);
+    sprintf(str, "debug: %ld", 5000001 - (uint32)timer_value);
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 }

@@ -27,10 +27,11 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.0.1"
+#define VERSION         "QBMMP v5.0.2"
 
-#define NUM_OF_MOTORS   2
-#define NUM_OF_SENSORS  3
+#define NUM_OF_MOTORS           2
+#define NUM_OF_SENSORS          3
+#define NUM_OF_ANALOG_INPUTS    3
 
 //==============================================================================
 //                                                                       CONTROL
@@ -57,10 +58,10 @@
 
 //Main frequency 3000 Hz
 
-#define ANALOG_MEASUREMENTS_DIV 1       // 3000 Hz
-#define ENCODER_READ_DIV        3       // 1000 Hz
-#define MOTOR_CONTROL_DIV       6       // 500 Hz
-#define CALIBRATION_DIV         300     // 10 Hz
+#define ANALOG_MEASUREMENTS_DIV 1       // 1000 Hz
+#define ENCODER_READ_DIV        1       // 1000 Hz
+#define MOTOR_CONTROL_DIV       1       // 1000 Hz
+#define CALIBRATION_DIV         100     // 10 Hz
 
 #define DIV_INIT_VALUE          1
 
@@ -72,7 +73,7 @@
 #define TRUE            1
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
-   
+
 #define SAMPLES_FOR_MEAN 100
 
 //==============================================================================
@@ -107,10 +108,10 @@ struct st_data {
     uint8   ready;                          // Flag
 };
 
-//============================================     settings stored on the memory 
+//============================================     settings stored on the memory
 
 struct st_mem {
-    uint8   flag;                       // Device has been configured 
+    uint8   flag;                       // Device has been configured
     uint8   id;                         // device ID
 
     int32   k_p;                        // Proportional constant
@@ -163,7 +164,7 @@ extern struct st_data   g_rx;           // income data
 extern struct st_mem    g_mem, c_mem;   // memory
 extern struct st_dev    device;         //device related variables
 
-extern uint16 timer_value;
+extern uint32 timer_value;
 
 extern uint8 calibration_flag;
 

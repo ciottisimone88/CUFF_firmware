@@ -9,17 +9,17 @@
     <peripheral>
       <name>ADC</name>
       <description>No description available</description>
-      <baseAddress>0x43AA</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x17E0</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>ADC_DSM_DEC_PM_ACT_CFG</name>
           <description>Decimator Active mode Power Register</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x43AA</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -68,7 +68,7 @@
         <register>
           <name>ADC_DSM_DEC_PM_STBY_CFG</name>
           <description>Decimator Alternate Active mode Power Register</description>
-          <addressOffset>0x10</addressOffset>
+          <addressOffset>0x43BA</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -117,7 +117,7 @@
         <register>
           <name>ADC_DEC_CR</name>
           <description>Decimator Control Register</description>
-          <addressOffset>0xA56</addressOffset>
+          <addressOffset>0x4E00</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -271,7 +271,7 @@
         <register>
           <name>ADC_DEC_SR</name>
           <description>Decimator Status Register</description>
-          <addressOffset>0xA57</addressOffset>
+          <addressOffset>0x4E01</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -396,7 +396,7 @@
         <register>
           <name>ADC_DEC_SHIFT1</name>
           <description>Decimator Shift Register</description>
-          <addressOffset>0xA58</addressOffset>
+          <addressOffset>0x4E02</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -414,7 +414,7 @@
         <register>
           <name>ADC_DEC_SHIFT2</name>
           <description>Decimator Shift Register</description>
-          <addressOffset>0xA59</addressOffset>
+          <addressOffset>0x4E03</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -432,7 +432,7 @@
         <register>
           <name>ADC_DEC_DR2</name>
           <description>Decimator Decimation Rate (2) Register</description>
-          <addressOffset>0xA5A</addressOffset>
+          <addressOffset>0x4E04</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -450,7 +450,7 @@
         <register>
           <name>ADC_DEC_DR2H</name>
           <description>Decimator Decimation Rate and Overflow Correction Register</description>
-          <addressOffset>0xA5B</addressOffset>
+          <addressOffset>0x4E05</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -475,7 +475,7 @@
         <register>
           <name>ADC_DEC_DR1</name>
           <description>Decimator Decimation Rate (1) Register</description>
-          <addressOffset>0xA5C</addressOffset>
+          <addressOffset>0x4E06</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -493,7 +493,7 @@
         <register>
           <name>ADC_DEC_OCOR</name>
           <description>Decimator Offset Correction Coefficient (Low Byte) Register</description>
-          <addressOffset>0xA5E</addressOffset>
+          <addressOffset>0x4E08</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -511,7 +511,7 @@
         <register>
           <name>ADC_DEC_OCORM</name>
           <description>Decimator Offset Correction Coefficient (Middle Byte) Register</description>
-          <addressOffset>0xA5F</addressOffset>
+          <addressOffset>0x4E09</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -529,7 +529,7 @@
         <register>
           <name>ADC_DEC_OCORH</name>
           <description>Decimator Offset Correction Coefficient (High Byte) Register</description>
-          <addressOffset>0xA60</addressOffset>
+          <addressOffset>0x4E0A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -547,7 +547,7 @@
         <register>
           <name>ADC_DEC_GCOR</name>
           <description>Decimator Gain Correction Coefficient (Low Byte) Register</description>
-          <addressOffset>0xA62</addressOffset>
+          <addressOffset>0x4E0C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -565,7 +565,7 @@
         <register>
           <name>ADC_DEC_GCORH</name>
           <description>Decimator Gain Correction Coefficient (High Byte) Register</description>
-          <addressOffset>0xA63</addressOffset>
+          <addressOffset>0x4E0D</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -583,7 +583,7 @@
         <register>
           <name>ADC_DEC_GVAL</name>
           <description>Decimator Gain Correction Size Register</description>
-          <addressOffset>0xA64</addressOffset>
+          <addressOffset>0x4E0E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -601,7 +601,7 @@
         <register>
           <name>ADC_DEC_OUTSAMP</name>
           <description>Decimator Output Data Sample (Low Byte) Register</description>
-          <addressOffset>0xA66</addressOffset>
+          <addressOffset>0x4E10</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -619,7 +619,7 @@
         <register>
           <name>ADC_DEC_OUTSAMPM</name>
           <description>Decimator Output Data Sample (Middle Byte) Register</description>
-          <addressOffset>0xA67</addressOffset>
+          <addressOffset>0x4E11</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -637,7 +637,7 @@
         <register>
           <name>ADC_DEC_OUTSAMPH</name>
           <description>Decimator Output Data Sample (High Byte) Register</description>
-          <addressOffset>0xA68</addressOffset>
+          <addressOffset>0x4E12</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -655,7 +655,7 @@
         <register>
           <name>ADC_DEC_COHER</name>
           <description>Decimator Coherency Register</description>
-          <addressOffset>0xA6A</addressOffset>
+          <addressOffset>0x4E14</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -753,7 +753,7 @@
         <register>
           <name>ADC_DSM_CR0</name>
           <description>Delta Sigma Modulator Control Register 0</description>
-          <addressOffset>0x14D6</addressOffset>
+          <addressOffset>0x5880</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -822,7 +822,7 @@
         <register>
           <name>ADC_DSM_CR1</name>
           <description>Delta Sigma Modulator Control Register 1</description>
-          <addressOffset>0x14D7</addressOffset>
+          <addressOffset>0x5881</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -866,7 +866,7 @@
         <register>
           <name>ADC_DSM_CR2</name>
           <description>Delta Sigma Modulator Control Register 2</description>
-          <addressOffset>0x14D8</addressOffset>
+          <addressOffset>0x5882</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1021,7 +1021,7 @@
         <register>
           <name>ADC_DSM_CR3</name>
           <description>Delta Sigma Modulator Control Register 3</description>
-          <addressOffset>0x14D9</addressOffset>
+          <addressOffset>0x5883</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1178,7 +1178,7 @@
         <register>
           <name>ADC_DSM_CR4</name>
           <description>Delta Sigma Modulator Control Register 4</description>
-          <addressOffset>0x14DA</addressOffset>
+          <addressOffset>0x5884</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1262,7 +1262,7 @@
         <register>
           <name>ADC_DSM_CR5</name>
           <description>Delta Sigma Modulator Control Register 5</description>
-          <addressOffset>0x14DB</addressOffset>
+          <addressOffset>0x5885</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1346,7 +1346,7 @@
         <register>
           <name>ADC_DSM_CR6</name>
           <description>Delta Sigma Modulator Control Register 6</description>
-          <addressOffset>0x14DC</addressOffset>
+          <addressOffset>0x5886</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1415,7 +1415,7 @@
         <register>
           <name>ADC_DSM_CR7</name>
           <description>Delta Sigma Modulator Control Register 7</description>
-          <addressOffset>0x14DD</addressOffset>
+          <addressOffset>0x5887</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1516,7 +1516,7 @@
         <register>
           <name>ADC_DSM_CR8</name>
           <description>Delta Sigma Modulator Control Register 8</description>
-          <addressOffset>0x14DE</addressOffset>
+          <addressOffset>0x5888</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1684,7 +1684,7 @@
         <register>
           <name>ADC_DSM_CR9</name>
           <description>Delta Sigma Modulator Control Register 9</description>
-          <addressOffset>0x14DF</addressOffset>
+          <addressOffset>0x5889</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1852,7 +1852,7 @@
         <register>
           <name>ADC_DSM_CR10</name>
           <description>Delta Sigma Modulator Control Register 10</description>
-          <addressOffset>0x14E0</addressOffset>
+          <addressOffset>0x588A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -1999,7 +1999,7 @@
         <register>
           <name>ADC_DSM_CR11</name>
           <description>Delta Sigma Modulator Control Register 11</description>
-          <addressOffset>0x14E1</addressOffset>
+          <addressOffset>0x588B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2167,7 +2167,7 @@
         <register>
           <name>ADC_DSM_CR12</name>
           <description>Delta Sigma Modulator Control Register 12</description>
-          <addressOffset>0x14E2</addressOffset>
+          <addressOffset>0x588C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2385,7 +2385,7 @@
         <register>
           <name>ADC_DSM_CR13</name>
           <description>Delta Sigma Modulator Control Register 13</description>
-          <addressOffset>0x14E3</addressOffset>
+          <addressOffset>0x588D</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2394,7 +2394,7 @@
         <register>
           <name>ADC_DSM_CR14</name>
           <description>Delta Sigma Modulator Control Register 14</description>
-          <addressOffset>0x14E4</addressOffset>
+          <addressOffset>0x588E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2543,7 +2543,7 @@
         <register>
           <name>ADC_DSM_CR15</name>
           <description>Delta Sigma Modulator Control Register 15</description>
-          <addressOffset>0x14E5</addressOffset>
+          <addressOffset>0x588F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2632,7 +2632,7 @@
         <register>
           <name>ADC_DSM_CR16</name>
           <description>Delta Sigma Modulator Control Register 16</description>
-          <addressOffset>0x14E6</addressOffset>
+          <addressOffset>0x5890</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2760,7 +2760,7 @@
         <register>
           <name>ADC_DSM_CR17</name>
           <description>Delta Sigma Modulator Control Register 17</description>
-          <addressOffset>0x14E7</addressOffset>
+          <addressOffset>0x5891</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -2896,7 +2896,7 @@
         <register>
           <name>ADC_DSM_REF0</name>
           <description>Delta Sigma Modulator Reference Register 0</description>
-          <addressOffset>0x14E8</addressOffset>
+          <addressOffset>0x5892</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3030,7 +3030,7 @@
         <register>
           <name>ADC_DSM_REF1</name>
           <description>Delta Sigma Modulator Reference Register 1</description>
-          <addressOffset>0x14E9</addressOffset>
+          <addressOffset>0x5893</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3060,7 +3060,7 @@
         <register>
           <name>ADC_DSM_REF2</name>
           <description>Delta Sigma Modulator Reference Register 2</description>
-          <addressOffset>0x14EA</addressOffset>
+          <addressOffset>0x5894</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3127,7 +3127,7 @@
         <register>
           <name>ADC_DSM_REF3</name>
           <description>Delta Sigma Modulator Reference Register 3</description>
-          <addressOffset>0x14EB</addressOffset>
+          <addressOffset>0x5895</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3180,7 +3180,7 @@
         <register>
           <name>ADC_DSM_DEM0</name>
           <description>Delta Sigma Modulator Dynamic Element Matching Register 0</description>
-          <addressOffset>0x14EC</addressOffset>
+          <addressOffset>0x5896</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3286,7 +3286,7 @@
         <register>
           <name>ADC_DSM_DEM1</name>
           <description>Delta Sigma Modulator Dynamic Element Matching Register 1</description>
-          <addressOffset>0x14ED</addressOffset>
+          <addressOffset>0x5897</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3304,7 +3304,7 @@
         <register>
           <name>ADC_DSM_TST0</name>
           <description>Delta Sigma Modulator Test Register 0</description>
-          <addressOffset>0x14EE</addressOffset>
+          <addressOffset>0x5898</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3453,7 +3453,7 @@
         <register>
           <name>ADC_DSM_TST1</name>
           <description>Delta Sigma Modulator Test Register 1</description>
-          <addressOffset>0x14EF</addressOffset>
+          <addressOffset>0x5899</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3462,7 +3462,7 @@
         <register>
           <name>ADC_DSM_BUF0</name>
           <description>Delta Sigma Modulator Buffer Register 0</description>
-          <addressOffset>0x14F0</addressOffset>
+          <addressOffset>0x589A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3530,7 +3530,7 @@
         <register>
           <name>ADC_DSM_BUF1</name>
           <description>Delta Sigma Modulator Buffer Register 1</description>
-          <addressOffset>0x14F1</addressOffset>
+          <addressOffset>0x589B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3608,7 +3608,7 @@
         <register>
           <name>ADC_DSM_BUF2</name>
           <description>Delta Sigma Modulator Buffer Register 2</description>
-          <addressOffset>0x14F2</addressOffset>
+          <addressOffset>0x589C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3645,7 +3645,7 @@
         <register>
           <name>ADC_DSM_BUF3</name>
           <description>Delta Sigma Modulator Buffer Register 3</description>
-          <addressOffset>0x14F3</addressOffset>
+          <addressOffset>0x589D</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3724,7 +3724,7 @@
         <register>
           <name>ADC_DSM_MISC</name>
           <description>Delta Sigma Modulator Miscallaneous Register</description>
-          <addressOffset>0x14F4</addressOffset>
+          <addressOffset>0x589E</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3792,7 +3792,7 @@
         <register>
           <name>ADC_DSM_CLK</name>
           <description>Delta Sigma Modulator Clock Selection Register</description>
-          <addressOffset>0x175D</addressOffset>
+          <addressOffset>0x5B07</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3890,7 +3890,7 @@
         <register>
           <name>ADC_DSM_OUT0</name>
           <description>Delta Sigma Modulator Output Register 0</description>
-          <addressOffset>0x17DE</addressOffset>
+          <addressOffset>0x5B88</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -3908,7 +3908,7 @@
         <register>
           <name>ADC_DSM_OUT1</name>
           <description>Delta Sigma Modulator Output Register 1</description>
-          <addressOffset>0x17DF</addressOffset>
+          <addressOffset>0x5B89</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4036,10 +4036,10 @@
     <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x6577</baseAddress>
+      <baseAddress>0x657A</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x1</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4055,12 +4055,33 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>FF_STATUS</name>
+      <name>MOTOR_ON_OFF</name>
       <description>No description available</description>
-      <baseAddress>0x6569</baseAddress>
+      <baseAddress>0x6476</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x31</size>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>MOTOR_ON_OFF_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>FF_STATUS</name>
+      <description>No description available</description>
+      <baseAddress>0x6460</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4210,19 +4231,40 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>PACER_TIMER</name>
+      <name>RESET_FF</name>
       <description>No description available</description>
-      <baseAddress>0x43A3</baseAddress>
+      <baseAddress>0x6470</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0xB64</size>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
+        <register>
+          <name>RESET_FF_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>PACER_TIMER</name>
+      <description>No description available</description>
+      <baseAddress>0x0</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>PACER_TIMER_GLOBAL_ENABLE</name>
           <description>PM.ACT.CFG</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x43A3</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4240,7 +4282,7 @@
         <register>
           <name>PACER_TIMER_CONTROL</name>
           <description>TMRx.CFG0</description>
-          <addressOffset>0xB5D</addressOffset>
+          <addressOffset>0x4F00</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4324,7 +4366,7 @@
         <register>
           <name>PACER_TIMER_CONTROL2</name>
           <description>TMRx.CFG1</description>
-          <addressOffset>0xB5E</addressOffset>
+          <addressOffset>0x4F01</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4389,7 +4431,7 @@
         <register>
           <name>PACER_TIMER_CONTROL3_</name>
           <description>TMRx.CFG2</description>
-          <addressOffset>0xB5F</addressOffset>
+          <addressOffset>0x4F02</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4484,7 +4526,7 @@
         <register>
           <name>PACER_TIMER_PERIOD</name>
           <description>TMRx.PER0 - Assigned Period</description>
-          <addressOffset>0xB61</addressOffset>
+          <addressOffset>0x4F04</addressOffset>
           <size>16</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4493,29 +4535,8 @@
         <register>
           <name>PACER_TIMER_COUNTER</name>
           <description>TMRx.CNT_CMP0 - Current Down Counter Value</description>
-          <addressOffset>0xB63</addressOffset>
+          <addressOffset>0x4F06</addressOffset>
           <size>16</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>RESET_FF</name>
-      <description>No description available</description>
-      <baseAddress>0x6479</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>RESET_FF_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -4528,7 +4549,7 @@
       <baseAddress>0x6478</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x1</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
@@ -4544,41 +4565,20 @@
       </registers>
     </peripheral>
     <peripheral>
-      <name>MOTOR_ON_OFF</name>
-      <description>No description available</description>
-      <baseAddress>0x647E</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>MOTOR_ON_OFF_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
       <name>MY_TIMER</name>
       <description>No description available</description>
-      <baseAddress>0x6504</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x92</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>MY_TIMER_COUNTER</name>
           <description>UDB.A0 - Current Down Counter Value</description>
-          <addressOffset>0x0</addressOffset>
-          <size>16</size>
+          <addressOffset>0x6509</addressOffset>
+          <size>24</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -4586,8 +4586,8 @@
         <register>
           <name>MY_TIMER_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x20</addressOffset>
-          <size>16</size>
+          <addressOffset>0x6529</addressOffset>
+          <size>24</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
@@ -4595,7 +4595,7 @@
         <register>
           <name>MY_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x71</addressOffset>
+          <addressOffset>0x6578</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4641,7 +4641,7 @@
         <register>
           <name>MY_TIMER_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x81</addressOffset>
+          <addressOffset>0x658B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4680,7 +4680,7 @@
         <register>
           <name>MY_TIMER_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x91</addressOffset>
+          <addressOffset>0x659B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4807,17 +4807,17 @@
     <peripheral>
       <name>UART_RS485</name>
       <description>UART</description>
-      <baseAddress>0x6421</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x4A</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>RX_UART_RS485_RX_ADDRESS1</name>
           <description>RX Address1 Register</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x642F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4826,7 +4826,7 @@
         <register>
           <name>RX_UART_RS485_RX_ADDRESS2</name>
           <description>RX Address2 Register</description>
-          <addressOffset>0x10</addressOffset>
+          <addressOffset>0x643F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4835,16 +4835,7 @@
         <register>
           <name>RX_UART_RS485_RX_DATA</name>
           <description>RX Data Register</description>
-          <addressOffset>0x20</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>TX_UART_RS485_TX_DATA</name>
-          <description>TX Data Register</description>
-          <addressOffset>0x2D</addressOffset>
+          <addressOffset>0x644F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4853,7 +4844,7 @@
         <register>
           <name>RX_UART_RS485_RX_STATUS</name>
           <description>RX status register</description>
-          <addressOffset>0x3F</addressOffset>
+          <addressOffset>0x646C</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4911,9 +4902,18 @@
           </fields>
         </register>
         <register>
+          <name>TX_UART_RS485_TX_DATA</name>
+          <description>TX Data Register</description>
+          <addressOffset>0x6548</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
           <name>TX_UART_RS485_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x49</addressOffset>
+          <addressOffset>0x6569</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4954,17 +4954,17 @@
     <peripheral>
       <name>PWM_MOTORS</name>
       <description>No description available</description>
-      <baseAddress>0x642A</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x150</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>PWM_MOTORS__COMPARE1</name>
           <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6524</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4973,16 +4973,48 @@
         <register>
           <name>PWM_MOTORS__COMPARE2</name>
           <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0x10</addressOffset>
+          <addressOffset>0x6534</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
+          <name>PWM_MOTORS_Control_Reg</name>
+          <description>UDB Control Register - Assigned Control Register Value</description>
+          <addressOffset>0x6574</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTRL_ENABLE</name>
+              <description>Enable the PWM</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE2</name>
+              <description>Compare mode 2</description>
+              <lsb>3</lsb>
+              <msb>5</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE1</name>
+              <description>Compare mode 1</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
           <name>PWM_MOTORS_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x70</addressOffset>
+          <addressOffset>0x6594</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5104,75 +5136,22 @@
             </field>
           </fields>
         </register>
-        <register>
-          <name>PWM_MOTORS_Control_Reg</name>
-          <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x14F</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>CTRL_ENABLE</name>
-              <description>Enable the PWM</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE2</name>
-              <description>Compare mode 2</description>
-              <lsb>3</lsb>
-              <msb>5</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE1</name>
-              <description>Compare mode 1</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
-        </register>
-      </registers>
-    </peripheral>
-    <peripheral>
-      <name>MOTOR_DIR</name>
-      <description>No description available</description>
-      <baseAddress>0x6578</baseAddress>
-      <addressBlock>
-        <offset>0</offset>
-        <size>0x1</size>
-        <usage>registers</usage>
-      </addressBlock>
-      <registers>
-        <register>
-          <name>MOTOR_DIR_CONTROL_REG</name>
-          <description>No description available</description>
-          <addressOffset>0x0</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
       </registers>
     </peripheral>
     <peripheral>
       <name>COUNTER_ENC</name>
       <description>No description available</description>
-      <baseAddress>0x6404</baseAddress>
+      <baseAddress>0x0</baseAddress>
       <addressBlock>
         <offset>0</offset>
-        <size>0x171</size>
+        <size>0x0</size>
         <usage>registers</usage>
       </addressBlock>
       <registers>
         <register>
           <name>COUNTER_ENC_COUNTER</name>
           <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x0</addressOffset>
+          <addressOffset>0x6403</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5181,7 +5160,7 @@
         <register>
           <name>COUNTER_ENC_PERIOD</name>
           <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x20</addressOffset>
+          <addressOffset>0x6423</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5190,16 +5169,48 @@
         <register>
           <name>COUNTER_ENC_COMPARE</name>
           <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x30</addressOffset>
+          <addressOffset>0x6433</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
         </register>
         <register>
+          <name>COUNTER_ENC_Control_Reg</name>
+          <description>UDB Control Register - Assigned Control Register Value</description>
+          <addressOffset>0x6477</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+          <fields>
+            <field>
+              <name>CTRL_ENABLE</name>
+              <description>Enable Counter</description>
+              <lsb>7</lsb>
+              <msb>7</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CAPMODE</name>
+              <description>Capture mode</description>
+              <lsb>3</lsb>
+              <msb>4</msb>
+              <access>read-write</access>
+            </field>
+            <field>
+              <name>CTRL_CMPMODE</name>
+              <description>Compare mode</description>
+              <lsb>0</lsb>
+              <msb>2</msb>
+              <access>read-write</access>
+            </field>
+          </fields>
+        </register>
+        <register>
           <name>COUNTER_ENC_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x80</addressOffset>
+          <addressOffset>0x6483</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5259,7 +5270,7 @@
         <register>
           <name>COUNTER_ENC_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x90</addressOffset>
+          <addressOffset>0x6493</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5381,37 +5392,26 @@
             </field>
           </fields>
         </register>
+      </registers>
+    </peripheral>
+    <peripheral>
+      <name>MOTOR_DIR</name>
+      <description>No description available</description>
+      <baseAddress>0x657B</baseAddress>
+      <addressBlock>
+        <offset>0</offset>
+        <size>0x0</size>
+        <usage>registers</usage>
+      </addressBlock>
+      <registers>
         <register>
-          <name>COUNTER_ENC_Control_Reg</name>
-          <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x170</addressOffset>
+          <name>MOTOR_DIR_CONTROL_REG</name>
+          <description>No description available</description>
+          <addressOffset>0x0</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
           <resetMask>0</resetMask>
-          <fields>
-            <field>
-              <name>CTRL_ENABLE</name>
-              <description>Enable Counter</description>
-              <lsb>7</lsb>
-              <msb>7</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CAPMODE</name>
-              <description>Capture mode</description>
-              <lsb>3</lsb>
-              <msb>4</msb>
-              <access>read-write</access>
-            </field>
-            <field>
-              <name>CTRL_CMPMODE</name>
-              <description>Compare mode</description>
-              <lsb>0</lsb>
-              <msb>2</msb>
-              <access>read-write</access>
-            </field>
-          </fields>
         </register>
       </registers>
     </peripheral>

@@ -871,3 +871,9 @@ firmware.cydsn/DP8051_Keil_951/Release/AMUX.lst
 firmware.cydsn/DP8051_Keil_951/Release/AMUX.obj
 firmware.cydsn/Generated_Source/PSoC3/AMUX.c
 firmware.cydsn/Generated_Source/PSoC3/AMUX.h
+firmware.cydsn/codegentemp/AMUX.c
+firmware.cydsn/codegentemp/AMUX.h
+firmware.cydsn/codegentemp/project_ids.txt
+firmware.cydsn/DP8051_Keil_951/Release/C_FILE.txt
+firmware.cydsn/DP8051_Keil_951/Release/DP8051_C_FILE.txt
+firmware.cydsn/DP8051_Keil_951/Release/KEIL_8051_ASM_FILE.txt

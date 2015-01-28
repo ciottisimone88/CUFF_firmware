@@ -65,7 +65,7 @@ static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
 //                                                            RS485 RX INTERRUPT
 //==============================================================================
 // Processing RS-485 data frame:
-// 
+//
 // - 0:     Waits for beggining characters
 // - 1:     Waits for ID;
 // - 2:     Data length;
@@ -75,43 +75,43 @@ static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
 //==============================================================================
 
 CY_ISR(ISR_RS485_RX_ExInterrupt){
-     
+
 //===============================================     local variables definition
 
     static uint8    state = 0;                          // state
     static struct   st_data data_packet;                // local data packet
     static uint8    rx_queue[3];                        // last 3 bytes received
-                                                      
+
     static uint8    rx_data;                            // RS485 UART rx data
     static uint8    rx_data_type;                       // my id?
-    
-        
+
+
 //==========================================================     receive routine
 
 // get data while rx fifo is not empty
     while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {
-        rx_data = UART_RS485_GetChar();             
+        rx_data = UART_RS485_GetChar();
         switch (state){
-///////////////////////////   wait for frame start   ///////////////////////////            
-            case 0: 
+///////////////////////////   wait for frame start   ///////////////////////////
+            case 0:
 
                 rx_queue[0] = rx_queue[1];
                 rx_queue[1] = rx_queue[2];
-                rx_queue[2] = rx_data;                  
-                        
+                rx_queue[2] = rx_data;
+
                 if((rx_queue[1] == ':') &&
-                (rx_queue[2] == ':')){              
+                (rx_queue[2] == ':')){
                     rx_queue[0] = 0;
                     rx_queue[1] = 0;
                     rx_queue[2] = 0;
                     state       = 1;
-                }           
+                }
                 else if(
                 (rx_queue[0] == 63) &&      //ASCII - ?
                 (rx_queue[1] == 13) &&      //ASCII - CR
                 (rx_queue[2] == 10)){       //ASCII - LF
                     infoSend();
-                }               
+                }
                 break;
 
 ///////////////////////////////   wait for id   ////////////////////////////////
@@ -123,18 +123,18 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
                 } else {                //packet is for others
                     rx_data_type = 1;
                 }
-                data_packet.length = -1;    
-                state = 2;          
-                break; 
-            
+                data_packet.length = -1;
+                state = 2;
+                break;
+
 //////////////////////////////   wait for length   /////////////////////////////
             case  2:
-            
-                data_packet.length = rx_data;               
+
+                data_packet.length = rx_data;
                 // check validity of pack length
                 if(data_packet.length <= 1) {
                     data_packet.length = -1;
-                    state = 0;          
+                    state = 0;
                 } else if(data_packet.length > 128) {
                     data_packet.length = -1;
                     state = 0;
@@ -147,25 +147,25 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
                     }
                 }
             break;
-            
+
 /////////////////////////////////   receving   /////////////////////////////////
             case 3:
-            
+
             data_packet.buffer[data_packet.ind] = rx_data;
             data_packet.ind++;
-            // check end of transmission                
+            // check end of transmission
             if(data_packet.ind >= data_packet.length){
                 // verify if frame ID corresponded to the device ID
                 if(rx_data_type == 0){
                     // copying data from buffer to global packet
                     memcpy(g_rx.buffer, data_packet.buffer, data_packet.length);
                     g_rx.length = data_packet.length;
-                    g_rx.ready  = 1;    
+                    g_rx.ready  = 1;
                     commProcess();
                 }
                 data_packet.ind    = 0;
-                data_packet.length = -1;    
-                state              = 0;             
+                data_packet.length = -1;
+                state              = 0;
             }
             break;
 
@@ -175,11 +175,11 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
                     data_packet.ind    = 0;
                     data_packet.length = -1;
                     RS485_CTS_Write(1);
-                    RS485_CTS_Write(0);    
-                    state              = 0;             
+                    RS485_CTS_Write(0);
+                    state              = 0;
                 }
-            break;          
-        }       
+            break;
+        }
     }
 }
 
@@ -190,7 +190,7 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
 //==============================================================================
 
 void function_scheduler(void) {
-    // Base frequency 3000 Hz
+    // Base frequency 1000 Hz
 
     static uint8 counter_analog_measurements = DIV_INIT_VALUE;
     static uint8 counter_encoder_read        = DIV_INIT_VALUE;
@@ -199,28 +199,28 @@ void function_scheduler(void) {
 
     static uint16 timer_counter = 1;
 
-    // Divider 1, freq = 3000 Hz
+    // Divider 1, freq = 1000 Hz
     if (counter_analog_measurements == ANALOG_MEASUREMENTS_DIV) {
         analog_measurements();
         counter_analog_measurements = 0;
     }
     counter_analog_measurements++;
 
-    // Divider 3, freq = 1000 Hz
+    // Divider 1, freq = 1000 Hz
     if (counter_encoder_read == ENCODER_READ_DIV) {
         encoder_reading();
         counter_encoder_read = 0;
     }
     counter_encoder_read++;
 
-    // Divider 6, freq = 500 Hz
+    // Divider 1, freq = 1000 Hz
     if (counter_motor_control == MOTOR_CONTROL_DIV) {
         motor_control();
         counter_motor_control = 0;
     }
     counter_motor_control++;
 
-    // Divider 300, freq = 10 Hz
+    // Divider 100, freq = 10 Hz
     if (calibration_flag != STOP) {
         if (counter_calibration == CALIBRATION_DIV) {
             calibration();
@@ -232,13 +232,13 @@ void function_scheduler(void) {
 
     // User MY_TIMER to store the execution time of 3000 executions
     // to check the base frequency
-    if (timer_counter < 3000) {
-        timer_counter++;
-    } else if (timer_counter == 3000) {
-        timer_value = (uint16)MY_TIMER_ReadCounter();
-        MY_TIMER_WriteCounter(65535);
-        timer_counter = 1;
-    }
+    // if (timer_counter < 3000) {
+    //     timer_counter++;
+    // } else if (timer_counter == 3000) {
+        timer_value = (uint32)MY_TIMER_ReadCounter();
+        MY_TIMER_WriteCounter(5000000);
+    //     timer_counter = 1;
+    // }
 }
 
 
@@ -253,7 +253,7 @@ void motor_control(void)
 
 
     static int32 pos_prec_1, pos_prec_2;
-    int32 error_1, error_2;
+    static int32 error_1, error_2;
     static int32 err_sum_1, err_sum_2;
 
 
@@ -361,7 +361,7 @@ void motor_control(void)
 
             input_1 += ((c_mem.k_p * (error_1)) / 65536) + err_sum_1;
             input_2 += ((c_mem.k_p * (error_2)) / 65536) + err_sum_2;
-        } 
+        }
         else
         {
             input_1 = 0;
@@ -387,7 +387,7 @@ void motor_control(void)
 
     #endif
 
-        
+
     if(input_1 >  PWM_MAX_VALUE) input_1 =  PWM_MAX_VALUE;
     if(input_2 >  PWM_MAX_VALUE) input_2 =  PWM_MAX_VALUE;
     if(input_1 < -PWM_MAX_VALUE) input_1 = -PWM_MAX_VALUE;
@@ -412,72 +412,51 @@ void motor_control(void)
 
 void analog_measurements(void)
 {
-    static uint8 ind;
-    int32 value;
-    static int sign_1 = 1;
-    static int sign_2 = 1;
+    static uint8 i;
+    static int32 value;
+
     static uint16 counter = SAMPLES_FOR_MEAN; // Used to perform calibration over
                                 // the first counter values of current
     static int32 mean_value_1;
     static int32 mean_value_2;
 
 
-    ADC_StartConvert();
+    for (i = 0; i < NUM_OF_ANALOG_INPUTS; i++) {
 
-    if (ADC_IsEndConversion(ADC_RETURN_STATUS)) {
+        AMUX_FastSelect(i);
+        ADC_StartConvert();
 
-        ind = AMUXSEQ_MOTORS_GetChannel();
-        value = (int32) ADC_GetResult16();
-        ADC_StopConvert();      
-        switch(ind){
-            // --- Input tension ---
-            case 0:
-                device.tension = (value - 1638) * device.tension_conv_factor;
-                if (device.tension < 0) { //until there is no valid input tension repeat this measurement
-                    AMUXSEQ_MOTORS_Stop();
-                    AMUXSEQ_MOTORS_Next();
-                    counter = SAMPLES_FOR_MEAN;
-                    mean_value_1 = 0;
-                    mean_value_2 = 0;
-                    device.tension_valid = FALSE;
-                } else {
-                    device.tension_valid = TRUE;
-                    pwm_limit_search();
-                }
-                break;
+        if (ADC_IsEndConversion(ADC_WAIT_FOR_RESULT)) {
 
-            // --- Current motor 1 ---
-            case 1:
-                if (counter > 0) {
-                    mean_value_1 += value;
-                    if (counter == 1) {
-                        mean_value_1 = mean_value_1 / SAMPLES_FOR_MEAN;
+            value = (int32) ADC_GetResult16();
+            ADC_StopConvert();
+
+            switch(i) {
+
+                // --- Input tension ---
+                case 0:
+                    device.tension = (value - 1638) * device.tension_conv_factor;
+                    //until there is no valid input tension repeat this measurement
+                    if (device.tension < 0) {
+                        i = NUM_OF_ANALOG_INPUTS;
+                        device.tension_valid = FALSE;
+                    } else {
+                        device.tension_valid = TRUE;
+                        pwm_limit_search();
                     }
-                } else {
+                    break;
+
+                // --- Current motor 1 ---
+                case 1:
                     g_meas.curr[0] =  filter_i1(abs(((value - 1638) * 4000) / (1638)));
-                    // if(g_meas.curr[0] < 60)
-                    //     sign_1 = (MOTOR_DIR_Read() & 0x01) ? 1 : -1;
-                    // g_meas.curr[0] = g_meas.curr[0] * sign_1;
-                }
-                break;
+                    break;
 
-            // --- Current motor 2 ---
-            case 2:
-                if (counter > 0) {
-                    mean_value_2 += value;
-                    if (counter == 1) {
-                        mean_value_2 = mean_value_2 / SAMPLES_FOR_MEAN;
-                    }
-                    counter--;
-                } else {
+                // --- Current motor 2 ---
+                case 2:
                     g_meas.curr[1] =  filter_i2(abs(((value - 1638) * 4000) / (1638)));
-                    // if(g_meas.curr[1] < 60)
-                    //     sign_2 = (MOTOR_DIR_Read() & 0x02) ? 1 : -1;
-                    // g_meas.curr[1] = g_meas.curr[1] * sign_2;
-                }
-                break;
+                    break;
+            }
         }
-        AMUXSEQ_MOTORS_Next();
     }
 }
 
@@ -487,11 +466,11 @@ void analog_measurements(void)
 
 void encoder_reading(void)
 {
-    int i;              //iterator
+    static uint8 i;              //iterator
 
-    int32 data_encoder[NUM_OF_SENSORS];
-    int32 value_encoder[NUM_OF_SENSORS];
-    int32 aux;
+    static int32 data_encoder;
+    static int32 value_encoder;
+    static int32 aux;
 
     static int32 last_value_encoder[NUM_OF_SENSORS];
 
@@ -504,87 +483,92 @@ void encoder_reading(void)
 // Discard first reading
     if (only_first_time) {
         for (i = 0; i < NUM_OF_SENSORS; i++) {
+            last_value_encoder[i] = 0;
+
             switch(i) {
                 case 0: {
-                    data_encoder[i] = SHIFTREG_ENC_1_ReadData();
+                    data_encoder = SHIFTREG_ENC_1_ReadData();
                     break;
                 }
                 case 1: {
-                    data_encoder[i] = SHIFTREG_ENC_2_ReadData();
+                    data_encoder = SHIFTREG_ENC_2_ReadData();
                     break;
                 }
                 case 2: {
-                    data_encoder[i] = SHIFTREG_ENC_3_ReadData();
+                    data_encoder = SHIFTREG_ENC_3_ReadData();
                     break;
                 }
                 case 3: {
-                    data_encoder[i] = SHIFTREG_ENC_4_ReadData();
+                    data_encoder = SHIFTREG_ENC_4_ReadData();
                     break;
                 }
             }
         }
         only_first_time = 0;
+        CyDelay(1); //Wait to be sure the shift register is updated with a new valid measure
     }
 
 //==========================================================     reading sensors
     for (i = 0; i < NUM_OF_SENSORS; i++) {
         switch(i) {
             case 0: {
-                data_encoder[i] = SHIFTREG_ENC_1_ReadData();
+                data_encoder = SHIFTREG_ENC_1_ReadData();
                 break;
             }
             case 1: {
-                data_encoder[i] = SHIFTREG_ENC_2_ReadData();
+                data_encoder = SHIFTREG_ENC_2_ReadData();
                 break;
             }
             case 2: {
-                data_encoder[i] = SHIFTREG_ENC_3_ReadData();
+                data_encoder = SHIFTREG_ENC_3_ReadData();
                 break;
             }
             case 3: {
-                data_encoder[i] = SHIFTREG_ENC_4_ReadData();
+                data_encoder = SHIFTREG_ENC_4_ReadData();
                 break;
             }
         }
-        aux = data_encoder[i] & 262142;
-        if ((data_encoder[i] & 0x01 ) == BITChecksum(aux))
-        {
-            aux = data_encoder[i] & 0x3FFC0;            // reset last 6 bit
-            value_encoder[i] = (aux - 0x20000) >> 2;    // subtract half of max value
-                                                        // and shift to have 16 bit val
 
-            value_encoder[i] = -value_encoder[i];       //invert sign of sensor
 
-            value_encoder[i]  = (int16)(value_encoder[i] + g_mem.m_off[i]);
+        if (check_enc_data(&data_encoder)) {
+
+            aux = data_encoder & 0x3FFC0;               // reset last 6 bit
+            value_encoder = 32768 - (aux >> 2);         // shift to have 16 bit val and
+                                                        // subtract half of max value and
+                                                        // invert sign of sensor
+
+            value_encoder  = (int16)(value_encoder + g_mem.m_off[i]);
 
             // take care of rotations
-            aux = value_encoder[i] - last_value_encoder[i];
+            aux = value_encoder - last_value_encoder[i];
             if (aux > 32768)
                 g_meas.rot[i]--;
             if (aux < -32768)
                 g_meas.rot[i]++;
 
-            last_value_encoder[i] = value_encoder[i];   
+            last_value_encoder[i] = value_encoder;
 
-            value_encoder[i] += g_meas.rot[i] * 65536;
-            //value_encoder[i] += g_mem.m_off[i];
-            value_encoder[i] *= c_mem.m_mult[i];
+            value_encoder += g_meas.rot[i] * 65536;
+
+            value_encoder *= c_mem.m_mult[i];
+
+            g_meas.pos[i] = value_encoder;
+        } else {
+            g_meas.pos[i] = last_value_encoder[i];
         }
-
-        g_meas.pos[i] = value_encoder[i];
 
         // // velocity calculation
         // switch(i) {
         //     case 0: {
-        //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         g_meas.vel[i] = (int16)filter_vel_1((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
         //         break;
         //     }
         //     case 1: {
-        //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         g_meas.vel[i] = (int16)filter_vel_2((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
         //         break;
         //     }
         //     case 2: {
-        //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder[i] + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
+        //         g_meas.vel[i] = (int16)filter_vel_3((3*value_encoder + l_value[i] - ll_value[i] - 3*lll_value[i]) / 10);
         //         break;
         //     }
         // }
@@ -592,7 +576,7 @@ void encoder_reading(void)
         // // update old values
         // lll_value[i] = ll_value[i];
         // ll_value[i] = l_value[i];
-        // l_value[i] = value_encoder[i];
+        // l_value[i] = value_encoder;
     }
 }
 
@@ -685,7 +669,7 @@ void calibration()
         case CONTINUE_2:
             // Deactivate motors
             if (!(g_ref.onoff & 0x03)) {
-                MOTOR_ON_OFF_Write(0x00);   
+                MOTOR_ON_OFF_Write(0x00);
             }
 
             // store memory to save MAX_STIFFNESS as default value

@@ -26,4 +26,4 @@ struct st_dev   device;                 // device related variables
 
 uint8 calibration_flag;
 
-uint16 timer_value;
+uint32 timer_value;
