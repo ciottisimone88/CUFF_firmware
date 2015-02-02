@@ -17,7 +17,7 @@
 
 //--------------------------------------------------------------     DEFINITIONS
 
-#define ALPHA 512
+#define ALPHA 8
 #define BETA  300
 
 #define SIGN(A) (((A) > 0) ? (1) : ((((A) < 0) ? (-1) : (0))))

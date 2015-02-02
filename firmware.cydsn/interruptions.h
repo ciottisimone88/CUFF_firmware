@@ -30,7 +30,7 @@ void analog_read_init(uint8 index);
 void analog_read_end(uint8 index);
 
 void encoder_reading(uint8 i);
-void motor_control(void);
+void motor_control(uint8 index);
 
 void calibration(void);
 

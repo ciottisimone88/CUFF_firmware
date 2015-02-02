@@ -27,7 +27,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.0.3"
+#define VERSION         "QBMMP v5.0.4"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -42,8 +42,11 @@
 #define PWM_DEAD        0           // deadband value, is directly added to the
                                     // value of PWM always limited to 100
 
-#define ANTI_WINDUP     1000
-#define MAX_CURRENT     1000        // Max current for calibration (mA)
+// WARNING MAX_POS_ERROR_SUM need to be lower than 2^17 or you have to modify
+// the code in the motor control function
+#define MAX_POS_ERROR_SUM   100000  // Anti wind-up
+#define MAX_CURR_ERROR_SUM  100000  // Anti wind-up
+#define MAX_CURRENT           1000  // Max current for calibration (mA)
 
 //=======================================================     control mode types
 
@@ -58,9 +61,6 @@
 
 //Main frequency 3000 Hz
 
-#define ANALOG_MEASUREMENTS_DIV 1       // 1000 Hz
-#define ENCODER_READ_DIV        1       // 1000 Hz
-#define MOTOR_CONTROL_DIV       1       // 1000 Hz
 #define CALIBRATION_DIV         100     // 10 Hz
 
 #define DIV_INIT_VALUE          1
