@@ -30,6 +30,8 @@ int32 filter_vel_3(int32 value);
 uint8 LCRChecksum(uint8 *data_array, uint8 data_length);
 
 uint8 check_enc_data(uint32*);
+
+
 #endif
 
 /* [] END OF FILE */

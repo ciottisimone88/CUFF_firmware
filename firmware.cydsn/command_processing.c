@@ -17,6 +17,7 @@
 //=================================================================     includes
 #include <command_processing.h>
 #include <stdio.h>
+#include <interruptions.h>
 
 #include "commands.h"
 #include "utils.h"
@@ -357,7 +358,6 @@ void infoGet(uint16 info_type, uint8 page){
 void paramSet(uint16 param_type)
 {
     uint8 i;
-    int32 aux_int;
 
     switch(param_type)
     {
@@ -369,6 +369,12 @@ void paramSet(uint16 param_type)
             g_mem.k_p = *((double *) &g_rx.buffer[3]) * 65536;
             g_mem.k_i = *((double *) &g_rx.buffer[3 + 4]) * 65536;
             g_mem.k_d = *((double *) &g_rx.buffer[3 + 8]) * 65536;
+            break;
+
+        case PARAM_PID_CURR_CONTROL:
+            g_mem.k_p_c = *((double *) &g_rx.buffer[3]) * 65536;
+            g_mem.k_i_c = *((double *) &g_rx.buffer[3 + 4]) * 65536;
+            g_mem.k_d_c = *((double *) &g_rx.buffer[3 + 8]) * 65536;
             break;
 
         case PARAM_STARTUP_ACTIVATION:
@@ -399,6 +405,7 @@ void paramSet(uint16 param_type)
 
                 g_meas.rot[i] = 0;
             }
+            encoder_reading(ENC_READ_LAST_VAL_RESET);
             break;
 
         case PARAM_MEASUREMENT_MULTIPLIER:
@@ -424,18 +431,10 @@ void paramSet(uint16 param_type)
             }
             break;
 
-        case PARAM_MAX_STEP_POS:
-            aux_int = *((int32 *) &g_rx.buffer[3]);
-            if (aux_int >= 0) {
-                g_mem.max_step_pos = aux_int;
-            }
-            break;
+//========================================================     set_current_limit
 
-        case PARAM_MAX_STEP_NEG:
-            aux_int = *((int32 *) &g_rx.buffer[3]);
-            if (aux_int <= 0) {
-                g_mem.max_step_neg = aux_int;
-            }
+        case PARAM_CURRENT_LIMIT:
+            g_mem.current_limit = *((int16*) &g_rx.buffer[3]);
             break;
 
     }
@@ -466,6 +465,13 @@ void paramGet(uint16 param_type)
             *((double *) (packet_data + 1)) = (double) c_mem.k_p / 65536;
             *((double *) (packet_data + 5)) = (double) c_mem.k_i / 65536;
             *((double *) (packet_data + 9)) = (double) c_mem.k_d / 65536;
+            packet_lenght = 14;
+            break;
+
+        case PARAM_PID_CURR_CONTROL:
+            *((double *) (packet_data + 1)) = (double) c_mem.k_p_c / 65536;
+            *((double *) (packet_data + 5)) = (double) c_mem.k_i_c / 65536;
+            *((double *) (packet_data + 9)) = (double) c_mem.k_d_c / 65536;
             packet_lenght = 14;
             break;
 
@@ -526,14 +532,11 @@ void paramGet(uint16 param_type)
             packet_lenght = 2 + (NUM_OF_MOTORS * 2 * 4);
             break;
 
-        case PARAM_MAX_STEP_POS:
-            *((int32 *)(packet_data + 1)) = c_mem.max_step_pos;
-            packet_lenght = 6;
-            break;
+//========================================================     get_current_limit
 
-        case PARAM_MAX_STEP_NEG:
-            *((int32 *)(packet_data + 1)) = c_mem.max_step_neg;
-            packet_lenght = 6;
+        case PARAM_CURRENT_LIMIT:
+            *((int16 *)(packet_data + 1)) = c_mem.current_limit;
+            packet_lenght = 4;
             break;
 
     }
@@ -582,7 +585,6 @@ void infoPrepare(unsigned char *info_string)
         strcat(str,"NO\r\n");
     }
     strcat(info_string, str);
-    strcat(info_string,"\r\n");
 
 
     strcat(info_string,"\r\nMEASUREMENTS INFO\r\n");
@@ -607,6 +609,7 @@ void infoPrepare(unsigned char *info_string)
 
 
     strcat(info_string, "\r\nDEVICE PARAMETERS\r\n");
+
     strcat(info_string, "PID Controller:\r\n");
     sprintf(str,"P -> %f\r\n", ((double) c_mem.k_p / 65536));
     strcat(info_string, str);
@@ -614,6 +617,15 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str);
     sprintf(str,"D -> %f\r\n", ((double) c_mem.k_d / 65536));
     strcat(info_string, str);
+
+    strcat(info_string, "Current PID Controller:\r\n");
+    sprintf(str,"P -> %f\r\n", ((double) c_mem.k_p_c / 65536));
+    strcat(info_string, str);
+    sprintf(str,"I -> %f\r\n", ((double) c_mem.k_i_c / 65536));
+    strcat(info_string, str);
+    sprintf(str,"D -> %f\r\n", ((double) c_mem.k_d_c / 65536));
+    strcat(info_string, str);
+
     strcat(info_string,"\r\n");
 
     if (c_mem.activ == 0x03) {
@@ -633,14 +645,17 @@ void infoPrepare(unsigned char *info_string)
 
     strcat(info_string, "Control Mode: ");
     switch(c_mem.control_mode) {
-        case 0:
+        case CONTROL_ANGLE:
             strcat(info_string, "Position\r\n");
             break;
-        case 1:
+        case CONTROL_PWM:
             strcat(info_string, "PWM\r\n");
             break;
-        case 2:
+        case CONTROL_CURRENT:
             strcat(info_string, "Current\r\n");
+            break;
+        case CURR_AND_POS_CONTROL:
+            strcat(info_string, "Current and position\r\n");
             break;
     }
 
@@ -688,11 +703,11 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, str);
     }
 
-    sprintf(str, "Max step pos and neg: %d %d", (int)g_mem.max_step_pos, (int)g_mem.max_step_neg);
+    sprintf(str, "Max stiffness: %d", (int)g_mem.max_stiffness >> g_mem.res[0]);
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 
-    sprintf(str, "Max stiffness: %d", (int)g_mem.max_stiffness >> g_mem.res[0]);
+    sprintf(str, "Current limit: %d", (int)g_mem.current_limit);
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 
@@ -742,6 +757,7 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 //==============================================================================
 
 void sendAcknowledgment() {
+
     int packet_lenght = 2;
     uint8 packet_data[2];
 
@@ -760,8 +776,8 @@ void sendAcknowledgment() {
 * displacement
 **/
 
-void memStore(int displacement)
-{
+void memStore(int displacement) {
+
     uint8 writeStatus;
     int i;
     int pages;
@@ -799,8 +815,8 @@ void memStore(int displacement)
 * This function loads user settings from the eeprom.
 **/
 
-void memRecall(void)
-{
+void memRecall(void) {
+
     uint16 i;
 
     for (i = 0; i < sizeof(g_mem); i++) {
@@ -825,6 +841,7 @@ void memRecall(void)
 **/
 
 void memRestore(void) {
+
     uint16 i;
 
     for (i = 0; i < sizeof(g_mem); i++) {
@@ -847,14 +864,17 @@ void memRestore(void) {
 * This function initialize memory when eeprom is compromised.
 **/
 
-void memInit(void)
-{
+void memInit(void) {
+
     uint8 i;
     //initialize memory settings
     g_mem.id            =   1;
     g_mem.k_p           =   0.1 * 65536;
     g_mem.k_i           =   0 * 65536;
     g_mem.k_d           =   0.8 * 65536;
+    g_mem.k_p_c         =   5 * 65536;
+    g_mem.k_i_c         =   0 * 65536;
+    g_mem.k_d_c         =   0.8 * 65536;
     g_mem.activ         =   0;
     g_mem.input_mode    =   0;
     g_mem.control_mode  =   0;
@@ -876,10 +896,9 @@ void memInit(void)
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];
     g_mem.m_off[2] = (int32)0 << g_mem.res[2];
 
-    g_mem.max_step_pos = 0;
-    g_mem.max_step_neg = 0;
-
     g_mem.max_stiffness = (int32)3000 << g_mem.res[0];
+
+    g_mem.current_limit = DEFAULT_CURRENT_LIMIT;
 
     //set the initialized flag to show EEPROM has been populated
     g_mem.flag = TRUE;

@@ -48,9 +48,9 @@
 int i;          //iterator
 
 
-void main()
-{
-//====================================     initializations - psoc and components
+void main() {
+
+    //================================     initializations - psoc and components
 
     // EEPROM
 
@@ -98,18 +98,21 @@ void main()
 
     // ADC
 
-    ADC_Start();                                     // start ADC
+    ADC_Start();                                        // start ADC
     ADC_StartConvert();
 
 
     RS485_CTS_Write(0);
+
+    // Timers
 
     MY_TIMER_Start();
     PACER_TIMER_Start();
 
     CYGlobalIntEnable;                                  // enable interrupts
 
-//========================================     initializations - clean variables
+
+    //====================================     initializations - clean variables
 
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
@@ -123,8 +126,8 @@ void main()
 
     g_ref.onoff = c_mem.activ;
 
-    g_rx.length         = 0;
-    g_rx.ready          = 0;
+    g_rx.length = 0;
+    g_rx.ready  = 0;
 
     // Activating motors
     MOTOR_ON_OFF_Write(g_ref.onoff);
@@ -137,7 +140,8 @@ void main()
     calibration_flag = STOP;
 
 
-//=========================================================     application loop
+
+    //============================================================     main loop
 
     for(;;)
     {
@@ -160,7 +164,6 @@ void main()
             UART_RS485_ClearRxBuffer();
     }
 }
-
 
 
 /* [] END OF FILE */

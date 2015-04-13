@@ -4036,7 +4036,7 @@
     <peripheral>
       <name>RS485_CTS</name>
       <description>No description available</description>
-      <baseAddress>0x657A</baseAddress>
+      <baseAddress>0x647E</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4057,7 +4057,7 @@
     <peripheral>
       <name>MOTOR_ON_OFF</name>
       <description>No description available</description>
-      <baseAddress>0x6476</baseAddress>
+      <baseAddress>0x657A</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4078,7 +4078,7 @@
     <peripheral>
       <name>RESET_FF</name>
       <description>No description available</description>
-      <baseAddress>0x6470</baseAddress>
+      <baseAddress>0x6579</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4099,7 +4099,7 @@
     <peripheral>
       <name>FF_STATUS</name>
       <description>No description available</description>
-      <baseAddress>0x6460</baseAddress>
+      <baseAddress>0x6569</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4254,7 +4254,7 @@
     <peripheral>
       <name>MOTOR_DIR</name>
       <description>No description available</description>
-      <baseAddress>0x657B</baseAddress>
+      <baseAddress>0x6479</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4303,7 +4303,7 @@
         <register>
           <name>MY_TIMER_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6578</addressOffset>
+          <addressOffset>0x657B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4515,7 +4515,7 @@
     <peripheral>
       <name>FTDI_ENABLE_REG</name>
       <description>No description available</description>
-      <baseAddress>0x6478</baseAddress>
+      <baseAddress>0x647F</baseAddress>
       <addressBlock>
         <offset>0</offset>
         <size>0x0</size>
@@ -4865,7 +4865,7 @@
         <register>
           <name>RX_UART_RS485_RX_STATUS</name>
           <description>RX status register</description>
-          <addressOffset>0x646C</addressOffset>
+          <addressOffset>0x646F</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4925,7 +4925,7 @@
         <register>
           <name>TX_UART_RS485_TX_DATA</name>
           <description>TX Data Register</description>
-          <addressOffset>0x6548</addressOffset>
+          <addressOffset>0x6546</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4934,7 +4934,7 @@
         <register>
           <name>TX_UART_RS485_TX_STATUS</name>
           <description>TX status register</description>
-          <addressOffset>0x6569</addressOffset>
+          <addressOffset>0x6566</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4985,7 +4985,7 @@
         <register>
           <name>PWM_MOTORS__COMPARE1</name>
           <description>UDB.D0 - Assigned Compare1 Value</description>
-          <addressOffset>0x6524</addressOffset>
+          <addressOffset>0x642A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -4994,7 +4994,7 @@
         <register>
           <name>PWM_MOTORS__COMPARE2</name>
           <description>UDB.D1 - Assigned Compare2 Value</description>
-          <addressOffset>0x6534</addressOffset>
+          <addressOffset>0x643A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5003,7 +5003,7 @@
         <register>
           <name>PWM_MOTORS_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6574</addressOffset>
+          <addressOffset>0x647B</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5035,7 +5035,7 @@
         <register>
           <name>PWM_MOTORS_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6594</addressOffset>
+          <addressOffset>0x649A</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5170,36 +5170,9 @@
       </addressBlock>
       <registers>
         <register>
-          <name>COUNTER_ENC_COUNTER</name>
-          <description>UDB.A0 - Current Counter Value</description>
-          <addressOffset>0x6403</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>COUNTER_ENC_PERIOD</name>
-          <description>UDB.D0 - Assigned Period</description>
-          <addressOffset>0x6423</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
-          <name>COUNTER_ENC_COMPARE</name>
-          <description>UDB.D1 - Assigned Compare Value</description>
-          <addressOffset>0x6433</addressOffset>
-          <size>8</size>
-          <access>read-write</access>
-          <resetValue>0</resetValue>
-          <resetMask>0</resetMask>
-        </register>
-        <register>
           <name>COUNTER_ENC_Control_Reg</name>
           <description>UDB Control Register - Assigned Control Register Value</description>
-          <addressOffset>0x6477</addressOffset>
+          <addressOffset>0x6478</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5229,9 +5202,36 @@
           </fields>
         </register>
         <register>
+          <name>COUNTER_ENC_COUNTER</name>
+          <description>UDB.A0 - Current Counter Value</description>
+          <addressOffset>0x6508</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>COUNTER_ENC_PERIOD</name>
+          <description>UDB.D0 - Assigned Period</description>
+          <addressOffset>0x6528</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
+          <name>COUNTER_ENC_COMPARE</name>
+          <description>UDB.D1 - Assigned Compare Value</description>
+          <addressOffset>0x6538</addressOffset>
+          <size>8</size>
+          <access>read-write</access>
+          <resetValue>0</resetValue>
+          <resetMask>0</resetMask>
+        </register>
+        <register>
           <name>COUNTER_ENC_STATUS_MASK</name>
           <description>UDB Status bits Interrupt Mask Enable Register</description>
-          <addressOffset>0x6483</addressOffset>
+          <addressOffset>0x6588</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>
@@ -5291,7 +5291,7 @@
         <register>
           <name>COUNTER_ENC_STATUS_AUX_CTRL</name>
           <description>UDB Auxilliary Control Register</description>
-          <addressOffset>0x6493</addressOffset>
+          <addressOffset>0x6598</addressOffset>
           <size>8</size>
           <access>read-write</access>
           <resetValue>0</resetValue>

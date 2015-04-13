@@ -14,7 +14,8 @@
 
 #ifndef GLOBALS_H_INCLUDED
 #define GLOBALS_H_INCLUDED
-// -----------------------------------------------------------------------------
+
+
 
 //=================================================================     includes
 #include <device.h>
@@ -27,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.0.4"
+#define VERSION         "QBMMP v5.1.0"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -42,24 +43,19 @@
 #define PWM_DEAD        0           // deadband value, is directly added to the
                                     // value of PWM always limited to 100
 
-// WARNING MAX_POS_ERROR_SUM need to be lower than 2^17 or you have to modify
+// WARNING POS_INTEGRAL_SAT_LIMIT need to be lower than 2^17 or you have to modify
 // the code in the motor control function
-#define MAX_POS_ERROR_SUM   100000  // Anti wind-up
-#define MAX_CURR_ERROR_SUM  100000  // Anti wind-up
-#define MAX_CURRENT           1000  // Max current for calibration (mA)
-
-//=======================================================     control mode types
-
-#define CONTROL_ANGLE           0
-#define CONTROL_PWM             1
-#define CONTROL_CURRENT         2
+#define POS_INTEGRAL_SAT_LIMIT   100000  // Anti wind-up
+#define CURR_INTEGRAL_SAT_LIMIT  100000  // Anti wind-up
+#define MAX_CURRENT              1000    // Max current for calibration (mA)
+#define DEFAULT_CURRENT_LIMIT    1500    // Current limit when using CURR_AND_POS_CONTROL
 
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
 //==============================================================================
 
-//Main frequency 3000 Hz
+// Main frequency 1000 Hz
 
 #define CALIBRATION_DIV         100     // 10 Hz
 
@@ -74,7 +70,7 @@
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
 
-#define SAMPLES_FOR_MEAN 100
+#define ENC_READ_LAST_VAL_RESET 10
 
 //==============================================================================
 //                                                        structures definitions
@@ -83,79 +79,94 @@
 //=========================================================     motor references
 
 struct st_ref {
+
     int32 pos[NUM_OF_MOTORS];       // motor reference position
     uint8 onoff;                    // enable flags
+
 };
 
 //=============================================================     measurements
 
 struct st_meas {
+
     int32 pos[NUM_OF_SENSORS];      // sensor position
-
     int32 curr[NUM_OF_MOTORS];      // motor currents
-
-    int16 rot[NUM_OF_SENSORS];      // sensor rotations
-
+    int32 rot[NUM_OF_SENSORS];      // sensor rotations
     int16 vel[NUM_OF_SENSORS];      // sensor velocity
+
 };
 
 //==============================================================     data packet
 
 struct st_data {
+
     uint8   buffer[128];                    // CMD/DATA/CHECKSUM
     int16   length;                         // length
     int16   ind;                            // index
     uint8   ready;                          // Flag
+
 };
 
 //============================================     settings stored on the memory
 
 struct st_mem {
-    uint8   flag;                       // Device has been configured
-    uint8   id;                         // device ID
 
-    int32   k_p;                        // Proportional constant
-    int32   k_i;                        // Derivative constant
-    int32   k_d;                        // Integrative constant
+    uint8   flag;                       // Device has been configured               1
+    uint8   id;                         // device ID                                1
 
-    uint8   activ;                      // Activation upon startup
-    uint8   input_mode;                 // Input mode
-    uint8   control_mode;               // Control mode
+    int32   k_p;                        // Proportional constant                    4
+    int32   k_i;                        // Derivative constant                      4
+    int32   k_d;                        // Integrative constant                     4
 
-    uint8   res[NUM_OF_SENSORS];        // Angle resolution
-    int32   m_off[NUM_OF_SENSORS];      // Measurement offset
-    float   m_mult[NUM_OF_SENSORS];     // Measurement multiplier
-    uint8   pos_lim_flag;               // Position limit active/inactive
-    int32   pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors
-    int32   pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors
+    int32   k_p_c;                      // Proportional constant current            4
+    int32   k_i_c;                      // Derivative constant current              4
+    int32   k_d_c;                      // Integrative constant current             4
 
-    int32   max_step_pos;               // Maximum number of step per cylce when
-    int32   max_step_neg;               // using sensor 3 as input
+    int16   current_limit;              // Limit for absorbed current               2
 
-    uint16  max_stiffness;              // Max stiffness value obtained in calibration
+    uint8   activ;                      // Activation upon startup                  1
+    uint8   input_mode;                 // Input mode                               1       30
+    uint8   control_mode;               // Control mode                             1
+
+    uint8   res[NUM_OF_SENSORS];        // Angle resolution                         1 (3)
+    int32   m_off[NUM_OF_SENSORS];      // Measurement offset                       4 (12)
+    float   m_mult[NUM_OF_SENSORS];     // Measurement multiplier                   4 (12)  28
+    uint8   pos_lim_flag;               // Position limit active/inactive           1
+    int32   pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors       4 (8)
+    int32   pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors       4 (8)
+
+    uint16  max_stiffness;              // Max stiffness value obtained
+                                        // during calibration                       2       19
+
+                                                                                        //  77
 };
 
 //=================================================     device related variables
 
 struct st_dev{
+
     int32   tension;                // Power supply tension
     float   tension_conv_factor;    // Used to calculate input tension
     uint8   tension_valid;
     uint8   pwm_limit;
+
 };
 
 
 enum calibration_status {
+
     STOP        = 0,
     START       = 1,
     CONTINUE_1  = 2,
     CONTINUE_2  = 3,
     PAUSE_1     = 4,
     PAUSE_2     = 5
+
 };
 
-//====================================      external global variables definition
 
+
+//====================================      external global variables definition
 
 
 extern struct st_ref    g_ref;          // motor variables

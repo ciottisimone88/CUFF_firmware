@@ -50,8 +50,7 @@
  * \{
 **/
 
-enum qbmove_command
-{
+enum qbmove_command {
 
 //=========================================================     general commands
 
@@ -102,8 +101,8 @@ enum qbmove_command
 /** \name QB Move Parameters */
 /** \{ */
 
-enum qbmove_parameter
-{
+enum qbmove_parameter {
+
     PARAM_ID                     = 0,   ///< Device's ID number
     PARAM_PID_CONTROL            = 1,   ///< PID Control proportional constant
     PARAM_STARTUP_ACTIVATION     = 2,   ///< Start up activation byte
@@ -120,19 +119,21 @@ enum qbmove_parameter
     PARAM_POS_LIMIT              = 8,   ///< Position limit values
                                         ///  | int32     | int32     | int32     | int32     |
                                         ///  | INF_LIM_1 | SUP_LIM_1 | INF_LIM_2 | SUP_LIM_2 |
-
-    PARAM_MAX_STEP_POS           = 9,
-    PARAM_MAX_STEP_NEG           = 10,
-    PARAM_POS_RESOLUTION         = 11   ///< Angle resolution for inputs and
+    PARAM_POS_RESOLUTION         = 11,  ///< Angle resolution for inputs and
                                         ///  measurements. Used during
                                         ///  communication.
+
+    PARAM_CURRENT_LIMIT          = 12,  ///< Limit for absorbed current
+
+    PARAM_PID_CURR_CONTROL       = 18
+
 };
 
 
 //===================================================     resolution definitions
 
-enum qbmove_resolution
-{
+enum qbmove_resolution {
+
     RESOLUTION_360      = 0,
     RESOLUTION_720      = 1,
     RESOLUTION_1440     = 2,
@@ -142,28 +143,37 @@ enum qbmove_resolution
     RESOLUTION_23040    = 6,
     RESOLUTION_46080    = 7,
     RESOLUTION_92160    = 8
+
 };
 
 //==============================================================     input modes
 
-enum qbmove_mode
-{
+enum qbmove_input_mode {
+
     INPUT_MODE_EXTERNAL = 0,        ///< References through external
                                     ///  commands (default)
     INPUT_MODE_ENCODER3 = 1         ///< Encoder 3 drives all inputs
+
 };
 
-/** \} */
+//============================================================     control modes
+
+enum qbmove_control_mode {
+
+    CONTROL_ANGLE           = 0,        ///< Classic position control
+    CONTROL_PWM             = 1,        ///< Direct PWM value
+    CONTROL_CURRENT         = 2,        ///< Current control (beta)
+    CURR_AND_POS_CONTROL    = 3         ///< Current control (beta)
+
+};
 
 //==============================================================================
 //                                                                   INFORMATION
 //==============================================================================
-/** \name QB Move Information Strings */
-/** \{ */
-#define INFO_ALL        0 ///< All system information.
 
-/** \} */
+#define INFO_ALL        0
 
-// ----------------------------------------------------------------------------
+
 #endif
+
 /* [] END OF FILE */

@@ -17,8 +17,8 @@
 
 //--------------------------------------------------------------     DEFINITIONS
 
-#define ALPHA 8
-#define BETA  300
+#define ALPHA 8     // current filters
+#define BETA  300   // velocity filters
 
 #define SIGN(A) (((A) > 0) ? (1) : ((((A) < 0) ? (-1) : (0))))
 
@@ -48,8 +48,9 @@ int32 filter_i2(int32 new_value) {
     return aux;
 }
 
-
-//velocity filters
+//==============================================================================
+//                                                              VELOCITY FILTERS
+//==============================================================================
 
 int32 filter_vel_1(int32 new_value) {
 
@@ -91,7 +92,6 @@ int32 filter_vel_3(int32 new_value) {
 
 // Returns 1 if the encoder data is correct, 0 otherwise
 
-
 uint8 check_enc_data(uint32 *value) {
 
     const uint8* p = (const uint8*)value;
@@ -106,12 +106,12 @@ uint8 check_enc_data(uint32 *value) {
     //0x9669 is a bit vector representing the !(bitwise XOR) of 4bits
 }
 
+
 //==============================================================================
 //                                                             CHECKSUM FUNCTION
 //==============================================================================
 
 // Performs a XOR byte by byte on the entire vector
-
 
 uint8 LCRChecksum(uint8 *data_array, uint8 data_length) {
     static uint8 i;
