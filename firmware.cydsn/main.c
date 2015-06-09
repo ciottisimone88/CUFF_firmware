@@ -114,6 +114,8 @@ void main() {
 
     //====================================     initializations - clean variables
 
+    // Wait for encoders to have a valid value
+    CyDelay(10);
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_ref.pos[i] = 0;

@@ -25,7 +25,6 @@ CY_ISR_PROTO(ISR_RS485_RX_ExInterrupt);
 
 void function_scheduler(void);
 
-// void analog_measurements(void);
 void analog_read_init(uint8 index);
 void analog_read_end(uint8 index);
 

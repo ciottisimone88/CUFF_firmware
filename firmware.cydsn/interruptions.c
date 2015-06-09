@@ -76,9 +76,9 @@ static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
 //
 //==============================================================================
 
-CY_ISR(ISR_RS485_RX_ExInterrupt){
+CY_ISR(ISR_RS485_RX_ExInterrupt) {
 
-//===============================================     local variables definition
+    //===========================================     local variables definition
 
     static uint8    state = 0;                          // state
     static struct   st_data data_packet;                // local data packet
@@ -88,39 +88,37 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
     static uint8    rx_data_type;                       // my id?
 
 
-//==========================================================     receive routine
+    //======================================================     receive routine
 
-// get data while rx fifo is not empty
+    // get data while rx fifo is not empty
     while (UART_RS485_ReadRxStatus() & UART_RS485_RX_STS_FIFO_NOTEMPTY) {
         rx_data = UART_RS485_GetChar();
-        switch (state){
-///////////////////////////   wait for frame start   ///////////////////////////
+        switch (state) {
+            //-----     wait for frame start     -------------------------------
             case 0:
 
                 rx_queue[0] = rx_queue[1];
                 rx_queue[1] = rx_queue[2];
                 rx_queue[2] = rx_data;
 
-                if((rx_queue[1] == ':') &&
-                (rx_queue[2] == ':')){
+                if ((rx_queue[1] == ':') && (rx_queue[2] == ':')) {
                     rx_queue[0] = 0;
                     rx_queue[1] = 0;
                     rx_queue[2] = 0;
                     state       = 1;
-                }
-                else if(
+                } else if (
                 (rx_queue[0] == 63) &&      //ASCII - ?
                 (rx_queue[1] == 13) &&      //ASCII - CR
-                (rx_queue[2] == 10)){       //ASCII - LF
-                    infoSend();
+                (rx_queue[2] == 10)) {      //ASCII - LF
+                    infoGet(INFO_ALL);
                 }
                 break;
 
-///////////////////////////////   wait for id   ////////////////////////////////
+            //-----     wait for id     ----------------------------------------
             case  1:
 
                 // packet is for my ID or is broadcast
-                if(rx_data == c_mem.id || rx_data == 0) {
+                if (rx_data == c_mem.id || rx_data == 0) {
                     rx_data_type = 0;
                 } else {                //packet is for others
                     rx_data_type = 1;
@@ -129,15 +127,15 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
                 state = 2;
                 break;
 
-//////////////////////////////   wait for length   /////////////////////////////
+            //-----     wait for length     ------------------------------------
             case  2:
 
                 data_packet.length = rx_data;
                 // check validity of pack length
-                if(data_packet.length <= 1) {
+                if (data_packet.length <= 1) {
                     data_packet.length = -1;
                     state = 0;
-                } else if(data_packet.length > 128) {
+                } else if (data_packet.length > 128) {
                     data_packet.length = -1;
                     state = 0;
                 } else {
@@ -148,39 +146,39 @@ CY_ISR(ISR_RS485_RX_ExInterrupt){
                         state = 4;          // packet for others
                     }
                 }
-            break;
+                break;
 
-/////////////////////////////////   receving   /////////////////////////////////
+            //-----     receving     -------------------------------------------
             case 3:
 
-            data_packet.buffer[data_packet.ind] = rx_data;
-            data_packet.ind++;
-            // check end of transmission
-            if(data_packet.ind >= data_packet.length){
-                // verify if frame ID corresponded to the device ID
-                if(rx_data_type == 0){
-                    // copying data from buffer to global packet
-                    memcpy(g_rx.buffer, data_packet.buffer, data_packet.length);
-                    g_rx.length = data_packet.length;
-                    g_rx.ready  = 1;
-                    commProcess();
+                data_packet.buffer[data_packet.ind] = rx_data;
+                data_packet.ind++;
+                // check end of transmission
+                if (data_packet.ind >= data_packet.length) {
+                    // verify if frame ID corresponded to the device ID
+                    if (rx_data_type == 0) {
+                        // copying data from buffer to global packet
+                        memcpy(g_rx.buffer, data_packet.buffer, data_packet.length);
+                        g_rx.length = data_packet.length;
+                        g_rx.ready  = 1;
+                        commProcess();
+                    }
+                    data_packet.ind    = 0;
+                    data_packet.length = -1;
+                    state              = 0;
                 }
-                data_packet.ind    = 0;
-                data_packet.length = -1;
-                state              = 0;
-            }
-            break;
+                break;
 
-/////////////////////////   other device is receving    ////////////////////////
+            //-----     other device is receving     ---------------------------
             case 4:
-                if(!(--data_packet.length)) {
+                if (!(--data_packet.length)) {
                     data_packet.ind    = 0;
                     data_packet.length = -1;
                     RS485_CTS_Write(1);
                     RS485_CTS_Write(0);
                     state              = 0;
                 }
-            break;
+                break;
         }
     }
 }
@@ -610,9 +608,6 @@ void analog_read_end(uint8 index) {
             // --- Current motor 1 ---
             case 1:
                 if (device.tension_valid) {
-                    // ((value - 1638) * 4000) / 1638
-                    // magic numbers for conversion between analog read and
-                    // current.
                     g_meas.curr[0] =  filter_i1(abs((value * 39) >> 4));
                 } else {
                     g_meas.curr[0] = 0;
@@ -622,9 +617,6 @@ void analog_read_end(uint8 index) {
             // --- Current motor 2 ---
             case 2:
                 if (device.tension_valid) {
-                    // ((value - 1638) * 4000) / 1638
-                    // magic numbers for conversion between analog read and
-                    // current.
                     g_meas.curr[1] =  filter_i2(abs((value * 39) >> 4));
                 } else {
                     g_meas.curr[1] = 0;
@@ -639,59 +631,34 @@ void analog_read_end(uint8 index) {
 //==============================================================================
 
 
-void encoder_reading(uint8 i)
+void encoder_reading(uint8 index)
 {
     static uint8 jj;
+
     static uint32 data_encoder;
     static int32 value_encoder;
     static int32 aux;
 
     static int32 last_value_encoder[NUM_OF_SENSORS];
 
-    static int32 l_value[NUM_OF_SENSORS];   //last value for vel
-    static int32 ll_value[NUM_OF_SENSORS];  //last last value for vel
-    static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
+    // static int32 l_value[NUM_OF_SENSORS];   //last value for vel
+    // static int32 ll_value[NUM_OF_SENSORS];  //last last value for vel
+    // static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
     static int8 only_first_time = 1;
 
+    static uint8 error[NUM_OF_SENSORS];
 
-    if ((i >= NUM_OF_SENSORS) && (i != ENC_READ_LAST_VAL_RESET)) {
+    if ((index >= NUM_OF_SENSORS) && (index != ENC_READ_LAST_VAL_RESET)) {
         return;
-    } else if (i == ENC_READ_LAST_VAL_RESET) {
+    } else if (index == ENC_READ_LAST_VAL_RESET) {
         for (jj = 0; jj < NUM_OF_SENSORS; jj++) {
             last_value_encoder[jj] = 0;
         }
         return;
-    }
-
-    // Discard first reading
-    if (only_first_time) {
-        for (jj = 0; jj < NUM_OF_SENSORS; jj++) {
-            last_value_encoder[jj] = 0;
-
-            switch(jj) {
-                case 0:
-                    data_encoder = SHIFTREG_ENC_1_ReadData();
-                    break;
-
-                case 1:
-                    data_encoder = SHIFTREG_ENC_2_ReadData();
-                    break;
-
-                case 2:
-                    data_encoder = SHIFTREG_ENC_3_ReadData();
-                    break;
-
-                case 3:
-                    data_encoder = SHIFTREG_ENC_4_ReadData();
-                    break;
-            }
-        }
-        only_first_time = 0;
-        CyDelay(1); //Wait to be sure the shift register is updated with a new valid measure
     }
 
     //======================================================     reading sensors
-    switch(i) {
+    switch(index) {
         case 0:
             data_encoder = SHIFTREG_ENC_1_ReadData();
             break;
@@ -718,24 +685,61 @@ void encoder_reading(uint8 i)
                                                     // subtract half of max value and
                                                     // invert sign of sensor
 
-        value_encoder  = (int16)(value_encoder + g_mem.m_off[i]);
+        value_encoder  = (int16)(value_encoder + g_mem.m_off[index]);
 
-        // take care of rotations
-        aux = value_encoder - last_value_encoder[i];
-        if (aux > 32768)
-            g_meas.rot[i]--;
-        if (aux < -32768)
-            g_meas.rot[i]++;
-
-        last_value_encoder[i] = value_encoder;
-
-        value_encoder += g_meas.rot[i] << 16;
-
-        if (c_mem.m_mult[i] != 1.0) {
-            value_encoder *= c_mem.m_mult[i];
+        // Initialize last_value_encoder
+        if (only_first_time) {
+            last_value_encoder[index] = value_encoder;
+            if (index == NUM_OF_SENSORS - 1) {
+                only_first_time = 0;
+            }
         }
 
-        g_meas.pos[i] = value_encoder;
+        // take care of rotations
+        aux = value_encoder - last_value_encoder[index];
+
+        // ====================== 1 TURN ======================
+        // -32768                    0                    32767 -32768                   0                     32767
+        // |-------------------------|-------------------------|-------------------------|-------------------------|
+        //              |                         |      |           |      |                         |
+        //           -16384                     16383    |           |   -16384                     16383
+        //                                               |           |
+        //                                           24575           -24576
+        //                                               |___________|
+        //                                                   49152
+
+        // if we are in the right interval, take care of rotation
+        // and update the variable only if the difference between
+        // one measure and another is less than 1/4 of turn
+
+        // Considering we are sampling at 1kHz, this means that our shaft needs
+        // to go slower than 1/4 turn every ms -> 1 turn every 4ms
+        // equal to 250 turn/s -> 15000 RPM
+
+        if (aux > 49152) {
+            g_meas.rot[index]--;
+        } else  if (aux < -49152) {
+            g_meas.rot[index]++;
+        } else if (abs(aux) > 16384) { // if two measure are too far
+            error[index]++;
+            if (error[index] < 10) {
+                // Discard
+                return;
+            }
+            error[index] = 0;
+        }
+        error[index] = 0;
+
+
+        last_value_encoder[index] = value_encoder;
+
+        value_encoder += (int32)g_meas.rot[index] << 16;
+
+        if (c_mem.m_mult[index] != 1.0) {
+            value_encoder *= c_mem.m_mult[index];
+        }
+
+        g_meas.pos[index] = value_encoder;
     }
 
     // // velocity calculation
@@ -816,7 +820,7 @@ void calibration()
             g_ref.pos[1] -= 65536 / 720;
 
             // check if one of the motors reach the threashold
-            if ((g_meas.curr[0] > MAX_CURRENT) || (g_meas.curr[1] > MAX_CURRENT)) {
+            if ((g_meas.curr[0] > CALIB_CURRENT) || (g_meas.curr[1] > CALIB_CURRENT)) {
                 // save current value as MAX_STIFFNESS
                 g_mem.max_stiffness = g_ref.pos[0];
 

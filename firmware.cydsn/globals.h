@@ -28,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.1.0"
+#define VERSION         "QBMMP v5.1.1"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -47,7 +47,7 @@
 // the code in the motor control function
 #define POS_INTEGRAL_SAT_LIMIT   100000  // Anti wind-up
 #define CURR_INTEGRAL_SAT_LIMIT  100000  // Anti wind-up
-#define MAX_CURRENT              1000    // Max current for calibration (mA)
+#define CALIB_CURRENT            1000    // Max current for calibration (mA)
 #define DEFAULT_CURRENT_LIMIT    1500    // Current limit when using CURR_AND_POS_CONTROL
 
 

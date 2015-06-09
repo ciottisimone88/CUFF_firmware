@@ -226,8 +226,7 @@ void commProcess(void){
 
 //=============================================================     CMD_GET_INFO
         case CMD_GET_INFO:
-            infoGet( *((uint16 *) &g_rx.buffer[1]),
-                g_rx.buffer[3]);
+            infoGet( *((uint16 *) &g_rx.buffer[1]));
             break;
 
 //============================================================     CMD_SET_PARAM
@@ -319,24 +318,12 @@ void commProcess(void){
     g_rx.ready = 0;
 }
 
-
-//==============================================================================
-//                                                                     INFO SEND
-//==============================================================================
-
-void infoSend(void){
-    unsigned char packet_string[1100];
-    infoPrepare(packet_string);
-    UART_RS485_PutString(packet_string);
-}
-
 //==============================================================================
 //                                                              COMMAND GET INFO
 //==============================================================================
 
-void infoGet(uint16 info_type, uint8 page){
-    //page is not used
-    static unsigned char packet_string[1100];
+void infoGet(uint16 info_type){
+    unsigned char packet_string[1100];
 
 //======================================     choose info type and prepare string
 
@@ -361,53 +348,60 @@ void paramSet(uint16 param_type)
 
     switch(param_type)
     {
+        //-----------------------------------------------------------     Set Id
         case PARAM_ID:
             g_mem.id = g_rx.buffer[3];
             break;
 
+        //----------------------------------------------------     Set PID Param
         case PARAM_PID_CONTROL:
             g_mem.k_p = *((double *) &g_rx.buffer[3]) * 65536;
             g_mem.k_i = *((double *) &g_rx.buffer[3 + 4]) * 65536;
             g_mem.k_d = *((double *) &g_rx.buffer[3 + 8]) * 65536;
             break;
 
+        //-----------------------------------------------     Set Curr PID Param
         case PARAM_PID_CURR_CONTROL:
             g_mem.k_p_c = *((double *) &g_rx.buffer[3]) * 65536;
             g_mem.k_i_c = *((double *) &g_rx.buffer[3 + 4]) * 65536;
             g_mem.k_d_c = *((double *) &g_rx.buffer[3 + 8]) * 65536;
             break;
 
+        //--------------------------------------     Set Startup Activation Flag
         case PARAM_STARTUP_ACTIVATION:
             g_mem.activ = g_rx.buffer[3];
             break;
 
+        //---------------------------------------------------     Set Input Mode
         case PARAM_INPUT_MODE:
             g_mem.input_mode = g_rx.buffer[3];
             break;
 
+        //-------------------------------------------------     Set Control Mode
         case PARAM_CONTROL_MODE:
             g_mem.control_mode = g_rx.buffer[3];
             break;
 
+        //---------------------------------------------------     Set Resolution
         case PARAM_POS_RESOLUTION:
             for (i =0; i < NUM_OF_SENSORS; i++) {
                 g_mem.res[i] = g_rx.buffer[i+3];
             }
             break;
 
+        //------------------------------------------------------     Set Offsets
         case PARAM_MEASUREMENT_OFFSET:
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
-                g_mem.m_off[i] =
-                    *((int16 *) &g_rx.buffer[3 + i * 2]);
-                g_mem.m_off[i] =
-                        g_mem.m_off[i] << g_mem.res[i];
+                g_mem.m_off[i] = *((int16 *) &g_rx.buffer[3 + i * 2]);
+                g_mem.m_off[i] = g_mem.m_off[i] << g_mem.res[i];
 
                 g_meas.rot[i] = 0;
             }
             encoder_reading(ENC_READ_LAST_VAL_RESET);
             break;
 
+        //--------------------------------------------------     Set Multipliers
         case PARAM_MEASUREMENT_MULTIPLIER:
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
@@ -416,10 +410,12 @@ void paramSet(uint16 param_type)
             }
             break;
 
+        //------------------------------------------     Set Position Limit Flag
         case PARAM_POS_LIMIT_FLAG:
             g_mem.pos_lim_flag = *((uint8 *) &g_rx.buffer[3]);
             break;
 
+        //-----------------------------------------------     Set Position Limit
         case PARAM_POS_LIMIT:
             for (i = 0; i < NUM_OF_MOTORS; i++) {
                 g_mem.pos_lim_inf[i] = *((int16 *) &g_rx.buffer[3 + (i * 4)]);
@@ -431,8 +427,7 @@ void paramSet(uint16 param_type)
             }
             break;
 
-//========================================================     set_current_limit
-
+        //------------------------------------------------     Set Current Limit
         case PARAM_CURRENT_LIMIT:
             g_mem.current_limit = *((int16*) &g_rx.buffer[3]);
             break;
@@ -456,11 +451,13 @@ void paramGet(uint16 param_type)
 
     switch(param_type)
     {
+        //-----------------------------------------------------------     Get Id
         case PARAM_ID:
             packet_data[1] = c_mem.id;
             packet_lenght = 3;
             break;
 
+        //----------------------------------------------------     Get PID Param
         case PARAM_PID_CONTROL:
             *((double *) (packet_data + 1)) = (double) c_mem.k_p / 65536;
             *((double *) (packet_data + 5)) = (double) c_mem.k_i / 65536;
@@ -468,6 +465,7 @@ void paramGet(uint16 param_type)
             packet_lenght = 14;
             break;
 
+        //-----------------------------------------------     Get Curr PID Param
         case PARAM_PID_CURR_CONTROL:
             *((double *) (packet_data + 1)) = (double) c_mem.k_p_c / 65536;
             *((double *) (packet_data + 5)) = (double) c_mem.k_i_c / 65536;
@@ -475,21 +473,25 @@ void paramGet(uint16 param_type)
             packet_lenght = 14;
             break;
 
+        //--------------------------------------     Get Startup Activation Flag
         case PARAM_STARTUP_ACTIVATION:
             packet_data[1] = c_mem.activ;
             packet_lenght = 3;
             break;
 
+        //---------------------------------------------------     Get Input Mode
         case PARAM_INPUT_MODE:
             packet_data[1] = c_mem.input_mode;
             packet_lenght = 3;
             break;
 
+        //-------------------------------------------------     Get Control Mode
         case PARAM_CONTROL_MODE:
             packet_data[1] = c_mem.control_mode;
             packet_lenght = 3;
             break;
 
+        //---------------------------------------------------     Get Resolution
         case PARAM_POS_RESOLUTION:
             for (i = 0; i < NUM_OF_SENSORS; i++) {
                 packet_data[i+1] = c_mem.res[i];
@@ -497,6 +499,7 @@ void paramGet(uint16 param_type)
             packet_lenght = NUM_OF_SENSORS + 2;
             break;
 
+        //------------------------------------------------------     Get Offsets
         case PARAM_MEASUREMENT_OFFSET:
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
@@ -507,6 +510,7 @@ void paramGet(uint16 param_type)
             packet_lenght = 2 + NUM_OF_SENSORS * 2;
             break;
 
+        //--------------------------------------------------     Get Multipliers
         case PARAM_MEASUREMENT_MULTIPLIER:
             for(i = 0; i < NUM_OF_SENSORS; ++i)
             {
@@ -517,11 +521,13 @@ void paramGet(uint16 param_type)
             packet_lenght = 2 + NUM_OF_SENSORS * 4;
             break;
 
+        //------------------------------------------     Get Position Limit Flag
         case PARAM_POS_LIMIT_FLAG:
             packet_data[1] = c_mem.pos_lim_flag;
             packet_lenght = 3;
             break;
 
+        //-----------------------------------------------     Get Position Limit
         case PARAM_POS_LIMIT:
             for (i = 0; i < NUM_OF_MOTORS; i++) {
                 *((int32 *)( packet_data + 1 + (i * 2 * 4) )) =
@@ -532,8 +538,7 @@ void paramGet(uint16 param_type)
             packet_lenght = 2 + (NUM_OF_MOTORS * 2 * 4);
             break;
 
-//========================================================     get_current_limit
-
+        //------------------------------------------------     Get Current Limit
         case PARAM_CURRENT_LIMIT:
             *((int16 *)(packet_data + 1)) = c_mem.current_limit;
             packet_lenght = 4;
