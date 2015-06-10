@@ -687,6 +687,7 @@ void encoder_reading(uint8 index)
                                                     // subtract half of max value and
                                                     // invert sign of sensor
 
+        // Add offset and crop to 16bit
         value_encoder  = (int16)(value_encoder + g_mem.m_off[index]);
 
         // Initialize last_value_encoder
