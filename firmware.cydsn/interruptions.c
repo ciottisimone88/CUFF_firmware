@@ -648,13 +648,15 @@ void encoder_reading(uint8 index)
 
     static uint8 error[NUM_OF_SENSORS];
 
-    if ((index >= NUM_OF_SENSORS) && (index != ENC_READ_LAST_VAL_RESET)) {
+    if (index >= NUM_OF_SENSORS) {
         return;
-    } else if (index == ENC_READ_LAST_VAL_RESET) {
+    }
+
+    if (reset_last_value_flag) {
         for (jj = 0; jj < NUM_OF_SENSORS; jj++) {
             last_value_encoder[jj] = 0;
         }
-        return;
+        reset_last_value_flag = 0;
     }
 
     //======================================================     reading sensors

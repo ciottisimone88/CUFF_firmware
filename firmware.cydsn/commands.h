@@ -146,6 +146,7 @@ enum qbmove_resolution {
 
 };
 
+
 //==============================================================     input modes
 
 enum qbmove_input_mode {
@@ -156,6 +157,7 @@ enum qbmove_input_mode {
 
 };
 
+
 //============================================================     control modes
 
 enum qbmove_control_mode {
@@ -165,6 +167,15 @@ enum qbmove_control_mode {
     CONTROL_CURRENT         = 2,        ///< Current control (beta)
     CURR_AND_POS_CONTROL    = 3         ///< Current control (beta)
 
+};
+
+
+//====================================================     acknowledgment values
+
+enum acknowledgment_values
+{
+    ACK_ERROR           = 0,
+    ACK_OK              = 1
 };
 
 //==============================================================================

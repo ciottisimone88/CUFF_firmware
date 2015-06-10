@@ -28,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.1.1"
+#define VERSION         "QBMMP v5.1.2"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -69,8 +69,6 @@
 #define TRUE            1
 
 #define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
-
-#define ENC_READ_LAST_VAL_RESET 10
 
 //==============================================================================
 //                                                        structures definitions
@@ -178,6 +176,8 @@ extern struct st_dev    device;         //device related variables
 extern uint32 timer_value;
 
 extern uint8 calibration_flag;
+
+extern uint8 reset_last_value_flag;
 
 // -----------------------------------------------------------------------------
 

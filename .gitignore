@@ -917,3 +917,5 @@ firmware.cydsn/DP8051_Keil_951/Release/UART_RS485_IntClock.lst
 firmware.cydsn/DP8051_Keil_951/Release/UART_RS485_IntClock.obj
 firmware.cydsn/Generated_Source/PSoC3/UART_RS485_IntClock.c
 firmware.cydsn/Generated_Source/PSoC3/UART_RS485_IntClock.h
+firmware.cydsn/DP8051_Keil_951/Release/BUILD.log
+firmware.cydsn/DP8051_Keil_951/Release/REBUILD.log

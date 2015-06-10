@@ -140,7 +140,7 @@ void main() {
     device.pwm_limit = 0;
 
     calibration_flag = STOP;
-
+    reset_last_value_flag = 0;
 
 
     //============================================================     main loop

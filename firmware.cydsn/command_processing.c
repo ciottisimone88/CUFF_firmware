@@ -275,33 +275,45 @@ void commProcess(void){
                 }
             }
 
-            memStore(0);
-            sendAcknowledgment();
+            if ( memStore(0) ) {
+                sendAcknowledgment(ACK_OK);
+            } else {
+                sendAcknowledgment(ACK_ERROR);
+            }
             break;
 
 //=================================================     CMD_STORE_DEFAULT_PARAMS
         case CMD_STORE_DEFAULT_PARAMS:
-            memStore(DEFAULT_EEPROM_DISPLACEMENT);
-            sendAcknowledgment();
+            if ( memStore(DEFAULT_EEPROM_DISPLACEMENT) ) {
+                sendAcknowledgment(ACK_OK);
+            } else {
+                sendAcknowledgment(ACK_ERROR);
+            }
             break;
 
 //=======================================================     CMD_RESTORE_PARAMS
 
         case CMD_RESTORE_PARAMS:
-            memRestore();
-            sendAcknowledgment();
+            if ( memRestore() ) {
+                sendAcknowledgment(ACK_OK);
+            } else {
+                sendAcknowledgment(ACK_ERROR);
+            }
             break;
 
 //=============================================================     CMD_INIT_MEM
 
         case CMD_INIT_MEM:
-            memInit();
-            sendAcknowledgment();
+            if ( memInit() ) {
+                sendAcknowledgment(ACK_OK);
+            } else {
+                sendAcknowledgment(ACK_ERROR);
+            }
             break;
 
 //===========================================================     CMD_BOOTLOADER
         case CMD_BOOTLOADER:
-            sendAcknowledgment();
+            sendAcknowledgment(ACK_OK);
             CyDelay(1000);
             FTDI_ENABLE_REG_Write(0x00);
             CyDelay(1000);
@@ -311,7 +323,7 @@ void commProcess(void){
 //============================================================     CMD_CALIBRATE
         case CMD_CALIBRATE:
             calibration_flag = START;
-            sendAcknowledgment();
+            sendAcknowledgment(ACK_OK);
             break;
     }
 
@@ -398,7 +410,7 @@ void paramSet(uint16 param_type)
 
                 g_meas.rot[i] = 0;
             }
-            encoder_reading(ENC_READ_LAST_VAL_RESET);
+            reset_last_value_flag = 1;
             break;
 
         //--------------------------------------------------     Set Multipliers
@@ -433,7 +445,7 @@ void paramSet(uint16 param_type)
             break;
 
     }
-    sendAcknowledgment();
+    sendAcknowledgment(ACK_OK);
 }
 
 
@@ -729,13 +741,11 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 {
     uint16 i;
 
-    // UART_RS485_LoadTxConfig();
-
     // frame - start
     UART_RS485_PutChar(':');
     UART_RS485_PutChar(':');
     // frame - ID
-    UART_RS485_PutChar (g_mem.id);
+    UART_RS485_PutChar(g_mem.id);
     // frame - length
     UART_RS485_PutChar((uint8)packet_lenght);
     // frame - packet data
@@ -744,16 +754,12 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
         UART_RS485_PutChar(packet_data[i]);
     }
 
-
     i = 0;
 
     while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}
 
     RS485_CTS_Write(1);
     RS485_CTS_Write(0);
-
-
-    // UART_RS485_LoadRxConfig();
 }
 
 
@@ -761,13 +767,13 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 //                                                       ACKNOWLEDGMENT FUNCTION
 //==============================================================================
 
-void sendAcknowledgment() {
+void sendAcknowledgment(uint8 value) {
 
     int packet_lenght = 2;
     uint8 packet_data[2];
 
-    packet_data[0] = 1;
-    packet_data[1] = 1;
+    packet_data[0] = value;
+    packet_data[1] = value;
 
     commWrite(packet_data, packet_lenght);
 }
@@ -781,19 +787,18 @@ void sendAcknowledgment() {
 * displacement
 **/
 
-void memStore(int displacement) {
+uint8 memStore(int displacement) {
 
     uint8 writeStatus;
     int i;
     int pages;
-
-    ISR_RS485_RX_Disable();
+    uint8 ret_val = 1;
 
     PWM_MOTORS_WriteCompare1(0);
     PWM_MOTORS_WriteCompare2(0);
 
     // Retrieve temperature for better writing performance
-    CySetTemp();
+    EEPROM_UpdateTemperature();
 
     memcpy( &c_mem, &g_mem, sizeof(g_mem) );
 
@@ -802,13 +807,14 @@ void memStore(int displacement) {
     for(i = 0; i < pages; ++i) {
         writeStatus = EEPROM_Write(&g_mem.flag + 16 * i, i + displacement);
         if(writeStatus != CYRET_SUCCESS) {
+            ret_val = 0;
             break;
         }
     }
 
     memcpy( &g_mem, &c_mem, sizeof(g_mem) );
 
-    ISR_RS485_RX_Enable();
+    return ret_val;
 }
 
 
@@ -845,7 +851,7 @@ void memRecall(void) {
 * This function loads default settings from the eeprom.
 **/
 
-void memRestore(void) {
+uint8 memRestore(void) {
 
     uint16 i;
 
@@ -855,9 +861,9 @@ void memRestore(void) {
 
     //check for initialization
     if (g_mem.flag == FALSE) {
-        memInit();
+        return memInit();
     } else {
-        memStore(0);
+        return memStore(0);
     }
 }
 
@@ -869,7 +875,7 @@ void memRestore(void) {
 * This function initialize memory when eeprom is compromised.
 **/
 
-void memInit(void) {
+uint8 memInit(void) {
 
     uint8 i;
     //initialize memory settings
@@ -909,8 +915,7 @@ void memInit(void) {
     g_mem.flag = TRUE;
 
     //write that configuration to EEPROM
-    memStore(0);
-    memStore(DEFAULT_EEPROM_DISPLACEMENT);
+    return ( memStore(0) && memStore(DEFAULT_EEPROM_DISPLACEMENT) );
 }
 
 /* [] END OF FILE */

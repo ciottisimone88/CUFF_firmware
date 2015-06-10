@@ -24,6 +24,8 @@ struct st_data  g_rx;                   // income data
 struct st_mem   g_mem, c_mem;           // memory
 struct st_dev   device;                 // device related variables
 
+uint32 timer_value;
+
 uint8 calibration_flag;
 
-uint32 timer_value;
+uint8 reset_last_value_flag;
