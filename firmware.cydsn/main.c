@@ -109,15 +109,12 @@ void main() {
     MY_TIMER_Start();
     PACER_TIMER_Start();
 
-    RS485_CTS_Write(0);
-
     CYGlobalIntEnable;                                  // enable interrupts
 
 
     //====================================     initializations - clean variables
 
     // Wait for encoders to have a valid value
-    RESET_COUNTERS_Write(0x00);
     CyDelay(10);
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {

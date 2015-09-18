@@ -24,6 +24,45 @@
 
 uint8 timer_flag = 0;
 
+// PWM vaules needed to obtain 8 Volts given a certain input tension
+// Numbers are sperimentally calculated //[index] (milliampere)
+static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
+                                            76,
+                                            71,
+                                            69,
+                                            67,
+                                            65,     //5 (10500)
+                                            63,
+                                            61,
+                                            60,
+                                            58,
+                                            57,     //10 (13000)
+                                            56,
+                                            55,
+                                            54,
+                                            53,
+                                            52,     //15 (15500)
+                                            51,
+                                            50,
+                                            49,
+                                            49,
+                                            48,     //20 (18000)
+                                            47,
+                                            47,
+                                            46,
+                                            45,
+                                            45,     //25 (20500)
+                                            45,
+                                            44,
+                                            44,
+                                            43,
+                                            43,     //30 (23000)
+                                            43,
+                                            43,
+                                            42,
+                                            42,
+                                            42};    //35 (25500)
+
 //==============================================================================
 //                                                            RS485 RX INTERRUPT
 //==============================================================================
@@ -601,55 +640,60 @@ void encoder_reading(uint8 index)
     static int32 aux;
 
     static int32 last_value_encoder[NUM_OF_SENSORS];
-    static uint8 error[NUM_OF_SENSORS];
 
     // static int32 l_value[NUM_OF_SENSORS];   //last value for vel
     // static int32 ll_value[NUM_OF_SENSORS];  //last last value for vel
     // static int32 lll_value[NUM_OF_SENSORS];  //last last last value for vel
     static int8 only_first_time = 1;
 
-    if(index >= NUM_OF_SENSORS)
-        return;
+    static uint8 error[NUM_OF_SENSORS];
 
-    if(reset_last_value_flag) {
-        for(jj = 0; jj < NUM_OF_SENSORS; jj++) {
+    if (index >= NUM_OF_SENSORS) {
+        return;
+    }
+
+    if (reset_last_value_flag) {
+        for (jj = 0; jj < NUM_OF_SENSORS; jj++) {
             last_value_encoder[jj] = 0;
         }
         reset_last_value_flag = 0;
-    } 
+    }
 
+    //======================================================     reading sensors
     switch(index) {
         case 0:
             data_encoder = SHIFTREG_ENC_1_ReadData();
             break;
-        case 2:
+
+        case 1:
             data_encoder = SHIFTREG_ENC_2_ReadData();
             break;
-        case 1:
+
+        case 2:
             data_encoder = SHIFTREG_ENC_3_ReadData();
+            break;
+
+        case 3:
+            data_encoder = SHIFTREG_ENC_4_ReadData();
             break;
     }
 
-    //Shift right 1 bit to erease dummy bit of chain
-    data_encoder = data_encoder >> 1;
+    data_encoder = data_encoder & 0x3FFFF;          // reset first 14 bits
 
-    data_encoder = data_encoder & 0x3FFFF;
+    if (check_enc_data(&data_encoder)) {
 
-    if(check_enc_data(&data_encoder)) {
+        aux = data_encoder & 0x3FFC0;               // reset last 6 bit
+        value_encoder = 32768 - (aux >> 2);         // shift to have 16 bit val and
+                                                    // subtract half of max value and
+                                                    // invert sign of sensor
 
-        aux = data_encoder & 0x3FFC0;
-
-        value_encoder = (aux - 0x20000) >> 2;
-
-        //value_encoder = -value_encoder;
-
-        //Add offset and crop to 16bit
+        // Add offset and crop to 16bit
         value_encoder  = (int16)(value_encoder + g_mem.m_off[index]);
 
         // Initialize last_value_encoder
         if (only_first_time) {
             last_value_encoder[index] = value_encoder;
-            if (index == 2) {
+            if (index == NUM_OF_SENSORS - 1) {
                 only_first_time = 0;
             }
         }
@@ -677,7 +721,7 @@ void encoder_reading(uint8 index)
 
         if (aux > 49152) {
             g_meas.rot[index]--;
-        } else if (aux < -49152) {
+        } else  if (aux < -49152) {
             g_meas.rot[index]++;
         } else if (abs(aux) > 16384) { // if two measure are too far
             error[index]++;
@@ -687,8 +731,8 @@ void encoder_reading(uint8 index)
             }
             error[index] = 0;
         }
-
         error[index] = 0;
+
 
         last_value_encoder[index] = value_encoder;
 
@@ -700,6 +744,7 @@ void encoder_reading(uint8 index)
 
         g_meas.pos[index] = value_encoder;
     }
+
     // // velocity calculation
     // switch(i) {
     //     case 0: {
@@ -833,16 +878,16 @@ void calibration()
 //==============================================================================
 
 void pwm_limit_search() {
-    /*uint8 index;
+    uint8 index;
 
     if (device.tension > 25500) {
         device.pwm_limit = 0;
     } else if (device.tension < 8000) {
         device.pwm_limit = 100;
     } else {
-        index = (uint8)((device.tension - 8000) / 500);*/
-        device.pwm_limit = 100;
-    // }
+        index = (uint8)((device.tension - 8000) / 500);
+        device.pwm_limit = pwm_preload_values[index];
+    }
 }
 
 

@@ -28,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBADV v5.2.0"
+#define VERSION         "QBMMP v5.2.0"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3

@@ -40,6 +40,7 @@ void commProcess(void){
     uint8 aux_checksum;
     uint8 packet_data[16];
     uint8 packet_lenght;
+    int32 pos_1, pos_2;
     int32  pos, stiff;
     uint32 off_1, off_2;
     uint32 mult_1, mult_2;
@@ -213,8 +214,11 @@ void commProcess(void){
         case CMD_GET_INPUTS:
             packet_lenght = 6;
 
-            *((int16 *) &packet_data[1]) = (int16) (g_ref.pos[0]  >> g_mem.res[0]);
-            *((int16 *) &packet_data[3]) = (int16) (g_ref.pos[1]  >> g_mem.res[1]);
+            pos_1 = g_ref.pos[0]  >> g_mem.res[0];
+            pos_2 = g_ref.pos[1]  >> g_mem.res[1];
+
+            *((int16 *) &packet_data[1]) = (int16) (pos_1);
+            *((int16 *) &packet_data[3]) = (int16) (pos_2);
             packet_data[5] = LCRChecksum(packet_data,packet_lenght - 1);
 
             commWrite(packet_data, packet_lenght);
