@@ -26,49 +26,49 @@ uint8 timer_flag = 0;
 
 // PWM vaules needed to obtain 8 Volts given a certain input tension
 // Numbers are sperimentally calculated //[index] (milliampere)
-static const uint8 pwm_preload_values[36] = {100,   //0 (8000)
-                                            76,
-                                            71,
-                                            69,
-                                            67,
-                                            65,     //5 (10500)
-                                            63,
-                                            61,
-                                            60,
-                                            58,
-                                            57,     //10 (13000)
-                                            56,
-                                            55,
-                                            54,
-                                            53,
-                                            52,     //15 (15500)
-                                            51,
-                                            50,
-                                            49,
-                                            49,
-                                            48,     //20 (18000)
-                                            47,
-                                            47,
-                                            46,
-                                            45,
-                                            45,     //25 (20500)
-                                            45,
-                                            44,
-                                            44,
-                                            43,
-                                            43,     //30 (23000)
-                                            43,
-                                            43,
-                                            42,
-                                            42,
-                                            42};    //35 (25500)
+static const uint8 hitech_pwm_preload_values[36] = {100,   //0 (8000)
+                                                     76,
+                                                     71,
+                                                     69,
+                                                     67,
+                                                     65,     //5 (10500)
+                                                     63,
+                                                     61,
+                                                     60,
+                                                     58,
+                                                     57,     //10 (13000)
+                                                     56,
+                                                     55,
+                                                     54,
+                                                     53,
+                                                     52,     //15 (15500)
+                                                     51,
+                                                     50,
+                                                     49,
+                                                     49,
+                                                     48,     //20 (18000)
+                                                     47,
+                                                     47,
+                                                     46,
+                                                     45,
+                                                     45,     //25 (20500)
+                                                     45,
+                                                     44,
+                                                     44,
+                                                     43,
+                                                     43,     //30 (23000)
+                                                     43,
+                                                     43,
+                                                     42,
+                                                     42,
+                                                     42};    //35 (25500)
 
 //==============================================================================
 //                                                            RS485 RX INTERRUPT
 //==============================================================================
 // Processing RS-485 data frame:
 //
-// - 0:     Waits for beggining characters
+// - 0:     Waits for beginning characters
 // - 1:     Waits for ID;
 // - 2:     Data length;
 // - 3:     Receive all bytes;
@@ -86,7 +86,6 @@ CY_ISR(ISR_RS485_RX_ExInterrupt) {
 
     static uint8    rx_data;                            // RS485 UART rx data
     static uint8    rx_data_type;                       // my id?
-
 
     //======================================================     receive routine
 
@@ -141,7 +140,7 @@ CY_ISR(ISR_RS485_RX_ExInterrupt) {
                 } else {
                     data_packet.ind = 0;
                     if(rx_data_type == 0) {
-                        state = 3;          // packet for me or boradcast
+                        state = 3;          // packet for me or broadcast
                     } else {
                         state = 4;          // packet for others
                     }
@@ -382,7 +381,6 @@ void motor_control(uint8 index) {
             // current error
             curr_error = curr_ref - g_meas.curr[index];
 
-
             // ----- current PID control -----
 
             pwm_input = 0;
@@ -589,8 +587,7 @@ void analog_read_end(uint8 index) {
         value = (int32) ADC_GetResult16();
         ADC_StopConvert();
 
-        value -= 1638;
-
+        value -= 1638;  
         switch(index) {
 
             // --- Input tension ---

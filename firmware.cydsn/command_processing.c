@@ -48,10 +48,8 @@ void commProcess(void){
     rx_cmd = g_rx.buffer[0];
 
 //==========================================================     verify checksum
-    aux_checksum = LCRChecksum(g_rx.buffer,
-        g_rx.length - 1);
-    if (!(aux_checksum ==
-    g_rx.buffer[g_rx.length-1])){
+    aux_checksum = LCRChecksum(g_rx.buffer, g_rx.length - 1);
+    if (!(aux_checksum == g_rx.buffer[g_rx.length - 1])){
         // wrong checksum
         g_rx.ready = 0;
         return;
@@ -68,6 +66,9 @@ void commProcess(void){
                 g_ref.pos[1] = g_meas.pos[1];
             }
 
+            if(abs(g_meas.pos[0]) > 26000 || abs(g_meas.pos[1]) > 26000 || abs(g_meas.pos[2]) > 26000){
+                g_ref.onoff = 0x00;
+            }
             MOTOR_ON_OFF_Write(g_ref.onoff);
 
             break;
@@ -93,8 +94,8 @@ void commProcess(void){
 //========================================================     CMD_SET_POS_STIFF
 
         case CMD_SET_POS_STIFF:
-            pos = *((int16 *) &g_rx.buffer[1]);   // eq position
-            stiff = *((int16 *) &g_rx.buffer[3]);   // stiffness
+            pos = *((int16 *) &g_rx.buffer[1]);      // equilibrium position
+            stiff = *((int16 *) &g_rx.buffer[3]);    // stiffness
 
             // position in ticks
             pos = pos << g_mem.res[0];
@@ -120,6 +121,7 @@ void commProcess(void){
 
         case CMD_GET_MEASUREMENTS:
             // Packet: header + measure(int16) + crc
+
             packet_lenght = 1 + (NUM_OF_SENSORS * 2) + 1;
 
             packet_data[0] = CMD_GET_MEASUREMENTS;   //header
@@ -130,7 +132,7 @@ void commProcess(void){
             }
 
             packet_data[packet_lenght - 1] =
-                    LCRChecksum (packet_data,packet_lenght - 1);
+                    LCRChecksum (packet_data, packet_lenght - 1);
 
             commWrite(packet_data, packet_lenght);
 
@@ -147,7 +149,7 @@ void commProcess(void){
             *((int16 *) &packet_data[1]) = (int16) g_meas.curr[0];
             *((int16 *) &packet_data[3]) = (int16) g_meas.curr[1];
 
-            packet_data[5] = LCRChecksum (packet_data,packet_lenght - 1);
+            packet_data[5] = LCRChecksum (packet_data, packet_lenght - 1);
 
             commWrite(packet_data, packet_lenght);
         break;

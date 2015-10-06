@@ -17,6 +17,7 @@
 #define UTILS_H_INCLUDED
 
 #include <globals.h>
+#define SIGN(A) (((A) > 0) ? (1) : ((((A) < 0) ? (-1) : (0))))
 
 //-------------------------------------------------------------     DECLARATIONS
 

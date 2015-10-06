@@ -88,8 +88,8 @@ enum qbmove_command {
                                     ///  current measurements
     CMD_GET_CURR_AND_MEAS   = 134,  ///< Command for asking device's
                                     ///  measurements and currents
-    CMD_SET_POS_STIFF       = 135,
-
+    CMD_SET_POS_STIFF       = 135,  ///< Command for setting shaft position
+                                    ///  and stiffness
     CMD_GET_VELOCITIES      = 137   ///< Command for asking device's
                                     ///  current velocity of motors and pulley
 };
