@@ -883,7 +883,7 @@ void pwm_limit_search() {
         device.pwm_limit = 100;
     } else {
         index = (uint8)((device.tension - 8000) / 500);
-        device.pwm_limit = pwm_preload_values[index];
+        device.pwm_limit = hitech_pwm_preload_values[index];
     }
 }
 
