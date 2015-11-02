@@ -90,7 +90,8 @@ struct st_meas {
     int32 pos[NUM_OF_SENSORS];      // sensor position
     int32 curr[NUM_OF_MOTORS];      // motor currents
     int32 rot[NUM_OF_SENSORS];      // sensor rotations
-    int16 vel[NUM_OF_SENSORS];      // sensor velocity
+    int32 vel[NUM_OF_SENSORS];      // sensor velocity
+    int32 acc[NUM_OF_SENSORS];		// sensor acceleration
 
 };
 
@@ -133,6 +134,10 @@ struct st_mem {
     int32   pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors       4 (8)
     int32   pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors       4 (8)
 
+    float   curr_prop_gain;             //                                          4
+    int16   curr_sat;                   //                                          2
+    int16   curr_dead_zone;             //                                          2
+
     uint16  max_stiffness;              // Max stiffness value obtained
                                         // during calibration                       2       19
 
@@ -147,6 +152,7 @@ struct st_dev{
     float   tension_conv_factor;    // Used to calculate input tension
     uint8   tension_valid;
     uint8   pwm_limit;
+    uint8   cuff_flag;
 
 };
 

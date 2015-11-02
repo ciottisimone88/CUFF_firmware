@@ -25,7 +25,7 @@
 uint8 timer_flag = 0;
 
 // PWM vaules needed to obtain 8 Volts given a certain input tension
-// Numbers are sperimentally calculated //[index] (milliampere)
+// Numbers are sperimentally calculated //[index] (millivolts)
 static const uint8 hitech_pwm_preload_values[36] = {100,   //0 (8000)
                                                      76,
                                                      71,
@@ -218,6 +218,9 @@ void function_scheduler(void) {
         counter_calibration++;
     }
 
+    if(device.cuff_flag){
+        drive_cuff();
+    }
 
     timer_value = (uint32)MY_TIMER_ReadCounter();
     MY_TIMER_WriteCounter(5000000);

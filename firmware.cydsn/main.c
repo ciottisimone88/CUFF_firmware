@@ -131,6 +131,23 @@ void main() {
     g_rx.length = 0;
     g_rx.ready  = 0;
 
+    // Zero position initialization for cuff device
+    g_mem.m_off[0] = g_mem.m_off[1] = g_mem.m_off[2] = 0;
+    if ( memStore(0) )
+        sendAcknowledgment(ACK_OK);
+    else
+        sendAcknowledgment(ACK_ERROR);
+
+    for (i = 0; i< NUM_OF_SENSORS; i++) {
+        encoder_reading(i, TRUE);
+        g_mem.m_off[i] = -g_meas.pos[i];
+    }
+
+    if ( memStore(0) )
+        sendAcknowledgment(ACK_OK);
+    else
+        sendAcknowledgment(ACK_ERROR);
+
     // Activating motors
     MOTOR_ON_OFF_Write(g_ref.onoff);
 
@@ -139,6 +156,7 @@ void main() {
     device.tension_valid = FALSE;
     device.pwm_limit = 0;
 
+    device.cuff_flag = 0;
     calibration_flag = STOP;
     reset_last_value_flag = 0;
 

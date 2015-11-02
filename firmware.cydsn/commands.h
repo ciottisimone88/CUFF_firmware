@@ -90,9 +90,17 @@ enum qbmove_command {
                                     ///  measurements and currents
     CMD_SET_POS_STIFF       = 135,  ///< Command for setting shaft position
                                     ///  and stiffness
-    CMD_GET_VELOCITIES      = 137   ///< Command for asking device's
+    CMD_GET_VELOCITIES      = 137,  ///< Command for asking device's
                                     ///  current velocity of motors and pulley
-};
+    CMD_GET_ACCEL           = 138,  ///< Command for asking device's
+                                    ///  acceleretion measurements
+    CMD_GET_CURR_DIFF       = 139,  ///< Command for asking device's 
+                                    ///  current difference between a measured
+                                    ///  one and an estimated one (Only for SoftHand)
+    CMD_SET_CURR_DIFF       = 140,  ///< Command used to set current difference modality
+                                    ///  (Only for Cuff device)
+    CMD_SET_CUFF_INPUTS     = 141   ///< Command used to set Cuff device inputs 
+                                    ///  (Only for Cuff device)
 
 /** \} */
 //==============================================================================
@@ -124,8 +132,10 @@ enum qbmove_parameter {
                                         ///  communication.
 
     PARAM_CURRENT_LIMIT          = 12,  ///< Limit for absorbed current
-
-    PARAM_PID_CURR_CONTROL       = 18
+    PARAM_PID_CURR_CONTROL       = 18,  ///< Current PID controller values
+    PARAM_CURR_PROP_GAIN         = 23,  ///< Proportional gain on current difference (Only for Cuff device)
+    PARAM_CURR_SAT               = 24,  ///< Current difference saturation value (Only for Cuff device)
+    PARAM_CURR_DEAD_ZONE         = 25   ///< Current dead zone value (Only for Cuff device)
 
 };
 

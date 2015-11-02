@@ -41,7 +41,7 @@ void commProcess(void){
     uint8 packet_data[16];
     uint8 packet_lenght;
     int32 pos_1, pos_2;
-    int32  pos, stiff;
+    int32 pos, stiff;
     uint32 off_1, off_2;
     uint32 mult_1, mult_2;
 
@@ -90,6 +90,16 @@ void commProcess(void){
             }
 
             break;
+//===========================================================     CMD_SET_CUFF_INPUTS
+
+        case CMD_SET_CUFF_INPUTS:
+            device.cuff_flag = g_rx.buffer[1];
+            break;
+
+//===========================================================     CMD_SET_CUFF_INPUTS
+
+        case CMD_SET_CURR_DIFF:
+            break;
 
 //========================================================     CMD_SET_POS_STIFF
 
@@ -134,7 +144,7 @@ void commProcess(void){
             packet_data[packet_lenght - 1] =
                     LCRChecksum (packet_data, packet_lenght - 1);
 
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
 
         break;
 
@@ -151,7 +161,7 @@ void commProcess(void){
 
             packet_data[5] = LCRChecksum (packet_data, packet_lenght - 1);
 
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
         break;
 
 //====================================================     CMD_GET_CURR_AND_MEAS
@@ -176,8 +186,7 @@ void commProcess(void){
             packet_data[packet_lenght - 1] =
                 LCRChecksum (packet_data,packet_lenght - 1);
 
-            //commWrite(packet_data, packet_lenght);
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
         break;
 
 //=======================================================     CMD_GET_VELOCITIES
@@ -189,13 +198,13 @@ void commProcess(void){
             packet_data[0] = CMD_GET_VELOCITIES;   //header
 
             for (i = 0; i < NUM_OF_SENSORS; i++) {
-                *((int16 *) &packet_data[(i*2) + 1]) = (int16)(g_meas.vel[i]);
+                *((int16 *) &packet_data[(i*2) + 1]) = (int16)(g_meas.vel[i] >> g_mem.res[i]);
             }
 
             packet_data[packet_lenght - 1] =
                     LCRChecksum (packet_data,packet_lenght - 1);
 
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
 
         break;
 
@@ -207,7 +216,7 @@ void commProcess(void){
             packet_data[0] = CMD_GET_ACTIVATE;
             packet_data[1] = g_ref.onoff;
             packet_data[2] = LCRChecksum(packet_data,packet_lenght - 1);
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
 
             break;
 
@@ -216,14 +225,14 @@ void commProcess(void){
         case CMD_GET_INPUTS:
             packet_lenght = 6;
 
-            pos_1 = g_ref.pos[0]  >> g_mem.res[0];
-            pos_2 = g_ref.pos[1]  >> g_mem.res[1];
+            pos_1 = g_ref.pos[0];  //>> g_mem.res[0];
+            pos_2 = g_ref.pos[1]; // >> g_mem.res[1];
 
             *((int16 *) &packet_data[1]) = (int16) (pos_1);
             *((int16 *) &packet_data[3]) = (int16) (pos_2);
             packet_data[5] = LCRChecksum(packet_data,packet_lenght - 1);
 
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
             break;
 
 //=============================================================     CMD_GET_INFO
@@ -248,7 +257,7 @@ void commProcess(void){
             packet_data[0] = CMD_PING;
             packet_data[1] = CMD_PING;
 
-            commWrite(packet_data, packet_lenght);
+            commWrite(packet_data, packet_lenght, FALSE);
             break;
 
 //=========================================================     CMD_STORE_PARAMS
@@ -330,6 +339,54 @@ void commProcess(void){
     }
 
     g_rx.ready = 0;
+}
+
+//==============================================================================
+//                                                           Cuff inputs driving
+//==============================================================================
+/* Function called when device.cuff_flag is set. It asks current difference to a 
+the SoftHand and sets Cuff inputs proportionally to this difference. It stops when
+informations with CMD_GET_INFO are asked */
+
+void drive_cuff() {
+    uint8 packet_data[16];
+    uint8 packet_lenght;
+    int16 curr_diff;
+    int32 aux_val;
+    int i = 0;
+
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_CURR_DIFF;
+    packet_data[1] = CMD_GET_CURR_DIFF;
+    commWrite(packet_data, packet_lenght, TRUE);
+    
+    if(g_rx.buffer[0] != CMD_GET_INFO) {
+        while(g_rx.buffer[0] != CMD_SET_CURR_DIFF && i++ < 4000);
+
+        curr_diff = *((int16 *) &g_rx.buffer[1]);
+        // Current difference saturation
+        if(curr_diff > g_mem.curr_sat)
+            curr_diff = g_mem.curr_sat;
+        //Current difference dead zone
+        if(curr_diff < g_mem.curr_dead_zone)
+            curr_diff = 0;
+        else
+            curr_diff -= g_mem.curr_dead_zone;
+
+        aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        g_ref.pos[0] =  (aux_val << g_mem.res[0]);
+        g_ref.pos[1] = -(aux_val << g_mem.res[1]);
+
+        if (c_mem.pos_lim_flag) {                      // pos limiting
+            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+
+            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
+            if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+        }
+    }
+    else
+        device.cuff_flag = 0;
 }
 
 //==============================================================================
@@ -446,6 +503,21 @@ void paramSet(uint16 param_type)
             g_mem.current_limit = *((int16*) &g_rx.buffer[3]);
             break;
 
+        //------------------------------------     Set Current proportional gain
+        case PARAM_CURR_PROP_GAIN:
+            g_mem.curr_prop_gain = *((float*) &g_rx.buffer[3]);
+            break;
+
+        //-------------------------------------------     Set Current saturation
+        case PARAM_CURR_SAT:
+            g_mem.curr_sat = *((int16*) &g_rx.buffer[3]);
+            break;
+        
+        //--------------------------------------------     Set Current dead zone
+        case PARAM_CURR_DEAD_ZONE:
+            g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
+            break;
+
     }
     sendAcknowledgment(ACK_OK);
 }
@@ -558,10 +630,28 @@ void paramGet(uint16 param_type)
             packet_lenght = 4;
             break;
 
+        //---------------------------------------     Get Curr proportional gain
+        case PARAM_CURR_PROP_GAIN:
+            *((float *)(packet_data + 1)) = c_mem.curr_prop_gain;
+            packet_lenght = 6;
+            break;
+
+        //-------------------------------------------     Get Current saturation
+        case PARAM_CURR_SAT:
+            *((int16 *)(packet_data + 1)) = c_mem.curr_sat;
+            packet_lenght = 4;
+            break;
+
+        //--------------------------------------------     Get Current dead zone
+        case PARAM_CURR_DEAD_ZONE:
+            *((int16 *)(packet_data + 1)) = c_mem.curr_dead_zone;
+            packet_lenght = 4;
+            break;
+
     }
 
     packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
-    commWrite(packet_data, packet_lenght);
+    commWrite(packet_data, packet_lenght, FALSE);
 }
 
 //==============================================================================
@@ -708,6 +798,21 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string,"\r\n");
     }
 
+    strcat(info_string, "\nCurrent controller's parameters:\nProportional gain: ");
+    sprintf(str, "%f", c_mem.curr_prop_gain);
+    strcat(info_string, str);
+    strcat(info_string, "\r\n");
+
+    strcat(info_string, "Saturation value: ");
+    sprintf(str, "%hd", c_mem.curr_sat);
+    strcat(info_string, str);
+    strcat(info_string, "\r\n");
+
+    strcat(info_string, "Dead zone: ");
+    sprintf(str, "%hd", c_mem.curr_dead_zone);
+    strcat(info_string, str);
+    strcat(info_string, "\r\n\n");
+
     sprintf(str, "Position limit active: %d", (int)g_mem.pos_lim_flag);
     strcat(info_string, str);
     strcat(info_string,"\r\n");
@@ -733,13 +838,20 @@ void infoPrepare(unsigned char *info_string)
     sprintf(str, "debug: %ld", 5000001 - (uint32)timer_value);
     strcat(info_string, str);
     strcat(info_string,"\r\n");
+
+    if(device.cuff_flag)
+        sprintf(str, "Cuff active: YES");
+    else
+        sprintf(str, "Cuff active: NO");
+    strcat(info_string, str);
+    strcat(info_string, "\r\n");
 }
 
 //==============================================================================
 //                                                      WRITE FUNCTION FOR RS485
 //==============================================================================
 
-void commWrite(uint8 *packet_data, uint16 packet_lenght)
+void commWrite(uint8 *packet_data, uint16 packet_lenght, uint8 next)
 {
     uint16 i;
 
@@ -747,7 +859,12 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
     UART_RS485_PutChar(':');
     UART_RS485_PutChar(':');
     // frame - ID
-    UART_RS485_PutChar(g_mem.id);
+    if(next)
+	// If next flag is set the message is sent to the device with ID with value
+	// greater by one than the one that sends the message
+        UART_RS485_PutChar((uint8) g_mem.id + 1);
+    else
+        UART_RS485_PutChar((uint8) g_mem.id);
     // frame - length
     UART_RS485_PutChar((uint8)packet_lenght);
     // frame - packet data
@@ -758,10 +875,12 @@ void commWrite(uint8 *packet_data, uint16 packet_lenght)
 
     i = 0;
 
-    while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000){}
+    while(!(UART_RS485_ReadTxStatus() & UART_RS485_TX_STS_COMPLETE) && i++ <= 1000);
 
-    RS485_CTS_Write(1);
-    RS485_CTS_Write(0);
+    if (!next) {
+        RS485_CTS_Write(1);
+        RS485_CTS_Write(0);
+    }
 }
 
 
@@ -777,7 +896,7 @@ void sendAcknowledgment(uint8 value) {
     packet_data[0] = value;
     packet_data[1] = value;
 
-    commWrite(packet_data, packet_lenght);
+    commWrite(packet_data, packet_lenght, FALSE);
 }
 
 //==============================================================================
@@ -904,6 +1023,9 @@ uint8 memInit(void) {
         g_mem.m_mult[i] = 1;
         g_mem.res[i] = 1;
     }
+    g_mem.curr_prop_gain = 0;
+    g_mem.curr_sat = 0;
+    g_mem.curr_dead_zone = 0;
 
     g_mem.m_off[0] = (int32)0 << g_mem.res[0];
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];
