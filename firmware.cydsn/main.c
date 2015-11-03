@@ -156,7 +156,7 @@ void main() {
     device.tension_valid = FALSE;
     device.pwm_limit = 0;
 
-    device.cuff_flag = 0;
+    device.cuff_flag = c_mem.cuff_activation_flag;      //If cuff startup is active, activate the device
     calibration_flag = STOP;
     reset_last_value_flag = 0;
 

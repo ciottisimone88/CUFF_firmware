@@ -195,12 +195,12 @@ void function_scheduler(void) {
 
     // Optimized manual scheduling
     analog_read_init(0);
-    encoder_reading(0);
-    encoder_reading(1);
+    encoder_reading(0, FALSE);
+    encoder_reading(1, FALSE);
     analog_read_end(0);
 
     analog_read_init(1);
-    encoder_reading(2);
+    encoder_reading(2, FALSE);
     motor_control(0);
     analog_read_end(1);
 
@@ -631,7 +631,7 @@ void analog_read_end(uint8 index) {
 //==============================================================================
 
 
-void encoder_reading(uint8 index)
+void encoder_reading(uint8 index, uint8 flag)
 {
     static uint8 jj;
 
@@ -688,7 +688,10 @@ void encoder_reading(uint8 index)
                                                     // invert sign of sensor
 
         // Add offset and crop to 16bit
-        value_encoder  = (int16)(value_encoder + g_mem.m_off[index]);
+        if (flag)
+            value_encoder = (int16)(value_encoder);
+        else
+            value_encoder = (int16)(value_encoder + g_mem.m_off[index]);
 
         // Initialize last_value_encoder
         if (only_first_time) {

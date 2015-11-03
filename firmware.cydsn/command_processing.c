@@ -93,7 +93,6 @@ void commProcess(void){
 //===========================================================     CMD_SET_CUFF_INPUTS
 
         case CMD_SET_CUFF_INPUTS:
-            device.cuff_flag = g_rx.buffer[1];
             break;
 
 //===========================================================     CMD_SET_CUFF_INPUTS
@@ -353,16 +352,23 @@ void drive_cuff() {
     uint8 packet_lenght;
     int16 curr_diff;
     int32 aux_val;
-    int i = 0;
+    uint32 t_start, t_end;
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_CURR_DIFF;
     packet_data[1] = CMD_GET_CURR_DIFF;
     commWrite(packet_data, packet_lenght, TRUE);
     
-    if(g_rx.buffer[0] != CMD_GET_INFO) {
-        while(g_rx.buffer[0] != CMD_SET_CURR_DIFF && i++ < 4000);
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_SET_CURR_DIFF) {
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 30000) {             // 30ms timeout
+            device.cuff_flag = 0;
+            break;
+        }
+    }
 
+    if(device.cuff_flag) {
         curr_diff = *((int16 *) &g_rx.buffer[1]);
         // Current difference saturation
         if(curr_diff > g_mem.curr_sat)
@@ -385,8 +391,6 @@ void drive_cuff() {
             if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
         }
     }
-    else
-        device.cuff_flag = 0;
 }
 
 //==============================================================================
@@ -518,6 +522,10 @@ void paramSet(uint16 param_type)
             g_mem.curr_dead_zone = *((int16*) &g_rx.buffer[3]);
             break;
 
+        //-----------------------------------------     Set Cuff activation flag
+        case PARAM_CUFF_ACTIVATION_FLAG:
+            g_mem.cuff_activation_flag = *((uint8 *) &g_rx.buffer[3]);
+            break;
     }
     sendAcknowledgment(ACK_OK);
 }
@@ -648,6 +656,11 @@ void paramGet(uint16 param_type)
             packet_lenght = 4;
             break;
 
+        //-----------------------------------------     Get cuff activation flag
+        case PARAM_CUFF_ACTIVATION_FLAG:
+            packet_data[1] = c_mem.cuff_activation_flag;
+            packet_lenght = 3;
+            break;
     }
 
     packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
@@ -839,12 +852,16 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 
-    if(device.cuff_flag)
-        sprintf(str, "Cuff active: YES");
+    if(c_mem.cuff_activation_flag)
+        strcat(info_string, "Cuff startup activation: YES\r\n");
     else
-        sprintf(str, "Cuff active: NO");
-    strcat(info_string, str);
-    strcat(info_string, "\r\n");
+        strcat(info_string, "Cuff startup activation: NO\r\n");
+
+    if(device.cuff_flag)
+        strcat(info_string, "Cuff active: YES\r\n");
+    else
+        strcat(info_string, "Cuff active: NO\r\n");
+    
 }
 
 //==============================================================================
@@ -1026,6 +1043,7 @@ uint8 memInit(void) {
     g_mem.curr_prop_gain = 0;
     g_mem.curr_sat = 0;
     g_mem.curr_dead_zone = 0;
+    g_mem.cuff_activation_flag = 0;
 
     g_mem.m_off[0] = (int32)0 << g_mem.res[0];
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];

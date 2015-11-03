@@ -101,7 +101,7 @@ enum qbmove_command {
                                     ///  (Only for Cuff device)
     CMD_SET_CUFF_INPUTS     = 141   ///< Command used to set Cuff device inputs 
                                     ///  (Only for Cuff device)
-
+};
 /** \} */
 //==============================================================================
 //                                                                    PARAMETERS
@@ -135,7 +135,8 @@ enum qbmove_parameter {
     PARAM_PID_CURR_CONTROL       = 18,  ///< Current PID controller values
     PARAM_CURR_PROP_GAIN         = 23,  ///< Proportional gain on current difference (Only for Cuff device)
     PARAM_CURR_SAT               = 24,  ///< Current difference saturation value (Only for Cuff device)
-    PARAM_CURR_DEAD_ZONE         = 25   ///< Current dead zone value (Only for Cuff device)
+    PARAM_CURR_DEAD_ZONE         = 25,   ///< Current dead zone value (Only for Cuff device)
+    PARAM_CUFF_ACTIVATION_FLAG   = 26
 
 };
 

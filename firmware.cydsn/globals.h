@@ -134,6 +134,7 @@ struct st_mem {
     int32   pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors       4 (8)
     int32   pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors       4 (8)
 
+    uint8   cuff_activation_flag;       //                                          1
     float   curr_prop_gain;             //                                          4
     int16   curr_sat;                   //                                          2
     int16   curr_dead_zone;             //                                          2
