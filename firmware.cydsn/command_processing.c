@@ -1018,27 +1018,27 @@ uint8 memInit(void) {
     uint8 i;
     //initialize memory settings
     g_mem.id            =   1;
-    g_mem.k_p           =   0.1 * 65536;
+    g_mem.k_p           =   -0.1 * 65536;
     g_mem.k_i           =   0 * 65536;
-    g_mem.k_d           =   0.8 * 65536;
-    g_mem.k_p_c         =   5 * 65536;
-    g_mem.k_i_c         =   0 * 65536;
-    g_mem.k_d_c         =   0.8 * 65536;
+    g_mem.k_d           =   0 * 65536;
+    g_mem.k_p_c         =   3 * 65536;
+    g_mem.k_i_c         =   0.01 * 65536;
+    g_mem.k_d_c         =   0 * 65536;
     g_mem.activ         =   0;
     g_mem.input_mode    =   0;
     g_mem.control_mode  =   0;
 
-    g_mem.pos_lim_flag = 1;
+    g_mem.pos_lim_flag = 0;
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
-        g_mem.pos_lim_inf[i] = -30000;
-        g_mem.pos_lim_sup[i] =  30000;
+        g_mem.pos_lim_inf[i] = -40000;
+        g_mem.pos_lim_sup[i] =  40000;
     }
 
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
         g_mem.m_mult[i] = 1;
-        g_mem.res[i] = 1;
+        g_mem.res[i] = 2;
     }
     g_mem.curr_prop_gain = 0;
     g_mem.curr_sat = 0;
