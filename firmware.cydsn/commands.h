@@ -136,7 +136,8 @@ enum qbmove_parameter {
     PARAM_CURR_PROP_GAIN         = 23,  ///< Proportional gain on current difference (Only for Cuff device)
     PARAM_CURR_SAT               = 24,  ///< Current difference saturation value (Only for Cuff device)
     PARAM_CURR_DEAD_ZONE         = 25,   ///< Current dead zone value (Only for Cuff device)
-    PARAM_CUFF_ACTIVATION_FLAG   = 26
+    PARAM_CUFF_ACTIVATION_FLAG   = 26,
+    PARAM_POWER_TENSION          = 27
 
 };
 

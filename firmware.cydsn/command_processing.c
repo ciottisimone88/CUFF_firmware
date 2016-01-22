@@ -526,6 +526,10 @@ void paramSet(uint16 param_type)
         case PARAM_CUFF_ACTIVATION_FLAG:
             g_mem.cuff_activation_flag = *((uint8 *) &g_rx.buffer[3]);
             break;
+
+        case PARAM_POWER_TENSION:
+            g_mem.power_tension = *((uint16 * ) &g_rx.buffer[3]);
+            break;
     }
     sendAcknowledgment(ACK_OK);
 }
@@ -684,11 +688,13 @@ void infoPrepare(unsigned char *info_string)
 
     strcat(info_string,"DEVICE INFO\r\n");
     sprintf(str,"ID: %d\r\n",(int) c_mem.id);
-    strcat(info_string,str);
+    strcat(info_string, str);
     sprintf(str,"Number of sensors: %d\r\n",(int) NUM_OF_SENSORS);
-    strcat(info_string,str);
+    strcat(info_string, str);
+    sprintf(str, "Supply tension: %d\r\n", c_mem.power_tension);
+    strcat(info_string, str);
     sprintf(str,"PWM Limit: %d\r\n",(int) device.pwm_limit);
-    strcat(info_string,str);
+    strcat(info_string, str);
     strcat(info_string,"\r\n");
 
     strcat(info_string, "MOTOR INFO\r\n");
@@ -1044,6 +1050,7 @@ uint8 memInit(void) {
     g_mem.curr_sat = 0;
     g_mem.curr_dead_zone = 0;
     g_mem.cuff_activation_flag = 0;
+    g_mem.power_tension = 8000;         //mV of needed supply power
 
     g_mem.m_off[0] = (int32)0 << g_mem.res[0];
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];

@@ -28,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBMMP v5.3.1"
+#define VERSION         "QBCUFF v5.3.1"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -141,6 +141,7 @@ struct st_mem {
 
     uint16  max_stiffness;              // Max stiffness value obtained
                                         // during calibration                       2       19
+    uint16  power_tension;
 
                                                                                         //  77
 };

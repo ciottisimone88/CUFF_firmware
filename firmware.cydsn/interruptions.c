@@ -26,6 +26,36 @@ uint8 timer_flag = 0;
 
 // PWM vaules needed to obtain 8 Volts given a certain input tension
 // Numbers are sperimentally calculated //[index] (millivolts)
+static const uint8 pwm_preload_values[29] = {100,    //0 (11500)
+                                              83,
+                                              78,
+                                              76,
+                                              74,
+                                              72,    //5 (14000)
+                                              70,
+                                              68,
+                                              67,
+                                              65,
+                                              64,    //10 (16500)
+                                              63,
+                                              62,
+                                              61,
+                                              60,
+                                              59,    //15 (19000)
+                                              58,
+                                              57,
+                                              56,
+                                              56,
+                                              55,    //20 (21500)
+                                              54,
+                                              54,
+                                              53,
+                                              52,
+                                              52,    //25 (24000)
+                                              52,
+                                              51,
+                                              51};   //28 (25500)
+
 static const uint8 hitech_pwm_preload_values[36] = {100,   //0 (8000)
                                                      76,
                                                      71,
@@ -882,14 +912,18 @@ void calibration()
 
 void pwm_limit_search() {
     uint8 index;
+    uint16 max_tension = 25500;
 
-    if (device.tension > 25500) {
+    if (device.tension > max_tension) {
         device.pwm_limit = 0;
-    } else if (device.tension < 8000) {
+    } else if (device.tension < g_mem.power_tension) {
         device.pwm_limit = 100;
     } else {
-        index = (uint8)((device.tension - 8000) / 500);
-        device.pwm_limit = hitech_pwm_preload_values[index];
+        index = (uint8)((device.tension - g_mem.power_tension) / 500);
+        if(g_mem.power_tension < 11500)
+            device.pwm_limit = hitech_pwm_preload_values[index];
+        else
+            device.pwm_limit = pwm_preload_values[index];
     }
 }
 
