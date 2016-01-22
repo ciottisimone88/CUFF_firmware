@@ -27,8 +27,8 @@ uint8 timer_flag = 0;
 // PWM vaules needed to obtain 8 Volts given a certain input tension
 // Numbers are sperimentally calculated //[index] (millivolts)
 static const uint8 pwm_preload_values[29] = {100,    //0 (11500)
-                                              83,
-                                              78,
+                                             100,//83
+                                             100,//78
                                               76,
                                               74,
                                               72,    //5 (14000)
