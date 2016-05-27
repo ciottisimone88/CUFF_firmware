@@ -28,7 +28,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBCUFF v5.3.1"
+#define VERSION         "QBCUFF v5.3.2"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3

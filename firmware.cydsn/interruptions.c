@@ -93,6 +93,22 @@ static const uint8 hitech_pwm_preload_values[36] = {100,   //0 (8000)
                                                      42,
                                                      42};    //35 (25500)
 
+static const uint8 hitech_pwm_preload_values_6v[15] = {100,     //0 (6000)
+                                                     76,
+                                                     71,
+                                                     69,
+                                                     67,
+                                                     67,     //5 (8750)
+                                                     63,
+                                                     61,
+                                                     60,
+                                                     55,
+                                                     52,     //10 (11500)
+                                                     51,
+                                                     51,
+                                                     50,
+                                                     50};   //15 (14750)
+
 //==============================================================================
 //                                                            RS485 RX INTERRUPT
 //==============================================================================
@@ -912,19 +928,40 @@ void calibration()
 
 void pwm_limit_search() {
     uint8 index;
+    
+    
     uint16 max_tension = 25500;
-
-    if (device.tension > max_tension) {
-        device.pwm_limit = 0;
-    } else if (device.tension < g_mem.power_tension) {
-        device.pwm_limit = 100;
-    } else {
-        index = (uint8)((device.tension - g_mem.power_tension) / 500);
-        if(g_mem.power_tension < 11500)
-            device.pwm_limit = hitech_pwm_preload_values[index];
-        else
-            device.pwm_limit = pwm_preload_values[index];
+    uint16 max_tension_6v_mod = 14750;
+    
+    if (g_mem.power_tension < 8000){
+        // Mod . 6 volts
+        if (device.tension > max_tension_6v_mod){
+            device.pwm_limit = 0;
+        }
+        else if (device.tension < g_mem.power_tension) {
+            device.pwm_limit = 100;
+            }
+            else {
+                index = (uint8)((device.tension - g_mem.power_tension) / 500);
+                device.pwm_limit = hitech_pwm_preload_values_6v[index];
+            }
     }
+    else {
+        // 8 - 12 volts     
+
+        if (device.tension > max_tension) {
+            device.pwm_limit = 0;
+        } else if (device.tension < g_mem.power_tension) {
+            device.pwm_limit = 100;
+        } else {
+            index = (uint8)((device.tension - g_mem.power_tension) / 500);
+            if(g_mem.power_tension < 11500)
+                device.pwm_limit = hitech_pwm_preload_values[index];
+            else
+                device.pwm_limit = pwm_preload_values[index];
+        }
+    }
+    
 }
 
 
