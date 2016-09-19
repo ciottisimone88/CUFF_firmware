@@ -7,7 +7,7 @@
 * \file         globals.h
 *
 * \brief        Global definitions and macros are set in this file.
-* \date         Jul 29, 2013
+* \date         Dic. 1, 2015
 * \author       qbrobotics
 * \copyright    (C)  qbrobotics. All rights reserved.
 */
@@ -15,24 +15,22 @@
 #ifndef GLOBALS_H_INCLUDED
 #define GLOBALS_H_INCLUDED
 
-
-
 //=================================================================     includes
 #include <device.h>
 #include "stdlib.h"
 #include "math.h"
 #include "commands.h"
 
-
 //==============================================================================
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "QBCUFF v5.3.2"
+#define VERSION         "CUFF MOD v6.1.0"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
 #define NUM_OF_ANALOG_INPUTS    3
+#define NUM_OF_PARAMS           18
 
 //==============================================================================
 //                                                                       CONTROL
@@ -49,7 +47,7 @@
 #define CURR_INTEGRAL_SAT_LIMIT  100000  // Anti wind-up
 #define CALIB_CURRENT            1000    // Max current for calibration (mA)
 #define DEFAULT_CURRENT_LIMIT    1500    // Current limit when using CURR_AND_POS_CONTROL
-
+    
 
 //==============================================================================
 //                                                               SYNCHRONIZATION
@@ -62,13 +60,34 @@
 #define DIV_INIT_VALUE          1
 
 //==============================================================================
+//                                                                           DMA
+//==============================================================================
+    
+#define DMA_BYTES_PER_BURST 2
+#define DMA_REQUEST_PER_BURST 1
+#define DMA_SRC_BASE (CYDEV_PERIPH_BASE)
+#define DMA_DST_BASE (CYDEV_SRAM_BASE)
+    
+//==============================================================================
+//                                                                     INTERRUPT
+//==============================================================================
+#define    WAIT_START   0
+#define    WAIT_ID      1
+#define    WAIT_LENGTH  2
+#define    RECEIVE      3
+#define    UNLOAD       4
+    
+//==============================================================================
 //                                                                         OTHER
 //==============================================================================
 
 #define FALSE           0
 #define TRUE            1
 
-#define DEFAULT_EEPROM_DISPLACEMENT 8 // in pages
+#define DEFAULT_EEPROM_DISPLACEMENT 8   // in pages
+    
+#define MAX_WATCHDOG_TIMER 250          // num * 2 [cs]
+
 
 //==============================================================================
 //                                                        structures definitions
@@ -88,10 +107,10 @@ struct st_ref {
 struct st_meas {
 
     int32 pos[NUM_OF_SENSORS];      // sensor position
-    int32 curr[NUM_OF_MOTORS];      // motor currents
-    int32 rot[NUM_OF_SENSORS];      // sensor rotations
-    int32 vel[NUM_OF_SENSORS];      // sensor velocity
-    int32 acc[NUM_OF_SENSORS];		// sensor acceleration
+    int16 curr[NUM_OF_MOTORS];      // motor currents
+    int8 rot[NUM_OF_SENSORS];       // sensor rotations
+    int16 vel[NUM_OF_SENSORS];      // sensor velocity
+    int16 acc[NUM_OF_SENSORS];      // sensor acceleration
 
 };
 
@@ -119,44 +138,47 @@ struct st_mem {
 
     int32   k_p_c;                      // Proportional constant current            4
     int32   k_i_c;                      // Derivative constant current              4
-    int32   k_d_c;                      // Integrative constant current             4
+    int32   k_d_c;                      // Integrative constant current             4       26
+
+    int32   k_p_dl;                     // Proportional double loop constant        4
+    int32   k_i_dl;                     // Derivative double loop constant          4
+    int32   k_d_dl;                     // Integrative double loop constant         4
+
+    int32   k_p_c_dl;                   // Prop. double loop current constant       4
+    int32   k_i_c_dl;                   // Derivative double loop current constant  4
+    int32   k_d_c_dl;                   // Integrative double loop current constant 4       24
 
     int16   current_limit;              // Limit for absorbed current               2
 
     uint8   activ;                      // Activation upon startup                  1
-    uint8   input_mode;                 // Input mode                               1       30
+    uint8   input_mode;                 // Input mode                               1       
     uint8   control_mode;               // Control mode                             1
 
     uint8   res[NUM_OF_SENSORS];        // Angle resolution                         1 (3)
     int32   m_off[NUM_OF_SENSORS];      // Measurement offset                       4 (12)
-    float   m_mult[NUM_OF_SENSORS];     // Measurement multiplier                   4 (12)  28
+    float   m_mult[NUM_OF_SENSORS];     // Measurement multiplier                   4 (12)  32
     uint8   pos_lim_flag;               // Position limit active/inactive           1
     int32   pos_lim_inf[NUM_OF_MOTORS]; // Inferior position limit for motors       4 (8)
     int32   pos_lim_sup[NUM_OF_MOTORS]; // Superior position limit for motors       4 (8)
 
+    uint16  max_stiffness;              // Max stiffness value obtained
+                                        // during calibration                       2       19
+    uint8   baud_rate;                  // Baud Rate Setted                         1
+    uint8   watchdog_period;            // Watchdog period setted, 255 = disable    1
+    int32   max_step_neg;               // Maximum velocity for negative inputs     4       
+    int32   max_step_pos;               // Maximum velocity for positive inputs     4
+
+    /*=========================CUFF RELATIVE PARAMETERS=============================*/
     uint8   cuff_activation_flag;       //                                          1
     float   curr_prop_gain;             //                                          4
     int16   curr_sat;                   //                                          2
     int16   curr_dead_zone;             //                                          2
 
-    uint16  max_stiffness;              // Max stiffness value obtained
-                                        // during calibration                       2       19
-    uint16  power_tension;
-
-                                                                                        //  77
+    uint16 power_tension;               //                                          2
+                                                                                    //TO UPDATE
 };
 
-//=================================================     device related variables
 
-struct st_dev{
-
-    int32   tension;                // Power supply tension
-    float   tension_conv_factor;    // Used to calculate input tension
-    uint8   tension_valid;
-    uint8   pwm_limit;
-    uint8   cuff_flag;
-
-};
 
 //=================================================     calibration status
 
@@ -174,17 +196,33 @@ enum calibration_status {
 //====================================      external global variables declaration
 
 
-extern struct st_ref    g_ref;          // motor variables
-extern struct st_meas   g_meas;         // measurements
-extern struct st_data   g_rx;           // income data
-extern struct st_mem    g_mem, c_mem;   // memory
-extern struct st_dev    device;         //device related variables
+extern struct st_ref    g_ref, g_refNew, g_refOld;  // motor variables
+extern struct st_meas   g_meas, g_measOld;          // measurements
+extern struct st_data   g_rx;                       // income data
+extern struct st_mem    g_mem, c_mem;               // memory
+
 
 extern uint32 timer_value;
+extern uint32 timer_value0;
+
+// Device Data
+
+extern int32   dev_tension;                         // Power supply tension
+extern uint8   dev_pwm_limit;
 
 extern uint8 calibration_flag;
 
-extern uint8 reset_last_value_flag;
+// Bit Flag
+
+extern CYBIT reset_last_value_flag;
+extern CYBIT tension_valid;                         // tension validation bit
+extern CYBIT cuff_flag;                             // cuff activation flag
+extern CYBIT interrupt_flag;                        // interrupt flag enabler
+extern CYBIT watchdog_flag;                         // watchdog flag enabler
+
+// DMA Buffer
+
+extern int16 ADC_buf[3];
 
 // -----------------------------------------------------------------------------
 

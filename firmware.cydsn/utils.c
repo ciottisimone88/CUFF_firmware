@@ -7,7 +7,7 @@
 * \file         utils.h
 *
 * \brief        Definition of utility functions.
-* \date         Feb 16, 2014
+* \date         Dic. 1, 2015
 * \author       qbrobotics
 * \copyright    (C)  qbrobotics. All rights reserved.
 */
@@ -26,24 +26,24 @@
 
 int32 filter_i1(int32 new_value) {
 
-    static int32 old_value = 0, aux;
+    static int32 old_value, aux;
 
     aux = (old_value * (1024 - ALPHA) + (new_value << 6) * (ALPHA)) >> 10;
 
     old_value = aux;
 
-    return (aux >> 6);
+    return aux;
 }
 
 int32 filter_i2(int32 new_value) {
 
-    static int32 old_value = 0, aux;
+    static int32 old_value, aux;
 
     aux = (old_value * (1024 - ALPHA) + (new_value << 6) * (ALPHA)) >> 10;
 
     old_value = aux;
 
-    return (aux >> 6);
+    return aux;
 }
 
 //==============================================================================
@@ -54,33 +54,33 @@ int32 filter_vel_1(int32 new_value) {
 
     static int32 old_value, aux;
 
-    aux = (old_value * (1024 - BETA) + new_value * (BETA)) / 1024;
+    aux = (old_value * (1024 - BETA) + (new_value << 6) * (BETA)) / 1024;
 
     old_value = aux;
 
-    return aux;
+    return (aux >> 6);
 }
 
 int32 filter_vel_2(int32 new_value) {
 
     static int32 old_value, aux;
 
-    aux = (old_value * (1024 - BETA) + new_value * (BETA)) / 1024;
+    aux = (old_value * (1024 - BETA) + (new_value << 6) * (BETA)) / 1024;
 
     old_value = aux;
 
-    return aux;
+    return (aux >> 6);
 }
 
 int32 filter_vel_3(int32 new_value) {
 
     static int32 old_value, aux;
 
-    aux = (old_value * (1024 - BETA) + new_value * (BETA)) / 1024;
+    aux = (old_value * (1024 - BETA) + (new_value << 6) * (BETA)) / 1024;
 
     old_value = aux;
 
-    return aux;
+    return (aux >> 6);
 }
 
 
@@ -90,10 +90,10 @@ int32 filter_vel_3(int32 new_value) {
 
 // Returns 1 if the encoder data is correct, 0 otherwise
 
-uint8 check_enc_data(uint32 *value) {
+CYBIT check_enc_data(const uint32 *value) {
 
-    const uint8* p = (const uint8*)value;
-    uint8 a = *p;
+    const uint8* CYIDATA p = (const uint8*)value;
+    uint8 CYDATA a = *p;
 
     a = a ^ *(++p);
     a = a ^ *(++p);
@@ -112,14 +112,13 @@ uint8 check_enc_data(uint32 *value) {
 // Performs a XOR byte by byte on the entire vector
 
 uint8 LCRChecksum(uint8 *data_array, uint8 data_length) {
-    static uint8 i;
-    static uint8 checksum;
-
-    checksum = 0x00;
-    for(i = 0; i < data_length; i++)
-    {
-       checksum = checksum ^ data_array[i];
-    }
+    
+    uint8 CYDATA i;
+    uint8 CYDATA checksum = 0x00;
+    
+    for(i = 0; i < data_length; ++i)
+       checksum ^= data_array[i];
+  
     return checksum;
 }
 

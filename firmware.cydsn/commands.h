@@ -44,8 +44,6 @@
 //==============================================================================
 //                                                                      COMMANDS
 //==============================================================================
-
-
 /** \name QB Move Commands
  * \{
 **/
@@ -55,24 +53,24 @@ enum qbmove_command {
 //=========================================================     general commands
 
     CMD_PING                    = 0,    ///< Asks for a ping message
-    CMD_SET_PARAM               = 1,    ///< Command for setting a parameter to be
-                                        ///  stored in the device memory
-    CMD_GET_PARAM               = 2,    ///< Command for getting stored parameters
+    CMD_SET_ZEROS               = 1,    ///< Command for setting the encoders zero position
     CMD_STORE_PARAMS            = 3,    ///< Stores all parameters in memory and
                                         ///  loads them
     CMD_STORE_DEFAULT_PARAMS    = 4,    ///< Store current parameters as factory parameters
     CMD_RESTORE_PARAMS          = 5,    ///< Restore default factory parameters
     CMD_GET_INFO                = 6,    ///< Asks for a string of information about
 
-    CMD_SET_VALUE               = 7,
-    CMD_GET_VALUE               = 8,
+    CMD_SET_VALUE               = 7,    ///< Not Used
+    CMD_GET_VALUE               = 8,    ///< Not Used
 
-    CMD_BOOTLOADER              = 9,
-
-    CMD_INIT_MEM                = 10,
-
-    CMD_CALIBRATE               = 11,
-
+    CMD_BOOTLOADER              = 9,    ///< Sets the bootloader modality to update the
+                                        ///  firmware
+    CMD_INIT_MEM                = 10,   ///< Initialize the memory with the defalut values
+    CMD_CALIBRATE               = 11,   ///< Starts the stiffness calibration of the qbMove
+                                        ///  or the hand closure and opening calibration
+    CMD_GET_PARAM_LIST          = 12,   ///< Command to get the parameters list or to set
+                                        ///  a defined value chosen by the use
+    CMD_HAND_CALIBRATE          = 13,   ///< Starts a series of opening and closures of the hand
 
 //=========================================================     QB Move commands
 
@@ -92,16 +90,23 @@ enum qbmove_command {
                                     ///  and stiffness
     CMD_GET_VELOCITIES      = 137,  ///< Command for asking device's
                                     ///  current velocity of motors and pulley
-    CMD_GET_ACCEL           = 138,  ///< Command for asking device's
-                                    ///  acceleretion measurements
-    CMD_GET_CURR_DIFF       = 139,  ///< Command for asking device's 
+    CMD_GET_COUNTERS        = 138,  ///< Command for asking device's counters
+                                    ///  (mostly used for debugging sent commands)
+    CMD_GET_ACCEL           = 139,  ///< Command for asking device's
+                                    ///  acceleration measurements
+    CMD_GET_CURR_DIFF       = 140,  ///< Command for asking device's 
                                     ///  current difference between a measured
                                     ///  one and an estimated one (Only for SoftHand)
-    CMD_SET_CURR_DIFF       = 140,  ///< Command used to set current difference modality
+    CMD_SET_CURR_DIFF       = 141,  ///< Command used to set current difference modality
                                     ///  (Only for Cuff device)
-    CMD_SET_CUFF_INPUTS     = 141   ///< Command used to set Cuff device inputs 
+    CMD_SET_CUFF_INPUTS     = 142,  ///< Command used to set Cuff device inputs 
                                     ///  (Only for Cuff device)
+    CMD_SET_WATCHDOG        = 143,  ///< Command for setting watchdog timer
+                                    ///  or disable it
+    CMD_SET_BAUDRATE        = 144   ///< Command for setting baudrate
+                                    ///  of communication
 };
+
 /** \} */
 //==============================================================================
 //                                                                    PARAMETERS
@@ -127,17 +132,19 @@ enum qbmove_parameter {
     PARAM_POS_LIMIT              = 8,   ///< Position limit values
                                         ///  | int32     | int32     | int32     | int32     |
                                         ///  | INF_LIM_1 | SUP_LIM_1 | INF_LIM_2 | SUP_LIM_2 |
+    PARAM_MAX_STEP_POS           = 9,   ///< Used to slow down movements for positive values
+    PARAM_MAX_STEP_NEG           = 10,  ///< Used to slow down movements for negative values
     PARAM_POS_RESOLUTION         = 11,  ///< Angle resolution for inputs and
                                         ///  measurements. Used during
                                         ///  communication.
-
     PARAM_CURRENT_LIMIT          = 12,  ///< Limit for absorbed current
+
     PARAM_PID_CURR_CONTROL       = 18,  ///< Current PID controller values
     PARAM_CURR_PROP_GAIN         = 23,  ///< Proportional gain on current difference (Only for Cuff device)
     PARAM_CURR_SAT               = 24,  ///< Current difference saturation value (Only for Cuff device)
-    PARAM_CURR_DEAD_ZONE         = 25,   ///< Current dead zone value (Only for Cuff device)
-    PARAM_CUFF_ACTIVATION_FLAG   = 26,
-    PARAM_POWER_TENSION          = 27
+    PARAM_CURR_DEAD_ZONE         = 25,  ///< Current dead zone value (Only for Cuff device)
+    PARAM_CUFF_ACTIVATION_FLAG   = 26,  ///< Cuff startup activation flag
+    PARAM_POWER_TENSION          = 27   ///< Device power tension
 
 };
 
@@ -177,7 +184,9 @@ enum qbmove_control_mode {
     CONTROL_ANGLE           = 0,        ///< Classic position control
     CONTROL_PWM             = 1,        ///< Direct PWM value
     CONTROL_CURRENT         = 2,        ///< Current control (beta)
-    CURR_AND_POS_CONTROL    = 3         ///< Current control (beta)
+    CURR_AND_POS_CONTROL    = 3         ///< Position and current control
+    //DEFLECTION_CONTROL      = 4,        ///< Deflection control
+    //DEFL_CURRENT_CONTROL    = 5         ///< Deflection and current control
 
 };
 
@@ -190,12 +199,28 @@ enum acknowledgment_values
     ACK_OK              = 1
 };
 
+//==============================================    data types enumeration
+
+enum data_types {
+    TYPE_FLAG    = 0,
+    TYPE_INT8    = 1,
+    TYPE_UINT8   = 2,
+    TYPE_INT16   = 3,
+    TYPE_UINT16  = 4,
+    TYPE_INT32   = 5,
+    TYPE_UINT32  = 6,
+    TYPE_FLOAT   = 7,
+    TYPE_DOUBLE  = 8
+};
+
+#define PARAM_BYTE_SLOT     50      //Number of bytes reserved to a param information
+#define PARAM_MENU_SLOT     150     //Number of bytes reserved to a param menu
+
 //==============================================================================
 //                                                                   INFORMATION
 //==============================================================================
 
 #define INFO_ALL        0
-
 
 #endif
 
