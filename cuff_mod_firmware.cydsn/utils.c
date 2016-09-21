@@ -23,7 +23,6 @@
 //==============================================================================
 //                                                               CURRENT FILTERS
 //==============================================================================
-
 int32 filter_i1(int32 new_value) {
 
     static int32 old_value, aux;
@@ -32,7 +31,7 @@ int32 filter_i1(int32 new_value) {
 
     old_value = aux;
 
-    return aux;
+    return (aux >> 6);
 }
 
 int32 filter_i2(int32 new_value) {
@@ -43,7 +42,7 @@ int32 filter_i2(int32 new_value) {
 
     old_value = aux;
 
-    return aux;
+    return (aux >> 6);
 }
 
 //==============================================================================

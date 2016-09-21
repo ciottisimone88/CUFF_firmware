@@ -157,7 +157,7 @@ int main() {
 
     for (i = 0; i< NUM_OF_SENSORS; i++) {
         encoder_reading(i, TRUE);
-        g_mem.m_off[i] = -g_meas.pos[i];
+        g_mem.m_off[i] = g_meas.pos[i];
     }
 
     if ( memStore(0) )

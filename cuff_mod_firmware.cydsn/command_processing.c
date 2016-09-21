@@ -277,7 +277,7 @@ void setZeros()
     uint8 CYDATA i;        // iterator
 
     for(i = 0; i < NUM_OF_SENSORS; ++i) {
-        g_mem.m_off[i] = *((int16 *) &g_rx.buffer[1 + i * 2]);
+        g_mem.m_off[i] = - *((int16 *) &g_rx.buffer[1 + i * 2]);
         g_mem.m_off[i] = g_mem.m_off[i] << g_mem.res[i];
 
         g_meas.rot[i] = 0;
@@ -318,7 +318,7 @@ void get_param_list(uint16 index)
     char curr_limit_str[20]     = "13 - Current limit:";
     char curr_prop_gain_str[32] = "14 - Current proportional gain:";
     char curr_sat_str[36]       = "15 - Current difference saturation:";
-    char curr_dead_zone_str[23] = "16 - Current dead zone:";
+    char curr_dead_zone_str[24] = "16 - Current dead zone:";
     char cuff_activ_str[31]     = "17 - Cuff activation flag:";
     char pow_tension_str[22]    = "18 - Power tension:";
     

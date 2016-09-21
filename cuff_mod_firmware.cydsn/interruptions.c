@@ -93,20 +93,20 @@ CYCODE uint8 hitech_pwm_preload_values[36] = {  100,   //0 (8000)
                                                 42};    //35 (25500)
 
 CYCODE uint8 hitech_pwm_preload_values_6v[15] = {100,     //0 (6000)
-                                                     76,
-                                                     71,
-                                                     69,
-                                                     67,
-                                                     67,     //5 (8750)
-                                                     63,
-                                                     61,
-                                                     60,
-                                                     55,
-                                                     52,     //10 (11500)
-                                                     51,
-                                                     51,
-                                                     50,
-                                                     50};   //15 (14750)
+                                                  76,
+                                                  71,
+                                                  69,
+                                                  67,
+                                                  67,     //5 (8750)
+                                                  63,
+                                                  61,
+                                                  60,
+                                                  55,
+                                                  52,     //10 (11500)
+                                                  51,
+                                                  51,
+                                                  50,
+                                                  50};   //15 (14750)
 
 //==============================================================================
 //                                                            WATCHDOG INTERRUPT
@@ -922,10 +922,10 @@ void encoder_reading(const uint8 idx, const uint8 flag)
     }    
 
     if (check_enc_data(&data_encoder)) {
-        if(flag)    // if the flag is set, save the measurement without offset to initialize cuff' zero position
-            value_encoder = (int16)(32768 - (data_encoder & 0x3FFC0) >> 2);
+        if(flag)    // if the flag is set, save the measurement without offset to initialize cuff's zero position
+            value_encoder = (int16) -(32768 - ((data_encoder & 0x3FFC0) >> 2));
         else
-            value_encoder = (int16)(32768 - ((data_encoder & 0x3FFC0) >> 2) + g_mem.m_off[index]);  
+            value_encoder = (int16) -(32768 - ((data_encoder & 0x3FFC0) >> 2) + g_mem.m_off[index]);  
 
         // Initialize last_value_encoder
         if (only_first_time) {
