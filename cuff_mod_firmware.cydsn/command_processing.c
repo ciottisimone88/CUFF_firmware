@@ -294,8 +294,8 @@ void setZeros()
 void get_param_list(uint16 index)
 {
     //Package to be sent variables
-    uint8 packet_data[1201] = "";
-    uint16 packet_lenght = 1201;
+    uint8 packet_data[1351] = "";
+    uint16 packet_lenght = 1351;
 
     //Auxiliary variables
     uint16 CYDATA i;
@@ -324,7 +324,8 @@ void get_param_list(uint16 index)
     
     //Parameters menus
     char input_mode_menu[52] = "0 -> Usb\n1 -> Shaft's position controls the motors\n";
-    char control_mode_menu[99] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position-Current\n";//4 -> Deflection\n5 -> Deflection-Current\n";
+    //Schar resolution_menu[] = "0 -> [1 turn]\n1 -> [2 turn]\n2 -> [4 turn]\n3 -> [8 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n"
+    char control_mode_menu[59] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position-Current\n";//4 -> Deflection\n5 -> Deflection-Current\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
 
     //Strings lenghts
@@ -598,10 +599,10 @@ void get_param_list(uint16 index)
                 packet_data[902 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[952 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[1052 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
 
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1002 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1202 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght, FALSE);
