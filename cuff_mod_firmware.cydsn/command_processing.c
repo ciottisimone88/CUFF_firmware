@@ -294,13 +294,14 @@ void setZeros()
 void get_param_list(uint16 index)
 {
     //Package to be sent variables
-    uint8 packet_data[1351] = "";
-    uint16 packet_lenght = 1351;
+    uint8 packet_data[1501] = "";
+    uint16 packet_lenght = 1501;
 
     //Auxiliary variables
     uint16 CYDATA i;
     uint8 string_lenght;
     int32 aux_int;
+    char tmp_string[3];
 
     //Parameters menu string definitions
     char id_str[15]             = "1 - Device ID:";
@@ -309,7 +310,7 @@ void get_param_list(uint16 index)
     char startup_str[28]        = "4 - Startup Activation:";
     char input_str[27]          = "5 - Input mode:";
     char contr_str[39]          = "6 - Control mode:";
-    char res_str[17]            = "7 - Resolutions:";
+    char res_str[23]            = "7 - Resolutions:";
     char m_off_str[25]          = "8 - Measurement Offsets:";
     char mult_str[17]           = "9 - Multipliers:";
     char pos_lim_flag_str[28]   = "10 - Pos. limit active:";
@@ -324,7 +325,7 @@ void get_param_list(uint16 index)
     
     //Parameters menus
     char input_mode_menu[52] = "0 -> Usb\n1 -> Shaft's position controls the motors\n";
-    //Schar resolution_menu[] = "0 -> [1 turn]\n1 -> [2 turn]\n2 -> [4 turn]\n3 -> [8 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n0 -> [1 turn]\n"
+    char resolution_menu[140] = "0 -> [1 turn]\n1 -> [2 turns]\n2 -> [4 turns]\n3 -> [8 turns]\n4 -> [16 turns]\n5 -> [32 turn]\n6 -> [64 turn]\n7 -> [128 turns]\n8 -> [256 turns]\n";
     char control_mode_menu[59] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position-Current\n";//4 -> Deflection\n5 -> Deflection-Current\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
 
@@ -333,7 +334,6 @@ void get_param_list(uint16 index)
     uint8 CYDATA pos_pid_str_len = strlen(pos_pid_str);
     uint8 CYDATA curr_pid_str_len = strlen(curr_pid_str);
 
-    uint8 CYDATA res_str_len = strlen(res_str);
     uint8 CYDATA m_off_str_len = strlen(m_off_str);
     uint8 CYDATA mult_str_len = strlen(mult_str);
 
@@ -348,6 +348,7 @@ void get_param_list(uint16 index)
     uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
     uint8 CYDATA control_mode_menu_len = strlen(control_mode_menu);
     uint8 CYDATA yes_no_menu_len = strlen(input_mode_menu);
+    uint8 CYDATA resolution_menu_len = strlen(resolution_menu);
 
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -412,7 +413,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i != 0; i--)
                 packet_data[155 + string_lenght - i] = startup_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[155 + string_lenght]  = 3;
+            packet_data[155 + string_lenght]  = 4;
 
             /*--------------INPUT MODE------------*/
             
@@ -472,12 +473,21 @@ void get_param_list(uint16 index)
             
             /*-------------RESOLUTIONS------------*/
             
-            packet_data[302] = TYPE_UINT8;
+            packet_data[302] = TYPE_FLAG;
             packet_data[303] = 3;
-            for(i = 0; i < NUM_OF_SENSORS; i++)
-                packet_data[i + 304] = c_mem.res[i];
-            for(i = res_str_len; i != 0; i--)
-                packet_data[307 + res_str_len - i] = res_str[res_str_len - i];
+            packet_data[304] = 0;   //Fake data used to correctly read string
+            packet_data[305] = 0;
+            packet_data[306] = 0;
+            for(i = 0; i < NUM_OF_SENSORS; i++) {
+                sprintf(tmp_string, " %d", (int) c_mem.res[i]);
+                strcat(res_str, tmp_string);
+            }
+            //strcat(res_str, "\0");
+            string_lenght = 23;
+            for(i = string_lenght; i != 0; i--)
+                packet_data[307 + string_lenght - i] = res_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[307 + string_lenght] = 3;
             
             /*----------MEASUREMENT OFFSET--------*/
             
@@ -513,7 +523,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i != 0; i--)
                 packet_data[455 + string_lenght - i] = pos_lim_flag_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[455 + string_lenght] = 3;
+            packet_data[455 + string_lenght] = 4;
             
             /*-----------POSITION LIMITS----------*/
             
@@ -583,7 +593,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i!=0; i--)
                 packet_data[805 + string_lenght - i] = cuff_activ_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[805 + string_lenght] = 3;
+            packet_data[805 + string_lenght] = 4;
 
             /*------------POWER TENSION----------*/
 
@@ -600,9 +610,12 @@ void get_param_list(uint16 index)
 
             for(i = control_mode_menu_len; i != 0; i--)
                 packet_data[1052 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
-
+            
+            for(i = resolution_menu_len; i != 0; i--)
+                packet_data[1202 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
+               
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1202 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1352 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght, FALSE);
