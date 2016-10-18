@@ -46,3 +46,7 @@ CYBIT watchdog_flag;
 // DMA Buffer
 
 int16 ADC_buf[3]; 
+
+// Sign of pwm_input to calculate current with sign
+
+int8 pwm_sign[2];

@@ -578,12 +578,8 @@ void motor_control(const uint8 idx) {
             }
 
             // Proportional
-            if (k_p_dl != 0) {
-                if ((pos_error > 131072) || (pos_error < -131072))
-                    curr_ref += (int32)(k_p_dl * (pos_error >> 8)) >> 8;
-                else
-                    curr_ref += (int32)(k_p_dl * pos_error) >> 16;
-            }
+            if (k_p_dl != 0)
+                curr_ref += (int32)(k_p_dl * pos_error) >> 16;
 
             // Integral
             if (k_i_dl != 0)
@@ -800,10 +796,14 @@ void motor_control(const uint8 idx) {
         interrupt_manager();
     }
     
-    if (index == 0)
+    if (index == 0) {
+        pwm_sign[0] = SIGN(pwm_input);
         PWM_MOTORS_WriteCompare1(abs(pwm_input));
-    else // index == 1
+    }
+    else {// index == 1
+        pwm_sign[1] = SIGN(pwm_input);
         PWM_MOTORS_WriteCompare2(abs(pwm_input));
+    }
     
     if (interrupt_flag){
         interrupt_flag = FALSE;
@@ -866,7 +866,7 @@ void analog_read_end() {
         }
 
         // Filter and Set currents
-        g_meas.curr[0] = filter_i1((int16) (((int32)(ADC_buf[1] - 1638) * 25771) >> 13));
+        g_meas.curr[0] = filter_i1((int16) (((int32)(ADC_buf[1] - 1638) * 25771) >> 13) * pwm_sign[0]);
         
         // Check Interrupt 
     
@@ -874,7 +874,7 @@ void analog_read_end() {
             interrupt_flag = FALSE;
             interrupt_manager();
         }
-        g_meas.curr[1] = filter_i2((int16) (((int32)(ADC_buf[2] - 1638) * 25771) >> 13));
+        g_meas.curr[1] = filter_i2((int16) (((int32)(ADC_buf[2] - 1638) * 25771) >> 13) * pwm_sign[1]);
         
         // Check Interrupt 
     
@@ -939,9 +939,9 @@ void encoder_reading(const uint8 idx, const uint8 flag)
 
     if (check_enc_data(&data_encoder)) {
         if(flag)    // if the flag is set, save the measurement without offset to initialize cuff's zero position
-            value_encoder = (int16) -(32768 - ((data_encoder & 0x3FFC0) >> 2));
+            value_encoder = (int16) (32768 - ((data_encoder & 0x3FFC0) >> 2));
         else
-            value_encoder = (int16) -(32768 - ((data_encoder & 0x3FFC0) >> 2) + g_mem.m_off[index]);  
+            value_encoder = (int16) (32768 - ((data_encoder & 0x3FFC0) >> 2) + g_mem.m_off[index]);  
 
         // Initialize last_value_encoder
         if (only_first_time) {

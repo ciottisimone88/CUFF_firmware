@@ -17,7 +17,7 @@
 
 //--------------------------------------------------------------     DEFINITIONS
 
-#define ALPHA 8     // current filters
+#define ALPHA 32     // current filters
 #define BETA  300   // velocity filters
 
 //==============================================================================

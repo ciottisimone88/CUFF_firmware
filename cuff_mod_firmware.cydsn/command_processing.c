@@ -277,7 +277,7 @@ void setZeros()
     uint8 CYDATA i;        // iterator
 
     for(i = 0; i < NUM_OF_SENSORS; ++i) {
-        g_mem.m_off[i] = - *((int16 *) &g_rx.buffer[1 + i * 2]);
+        g_mem.m_off[i] = *((int16 *) &g_rx.buffer[1 + i * 2]);
         g_mem.m_off[i] = g_mem.m_off[i] << g_mem.res[i];
 
         g_meas.rot[i] = 0;
@@ -657,7 +657,10 @@ void get_param_list(uint16 index)
 
 //===================================================     set_startup_activation        
         case 4:         //Startup flag - uint8
-            g_mem.activ = g_rx.buffer[3];
+            if(g_rx.buffer[3])
+                g_mem.activ = 0x03;
+            else
+                g_mem.activ = 0x00;
         break;
 
 //===========================================================     set_input_mode        

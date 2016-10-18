@@ -140,7 +140,7 @@ int main() {
         g_meas.rot[i] = 0;
     }
    
-    g_refNew = g_ref;                                   // Initialize k+1 measurements structure
+   
 
     g_ref.onoff = c_mem.activ;                          // Initalize Activation
 
@@ -157,14 +157,16 @@ int main() {
 
     for (i = 0; i< NUM_OF_SENSORS; i++) {
         encoder_reading(i, TRUE);
-        g_mem.m_off[i] = g_meas.pos[i];
+        g_mem.m_off[i] = -g_meas.pos[i];
     }
 
     if ( memStore(0) )
         sendAcknowledgment(ACK_OK);
     else
         sendAcknowledgment(ACK_ERROR);
-
+    
+    g_refNew = g_ref;                                   // Initialize k+1 measurements structure
+    
     MOTOR_ON_OFF_Write(g_ref.onoff);                    // Activating motors
     
     dev_pwm_limit = 0;                                  // Init PWM limit

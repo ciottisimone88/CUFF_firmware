@@ -224,6 +224,10 @@ extern CYBIT watchdog_flag;                         // watchdog flag enabler
 
 extern int16 ADC_buf[3];
 
+// Sign of pwm_input to calculate current with sign
+
+extern int8 pwm_sign[2];
+
 // -----------------------------------------------------------------------------
 
 #endif
