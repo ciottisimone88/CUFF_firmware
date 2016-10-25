@@ -1168,10 +1168,10 @@ uint8 memInit(void) {
     g_mem.k_i_c             =   0 * 65536;
     g_mem.k_d_c             =   0 * 65536;
 
-    g_mem.k_p_dl            =   0 * 65536;
+    g_mem.k_p_dl            =   -0.1 * 65536;
     g_mem.k_i_dl            =   0 * 65536;
     g_mem.k_d_dl            =   0 * 65536;
-    g_mem.k_p_c_dl          =   0 * 65536;
+    g_mem.k_p_c_dl          =   2 * 65536;
     g_mem.k_i_c_dl          =   0 * 65536;
     g_mem.k_d_c_dl          =   0 * 65536;
     
