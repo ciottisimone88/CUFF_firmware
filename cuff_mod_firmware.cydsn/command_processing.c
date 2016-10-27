@@ -1164,7 +1164,7 @@ uint8 memInit(void) {
     g_mem.k_p               =   0.1 * 65536;
     g_mem.k_i               =   0 * 65536;
     g_mem.k_d               =   0.8 * 65536;
-    g_mem.k_p_c             =   5 * 65536;
+    g_mem.k_p_c             =   6 * 65536;
     g_mem.k_i_c             =   0 * 65536;
     g_mem.k_d_c             =   0 * 65536;
 
@@ -1177,10 +1177,10 @@ uint8 memInit(void) {
     
     g_mem.activ             =   0;
     g_mem.input_mode        =   0;
-    g_mem.control_mode      =   0;
+    g_mem.control_mode      =   CURR_AND_POS_CONTROL;
     g_mem.watchdog_period   =   0; //MAX_WATCHDOG_TIMER;
 
-    g_mem.pos_lim_flag = 1;
+    g_mem.pos_lim_flag = 0;
 
     for (i = 0; i < NUM_OF_MOTORS; i++) {
         g_mem.pos_lim_inf[i] = -30000;
@@ -1190,7 +1190,7 @@ uint8 memInit(void) {
     for(i = 0; i < NUM_OF_SENSORS; ++i)
     {
         g_mem.m_mult[i] = 1;
-        g_mem.res[i] = 1;
+        g_mem.res[i] = 2;
     }
 
     g_mem.curr_prop_gain = 0;
@@ -1203,7 +1203,7 @@ uint8 memInit(void) {
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];
     g_mem.m_off[2] = (int32)0 << g_mem.res[2];
 
-    g_mem.max_stiffness = (int32)3000 << g_mem.res[0];
+    g_mem.max_stiffness = 0; //(int32)3000 << g_mem.res[0];
 
     g_mem.current_limit = DEFAULT_CURRENT_LIMIT;
 
