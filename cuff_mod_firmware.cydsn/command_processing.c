@@ -117,6 +117,7 @@ void commProcess(){
 //=============================================================     CMD_GET_INFO
             
         case CMD_GET_INFO:
+            cuff_flag = FALSE;
             infoGet( *((uint16 *) &g_rx.buffer[1]));
             break;
 
@@ -216,10 +217,14 @@ void drive_cuff() {
     commWrite(packet_data, packet_lenght, TRUE);
     
     t_start = (uint32) MY_TIMER_ReadCounter();
-    while(g_rx.buffer[0] != CMD_SET_CURR_DIFF) {
+    while(g_rx.buffer[0] != CMD_SET_CUFF_INPUTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
         t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 30000) {             // 30ms timeout
-            cuff_flag = 0;
+        if((t_start - t_end) > 4500000){             // 4.5 s timeout
+            cuff_flag = FALSE;
             break;
         }
     }
@@ -236,15 +241,15 @@ void drive_cuff() {
             curr_diff -= g_mem.curr_dead_zone;
 
         aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
-        g_ref.pos[0] =  (aux_val << g_mem.res[0]);
-        g_ref.pos[1] = -(aux_val << g_mem.res[1]);
+        g_refNew.pos[0] = -(aux_val << g_mem.res[0]);
+        g_refNew.pos[1] =  (aux_val << g_mem.res[1]);
 
         if (c_mem.pos_lim_flag) {                      // pos limiting
-            if (g_ref.pos[0] < c_mem.pos_lim_inf[0]) g_ref.pos[0] = c_mem.pos_lim_inf[0];
-            if (g_ref.pos[1] < c_mem.pos_lim_inf[1]) g_ref.pos[1] = c_mem.pos_lim_inf[1];
+            if (g_refNew.pos[0] < c_mem.pos_lim_inf[0]) g_refNew.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_refNew.pos[1] < c_mem.pos_lim_inf[1]) g_refNew.pos[1] = c_mem.pos_lim_inf[1];
 
-            if (g_ref.pos[0] > c_mem.pos_lim_sup[0]) g_ref.pos[0] = c_mem.pos_lim_sup[0];
-            if (g_ref.pos[1] > c_mem.pos_lim_sup[1]) g_ref.pos[1] = c_mem.pos_lim_sup[1];
+            if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
+            if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
     }
 }
