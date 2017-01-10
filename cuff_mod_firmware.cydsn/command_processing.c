@@ -1434,10 +1434,10 @@ void cmd_activate(){
     }
     
     // Safety start position (eliminate "lost rotation" problem)    
-    if((g_meas.pos[0] > 26000) || (g_meas.pos[0] < -26000) || 
+    /*if((g_meas.pos[0] > 26000) || (g_meas.pos[0] < -26000) || 
        (g_meas.pos[1] > 26000) || (g_meas.pos[1] < -26000) ||
        (g_meas.pos[2] > 26000) || (g_meas.pos[2] < -26000))
-        g_refNew.onoff = 0x00;
+        g_refNew.onoff = 0x00;*/
     
     // Activate/Disactivate motors
     MOTOR_ON_OFF_Write(g_refNew.onoff);
