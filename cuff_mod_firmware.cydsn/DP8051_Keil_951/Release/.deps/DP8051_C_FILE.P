@@ -1,0 +1,534 @@
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_AMux.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_Ext_CP_Clk.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_theACLK.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_AMux.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_Ext_CP_Clk.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_theACLK.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_AMux.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_AMux.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_AMux.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_AMux.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_Ext_CP_Clk.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_Ext_CP_Clk.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_Ext_CP_Clk.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_Ext_CP_Clk.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_INT.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_INT.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_INT.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_IRQ.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_IRQ.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_IRQ.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_IRQ.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_IRQ.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_SOC.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_SOC_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_SOC_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_STATUS.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_STATUS.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_STATUS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_STATUS.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_STATUS.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ADC_theACLK.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_theACLK.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_theACLK.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ADC_theACLK.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Bootloadable.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Bootloadable.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Bootloadable.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Bootloadable.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Bootloadable.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CLOCK_ENCODERS.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_ENCODERS.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_ENCODERS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_ENCODERS.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_ENCODERS.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CLOCK_PWM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_PWM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_PWM.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_PWM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_PWM.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CLOCK_UART.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_UART.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_UART.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_UART.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CLOCK_UART.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/COUNTER_ENC.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/COUNTER_ENC_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/COUNTER_ENC_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CURRENT_SENSE_1.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_1_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CURRENT_SENSE_2.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CURRENT_SENSE_2_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CyDmac.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyDmac.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyDmac.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyDmac.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyDmac.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CyFlash.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CyLib.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/CySpc.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/DMA_dma.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CYDMAC.H C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CYFITTER.H C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CYLIB.H C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/DMA_dma.H C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/DMA_dma.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/DMA_dma.H : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/DMA_dma.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/EEPROM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/EEPROM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/EEPROM.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/EEPROM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/EEPROM.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/FF_STATUS.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FF_STATUS.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FF_STATUS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FF_STATUS.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FF_STATUS.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/FTDI_ENABLE.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/FTDI_ENABLE_REG.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/FTDI_ENABLE_REG_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/FTDI_ENABLE_REG_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ISR_RS485_RX.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_RS485_RX.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_RS485_RX.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_RS485_RX.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_RS485_RX.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/ISR_WATCHDOG.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_WATCHDOG.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_WATCHDOG.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_WATCHDOG.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/ISR_WATCHDOG.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_1A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_1B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_1B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_2A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_2B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_2B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_DIR.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_DIR_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_DIR_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_EN.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_EN_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_ON_OFF.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MOTOR_ON_OFF_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MOTOR_ON_OFF_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MY_TIMER.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/MY_TIMER_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/MY_TIMER_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/PACER_TIMER.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/PACER_TIMER_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PACER_TIMER_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/PWM_MOTORS.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/PWM_MOTORS_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PWM_MOTORS_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/RESET_FF.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/RESET_FF_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RESET_FF_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/RS485_CTS.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/RS485_CTS_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS485_CTS_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/RS_485_EN.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/RS_485_EN_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_1.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_1_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_1_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_2.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_2_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_2_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_3.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_3_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_3_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_4.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/SHIFTREG_ENC_4_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/SHIFTREG_ENC_4_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_1_A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_1_B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_1_C.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_1_C_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_2_A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_2_B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_2_C.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_2_C_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_3_A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_3_B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_3_C.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_3_C_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_4_A.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_A_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_4_B.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_B_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/Signal_4_C.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/Signal_4_C_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/UART_RS485.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/UART_RS485_BOOT.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_BOOT.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_BOOT.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/UART_RS485_INT.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_INT.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_INT.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/UART_RS485_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/UART_RS485_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/USB_VDD.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/USB_VDD_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/VOLTAGE_SENSE.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE_aliases.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cypins.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/VOLTAGE_SENSE_aliases.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_CLK.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_CLK.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_CLK.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_CLK.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_CLK.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_COUNTER.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_COUNTER_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_COUNTER_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_ENABLER.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_ENABLER_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_ENABLER_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_REFRESH.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH.h : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/WATCHDOG_REFRESH_PM.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH_PM.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/WATCHDOG_REFRESH_PM.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/cyPm.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/cyfitter_cfg.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyFlash.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CyLib.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/CySpc.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/PSoC3_8051.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyPm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter_cfg.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/cyutils.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyutils.c 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyutils.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/DP8051_Keil_951/Release/timer_clock.obj : C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cydevice_trm.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cyfitter.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/cytypes.h C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/timer_clock.c C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/timer_clock.h 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/timer_clock.c : 
+
+C:/Users/MattiaCP/Documents/GITHUB/CUFF/cuff_mod_firmware.cydsn/Generated_Source/PSoC3/timer_clock.h : 
+

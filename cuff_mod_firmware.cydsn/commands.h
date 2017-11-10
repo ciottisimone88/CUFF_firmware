@@ -25,10 +25,14 @@
 /**
  * \file        commands.h
  *
- *  \brief      Definitions for QB Move commands, parameters and packages.
+ *  \brief      Definitions for commands, parameters and packages.
+ *  \date         October 01, 2017
+ *  \author       _Centro "E.Piaggio"_
+ *  \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
+ *  \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
  *
  *  \details
- *  This file is included in the QB Move firmware, in its libraries and
+ *  This file is included in the CUFF and Stretch Pro firmware, in its libraries and
  *  applications. It contains all definitions that are necessary for the
  *  contruction of communication packages.
  *

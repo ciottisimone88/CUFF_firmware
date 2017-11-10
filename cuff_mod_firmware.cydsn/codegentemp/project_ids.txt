@@ -1,0 +1,6 @@
+C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\cuff_mod_firmware.cyprj|6b5d11e8-2067-4c46-8bec-7d0d3a595779
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyAnnotationLibrary\CyAnnotationLibrary.cylib\CyAnnotationLibrary.cyprj|ad7d5d73-8060-40bd-8b21-36191269eb95
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\default\CyReferenceLibrary\CyReferenceLibrary.cylib\CyReferenceLibrary.cyprj|e49cc667-2fc6-49e7-847f-3b6f6abba515
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibraryupdates\CyComponentLibraryUpdates.cylib\CyComponentLibraryUpdates.cyprj|025e740e-e935-4f42-bea5-b6d6575faefc
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CyComponentLibrary.cyprj|ba9e706f-d4f6-42ef-8cc6-b69701453046
+C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyPrimitives.cyprj|b03f222c-052d-4f19-b385-4991dc524afa
