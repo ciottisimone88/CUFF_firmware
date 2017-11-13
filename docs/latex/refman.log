@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.8)  10 NOV 2017 16:05
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.8)  13 NOV 2017 14:38
 entering extended mode
 **./refman.tex
 (refman.tex
@@ -1220,44 +1220,44 @@ File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 File: command__processing_8c__incl.pdf Graphic file (type pdf)
 
 <use command__processing_8c__incl.pdf>
-Package pdftex.def Info: command__processing_8c__incl.pdf used on input line 18
+Package pdftex.def Info: command__processing_8c__incl.pdf used on input line 17
 .
 (pdftex.def)             Requested size: 350.0pt x 257.74078pt.
  [9
 
  <./command__processing_8c__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 108
+Underfull \hbox (badness 10000) detected at line 107
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 111
+Underfull \hbox (badness 10000) detected at line 110
 [][][]
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 112.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 111.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 8.99994pt on input line 112.
+(Font)              scaled to size 8.99994pt on input line 111.
 LaTeX Font Info:    Font shape `T1/phv/m/it' in size <7> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 112.
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 111.
 LaTeX Font Info:    Font shape `T1/phv/m/sl' will be
-(Font)              scaled to size 6.29996pt on input line 112.
+(Font)              scaled to size 6.29996pt on input line 111.
 
-Underfull \hbox (badness 10000) detected at line 114
+Underfull \hbox (badness 10000) detected at line 113
 [][][]
  []
 
 LaTeX Font Info:    Font shape `T1/phv/m/n' will be
-(Font)              scaled to size 7.19995pt on input line 126.
+(Font)              scaled to size 7.19995pt on input line 125.
 LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <8> not available
-(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 132.
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 131.
 [10]) (command__processing_8h.tex
 <command__processing_8h__incl.pdf, id=63, 357.335pt x 269.005pt>
 File: command__processing_8h__incl.pdf Graphic file (type pdf)
 
 <use command__processing_8h__incl.pdf>
-Package pdftex.def Info: command__processing_8h__incl.pdf used on input line 14
+Package pdftex.def Info: command__processing_8h__incl.pdf used on input line 13
 .
 (pdftex.def)             Requested size: 350.0pt x 263.49585pt.
  [11]
@@ -1266,7 +1266,7 @@ File: command__processing_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use command__processing_8h__dep__incl.pdf>
 Package pdftex.def Info: command__processing_8h__dep__incl.pdf used on input li
-ne 22.
+ne 20.
 (pdftex.def)             Requested size: 350.0pt x 151.66743pt.
  [12 <./command__processing_8h__incl.pdf> <./command__processing_8h__dep__incl.
 pdf
@@ -1274,17 +1274,17 @@ pdf
 pdfTeX warning: pdflatex (file ./command__processing_8h__dep__incl.pdf): PDF in
 clusion: multiple pdfs with page group included in a single page
 >]
-Underfull \hbox (badness 10000) detected at line 106
+Underfull \hbox (badness 10000) detected at line 104
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 109
+Underfull \hbox (badness 10000) detected at line 107
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 112
+Underfull \hbox (badness 10000) detected at line 110
 [][][]
  []
 
@@ -1293,49 +1293,49 @@ Underfull \hbox (badness 10000) detected at line 112
 File: commands_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use commands_8h__dep__incl.pdf>
-Package pdftex.def Info: commands_8h__dep__incl.pdf used on input line 13.
+Package pdftex.def Info: commands_8h__dep__incl.pdf used on input line 12.
 (pdftex.def)             Requested size: 350.0pt x 197.0575pt.
  [14 <./commands_8h__dep__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 148
+Underfull \hbox (badness 10000) detected at line 147
 [][][]
  []
 
 [15]
-Underfull \hbox (badness 10000) detected at line 151
+Underfull \hbox (badness 10000) detected at line 150
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 154
+Underfull \hbox (badness 10000) detected at line 153
 [][][]
  []
 
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <8> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 168.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 167.
 LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <7> not available
-(Font)              Font shape `T1/pcr/b/n' tried instead on input line 168.
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 167.
 [16] [17]) (globals_8c.tex
 <globals_8c__incl.pdf, id=118, 357.335pt x 269.005pt>
 File: globals_8c__incl.pdf Graphic file (type pdf)
 
 <use globals_8c__incl.pdf>
-Package pdftex.def Info: globals_8c__incl.pdf used on input line 14.
+Package pdftex.def Info: globals_8c__incl.pdf used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 263.49585pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18]
-Underfull \hbox (badness 10000) detected at line 73
+Underfull \hbox (badness 10000) detected at line 72
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 76
+Underfull \hbox (badness 10000) detected at line 75
 [][][]
  []
 
 [19 <./globals_8c__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 79
+Underfull \hbox (badness 10000) detected at line 78
 [][][]
  []
 
@@ -1343,31 +1343,31 @@ Underfull \hbox (badness 10000) detected at line 79
 File: globals_8h__incl.pdf Graphic file (type pdf)
 
 <use globals_8h__incl.pdf>
-Package pdftex.def Info: globals_8h__incl.pdf used on input line 17.
+Package pdftex.def Info: globals_8h__incl.pdf used on input line 16.
 (pdftex.def)             Requested size: 350.0pt x 208.437pt.
 
 <globals_8h__dep__incl.pdf, id=135, 489.83pt x 212.795pt>
 File: globals_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use globals_8h__dep__incl.pdf>
-Package pdftex.def Info: globals_8h__dep__incl.pdf used on input line 25.
+Package pdftex.def Info: globals_8h__dep__incl.pdf used on input line 23.
 (pdftex.def)             Requested size: 350.0pt x 152.05309pt.
  [20 <./globals_8h__incl.pdf> <./globals_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./globals_8h__dep__incl.pdf): PDF inclusion: mul
 tiple pdfs with page group included in a single page
 >] [21]
-Underfull \hbox (badness 10000) detected at line 190
+Underfull \hbox (badness 10000) detected at line 188
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 193
+Underfull \hbox (badness 10000) detected at line 191
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 196
+Underfull \hbox (badness 10000) detected at line 194
 [][][]
  []
 
@@ -1376,20 +1376,20 @@ Underfull \hbox (badness 10000) detected at line 196
 File: interruptions_8c__incl.pdf Graphic file (type pdf)
 
 <use interruptions_8c__incl.pdf>
-Package pdftex.def Info: interruptions_8c__incl.pdf used on input line 17.
+Package pdftex.def Info: interruptions_8c__incl.pdf used on input line 16.
 (pdftex.def)             Requested size: 350.0pt x 286.37369pt.
  [22]
-Underfull \hbox (badness 10000) detected at line 66
+Underfull \hbox (badness 10000) detected at line 65
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 69
+Underfull \hbox (badness 10000) detected at line 68
 [][][]
  []
 
 [23 <./interruptions_8c__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 72
+Underfull \hbox (badness 10000) detected at line 71
 [][][]
  []
 
@@ -1398,14 +1398,14 @@ Underfull \hbox (badness 10000) detected at line 72
 File: interruptions_8h__incl.pdf Graphic file (type pdf)
 
 <use interruptions_8h__incl.pdf>
-Package pdftex.def Info: interruptions_8h__incl.pdf used on input line 14.
+Package pdftex.def Info: interruptions_8h__incl.pdf used on input line 13.
 (pdftex.def)             Requested size: 350.0pt x 263.49585pt.
  [24]
 <interruptions_8h__dep__incl.pdf, id=180, 361.35pt x 156.585pt>
 File: interruptions_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use interruptions_8h__dep__incl.pdf>
-Package pdftex.def Info: interruptions_8h__dep__incl.pdf used on input line 22.
+Package pdftex.def Info: interruptions_8h__dep__incl.pdf used on input line 20.
 
 (pdftex.def)             Requested size: 350.0pt x 151.66743pt.
  [25 <./interruptions_8h__incl.pdf> <./interruptions_8h__dep__incl.pdf
@@ -1413,6 +1413,55 @@ Package pdftex.def Info: interruptions_8h__dep__incl.pdf used on input line 22.
 pdfTeX warning: pdflatex (file ./interruptions_8h__dep__incl.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
 >]
+Underfull \hbox (badness 10000) detected at line 58
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 61
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 64
+[][][]
+ []
+
+) (main_8c.tex <main_8c__incl.pdf, id=201, 390.45876pt x 325.215pt>
+File: main_8c__incl.pdf Graphic file (type pdf)
+
+<use main_8c__incl.pdf>
+Package pdftex.def Info: main_8c__incl.pdf used on input line 16.
+(pdftex.def)             Requested size: 350.0pt x 291.52959pt.
+ [26 <./main_8c__incl.pdf>]
+Underfull \hbox (badness 10000) detected at line 30
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 33
+[][][]
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 36
+[][][]
+ []
+
+) (utils_8h.tex <utils_8h__incl.pdf, id=214, 357.335pt x 269.005pt>
+File: utils_8h__incl.pdf Graphic file (type pdf)
+
+<use utils_8h__incl.pdf>
+Package pdftex.def Info: utils_8h__incl.pdf used on input line 13.
+(pdftex.def)             Requested size: 350.0pt x 263.49585pt.
+
+<utils_8h__dep__incl.pdf, id=215, 297.11pt x 156.585pt>
+File: utils_8h__dep__incl.pdf Graphic file (type pdf)
+
+<use utils_8h__dep__incl.pdf>
+Package pdftex.def Info: utils_8h__dep__incl.pdf used on input line 20.
+(pdftex.def)             Requested size: 296.0pt x 156.0064pt.
+ [27 <./utils_8h__incl.pdf>]
 Underfull \hbox (badness 10000) detected at line 60
 [][][]
  []
@@ -1427,67 +1476,18 @@ Underfull \hbox (badness 10000) detected at line 66
 [][][]
  []
 
-) (main_8c.tex <main_8c__incl.pdf, id=201, 390.45876pt x 325.215pt>
-File: main_8c__incl.pdf Graphic file (type pdf)
 
-<use main_8c__incl.pdf>
-Package pdftex.def Info: main_8c__incl.pdf used on input line 17.
-(pdftex.def)             Requested size: 350.0pt x 291.52959pt.
- [26 <./main_8c__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 31
+Underfull \hbox (badness 10000) detected at line 71
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 34
+Underfull \hbox (badness 10000) detected at line 74
 [][][]
  []
 
 
-Underfull \hbox (badness 10000) detected at line 37
-[][][]
- []
-
-) (utils_8h.tex <utils_8h__incl.pdf, id=214, 357.335pt x 269.005pt>
-File: utils_8h__incl.pdf Graphic file (type pdf)
-
-<use utils_8h__incl.pdf>
-Package pdftex.def Info: utils_8h__incl.pdf used on input line 14.
-(pdftex.def)             Requested size: 350.0pt x 263.49585pt.
-
-<utils_8h__dep__incl.pdf, id=215, 297.11pt x 156.585pt>
-File: utils_8h__dep__incl.pdf Graphic file (type pdf)
-
-<use utils_8h__dep__incl.pdf>
-Package pdftex.def Info: utils_8h__dep__incl.pdf used on input line 22.
-(pdftex.def)             Requested size: 296.0pt x 156.0064pt.
- [27 <./utils_8h__incl.pdf>]
-Underfull \hbox (badness 10000) detected at line 62
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 65
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 68
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 73
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 76
-[][][]
- []
-
-
-Underfull \hbox (badness 10000) detected at line 79
+Underfull \hbox (badness 10000) detected at line 77
 [][][]
  []
 
