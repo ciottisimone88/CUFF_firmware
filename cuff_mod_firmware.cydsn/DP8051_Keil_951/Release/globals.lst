@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   GLOBALS                                                               06/13/2017 14:44:00 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               01/12/2018 13:27:00 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\globals.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Kei
-                    -l_951\Release/globals.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\globals.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_
+                    -951\Release/globals.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\globals.obj)
 
 line level    source
 
@@ -48,8 +48,8 @@ line level    source
   36          * \file         globals.c
   37          *
   38          * \brief        Global variables.
-  39          * \date         Dic. 1, 2015
-  40          * \author       qbrobotics
+  39          * \date         October 01, 2017
+  40          * \author       _Centro "E.Piaggio"_
   41          * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
   42          * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
   43          */
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // motor variables
   52          struct st_meas  g_meas, g_measOld;          // measurements
-C51 COMPILER V9.51   GLOBALS                                                               06/13/2017 14:44:00 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               01/12/2018 13:27:00 PAGE 2   
 
   53          struct st_data  g_rx;                       // income data
   54          struct st_mem   g_mem, c_mem;               // memory
@@ -83,18 +83,19 @@ line level    source
   69          
   70          CYBIT reset_last_value_flag;
   71          CYBIT tension_valid;
-  72          CYBIT cuff_flag;
-  73          CYBIT interrupt_flag;
-  74          CYBIT watchdog_flag;
-  75          
-  76          // DMA Buffer
-  77          
-  78          int16 ADC_buf[3]; 
-  79          
-  80          // Sign of pwm_input to calculate current with sign
-  81          
-  82          int8 pwm_sign[2];
-C51 COMPILER V9.51   GLOBALS                                                               06/13/2017 14:44:00 PAGE 3   
+  72          CYBIT cuff_flag_force;
+  73          CYBIT cuff_flag_proprio;
+  74          CYBIT interrupt_flag;
+  75          CYBIT watchdog_flag;
+  76          
+  77          // DMA Buffer
+  78          
+  79          int16 ADC_buf[3]; 
+  80          
+  81          // Sign of pwm_input to calculate current with sign
+  82          
+  83          int8 pwm_sign[2];
+C51 COMPILER V9.51   GLOBALS                                                               01/12/2018 13:27:00 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -104,11 +105,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    488    ----
+   XDATA SIZE       =    508    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----
-   BIT SIZE         =      5    ----
+   BIT SIZE         =      6    ----
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----

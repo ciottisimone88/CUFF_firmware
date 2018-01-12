@@ -69,7 +69,8 @@ uint8 calibration_flag;
 
 CYBIT reset_last_value_flag;
 CYBIT tension_valid;
-CYBIT cuff_flag;
+CYBIT cuff_flag_force;
+CYBIT cuff_flag_proprio;
 CYBIT interrupt_flag;
 CYBIT watchdog_flag;
 

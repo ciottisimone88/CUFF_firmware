@@ -195,7 +195,8 @@ int main() {
     dev_pwm_limit = 0;                                  // Init PWM limit
     tension_valid = FALSE;                              // Init tension_valid BIT
 
-    cuff_flag = c_mem.cuff_activation_flag;             // If cuff startup is active, activate the device
+    cuff_flag_force = c_mem.cuff_activation_flag_force;             // If cuff startup is active, activate the device
+    cuff_flag_proprio = c_mem.cuff_activation_flag_proprio;             // If cuff startup is active, activate the device
     calibration_flag = STOP;
     reset_last_value_flag = 0;
     

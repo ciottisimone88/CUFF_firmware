@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\Source Files\utils.c">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\cuff_mod_firmware.cydwr">
 <ExpandedNodeIds>
 <v>firmware</v>
 <v>firmware\cuff_mod_firmware</v>
@@ -627,16 +627,14 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
-<name v=".\cuff_mod_firmware.cydsn\globals.h" />
 <name v=".\cuff_mod_firmware.cydsn\command_processing.c" />
-<name v=".\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" />
-<name v=".\cuff_mod_firmware.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\cuff_mod_firmware.cydsn\interruptions.c" />
+<name v=".\cuff_mod_firmware.cydsn\globals.h" />
+<name v=".\cuff_mod_firmware.cydsn\globals.c" />
 <name v=".\cuff_mod_firmware.cydsn\commands.h" />
 <name v=".\cuff_mod_firmware.cydsn\main.c" />
-<name v=".\cuff_mod_firmware.cydsn\utils.c" />
-<name v=".\cuff_mod_firmware.cydsn\Generated_Source\PSoC3\ADC.c" />
+<name v=".\cuff_mod_firmware.cydsn\interruptions.c" />
 <name v=".\cuff_mod_firmware.cydsn\command_processing.h" />
+<name v=".\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -644,7 +642,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1465, 829" SelectedTabbedMdiWindow="8a34b05f-e9b8-49df-8b2b-20f7c1692631"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\globals.h" Guid="8157d40d-4f87-4348-8328-a43040debb54" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\command_processing.c" Guid="8a34b05f-e9b8-49df-8b2b-20f7c1692631" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" Guid="978459fa-3eaa-4b49-9013-d781b7ffa51a" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\TopDesign\TopDesign.cysch" Guid="becf7fac-9983-4226-8713-90165343bef0" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\interruptions.c" Guid="da6ed7dd-b56e-42a0-9354-deef64145cb7" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\commands.h" Guid="143cbff5-2094-4dda-a4ba-fa4cd2cb9c5e" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\main.c" Guid="7da70edc-6363-49c7-b9c2-5662b6da33a3" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\utils.c" Guid="c95a66ab-c2a6-4037-a1ad-906d6d613559" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\Generated_Source\PSoC3\ADC.c" Guid="00af49f9-5e15-481e-8ccd-e059d93c016d" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\command_processing.h" Guid="5d39383e-93e7-47f6-acb0-821b6e8c9028" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1465, 669" SelectedTabbedMdiWindow="305dc6f6-b7d9-46ee-ab58-de317c33de9d"><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\command_processing.c" Guid="305dc6f6-b7d9-46ee-ab58-de317c33de9d" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\globals.h" Guid="c4b6e4b0-ea3f-4cdd-8487-d2c8b751da09" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\globals.c" Guid="68d68ee1-2697-4dca-ba28-3ddf9e639e8e" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\commands.h" Guid="ac82ca09-5bb9-4cd4-ace9-50ccd2cf08da" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\main.c" Guid="b65cda40-243e-4b3a-b0e5-b0a0cea786dc" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\interruptions.c" Guid="a3b173e9-c765-4809-b473-c96a43c800e1" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\command_processing.h" Guid="55851e56-b024-4179-b56c-0d22dbf25caa" /><DocumentWindow Key="C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" Guid="ecef2a95-39e7-4bb6-b750-c89a0a35a7b7" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

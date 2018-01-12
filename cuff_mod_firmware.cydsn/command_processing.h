@@ -60,6 +60,7 @@ void    infoPrepare        	(unsigned char *);
 void    infoGet            	(uint16);
 void    commProcess        	();
 void 	drive_cuff			();
+void 	slide_cuff			();
 void    commWrite          	(uint8*, const uint16, uint8);
 void    commWrite_old_id    (uint8*, const uint16, uint8);
 uint8   memStore           	(int);

@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 1   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE UART_RS485
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\UART_RS485.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\Generated_Source\PSoC3\UART_RS485.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDE
-                    -BUG) WL(2) PR(.\DP8051_Keil_951\Release/UART_RS485.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\UART_RS485.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -Generated_Source\PSoC3\UART_RS485.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBU
+                    -G) WL(2) PR(.\DP8051_Keil_951\Release/UART_RS485.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\UART_RS485.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   50          * Function Name: UART_RS485_Start
   51          ********************************************************************************
   52          *
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 2   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 2   
 
   53          * Summary:
   54          *  This is the preferred method to begin component operation.
@@ -126,7 +126,7 @@ line level    source
  112   1                  (void) CyIntSetVector(UART_RS485_RX_VECT_NUM, &UART_RS485_RXISR);
  113   1                  CyIntSetPriority(UART_RS485_RX_VECT_NUM, UART_RS485_RX_PRIOR_NUM);
  114   1                  UART_RS485_errorStatus = 0u;
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 3   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 3   
 
  115   1              #endif /* (UART_RS485_RX_INTERRUPT_ENABLED) */
  116   1      
@@ -190,7 +190,7 @@ line level    source
  174          *  None.
  175          *
  176          * Return:
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 4   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 4   
 
  177          *  None.
  178          *
@@ -254,7 +254,7 @@ line level    source
  236          * Return:
  237          *  None.
  238          *
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 5   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 5   
 
  239          *******************************************************************************/
  240          void UART_RS485_Stop(void) 
@@ -318,7 +318,7 @@ line level    source
  298   1              return(0u);
  299   1          #else
                       return(UART_RS485_CONTROL_REG);
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 6   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 6   
 
                   #endif /* (UART_RS485_CONTROL_REG_REMOVED) */
  302   1      }
@@ -382,7 +382,7 @@ line level    source
  360              {
  361   1              UART_RS485_RXSTATUS_MASK_REG  = intSrc;
  362   1          }
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 7   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 7   
 
  363          
  364          
@@ -446,7 +446,7 @@ line level    source
  422   3                      #if ((UART_RS485_RX_INTERRUPT_ENABLED) && (UART_RS485_FLOW_CONTROL != 0u))
                                   /* When Hardware Flow Control selected - return RX mask */
                                   #if( UART_RS485_HD_ENABLED )
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 8   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 8   
 
                                       if((UART_RS485_CONTROL_REG & UART_RS485_CTRL_HD_SEND) == 0u)
                                       {   /* In Half duplex mode return RX mask only in RX
@@ -510,7 +510,7 @@ line level    source
  484              *******************************************************************************/
  485              uint8 UART_RS485_ReadRxStatus(void) 
  486              {
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 9   
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 9   
 
  487   1              uint8 status;
  488   1      
@@ -574,7 +574,7 @@ line level    source
  546   1      
  547   1              if( (UART_RS485_rxBufferLoopDetect != 0u) || (locRxBufferRead != locRxBufferWrite) )
  548   1              {
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 10  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 10  
 
  549   2                  rxData = UART_RS485_rxBuffer[locRxBufferRead];
  550   2                  locRxBufferRead++;
@@ -638,7 +638,7 @@ line level    source
                       }
                   #endif /* (UART_RS485_RX_INTERRUPT_ENABLED) */
  610   1      
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 11  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 11  
 
  611   1              return(rxData);
  612   1          }
@@ -702,7 +702,7 @@ line level    source
  670              *
  671              * Global Variables:
  672              *  UART_RS485_rxBufferWrite - used to calculate left bytes.
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 12  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 12  
 
  673              *  UART_RS485_rxBufferRead - used to calculate left bytes.
  674              *  UART_RS485_rxBufferLoopDetect - checked to decide left bytes amount.
@@ -766,7 +766,7 @@ line level    source
  732              *
  733              * Parameters:
  734              *  None.
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 13  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 13  
 
  735              *
  736              * Return:
@@ -830,7 +830,7 @@ line level    source
  794              *  UART_RS485__B_UART__AM_SW_BYTE_BYTE -  Software Byte-by-Byte address
  795              *                                               detection
  796              *  UART_RS485__B_UART__AM_SW_DETECT_TO_BUFFER - Software Detect to Buffer
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 14  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 14  
 
  797              *                                               address detection
  798              *  UART_RS485__B_UART__AM_HW_BYTE_BY_BYTE - Hardware Byte-by-Byte address
@@ -894,7 +894,7 @@ line level    source
  856              *******************************************************************************/
  857              void UART_RS485_SetRxAddress1(uint8 address) 
  858              {
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 15  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 15  
 
  859   1              UART_RS485_RXADDRESS1_REG = address;
  860   1          }
@@ -958,7 +958,7 @@ line level    source
  918              * Summary:
  919              *  Places a byte of data into the transmit buffer to be sent when the bus is
  920              *  available without checking the TX status register. You must check status
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 16  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 16  
 
  921              *  separately.
  922              *
@@ -1022,7 +1022,7 @@ line level    source
  980   1          }
  981          
  982          
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 17  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 17  
 
  983              /*******************************************************************************
  984              * Function Name: UART_RS485_ReadTxStatus
@@ -1086,7 +1086,7 @@ line level    source
 1042              {
 1043   1          #if (UART_RS485_TX_INTERRUPT_ENABLED)
                       /* The temporary output pointer is used since it takes two instructions
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 18  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 18  
 
                       *  to increment with a wrap, and we can't risk doing that with the real
                       *  pointer and getting an interrupt in between instructions.
@@ -1150,7 +1150,7 @@ line level    source
               
                   #else
 1106   1      
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 19  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 19  
 
 1107   1              while((UART_RS485_TXSTATUS_REG & UART_RS485_TX_STS_FIFO_FULL) != 0u)
 1108   1              {
@@ -1214,7 +1214,7 @@ line level    source
 1166              * Summary:
 1167              *  Places N bytes of data from a memory array into the TX buffer for
 1168              *  transmission.
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 20  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 20  
 
 1169              *
 1170              * Parameters:
@@ -1278,7 +1278,7 @@ line level    source
 1228              *
 1229              *******************************************************************************/
 1230              void UART_RS485_PutCRLF(uint8 txDataByte) 
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 21  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 21  
 
 1231              {
 1232   1              /* If not Initialized then skip this function */
@@ -1342,7 +1342,7 @@ line level    source
                       }
                       else
                       {
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 22  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 22  
 
                           size = (UART_RS485_TX_BUFFER_SIZE - UART_RS485_txBufferRead) +
                                   UART_RS485_txBufferWrite;
@@ -1406,7 +1406,7 @@ line level    source
 1352              *
 1353              *******************************************************************************/
 1354              void UART_RS485_ClearTxBuffer(void) 
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 23  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 23  
 
 1355              {
 1356   1              uint8 enableInterrupts;
@@ -1470,7 +1470,7 @@ line level    source
 1414              *  1) SendBreak(3) - function will send the Break signal and take care on the
 1415              *     configuration returning. Function will block CPU until transmission
 1416              *     complete.
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 24  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 24  
 
 1417              *  2) User may want to use blocking time if UART configured to the low speed
 1418              *     operation
@@ -1534,7 +1534,7 @@ line level    source
                           }
               
                           if( (retMode == UART_RS485_WAIT_FOR_COMPLETE_REINIT) ||
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 25  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 25  
 
                               (retMode == UART_RS485_REINIT) ||
                               (retMode == UART_RS485_SEND_WAIT_REINIT) )
@@ -1598,7 +1598,7 @@ line level    source
 1538   3      
 1539   3                  #if( (UART_RS485_PARITY_TYPE != UART_RS485__B_UART__NONE_REVB) || \
 1540   3                       (UART_RS485_PARITY_TYPE_SW != 0u) )
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 26  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 26  
 
                               UART_RS485_WriteControlRegister(UART_RS485_ReadControlRegister() &
                                                                     (uint8) ~UART_RS485_CTRL_HD_SEND_BREAK);
@@ -1662,7 +1662,7 @@ line level    source
                   * Summary:
                   *  Loads the receiver configuration in half duplex mode. After calling this
                   *  function, the UART is ready to receive data.
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 27  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 27  
 
                   *
                   * Parameters:
@@ -1724,7 +1724,7 @@ line level    source
 1660          
 1661          
 1662          /* [] END OF FILE */
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 28  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 28  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1768,27 +1768,27 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0011 900000      R     MOV     DPTR,#UART_RS485_errorStatus
 0014 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 124
-0015 906489            MOV     DPTR,#06489H
+0015 906482            MOV     DPTR,#06482H
 0018 7469              MOV     A,#069H
 001A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 126
-001B 906488            MOV     DPTR,#06488H
+001B 906485            MOV     DPTR,#06485H
 001E 7420              MOV     A,#020H
 0020 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 138
-0021 90642B            MOV     DPTR,#0642BH
+0021 906421            MOV     DPTR,#06421H
 0024 7406              MOV     A,#06H
 0026 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 139
-0027 90643B            MOV     DPTR,#0643BH
+0027 906431            MOV     DPTR,#06431H
 002A 7447              MOV     A,#047H
 002C F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 150
-002D 906589            MOV     DPTR,#06589H
+002D 906480            MOV     DPTR,#06480H
 0030 E4                CLR     A
 0031 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 160
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 29  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 29  
 
 0032 22                RET     
              ; FUNCTION UART_RS485_Init (END)
@@ -1800,12 +1800,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'enableInterrupts' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 190
-0003 906499            MOV     DPTR,#06499H
+0003 906492            MOV     DPTR,#06492H
 0006 E0                MOVX    A,@DPTR
 0007 4420              ORL     A,#020H
 0009 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 193
-000A 906498            MOV     DPTR,#06498H
+000A 906495            MOV     DPTR,#06495H
 000D E0                MOVX    A,@DPTR
 000E 4410              ORL     A,#010H
 0010 F0                MOVX    @DPTR,A
@@ -1814,7 +1814,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 7402              MOV     A,#02H
 0016 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 211
-0017 906599            MOV     DPTR,#06599H
+0017 906490            MOV     DPTR,#06490H
 001A E0                MOVX    A,@DPTR
 001B 4410              ORL     A,#010H
 001D F0                MOVX    @DPTR,A
@@ -1831,12 +1831,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'enableInterrupts' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 247
-0003 906499            MOV     DPTR,#06499H
+0003 906492            MOV     DPTR,#06492H
 0006 E0                MOVX    A,@DPTR
 0007 54DF              ANL     A,#0DFH
 0009 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 262
-000A 906498            MOV     DPTR,#06498H
+000A 906495            MOV     DPTR,#06495H
 000D E0                MOVX    A,@DPTR
 000E 54EF              ANL     A,#0EFH
 0010 F0                MOVX    @DPTR,A
@@ -1845,14 +1845,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0014 7402              MOV     A,#02H
 0016 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 270
-0017 906599            MOV     DPTR,#06599H
+0017 906490            MOV     DPTR,#06490H
 001A E0                MOVX    A,@DPTR
 001B 54EF              ANL     A,#0EFH
 001D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 277
 001E 120000      E     LCALL   _CyExitCriticalSection
                                            ; SOURCE LINE # 278
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 30  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 30  
 
 0021 22                RET     
              ; FUNCTION UART_RS485_Stop (END)
@@ -1886,7 +1886,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'intSrc' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 360
                                            ; SOURCE LINE # 361
-0000 906488            MOV     DPTR,#06488H
+0000 906485            MOV     DPTR,#06485H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 362
@@ -1916,7 +1916,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 E0                MOVX    A,@DPTR
 0014 7004              JNZ     ?C0011
 0016 EE                MOV     A,R6
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 31  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 31  
 
 0017 6D                XRL     A,R5
 0018 6024              JZ      ?C0010
@@ -1962,7 +1962,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003E         ?C0010:
                                            ; SOURCE LINE # 439
                                            ; SOURCE LINE # 440
-003E 90644C            MOV     DPTR,#0644CH
+003E 906442            MOV     DPTR,#06442H
 0041 E0                MOVX    A,@DPTR
 0042 FF                MOV     R7,A
                                            ; SOURCE LINE # 441
@@ -1980,10 +1980,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION UART_RS485_ReadRxStatus (BEGIN)
                                            ; SOURCE LINE # 485
                                            ; SOURCE LINE # 486
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 32  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 32  
 
                                            ; SOURCE LINE # 489
-0000 906468            MOV     DPTR,#06468H
+0000 906465            MOV     DPTR,#06465H
 0003 E0                MOVX    A,@DPTR
 0004 547F              ANL     A,#07FH
 0006 FF                MOV     R7,A
@@ -2044,7 +2044,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001F F582              MOV     DPL,A
 0021 E4                CLR     A
 0022 3400        R     ADDC    A,#HIGH UART_RS485_rxBuffer
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 33  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 33  
 
 0024 F583              MOV     DPH,A
 0026 E0                MOVX    A,@DPTR
@@ -2079,7 +2079,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003E 8014              SJMP    ?C0022
 0040         ?C0018:
                                            ; SOURCE LINE # 579
-0040 906468            MOV     DPTR,#06468H
+0040 906465            MOV     DPTR,#06465H
 0043 E0                MOVX    A,@DPTR
 0044 FE                MOV     R6,A
 ;---- Variable 'rxStatus' assigned to Register 'R6' ----
@@ -2087,7 +2087,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0045 30E50C            JNB     ACC.5,?C0022
                                            ; SOURCE LINE # 581
                                            ; SOURCE LINE # 582
-0048 90644C            MOV     DPTR,#0644CH
+0048 906442            MOV     DPTR,#06442H
 004B E0                MOVX    A,@DPTR
 004C FF                MOV     R7,A
                                            ; SOURCE LINE # 585
@@ -2108,7 +2108,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0059 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 611
                                            ; SOURCE LINE # 612
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 34  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 34  
 
 005A         ?C0025:
 005A 22                RET     
@@ -2172,7 +2172,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0018 7F20              MOV     R7,#020H
                                            ; SOURCE LINE # 698
 001A 802C              SJMP    ?C0030
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 35  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 35  
 
 001C         ?C0028:
                                            ; SOURCE LINE # 700
@@ -2236,9 +2236,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'enableInterrupts' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 763
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 36  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 36  
 
-0003 90649C            MOV     DPTR,#0649CH
+0003 906492            MOV     DPTR,#06492H
 0006 E0                MOVX    A,@DPTR
 0007 4401              ORL     A,#01H
 0009 F0                MOVX    @DPTR,A
@@ -2292,7 +2292,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'address' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 858
                                            ; SOURCE LINE # 859
-0000 90642C            MOV     DPTR,#0642CH
+0000 906422            MOV     DPTR,#06422H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 860
@@ -2300,13 +2300,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _UART_RS485_SetRxAddress1 (END)
 
              ; FUNCTION _UART_RS485_SetRxAddress2 (BEGIN)
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 37  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 37  
 
                                            ; SOURCE LINE # 877
 ;---- Variable 'address' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 878
                                            ; SOURCE LINE # 879
-0000 90643C            MOV     DPTR,#0643CH
+0000 906432            MOV     DPTR,#06432H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 880
@@ -2318,7 +2318,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'intSrc' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 909
                                            ; SOURCE LINE # 910
-0000 906589            MOV     DPTR,#06589H
+0000 906480            MOV     DPTR,#06480H
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 911
@@ -2335,7 +2335,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 6005              JZ      ?C0041
                                            ; SOURCE LINE # 946
                                            ; SOURCE LINE # 976
-0006 906449            MOV     DPTR,#06449H
+0006 906440            MOV     DPTR,#06440H
 0009 EF                MOV     A,R7
 000A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 979
@@ -2348,7 +2348,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1003
                                            ; SOURCE LINE # 1004
                                            ; SOURCE LINE # 1005
-0000 906569            MOV     DPTR,#06569H
+0000 906460            MOV     DPTR,#06460H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
                                            ; SOURCE LINE # 1006
@@ -2362,16 +2362,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1042
 0000         ?C0043:
                                            ; SOURCE LINE # 1107
-0000 906569            MOV     DPTR,#06569H
+0000 906460            MOV     DPTR,#06460H
 0003 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 38  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 38  
 
 0004 20E2F9            JB      ACC.2,?C0043
                                            ; SOURCE LINE # 1108
                                            ; SOURCE LINE # 1110
 0007         ?C0044:
                                            ; SOURCE LINE # 1113
-0007 906449            MOV     DPTR,#06449H
+0007 906440            MOV     DPTR,#06440H
 000A EF                MOV     A,R7
 000B F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1116
@@ -2428,7 +2428,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0030 0C                INC     R4
 0031         ?C0079:
                                            ; SOURCE LINE # 1157
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 39  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 39  
 
 0031 80E1              SJMP    ?C0047
                                            ; SOURCE LINE # 1158
@@ -2492,7 +2492,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0031         ?C0053:
 0031 22                RET     
              ; FUNCTION _UART_RS485_PutArray (END)
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 40  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 40  
 
 
              ; FUNCTION _UART_RS485_PutCRLF (BEGIN)
@@ -2522,7 +2522,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1273
                                            ; SOURCE LINE # 1275
                                            ; SOURCE LINE # 1301
-0000 906569            MOV     DPTR,#06569H
+0000 906460            MOV     DPTR,#06460H
 0003 E0                MOVX    A,@DPTR
 0004 FF                MOV     R7,A
 ;---- Variable 'size' assigned to Register 'R7' ----
@@ -2556,7 +2556,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION UART_RS485_GetTxBufferSize (END)
 
              ; FUNCTION UART_RS485_ClearTxBuffer (BEGIN)
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 41  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 41  
 
                                            ; SOURCE LINE # 1354
                                            ; SOURCE LINE # 1355
@@ -2564,7 +2564,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 120000      E     LCALL   CyEnterCriticalSection
 ;---- Variable 'enableInterrupts' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 1360
-0003 906499            MOV     DPTR,#06499H
+0003 906490            MOV     DPTR,#06490H
 0006 E0                MOVX    A,@DPTR
 0007 4401              ORL     A,#01H
 0009 F0                MOVX    @DPTR,A
@@ -2595,22 +2595,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D         ?C0064:
                                            ; SOURCE LINE # 1492
                                            ; SOURCE LINE # 1501
-000D 90643B            MOV     DPTR,#0643BH
+000D 906431            MOV     DPTR,#06431H
 0010 E0                MOVX    A,@DPTR
 0011 900000      R     MOV     DPTR,#txPeriod
 0014 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1502
-0015 90643B            MOV     DPTR,#0643BH
+0015 906431            MOV     DPTR,#06431H
 0018 745F              MOV     A,#05FH
 001A F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1509
-001B 906449            MOV     DPTR,#06449H
+001B 906440            MOV     DPTR,#06440H
 001E E4                CLR     A
 001F F0                MOVX    @DPTR,A
 0020         ?C0067:
                                            ; SOURCE LINE # 1512
                                            ; SOURCE LINE # 1513
-0020 906569            MOV     DPTR,#06569H
+0020 906460            MOV     DPTR,#06460H
 0023 E0                MOVX    A,@DPTR
 0024 900000      R     MOV     DPTR,#tmpStat
 0027 F0                MOVX    @DPTR,A
@@ -2620,7 +2620,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0029 20E1F4            JB      ACC.1,?C0067
                                            ; SOURCE LINE # 1516
 002C         ?C0063:
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 42  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 42  
 
                                            ; SOURCE LINE # 1518
 002C EF                MOV     A,R7
@@ -2632,7 +2632,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0035         ?C0072:
                                            ; SOURCE LINE # 1522
                                            ; SOURCE LINE # 1523
-0035 906569            MOV     DPTR,#06569H
+0035 906460            MOV     DPTR,#06460H
 0038 E0                MOVX    A,@DPTR
 0039 900000      R     MOV     DPTR,#tmpStat
 003C F0                MOVX    @DPTR,A
@@ -2657,7 +2657,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1534
 0050 900000      R     MOV     DPTR,#txPeriod
 0053 E0                MOVX    A,@DPTR
-0054 90643B            MOV     DPTR,#0643BH
+0054 906431            MOV     DPTR,#06431H
 0057 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1544
                                            ; SOURCE LINE # 1546
@@ -2684,7 +2684,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION _UART_RS485_SetTxAddressMode (END)
 
 
-C51 COMPILER V9.51   UART_RS485                                                            06/13/2017 14:44:02 PAGE 43  
+C51 COMPILER V9.51   UART_RS485                                                            01/10/2018 10:07:42 PAGE 43  
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE

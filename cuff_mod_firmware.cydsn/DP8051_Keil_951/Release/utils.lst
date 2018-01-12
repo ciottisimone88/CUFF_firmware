@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 1   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE UTILS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\utils.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\utils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_
-                    -951\Release/utils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\utils.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -utils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_95
+                    -1\Release/utils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\utils.obj)
 
 line level    source
 
@@ -48,8 +48,8 @@ line level    source
   36          * \file         utils.h
   37          *
   38          * \brief        Definition of utility functions.
-  39          * \date         Dic. 1, 2015
-  40          * \author       qbrobotics
+  39          * \date         October 01, 2017
+  40          * \author       _Centro "E.Piaggio"_
   41          * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
   42          * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
   43          */
@@ -62,7 +62,7 @@ line level    source
   50          #define ALPHA 32     // current filters
   51          #define BETA  300   // velocity filters
   52          
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 2   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 2   
 
   53          //==============================================================================
   54          //                                                               CURRENT FILTERS
@@ -126,7 +126,7 @@ line level    source
  112   1          return (aux >> 6);
  113   1      }
  114          
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 3   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 3   
 
  115          
  116          //==============================================================================
@@ -168,7 +168,7 @@ line level    source
  152   1      }
  153          
  154          /* [] END OF FILE */
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 4   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -232,7 +232,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0050 E0                MOVX    A,@DPTR
 0051 FC                MOV     R4,A
 0052 A3                INC     DPTR
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 5   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 5   
 
 0053 E0                MOVX    A,@DPTR
 0054 FD                MOV     R5,A
@@ -296,7 +296,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0027 FA                MOV     R2,A
 0028 A3                INC     DPTR
 0029 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 6   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 6   
 
 002A FB                MOV     R3,A
 002B 120000      E     LCALL   ?C?LMUL
@@ -360,7 +360,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'new_value' assigned to Register 'R4/R5/R6/R7' ----
                                            ; SOURCE LINE # 86
 0000 7806              MOV     R0,#06H
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 7   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 7   
 
 0002 120000      E     LCALL   ?C?LSHL
 0005 E4                CLR     A
@@ -424,7 +424,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0059 FD                MOV     R5,A
 005A A3                INC     DPTR
 005B E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 8   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 8   
 
 005C FE                MOV     R6,A
 005D A3                INC     DPTR
@@ -488,7 +488,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002C 120000      E     LCALL   ?C?LMUL
 002F D003              POP     AR3
 0031 D002              POP     AR2
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 9   
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 9   
 
 0033 D001              POP     AR1
 0035 D000              POP     AR0
@@ -552,7 +552,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 ;---- Variable 'new_value' assigned to Register 'R4/R5/R6/R7' ----
                                            ; SOURCE LINE # 108
 0000 7806              MOV     R0,#06H
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 10  
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 10  
 
 0002 120000      E     LCALL   ?C?LSHL
 0005 E4                CLR     A
@@ -616,7 +616,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0059 FD                MOV     R5,A
 005A A3                INC     DPTR
 005B E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 11  
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 11  
 
 005C FE                MOV     R6,A
 005D A3                INC     DPTR
@@ -680,7 +680,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0029 06                INC     @R0
 002A E6                MOV     A,@R0
 002B 18                DEC     R0
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 12  
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 12  
 
 002C 7001              JNZ     ?C0012
 002E 06                INC     @R0
@@ -744,7 +744,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0007 F0                MOVX    @DPTR,A
 0008 A3                INC     DPTR
 0009 E9                MOV     A,R1
-C51 COMPILER V9.51   UTILS                                                                 06/13/2017 14:44:01 PAGE 13  
+C51 COMPILER V9.51   UTILS                                                                 01/12/2018 13:27:01 PAGE 13  
 
 000A F0                MOVX    @DPTR,A
 ;---- Variable 'data_length' assigned to Register 'R5' ----

@@ -55,12 +55,12 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "CUFF MOD v6.1.0"
+#define VERSION         "CUFF MOD v6.1.1"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
 #define NUM_OF_ANALOG_INPUTS    3
-#define NUM_OF_PARAMS           18
+#define NUM_OF_PARAMS           22
 
 //==============================================================================
 //                                                                       CONTROL
@@ -199,11 +199,16 @@ struct st_mem {
     int32   max_step_pos;               // Maximum velocity for positive inputs     4
 
     /*=========================CUFF RELATIVE PARAMETERS=============================*/
-    uint8   cuff_activation_flag;       //                                          1
+    uint8   cuff_activation_flag_force;       //                                          1
     float   curr_prop_gain;             //                                          4
     int16   curr_sat;                   //                                          2
     int16   curr_dead_zone;             //                                          2
 
+    uint8   cuff_activation_flag_proprio;       //                                          1
+    int32   max_slide;
+    int32   max_SH_pos;
+    uint8   hand_ID;
+    
     uint16 power_tension;               //                                          2
                                                                                     //TO UPDATE
 };
@@ -246,7 +251,8 @@ extern uint8 calibration_flag;
 
 extern CYBIT reset_last_value_flag;
 extern CYBIT tension_valid;                         // tension validation bit
-extern CYBIT cuff_flag;                             // cuff activation flag
+extern CYBIT cuff_flag_force;                             // cuff activation flag
+extern CYBIT cuff_flag_proprio;                             // cuff activation flag
 extern CYBIT interrupt_flag;                        // interrupt flag enabler
 extern CYBIT watchdog_flag;                         // watchdog flag enabler
 

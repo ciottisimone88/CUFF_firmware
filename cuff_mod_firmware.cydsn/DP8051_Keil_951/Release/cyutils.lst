@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   CYUTILS                                                               06/13/2017 14:44:12 PAGE 1   
+C51 COMPILER V9.51   CYUTILS                                                               01/10/2018 10:08:09 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE CYUTILS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\cyutils.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG
-                    -) WL(2) PR(.\DP8051_Keil_951\Release/cyutils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\cyutils.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -Generated_Source\PSoC3\cyutils.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) 
+                    -WL(2) PR(.\DP8051_Keil_951\Release/cyutils.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\cyutils.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
               
                       /***************************************************************************
                       * Function Name: CyGetReg24
-C51 COMPILER V9.51   CYUTILS                                                               06/13/2017 14:44:12 PAGE 2   
+C51 COMPILER V9.51   CYUTILS                                                               01/10/2018 10:08:09 PAGE 2   
 
                       ****************************************************************************
                       *
@@ -99,7 +99,7 @@ line level    source
   85          
   86          
   87          /* [] END OF FILE */
-C51 COMPILER V9.51   CYUTILS                                                               06/13/2017 14:44:12 PAGE 3   
+C51 COMPILER V9.51   CYUTILS                                                               01/10/2018 10:08:09 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 

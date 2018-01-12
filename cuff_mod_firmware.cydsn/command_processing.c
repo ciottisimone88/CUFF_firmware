@@ -147,7 +147,8 @@ void commProcess(){
 //=============================================================     CMD_GET_INFO
             
         case CMD_GET_INFO:
-            cuff_flag = FALSE;
+            cuff_flag_force = FALSE;
+            cuff_flag_proprio = FALSE;
             infoGet( *((uint16 *) &g_rx.buffer[1]));
             break;
 
@@ -254,12 +255,12 @@ void drive_cuff() {
         }
         t_end = (uint32) MY_TIMER_ReadCounter();
         if((t_start - t_end) > 4500000){             // 4.5 s timeout
-            cuff_flag = FALSE;
+            cuff_flag_force = FALSE;
             break;
         }
     }
 
-    if(cuff_flag) {
+    if(cuff_flag_force) {
         curr_diff = *((int16 *) &g_rx.buffer[1]);
         // Current difference saturation
         if(curr_diff > g_mem.curr_sat)
@@ -284,12 +285,57 @@ void drive_cuff() {
     }
 }
 
+void slide_cuff() {
+    uint8 packet_data[16];
+    uint8 packet_lenght;
+    int16 SH_pos;
+    int32 aux_val;
+    uint32 t_start, t_end;
+    uint8 b_h, b_l;
+
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_MEASUREMENTS;
+    packet_data[1] = CMD_GET_MEASUREMENTS;
+    commWrite(packet_data, packet_lenght, TRUE);
+
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_GET_MEASUREMENTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){             // 4.5 s timeout
+            cuff_flag_proprio = FALSE;
+            break;
+        }
+    }
+
+    if(cuff_flag_proprio) {
+        SH_pos = *((int16 *) &g_rx.buffer[1]);
+        
+        aux_val = (int32)SH_pos;       
+        aux_val = (int32)((aux_val * g_mem.max_slide) / (int32)g_mem.max_SH_pos);
+        
+        g_refNew.pos[0] =  (aux_val << g_mem.res[0]);
+        g_refNew.pos[1] =  (aux_val << g_mem.res[1]);
+
+        if (c_mem.pos_lim_flag) {                      // pos limiting
+            if (g_refNew.pos[0] < c_mem.pos_lim_inf[0]) g_refNew.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_refNew.pos[1] < c_mem.pos_lim_inf[1]) g_refNew.pos[1] = c_mem.pos_lim_inf[1];
+
+            if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
+            if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
+        }
+    }
+}
+
 //==============================================================================
 //                                                              COMMAND GET INFO
 //==============================================================================
 
 void infoGet(uint16 info_type){
-    unsigned char packet_string[1100];
+    unsigned char packet_string[1500];
 
 //======================================     choose info type and prepare string
 
@@ -329,8 +375,8 @@ void setZeros()
 void get_param_list(uint16 index)
 {
     //Package to be sent variables
-    uint8 packet_data[1501] = "";
-    uint16 packet_lenght = 1501;
+    uint8 packet_data[1701] = "";
+    uint16 packet_lenght = 1701;
 
     //Auxiliary variables
     uint16 CYDATA i;
@@ -355,8 +401,12 @@ void get_param_list(uint16 index)
     char curr_prop_gain_str[32] = "14 - Current proportional gain:";
     char curr_sat_str[36]       = "15 - Current difference saturation:";
     char curr_dead_zone_str[24] = "16 - Current dead zone:";
-    char cuff_activ_str[31]     = "17 - Cuff activation flag:";
+    char cuff_activ_force_str[37]     = "17 - Cuff activation flag force:";
     char pow_tension_str[22]    = "18 - Power tension:";
+    char cuff_activ_proprio_str[39] = "19 - Cuff activation flag proprio:";
+    char max_slide_str[35] = "20 - Max slide movement (proprio):";
+    char max_SH_pos_str[31] = "21 - Max SH closure (proprio):";
+    char hand_ID_str[14] = "22 - Hand ID:";
     
     //Parameters menus
     char input_mode_menu[52] = "0 -> Usb\n1 -> Shaft's position controls the motors\n";
@@ -384,6 +434,10 @@ void get_param_list(uint16 index)
     uint8 CYDATA control_mode_menu_len = strlen(control_mode_menu);
     uint8 CYDATA yes_no_menu_len = strlen(input_mode_menu);
     uint8 CYDATA resolution_menu_len = strlen(resolution_menu);
+    
+    uint8 CYDATA max_slide_str_len = strlen(max_slide_str);
+    uint8 CYDATA max_SH_pos_str_len = strlen(max_SH_pos_str);
+    uint8 CYDATA hand_ID_str_len = strlen(hand_ID_str);
 
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -612,24 +666,24 @@ void get_param_list(uint16 index)
             for(i = curr_dead_zone_str_len; i!= 0; i--)
                 packet_data[756 + curr_dead_zone_str_len - i] = curr_dead_zone_str[curr_dead_zone_str_len - i];
 
-            /*--------CUFF ACTIVATION FLAG-------*/
+            /*--------CUFF ACTIVATION FLAG FORCE-------*/
 
             packet_data[802] = TYPE_FLAG;
             packet_data[803] = 1;
-            packet_data[804] = c_mem.cuff_activation_flag;
-            if(c_mem.cuff_activation_flag) {
-                strcat(cuff_activ_str, " YES\0");
-                string_lenght = 31;
+            packet_data[804] = c_mem.cuff_activation_flag_force;
+            if(c_mem.cuff_activation_flag_force) {
+                strcat(cuff_activ_force_str, " YES\0");
+                string_lenght = 37;
             }
             else {
-                strcat(cuff_activ_str, " NO\0");
-                string_lenght = 30;
+                strcat(cuff_activ_force_str, " NO\0");
+                string_lenght = 36;
             }
             for(i = string_lenght; i!=0; i--)
-                packet_data[805 + string_lenght - i] = cuff_activ_str[string_lenght - i];
+                packet_data[805 + string_lenght - i] = cuff_activ_force_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[805 + string_lenght] = 4;
-
+                
             /*------------POWER TENSION----------*/
 
             packet_data[852] = TYPE_UINT16;
@@ -637,20 +691,62 @@ void get_param_list(uint16 index)
             *((uint16 *)(packet_data + 854)) = c_mem.power_tension;
             for(i = pow_tension_str_len; i!= 0; i--)
                 packet_data[856 + pow_tension_str_len - i] = pow_tension_str[pow_tension_str_len - i];
+                
+             /*--------CUFF ACTIVATION FLAG PROPRIO-------*/
+
+            packet_data[902] = TYPE_FLAG;
+            packet_data[903] = 1;
+            packet_data[904] = c_mem.cuff_activation_flag_proprio;
+            if(c_mem.cuff_activation_flag_proprio) {
+                strcat(cuff_activ_proprio_str, " YES\0");
+                string_lenght = 39;
+            }
+            else {
+                strcat(cuff_activ_proprio_str, " NO\0");
+                string_lenght = 38;
+            }
+            for(i = string_lenght; i!=0; i--)
+                packet_data[905 + string_lenght - i] = cuff_activ_proprio_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[905 + string_lenght] = 4;
+
+            /*---------MAX SLIDE---------*/
+
+            packet_data[952] = TYPE_INT32;
+            packet_data[953] = 1;
+            *((int32 *)(packet_data + 954)) = c_mem.max_slide;
+            for(i = max_slide_str_len; i!= 0; i--)
+                packet_data[958 + max_slide_str_len - i] = max_slide_str[max_slide_str_len - i];
+                
+            /*---------MAX SH POS---------*/
+
+            packet_data[1002] = TYPE_INT32;
+            packet_data[1003] = 1;
+            *((int32 *)(packet_data + 1004)) = c_mem.max_SH_pos;
+            for(i = max_SH_pos_str_len; i!= 0; i--)
+                packet_data[1008 + max_SH_pos_str_len - i] = max_SH_pos_str[max_SH_pos_str_len - i];
+                
+            /*---------HAND ID---------*/
+
+            packet_data[1052] = TYPE_UINT8;
+            packet_data[1053] = 1;
+            *((uint8 *)(packet_data + 1054)) = c_mem.hand_ID;
+            for(i = hand_ID_str_len; i!= 0; i--)
+                packet_data[1055 + hand_ID_str_len - i] = hand_ID_str[hand_ID_str_len - i];
 
             /*-----------PARAMETERS MENU----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[902 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1102 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1052 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[1252 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
             
             for(i = resolution_menu_len; i != 0; i--)
-                packet_data[1202 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
+                packet_data[1402 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
                
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1352 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1552 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght, FALSE);
@@ -780,13 +876,34 @@ void get_param_list(uint16 index)
 
 //=================================================     set_cuff_activation_flag
         case 17:
-            g_mem.cuff_activation_flag = *((uint8*) & g_rx.buffer[3]);
+            g_mem.cuff_activation_flag_force = *((uint8*) & g_rx.buffer[3]);
+            g_mem.cuff_activation_flag_proprio = 0;
         break;
 
 //========================================================     set_power_tension
         case 18:
             g_mem.power_tension = *((uint16*) &g_rx.buffer[3]);
         break;
+            
+//=================================================     set_cuff_activation_flag
+        case 19:
+            g_mem.cuff_activation_flag_proprio = *((uint8*) & g_rx.buffer[3]);
+            g_mem.cuff_activation_flag_force = 0;
+        break;  
+            
+//=============================================================     set_max_slide
+        case 20: 
+            g_mem.max_slide = *((int32*) &g_rx.buffer[3]);
+        break;
+            
+//=============================================================     set_max_SH_pos
+        case 21: 
+            g_mem.max_SH_pos = *((int32*) &g_rx.buffer[3]);
+        break;   
+//=============================================================     set_hand_ID
+        case 22: 
+            g_mem.hand_ID = *((uint8*) &g_rx.buffer[3]);
+        break;              
     }
 }
 
@@ -999,15 +1116,25 @@ void infoPrepare(unsigned char *info_string)
     strcat(info_string, str);
     strcat(info_string,"\r\n");
 
-    if(c_mem.cuff_activation_flag)
-        strcat(info_string, "Cuff startup activation: YES\r\n");
+    if(c_mem.cuff_activation_flag_force)
+        strcat(info_string, "Cuff startup activation (force): YES\r\n");
     else
-        strcat(info_string, "Cuff startup activation: NO\r\n");
+        strcat(info_string, "Cuff startup activation (force): NO\r\n");
 
-    if(cuff_flag)
-        strcat(info_string, "Cuff active: YES\r\n");
+    if(c_mem.cuff_activation_flag_proprio)
+        strcat(info_string, "Cuff startup activation (proprioception): YES\r\n");
     else
-        strcat(info_string, "Cuff active: NO\r\n");
+        strcat(info_string, "Cuff startup activation (proprioception): NO\r\n");
+        
+    if(cuff_flag_force)
+        strcat(info_string, "Cuff active (force): YES\r\n");
+    else
+        strcat(info_string, "Cuff active (force): NO\r\n");
+        
+    if(cuff_flag_proprio)
+        strcat(info_string, "Cuff active (proprioception): YES\r\n");
+    else
+        strcat(info_string, "Cuff active (proprioception): NO\r\n");
     
     sprintf(str, "debug: %ld", (uint32) timer_value0 - (uint32) timer_value);
     strcat(info_string, str);
@@ -1058,7 +1185,7 @@ void commWrite(uint8 *packet_data,const uint16 packet_lenght, uint8 next)
     if(next)
     // If next flag is set the message is sent to the device with ID with value
     // greater by one than the one that sends the message
-        UART_RS485_PutChar((uint8) g_mem.id + 1);
+        UART_RS485_PutChar((uint8) g_mem.hand_ID);
     else
         UART_RS485_PutChar((uint8) g_mem.id);
     
@@ -1206,11 +1333,11 @@ uint8 memInit(void) {
     g_mem.k_p_dl            =   -0.1 * 65536;
     g_mem.k_i_dl            =   0 * 65536;
     g_mem.k_d_dl            =   0 * 65536;
-    g_mem.k_p_c_dl          =   2 * 65536;
-    g_mem.k_i_c_dl          =   0 * 65536;
+    g_mem.k_p_c_dl          =   0.3 * 65536;
+    g_mem.k_i_c_dl          =   0.0002 * 65536;
     g_mem.k_d_c_dl          =   0 * 65536;
     
-    g_mem.activ             =   0;
+    g_mem.activ             =   0x03;
     g_mem.input_mode        =   0;
     g_mem.control_mode      =   CURR_AND_POS_CONTROL;
     g_mem.watchdog_period   =   0; //MAX_WATCHDOG_TIMER;
@@ -1228,11 +1355,13 @@ uint8 memInit(void) {
         g_mem.res[i] = 2;
     }
 
-    g_mem.curr_prop_gain = 0;
-    g_mem.curr_sat = 0;
-    g_mem.curr_dead_zone = 0;
-    g_mem.cuff_activation_flag = 0;
-    g_mem.power_tension = 8000;         //mV of needed supply power
+    g_mem.curr_prop_gain = 0.3;
+    g_mem.curr_sat = 1000;
+    g_mem.curr_dead_zone = 75;
+    g_mem.cuff_activation_flag_force = 0;
+    g_mem.cuff_activation_flag_proprio = 0;
+    g_mem.power_tension = 12000;         //mV of needed supply power
+    g_mem.hand_ID = 2;
 
     g_mem.m_off[0] = (int32)0 << g_mem.res[0];
     g_mem.m_off[1] = (int32)0 << g_mem.res[1];

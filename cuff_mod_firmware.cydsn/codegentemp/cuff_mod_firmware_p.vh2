@@ -1,6 +1,6 @@
 -- Project:   cuff_mod_firmware
--- Generated: 06/13/2017 14:43:47
--- PSoC Creator  3.3 SP1
+-- Generated: 01/10/2018 10:07:25
+-- PSoC Creator  4.1 Update 1
 
 ENTITY cuff_mod_firmware IS
     PORT(
@@ -567,8 +567,9 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     ATTRIBUTE lib_model OF Net_3389 : LABEL IS "macrocell16";
     ATTRIBUTE lib_model OF Net_3387 : LABEL IS "macrocell17";
     ATTRIBUTE lib_model OF Net_6183 : LABEL IS "macrocell18";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell19";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE lib_model OF __ZERO__ : LABEL IS "macrocell19";
+    ATTRIBUTE lib_model OF __ZERO__ : LABEL IS "macrocell20";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell2";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "statusicell1";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell3";
@@ -578,7 +579,6 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell2";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell3";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell20";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell3";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "statusicell4";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell6";
@@ -888,6 +888,7 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
             dmareq : IN std_ulogic;
             termin : IN std_ulogic;
             termout : OUT std_ulogic;
+            interrupt : OUT std_ulogic;
             clock : IN std_ulogic);
     END COMPONENT;
     COMPONENT dsmodcell
@@ -3411,15 +3412,17 @@ BEGIN
     Net_3390:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3390,
-            main_0 => Net_3545,
-            main_1 => Net_3086);
+            main_0 => Net_3086,
+            main_1 => Net_3545);
 
     Net_2627:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2627,
@@ -3428,6 +3431,7 @@ BEGIN
     \UART_RS485:BUART:counter_load_not\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * !main_3)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:counter_load_not\,
@@ -3439,6 +3443,7 @@ BEGIN
     \UART_RS485:BUART:tx_status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:tx_status_0\,
@@ -3451,6 +3456,7 @@ BEGIN
     \UART_RS485:BUART:tx_status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:tx_status_2\,
@@ -3459,6 +3465,7 @@ BEGIN
     \UART_RS485:BUART:rx_counter_load\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_counter_load\,
@@ -3470,6 +3477,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_4\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_status_4\,
@@ -3479,6 +3487,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_5\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_status_5\,
@@ -3506,6 +3515,7 @@ BEGIN
     Net_3388:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3388,
@@ -3515,6 +3525,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:status_0\,
@@ -3524,6 +3535,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:status_2\,
@@ -3533,6 +3545,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:count_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:count_enable\,
@@ -3543,6 +3556,7 @@ BEGIN
     Net_2450:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2450,
@@ -3551,6 +3565,7 @@ BEGIN
     \MY_TIMER:TimerUDB:status_tc\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \MY_TIMER:TimerUDB:status_tc\,
@@ -3560,6 +3575,7 @@ BEGIN
     Net_2437:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2437,
@@ -3567,16 +3583,18 @@ BEGIN
 
     Net_3389:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1)",
+            eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3389,
-            main_0 => Net_3545,
-            main_1 => Net_3086);
+            main_0 => Net_3086,
+            main_1 => Net_3545);
 
     Net_3387:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3387,
@@ -3586,6 +3604,7 @@ BEGIN
     Net_6183:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_6183,
@@ -3594,10 +3613,19 @@ BEGIN
 
     \UART_RS485:RXInternalInterrupt\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_6117,
             clock => ClockBlock_BUS_CLK);
+
+    __ONE__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => __ONE__);
 
     \UART_RS485:BUART:sTX:TxShifter:u0\:datapathcell
         GENERIC MAP(
@@ -3640,6 +3668,7 @@ BEGIN
     __ZERO__:macrocell
         GENERIC MAP(
             eqn_main => "1'b0",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => __ZERO__);
@@ -3839,7 +3868,8 @@ BEGIN
 
     ISR_RS485_RX:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_6117,
             clock => ClockBlock_BUS_CLK);
@@ -3920,13 +3950,6 @@ BEGIN
             f0_bus_stat_comb => \COUNTER_ENC:CounterUDB:status_6\,
             f0_blk_stat_comb => \COUNTER_ENC:CounterUDB:status_5\,
             busclk => ClockBlock_BUS_CLK);
-
-    __ONE__:macrocell
-        GENERIC MAP(
-            eqn_main => "1'b0",
-            clken_mode => 1)
-        PORT MAP(
-            q => __ONE__);
 
     \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\:controlcell
         GENERIC MAP(
@@ -5100,6 +5123,7 @@ BEGIN
             resolution => 12)
         PORT MAP(
             aclock => \ClockBlock.aclk_glb_ff_0__sig\,
+            modbitin_udb => open,
             reset_udb => open,
             reset_dec => \ADC:mod_reset\,
             extclk_cp_udb => \ADC:Net_93_local\,
@@ -5119,7 +5143,8 @@ BEGIN
 
     \ADC:IRQ\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_5118,
             clock => ClockBlock_BUS_CLK);
@@ -5177,7 +5202,8 @@ BEGIN
 
     ISR_WATCHDOG:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_5984,
             clock => ClockBlock_BUS_CLK);
@@ -5238,6 +5264,7 @@ BEGIN
     \UART_RS485:BUART:txn\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_6) + (main_0 * main_4) + (!main_1 * main_2 * !main_3 * !main_4) + (!main_1 * main_2 * !main_4 * !main_6) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5254,6 +5281,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3) + (main_0 * !main_3 * main_4 * main_5) + (main_1 * !main_3 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5269,6 +5297,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3) + (!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4) + (main_1 * !main_4 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5284,6 +5313,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * main_2 * main_3) + (main_0 * main_1 * !main_3 * main_5) + (main_0 * !main_3 * main_4 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5299,6 +5329,7 @@ BEGIN
     Net_6020:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5311,6 +5342,7 @@ BEGIN
     \UART_RS485:BUART:tx_bitclk\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_3) + (!main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5324,6 +5356,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_1\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * !main_6) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_5) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_6)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5340,6 +5373,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_10) + (!main_0 * !main_1 * main_2 * main_4 * !main_9 * !main_10) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_10)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5360,6 +5394,7 @@ BEGIN
     \UART_RS485:BUART:rx_load_fifo\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5378,6 +5413,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_3\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5396,6 +5432,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4) + (main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5411,6 +5448,7 @@ BEGIN
     \UART_RS485:BUART:rx_bitclk_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5423,6 +5461,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_stop1_reg\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5436,6 +5475,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_9)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5455,6 +5495,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_3\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5470,6 +5511,7 @@ BEGIN
     \UART_RS485:BUART:rx_break_detect\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4 * main_9 * !main_10) + (!main_0 * !main_1 * main_2 * main_3 * !main_4 * !main_9 * main_10) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_9 * main_10) + (main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * !main_9 * main_10)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5490,6 +5532,7 @@ BEGIN
     \UART_RS485:BUART:rx_last\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5500,6 +5543,7 @@ BEGIN
     \PWM_MOTORS:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5510,6 +5554,7 @@ BEGIN
     Net_3086:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1) + (main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5522,6 +5567,7 @@ BEGIN
     Net_3474:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1) + (main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5534,6 +5580,7 @@ BEGIN
     cydff_2:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
             clk_inv => '1',
             clken_mode => 1)
         PORT MAP(
@@ -5545,6 +5592,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:overflow_reg_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5555,6 +5603,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_2_split\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * !main_1 * main_2 * main_4 * main_9) + (!main_0 * !main_1 * main_2 * main_4 * main_11) + (!main_0 * !main_1 * !main_3 * !main_4 * main_10 * !main_11) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_11)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_state_2_split\,
@@ -5574,6 +5623,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:prevCompare\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5584,6 +5634,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:count_stored_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5594,6 +5645,7 @@ BEGIN
     B_CLOCK_SHIFTREG:macrocell
         GENERIC MAP(
             eqn_main => "1'b0",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5630,6 +5682,7 @@ BEGIN
     Net_3018:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5642,6 +5695,7 @@ BEGIN
     Net_5190_1:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * !main_1 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_inv => '0',
             clken_mode => 2)
@@ -5656,6 +5710,7 @@ BEGIN
     Net_5190_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_2) + (main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_inv => '0',
             clken_mode => 2)
@@ -5670,6 +5725,7 @@ BEGIN
     AMuxHw_Decoder_old_id_1:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5680,6 +5736,7 @@ BEGIN
     AMuxHw_Decoder_old_id_0:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5690,6 +5747,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5703,6 +5761,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_1:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * !main_2 * main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5716,6 +5775,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_2:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5729,6 +5789,7 @@ BEGIN
     cy_srff_3:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1) + (!main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5742,6 +5803,7 @@ BEGIN
     Net_5507:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1) + (!main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(

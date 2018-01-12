@@ -1,6 +1,6 @@
--- Project:   C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\cuff_mod_firmware.cyprj
--- Generated: 06/13/2017 14:43:53
--- PSoC Creator  3.3 SP1
+-- Project:   C:\Users\MattiaCP\Desktop\CUFF-master\cuff_mod_firmware.cydsn\cuff_mod_firmware.cyprj
+-- Generated: 01/10/2018 10:07:31
+-- PSoC Creator  4.1 Update 1
 
 ENTITY cuff_mod_firmware IS
     PORT(
@@ -39,17 +39,17 @@ END cuff_mod_firmware;
 
 ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL AMuxHw_Decoder_old_id_0 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_0 : SIGNAL IS "U(2,4,A)0";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_0 : SIGNAL IS "U(2,1,B)2";
     SIGNAL AMuxHw_Decoder_old_id_1 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_1 : SIGNAL IS "U(2,4,A)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_old_id_1 : SIGNAL IS "U(2,1,B)1";
     SIGNAL AMuxHw_Decoder_one_hot_0 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_0 : SIGNAL IS "U(2,5,B)0";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_0 : SIGNAL IS "U(2,1,A)0";
     SIGNAL AMuxHw_Decoder_one_hot_1 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_1 : SIGNAL IS "U(2,4,B)2";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_1 : SIGNAL IS "U(3,1,A)0";
     SIGNAL AMuxHw_Decoder_one_hot_2 : bit;
-    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_2 : SIGNAL IS "U(2,5,A)3";
+    ATTRIBUTE placement_force OF AMuxHw_Decoder_one_hot_2 : SIGNAL IS "U(3,1,B)0";
     SIGNAL B_CLOCK_SHIFTREG : bit;
-    ATTRIBUTE placement_force OF B_CLOCK_SHIFTREG : SIGNAL IS "U(3,1,A)1";
+    ATTRIBUTE placement_force OF B_CLOCK_SHIFTREG : SIGNAL IS "U(1,0,A)3";
     SIGNAL CURRENT_SENSE_1(0)__PA : bit;
     SIGNAL CURRENT_SENSE_2(0)__PA : bit;
     SIGNAL ClockBlock_100k : bit;
@@ -94,17 +94,17 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL Net_2214 : bit;
     SIGNAL Net_2311 : bit;
     SIGNAL Net_2437 : bit;
-    ATTRIBUTE placement_force OF Net_2437 : SIGNAL IS "U(3,3,A)1";
+    ATTRIBUTE placement_force OF Net_2437 : SIGNAL IS "U(1,4,A)3";
     SIGNAL Net_2450 : bit;
-    ATTRIBUTE placement_force OF Net_2450 : SIGNAL IS "U(3,3,B)0";
+    ATTRIBUTE placement_force OF Net_2450 : SIGNAL IS "U(1,4,B)1";
     SIGNAL Net_2627 : bit;
-    ATTRIBUTE placement_force OF Net_2627 : SIGNAL IS "U(0,0,B)0";
+    ATTRIBUTE placement_force OF Net_2627 : SIGNAL IS "U(2,5,A)1";
     SIGNAL Net_2814 : bit;
     SIGNAL Net_2815 : bit;
     SIGNAL Net_3018 : bit;
-    ATTRIBUTE placement_force OF Net_3018 : SIGNAL IS "U(2,0,B)2";
+    ATTRIBUTE placement_force OF Net_3018 : SIGNAL IS "U(2,0,A)2";
     SIGNAL Net_3086 : bit;
-    ATTRIBUTE placement_force OF Net_3086 : SIGNAL IS "U(1,2,B)1";
+    ATTRIBUTE placement_force OF Net_3086 : SIGNAL IS "U(2,2,A)0";
     SIGNAL Net_3096 : bit;
     SIGNAL Net_3136 : bit;
     SIGNAL Net_3143 : bit;
@@ -114,32 +114,32 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     ATTRIBUTE global_signal OF Net_3377 : SIGNAL IS true;
     SIGNAL Net_3377_local : bit;
     SIGNAL Net_3387 : bit;
-    ATTRIBUTE placement_force OF Net_3387 : SIGNAL IS "U(2,2,A)2";
+    ATTRIBUTE placement_force OF Net_3387 : SIGNAL IS "U(1,2,A)3";
     SIGNAL Net_3388 : bit;
-    ATTRIBUTE placement_force OF Net_3388 : SIGNAL IS "U(2,2,B)3";
+    ATTRIBUTE placement_force OF Net_3388 : SIGNAL IS "U(1,2,B)3";
     SIGNAL Net_3389 : bit;
-    ATTRIBUTE placement_force OF Net_3389 : SIGNAL IS "U(2,2,A)1";
+    ATTRIBUTE placement_force OF Net_3389 : SIGNAL IS "U(1,2,A)0";
     SIGNAL Net_3390 : bit;
-    ATTRIBUTE placement_force OF Net_3390 : SIGNAL IS "U(2,2,B)1";
+    ATTRIBUTE placement_force OF Net_3390 : SIGNAL IS "U(1,2,B)2";
     SIGNAL Net_3474 : bit;
-    ATTRIBUTE placement_force OF Net_3474 : SIGNAL IS "U(1,2,A)0";
+    ATTRIBUTE placement_force OF Net_3474 : SIGNAL IS "U(2,2,A)2";
     SIGNAL Net_3545 : bit;
     SIGNAL Net_4627 : bit;
     SIGNAL Net_4716 : bit;
     SIGNAL Net_5118 : bit;
     SIGNAL Net_5190_0 : bit;
-    ATTRIBUTE placement_force OF Net_5190_0 : SIGNAL IS "U(3,5,B)1";
+    ATTRIBUTE placement_force OF Net_5190_0 : SIGNAL IS "U(3,0,A)0";
     SIGNAL Net_5190_1 : bit;
-    ATTRIBUTE placement_force OF Net_5190_1 : SIGNAL IS "U(3,5,A)1";
+    ATTRIBUTE placement_force OF Net_5190_1 : SIGNAL IS "U(2,0,B)3";
     SIGNAL Net_5503 : bit;
     SIGNAL Net_5507 : bit;
-    ATTRIBUTE placement_force OF Net_5507 : SIGNAL IS "U(3,4,A)1";
+    ATTRIBUTE placement_force OF Net_5507 : SIGNAL IS "U(3,0,B)2";
     SIGNAL Net_5984 : bit;
     SIGNAL Net_6020 : bit;
-    ATTRIBUTE placement_force OF Net_6020 : SIGNAL IS "U(1,1,A)3";
+    ATTRIBUTE placement_force OF Net_6020 : SIGNAL IS "U(3,5,B)3";
     SIGNAL Net_6117 : bit;
     SIGNAL Net_6183 : bit;
-    ATTRIBUTE placement_force OF Net_6183 : SIGNAL IS "U(2,3,B)1";
+    ATTRIBUTE placement_force OF Net_6183 : SIGNAL IS "U(0,1,A)2";
     SIGNAL Net_6196 : bit;
     SIGNAL Net_6196_SYNCOUT : bit;
     SIGNAL Net_6285 : bit;
@@ -203,19 +203,19 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \COUNTER_ENC:CounterUDB:control_6\ : bit;
     SIGNAL \COUNTER_ENC:CounterUDB:control_7\ : bit;
     SIGNAL \COUNTER_ENC:CounterUDB:count_enable\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_enable\ : SIGNAL IS "U(2,1,B)3";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_enable\ : SIGNAL IS "U(1,5,A)3";
     SIGNAL \COUNTER_ENC:CounterUDB:count_stored_i\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_stored_i\ : SIGNAL IS "U(2,1,A)2";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:count_stored_i\ : SIGNAL IS "U(1,5,B)0";
     SIGNAL \COUNTER_ENC:CounterUDB:overflow_reg_i\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(2,1,A)1";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : SIGNAL IS "U(1,3,B)3";
     SIGNAL \COUNTER_ENC:CounterUDB:prevCompare\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:prevCompare\ : SIGNAL IS "U(2,0,A)3";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:prevCompare\ : SIGNAL IS "U(1,3,A)1";
     SIGNAL \COUNTER_ENC:CounterUDB:reload\ : bit;
     SIGNAL \COUNTER_ENC:CounterUDB:status_0\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_0\ : SIGNAL IS "U(2,0,B)1";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_0\ : SIGNAL IS "U(1,3,B)1";
     SIGNAL \COUNTER_ENC:CounterUDB:status_1\ : bit;
     SIGNAL \COUNTER_ENC:CounterUDB:status_2\ : bit;
-    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_2\ : SIGNAL IS "U(2,0,A)2";
+    ATTRIBUTE placement_force OF \COUNTER_ENC:CounterUDB:status_2\ : SIGNAL IS "U(1,3,A)0";
     SIGNAL \COUNTER_ENC:CounterUDB:status_5\ : bit;
     SIGNAL \COUNTER_ENC:CounterUDB:status_6\ : bit;
     SIGNAL \FTDI_ENABLE_REG:control_1\ : bit;
@@ -250,7 +250,7 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \MY_TIMER:TimerUDB:status_2\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:status_3\ : bit;
     SIGNAL \MY_TIMER:TimerUDB:status_tc\ : bit;
-    ATTRIBUTE placement_force OF \MY_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(1,0,B)1";
+    ATTRIBUTE placement_force OF \MY_TIMER:TimerUDB:status_tc\ : SIGNAL IS "U(0,3,B)0";
     SIGNAL \PACER_TIMER:Net_261\ : bit;
     SIGNAL \PACER_TIMER:Net_57\ : bit;
     SIGNAL \PWM_MOTORS:PWMUDB:cmp1_eq\ : bit;
@@ -266,7 +266,7 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \PWM_MOTORS:PWMUDB:control_6\ : bit;
     SIGNAL \PWM_MOTORS:PWMUDB:control_7\ : bit;
     SIGNAL \PWM_MOTORS:PWMUDB:runmode_enable\ : bit;
-    ATTRIBUTE placement_force OF \PWM_MOTORS:PWMUDB:runmode_enable\ : SIGNAL IS "U(1,2,B)2";
+    ATTRIBUTE placement_force OF \PWM_MOTORS:PWMUDB:runmode_enable\ : SIGNAL IS "U(2,2,A)1";
     SIGNAL \PWM_MOTORS:PWMUDB:tc_i\ : bit;
     SIGNAL \RESET_FF:control_1\ : bit;
     SIGNAL \RESET_FF:control_2\ : bit;
@@ -339,11 +339,11 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \SHIFTREG_ENC_4:bSR:status_5\ : bit;
     SIGNAL \SHIFTREG_ENC_4:bSR:status_6\ : bit;
     SIGNAL \UART_RS485:BUART:counter_load_not\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:counter_load_not\ : SIGNAL IS "U(1,2,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:counter_load_not\ : SIGNAL IS "U(3,5,B)1";
     SIGNAL \UART_RS485:BUART:rx_bitclk_enable\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_bitclk_enable\ : SIGNAL IS "U(0,2,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_bitclk_enable\ : SIGNAL IS "U(3,4,B)0";
     SIGNAL \UART_RS485:BUART:rx_break_detect\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_break_detect\ : SIGNAL IS "U(0,4,B)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_break_detect\ : SIGNAL IS "U(3,3,B)0";
     SIGNAL \UART_RS485:BUART:rx_count7_tc\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_0\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_1\ : bit;
@@ -353,52 +353,52 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \UART_RS485:BUART:rx_count_5\ : bit;
     SIGNAL \UART_RS485:BUART:rx_count_6\ : bit;
     SIGNAL \UART_RS485:BUART:rx_counter_load\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_counter_load\ : SIGNAL IS "U(0,3,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_counter_load\ : SIGNAL IS "U(3,4,B)3";
     SIGNAL \UART_RS485:BUART:rx_fifofull\ : bit;
     SIGNAL \UART_RS485:BUART:rx_fifonotempty\ : bit;
     SIGNAL \UART_RS485:BUART:rx_last\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_last\ : SIGNAL IS "U(0,4,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_last\ : SIGNAL IS "U(3,5,A)2";
     SIGNAL \UART_RS485:BUART:rx_load_fifo\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_load_fifo\ : SIGNAL IS "U(1,4,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_load_fifo\ : SIGNAL IS "U(3,4,A)1";
     SIGNAL \UART_RS485:BUART:rx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_0\ : SIGNAL IS "U(0,3,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_0\ : SIGNAL IS "U(3,3,A)0";
     SIGNAL \UART_RS485:BUART:rx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_1\ : SIGNAL IS "U(0,4,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_1\ : SIGNAL IS "U(3,4,B)2";
     SIGNAL \UART_RS485:BUART:rx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2\ : SIGNAL IS "U(0,5,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2\ : SIGNAL IS "U(3,3,B)2";
     SIGNAL \UART_RS485:BUART:rx_state_2_split\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2_split\ : SIGNAL IS "U(0,5,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_2_split\ : SIGNAL IS "U(3,4,A)0";
     SIGNAL \UART_RS485:BUART:rx_state_3\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_3\ : SIGNAL IS "U(1,5,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_3\ : SIGNAL IS "U(3,3,A)1";
     SIGNAL \UART_RS485:BUART:rx_state_stop1_reg\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(1,3,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_state_stop1_reg\ : SIGNAL IS "U(3,3,B)3";
     SIGNAL \UART_RS485:BUART:rx_status_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_1\ : SIGNAL IS "U(0,3,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_1\ : SIGNAL IS "U(3,3,B)1";
     SIGNAL \UART_RS485:BUART:rx_status_3\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_3\ : SIGNAL IS "U(1,3,B)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_3\ : SIGNAL IS "U(3,3,A)2";
     SIGNAL \UART_RS485:BUART:rx_status_4\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_4\ : SIGNAL IS "U(1,4,A)2";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_4\ : SIGNAL IS "U(3,4,B)1";
     SIGNAL \UART_RS485:BUART:rx_status_5\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_5\ : SIGNAL IS "U(1,3,A)0";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:rx_status_5\ : SIGNAL IS "U(2,3,B)0";
     SIGNAL \UART_RS485:BUART:tx_bitclk\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_bitclk\ : SIGNAL IS "U(1,0,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_bitclk\ : SIGNAL IS "U(3,5,B)2";
     SIGNAL \UART_RS485:BUART:tx_bitclk_enable_pre\ : bit;
     SIGNAL \UART_RS485:BUART:tx_counter_dp\ : bit;
     SIGNAL \UART_RS485:BUART:tx_fifo_empty\ : bit;
     SIGNAL \UART_RS485:BUART:tx_fifo_notfull\ : bit;
     SIGNAL \UART_RS485:BUART:tx_shift_out\ : bit;
     SIGNAL \UART_RS485:BUART:tx_state_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_0\ : SIGNAL IS "U(0,1,A)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_0\ : SIGNAL IS "U(3,5,B)0";
     SIGNAL \UART_RS485:BUART:tx_state_1\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_1\ : SIGNAL IS "U(1,0,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_1\ : SIGNAL IS "U(3,5,A)3";
     SIGNAL \UART_RS485:BUART:tx_state_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_2\ : SIGNAL IS "U(0,0,A)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_state_2\ : SIGNAL IS "U(3,5,A)0";
     SIGNAL \UART_RS485:BUART:tx_status_0\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_0\ : SIGNAL IS "U(0,1,B)3";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_0\ : SIGNAL IS "U(2,5,B)3";
     SIGNAL \UART_RS485:BUART:tx_status_2\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_2\ : SIGNAL IS "U(0,1,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:tx_status_2\ : SIGNAL IS "U(2,5,A)2";
     SIGNAL \UART_RS485:BUART:txn\ : bit;
-    ATTRIBUTE placement_force OF \UART_RS485:BUART:txn\ : SIGNAL IS "U(0,0,B)1";
+    ATTRIBUTE placement_force OF \UART_RS485:BUART:txn\ : SIGNAL IS "U(2,5,B)0";
     SIGNAL \WATCHDOG_COUNTER:Net_48\ : bit;
     SIGNAL \WATCHDOG_COUNTER:Net_54\ : bit;
     SIGNAL \WATCHDOG_ENABLER:control_1\ : bit;
@@ -416,15 +416,15 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     SIGNAL \WATCHDOG_REFRESH:control_6\ : bit;
     SIGNAL \WATCHDOG_REFRESH:control_7\ : bit;
     SIGNAL __ONE__ : bit;
-    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(0,1,A)2";
+    ATTRIBUTE placement_force OF __ONE__ : SIGNAL IS "U(1,3,A)2";
     ATTRIBUTE POWER OF __ONE__ : SIGNAL IS true;
     SIGNAL __ZERO__ : bit;
-    ATTRIBUTE placement_force OF __ZERO__ : SIGNAL IS "U(3,1,B)1";
+    ATTRIBUTE placement_force OF __ZERO__ : SIGNAL IS "U(0,1,A)1";
     ATTRIBUTE GROUND OF __ZERO__ : SIGNAL IS true;
     SIGNAL cy_srff_3 : bit;
-    ATTRIBUTE placement_force OF cy_srff_3 : SIGNAL IS "U(3,4,B)0";
+    ATTRIBUTE placement_force OF cy_srff_3 : SIGNAL IS "U(3,0,B)0";
     SIGNAL cydff_2 : bit;
-    ATTRIBUTE placement_force OF cydff_2 : SIGNAL IS "U(2,1,B)0";
+    ATTRIBUTE placement_force OF cydff_2 : SIGNAL IS "U(1,4,B)2";
     SIGNAL tmpOE__MOTOR_1A_net_0 : bit;
     ATTRIBUTE POWER OF tmpOE__MOTOR_1A_net_0 : SIGNAL IS true;
     SIGNAL zero : bit;
@@ -607,225 +607,225 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
     ATTRIBUTE lib_model OF Signal_2_A(0) : LABEL IS "iocell26";
     ATTRIBUTE Location OF Signal_2_A(0) : LABEL IS "P15[1]";
     ATTRIBUTE lib_model OF Net_3390 : LABEL IS "macrocell1";
-    ATTRIBUTE Location OF Net_3390 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_3390 : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF Net_2627 : LABEL IS "macrocell2";
-    ATTRIBUTE Location OF Net_2627 : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF Net_2627 : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "macrocell3";
-    ATTRIBUTE Location OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:counter_load_not\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "macrocell4";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_0\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "macrocell5";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_status_2\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "macrocell6";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_counter_load\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "macrocell7";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_4\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "macrocell8";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "U(1,3)";
-    ATTRIBUTE Location OF Signal_1_C(0)_SYNC : LABEL IS "U(3,1)";
-    ATTRIBUTE Location OF RS485_RX(0)_SYNC : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_5\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Signal_1_C(0)_SYNC : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF RS485_RX(0)_SYNC : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_3388 : LABEL IS "macrocell9";
-    ATTRIBUTE Location OF Net_3388 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_3388 : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:status_0\ : LABEL IS "macrocell10";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_0\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_0\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:status_2\ : LABEL IS "macrocell11";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_2\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:status_2\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:count_enable\ : LABEL IS "macrocell12";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_enable\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_enable\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF Net_2450 : LABEL IS "macrocell13";
-    ATTRIBUTE Location OF Net_2450 : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF Net_2450 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "macrocell14";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:status_tc\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF Net_2437 : LABEL IS "macrocell15";
-    ATTRIBUTE Location OF Net_2437 : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF Net_2437 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_3389 : LABEL IS "macrocell16";
-    ATTRIBUTE Location OF Net_3389 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_3389 : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF Net_3387 : LABEL IS "macrocell17";
-    ATTRIBUTE Location OF Net_3387 : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF Net_3387 : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF Net_6183 : LABEL IS "macrocell18";
-    ATTRIBUTE Location OF Net_6183 : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Net_6183 : LABEL IS "U(0,1)";
     ATTRIBUTE Location OF \UART_RS485:RXInternalInterrupt\ : LABEL IS "[IntrContainer=(0)][IntrId=(1)]";
+    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell19";
+    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "datapathcell1";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "U(0,2)";
-    ATTRIBUTE lib_model OF __ZERO__ : LABEL IS "macrocell19";
-    ATTRIBUTE Location OF __ZERO__ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxShifter:u0\ : LABEL IS "U(2,5)";
+    ATTRIBUTE lib_model OF __ZERO__ : LABEL IS "macrocell20";
+    ATTRIBUTE Location OF __ZERO__ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "datapathcell2";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:sCLOCK:TxBitClkGen\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "statusicell1";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sTX:TxSts\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "datapathcell3";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "U(1,4)";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxBitCounter\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxShifter:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxBitCounter\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "statusicell2";
-    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:sRX:RxSts\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \PWM_MOTORS:PWMUDB:genblk1:ctrlreg\ : LABEL IS "controlcell1";
-    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:genblk1:ctrlreg\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF \PWM_MOTORS:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "datapathcell4";
-    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:sP8:pwmdp:u0\ : LABEL IS "U(2,2)";
     ATTRIBUTE Location OF ISR_RS485_RX : LABEL IS "[IntrContainer=(0)][IntrId=(0)]";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "controlcell2";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sCTRLReg:ctrlreg\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "statusicell3";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sSTSReg:stsreg\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "datapathcell5";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(2,0)";
-    ATTRIBUTE lib_model OF __ONE__ : LABEL IS "macrocell20";
-    ATTRIBUTE Location OF __ONE__ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:sC8:counterdp:u0\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell3";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "statusicell4";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:StsReg\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell6";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell7";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(0,0)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell8";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_1:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(1,0)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell4";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:StsReg\ : LABEL IS "statusicell5";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:StsReg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:StsReg\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell9";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell10";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell11";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_2:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(1,1)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell5";
     ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:StsReg\ : LABEL IS "statusicell6";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:StsReg\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:StsReg\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell12";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell13";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(0,4)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell14";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_3:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(0,5)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_4:bSR:SyncCtl:CtrlReg\ : LABEL IS "controlcell6";
     ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:SyncCtl:CtrlReg\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_4:bSR:StsReg\ : LABEL IS "statusicell7";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:StsReg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:StsReg\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "datapathcell15";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u0\ : LABEL IS "U(2,3)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "datapathcell16";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(3,2)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "datapathcell17";
-    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \SHIFTREG_ENC_4:bSR:sC24:BShiftRegDp:u2\ : LABEL IS "U(3,2)";
     ATTRIBUTE lib_model OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "controlcell7";
-    ATTRIBUTE Location OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \RS485_CTS:Sync:ctrl_reg\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \MOTOR_ON_OFF:Sync:ctrl_reg\ : LABEL IS "controlcell8";
-    ATTRIBUTE Location OF \MOTOR_ON_OFF:Sync:ctrl_reg\ : LABEL IS "U(3,3)";
+    ATTRIBUTE Location OF \MOTOR_ON_OFF:Sync:ctrl_reg\ : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "controlcell9";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sCTRLReg:SyncCtl:ctrlreg\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "statusicell8";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:rstSts:stsreg\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "datapathcell18";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u0\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "datapathcell19";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u1\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "datapathcell20";
-    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \MY_TIMER:TimerUDB:sT24:timerdp:u2\ : LABEL IS "U(0,3)";
     ATTRIBUTE lib_model OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "controlcell10";
-    ATTRIBUTE Location OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF \FTDI_ENABLE_REG:Sync:ctrl_reg\ : LABEL IS "U(2,4)";
     ATTRIBUTE Location OF \PACER_TIMER:TimerHW\ : LABEL IS "F(Timer,0)";
     ATTRIBUTE lib_model OF \FF_STATUS:sts:sts_reg\ : LABEL IS "statuscell1";
-    ATTRIBUTE Location OF \FF_STATUS:sts:sts_reg\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \FF_STATUS:sts:sts_reg\ : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "controlcell11";
     ATTRIBUTE Location OF \RESET_FF:Sync:ctrl_reg\ : LABEL IS "U(2,0)";
     ATTRIBUTE Location OF \Sync:genblk1[0]:INST\ : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF \MOTOR_DIR:Sync:ctrl_reg\ : LABEL IS "controlcell12";
-    ATTRIBUTE Location OF \MOTOR_DIR:Sync:ctrl_reg\ : LABEL IS "U(2,2)";
+    ATTRIBUTE Location OF \MOTOR_DIR:Sync:ctrl_reg\ : LABEL IS "U(1,2)";
     ATTRIBUTE lib_model OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "statuscell2";
-    ATTRIBUTE Location OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF \ADC_STATUS:sts:sts_reg\ : LABEL IS "U(0,0)";
     ATTRIBUTE Location OF \ADC:DSM\ : LABEL IS "F(DSM,0)";
     ATTRIBUTE Location OF \ADC:IRQ\ : LABEL IS "[IntrContainer=(0)][IntrId=(29)]";
     ATTRIBUTE Location OF \ADC:DEC\ : LABEL IS "F(Decimator,0)";
     ATTRIBUTE lib_model OF DMA : LABEL IS "drqcell1";
     ATTRIBUTE Location OF DMA : LABEL IS "[DrqContainer=(0)][DrqId=(10)]";
     ATTRIBUTE lib_model OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "controlcell13";
-    ATTRIBUTE Location OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF \Sync_ADC:genblk1[0]:INST\ : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF \ADC_SOC:Sync:ctrl_reg\ : LABEL IS "U(3,0)";
+    ATTRIBUTE Location OF \Sync_ADC:genblk1[0]:INST\ : LABEL IS "U(3,0)";
     ATTRIBUTE Location OF ISR_WATCHDOG : LABEL IS "[IntrContainer=(0)][IntrId=(18)]";
     ATTRIBUTE Location OF \WATCHDOG_COUNTER:CounterHW\ : LABEL IS "F(Timer,1)";
     ATTRIBUTE lib_model OF \WATCHDOG_ENABLER:Sync:ctrl_reg\ : LABEL IS "controlcell14";
-    ATTRIBUTE Location OF \WATCHDOG_ENABLER:Sync:ctrl_reg\ : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF \WATCHDOG_ENABLER:Sync:ctrl_reg\ : LABEL IS "U(0,2)";
     ATTRIBUTE lib_model OF \WATCHDOG_REFRESH:Sync:ctrl_reg\ : LABEL IS "controlcell15";
-    ATTRIBUTE Location OF \WATCHDOG_REFRESH:Sync:ctrl_reg\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \WATCHDOG_REFRESH:Sync:ctrl_reg\ : LABEL IS "U(0,1)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:txn\ : LABEL IS "macrocell21";
-    ATTRIBUTE Location OF \UART_RS485:BUART:txn\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:txn\ : LABEL IS "U(2,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "macrocell22";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_1\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "macrocell23";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "U(0,1)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_0\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "macrocell24";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "U(0,0)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_state_2\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF Net_6020 : LABEL IS "macrocell25";
-    ATTRIBUTE Location OF Net_6020 : LABEL IS "U(1,1)";
+    ATTRIBUTE Location OF Net_6020 : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "macrocell26";
-    ATTRIBUTE Location OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:tx_bitclk\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "macrocell27";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_1\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "macrocell28";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_0\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "macrocell29";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "U(1,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_load_fifo\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "macrocell30";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "U(1,5)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_3\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "macrocell31";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "macrocell32";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "U(0,2)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_bitclk_enable\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "macrocell33";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_stop1_reg\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "macrocell34";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_1\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "macrocell35";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "U(1,3)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_status_3\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "macrocell36";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_break_detect\ : LABEL IS "U(3,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_last\ : LABEL IS "macrocell37";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_last\ : LABEL IS "U(0,4)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_last\ : LABEL IS "U(3,5)";
     ATTRIBUTE lib_model OF \PWM_MOTORS:PWMUDB:runmode_enable\ : LABEL IS "macrocell38";
-    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:runmode_enable\ : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF \PWM_MOTORS:PWMUDB:runmode_enable\ : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF Net_3086 : LABEL IS "macrocell39";
-    ATTRIBUTE Location OF Net_3086 : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF Net_3086 : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF Net_3474 : LABEL IS "macrocell40";
-    ATTRIBUTE Location OF Net_3474 : LABEL IS "U(1,2)";
+    ATTRIBUTE Location OF Net_3474 : LABEL IS "U(2,2)";
     ATTRIBUTE lib_model OF cydff_2 : LABEL IS "macrocell41";
-    ATTRIBUTE Location OF cydff_2 : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF cydff_2 : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : LABEL IS "macrocell42";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:overflow_reg_i\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "macrocell43";
-    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "U(0,5)";
+    ATTRIBUTE Location OF \UART_RS485:BUART:rx_state_2_split\ : LABEL IS "U(3,4)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:prevCompare\ : LABEL IS "macrocell44";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:prevCompare\ : LABEL IS "U(2,0)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:prevCompare\ : LABEL IS "U(1,3)";
     ATTRIBUTE lib_model OF \COUNTER_ENC:CounterUDB:count_stored_i\ : LABEL IS "macrocell45";
-    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_stored_i\ : LABEL IS "U(2,1)";
+    ATTRIBUTE Location OF \COUNTER_ENC:CounterUDB:count_stored_i\ : LABEL IS "U(1,5)";
     ATTRIBUTE lib_model OF B_CLOCK_SHIFTREG : LABEL IS "macrocell46";
-    ATTRIBUTE Location OF B_CLOCK_SHIFTREG : LABEL IS "U(3,1)";
-    ATTRIBUTE Location OF Signal_4_C(0)_SYNC : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF Signal_2_C(0)_SYNC : LABEL IS "U(3,4)";
-    ATTRIBUTE Location OF Signal_3_C(0)_SYNC : LABEL IS "U(0,3)";
+    ATTRIBUTE Location OF B_CLOCK_SHIFTREG : LABEL IS "U(1,0)";
+    ATTRIBUTE Location OF Signal_4_C(0)_SYNC : LABEL IS "U(2,3)";
+    ATTRIBUTE Location OF Signal_2_C(0)_SYNC : LABEL IS "U(3,1)";
+    ATTRIBUTE Location OF Signal_3_C(0)_SYNC : LABEL IS "U(1,4)";
     ATTRIBUTE lib_model OF Net_3018 : LABEL IS "macrocell47";
     ATTRIBUTE Location OF Net_3018 : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF Net_5190_1 : LABEL IS "macrocell48";
-    ATTRIBUTE Location OF Net_5190_1 : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF Net_5190_1 : LABEL IS "U(2,0)";
     ATTRIBUTE lib_model OF Net_5190_0 : LABEL IS "macrocell49";
-    ATTRIBUTE Location OF Net_5190_0 : LABEL IS "U(3,5)";
+    ATTRIBUTE Location OF Net_5190_0 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_1 : LABEL IS "macrocell50";
-    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_1 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_1 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF AMuxHw_Decoder_old_id_0 : LABEL IS "macrocell51";
-    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_0 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF AMuxHw_Decoder_old_id_0 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_0 : LABEL IS "macrocell52";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_0 : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_0 : LABEL IS "U(2,1)";
     ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_1 : LABEL IS "macrocell53";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_1 : LABEL IS "U(2,4)";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_1 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF AMuxHw_Decoder_one_hot_2 : LABEL IS "macrocell54";
-    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_2 : LABEL IS "U(2,5)";
+    ATTRIBUTE Location OF AMuxHw_Decoder_one_hot_2 : LABEL IS "U(3,1)";
     ATTRIBUTE lib_model OF cy_srff_3 : LABEL IS "macrocell55";
-    ATTRIBUTE Location OF cy_srff_3 : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF cy_srff_3 : LABEL IS "U(3,0)";
     ATTRIBUTE lib_model OF Net_5507 : LABEL IS "macrocell56";
-    ATTRIBUTE Location OF Net_5507 : LABEL IS "U(3,4)";
+    ATTRIBUTE Location OF Net_5507 : LABEL IS "U(3,0)";
     COMPONENT clockblockcell
         PORT (
             dclk_0 : OUT std_ulogic;
@@ -1050,6 +1050,7 @@ ARCHITECTURE __DEFAULT__ OF cuff_mod_firmware IS
             dmareq : IN std_ulogic;
             termin : IN std_ulogic;
             termout : OUT std_ulogic;
+            interrupt : OUT std_ulogic;
             clock : IN std_ulogic);
     END COMPONENT;
     COMPONENT dsmodcell
@@ -3558,15 +3559,17 @@ BEGIN
     Net_3390:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3390,
-            main_0 => Net_3545,
-            main_1 => Net_3086);
+            main_0 => Net_3086,
+            main_1 => Net_3545);
 
     Net_2627:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2627,
@@ -3575,6 +3578,7 @@ BEGIN
     \UART_RS485:BUART:counter_load_not\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2) + (!main_0 * !main_1 * !main_3)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:counter_load_not\,
@@ -3586,6 +3590,7 @@ BEGIN
     \UART_RS485:BUART:tx_status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:tx_status_0\,
@@ -3598,6 +3603,7 @@ BEGIN
     \UART_RS485:BUART:tx_status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:tx_status_2\,
@@ -3606,6 +3612,7 @@ BEGIN
     \UART_RS485:BUART:rx_counter_load\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_counter_load\,
@@ -3617,6 +3624,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_4\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_status_4\,
@@ -3626,6 +3634,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_5\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_status_5\,
@@ -3653,6 +3662,7 @@ BEGIN
     Net_3388:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3388,
@@ -3662,6 +3672,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:status_0\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:status_0\,
@@ -3671,6 +3682,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:status_2\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:status_2\,
@@ -3680,6 +3692,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:count_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \COUNTER_ENC:CounterUDB:count_enable\,
@@ -3690,6 +3703,7 @@ BEGIN
     Net_2450:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2450,
@@ -3698,6 +3712,7 @@ BEGIN
     \MY_TIMER:TimerUDB:status_tc\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \MY_TIMER:TimerUDB:status_tc\,
@@ -3707,6 +3722,7 @@ BEGIN
     Net_2437:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_2437,
@@ -3714,16 +3730,18 @@ BEGIN
 
     Net_3389:macrocell
         GENERIC MAP(
-            eqn_main => "(!main_0 * main_1)",
+            eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3389,
-            main_0 => Net_3545,
-            main_1 => Net_3086);
+            main_0 => Net_3086,
+            main_1 => Net_3545);
 
     Net_3387:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_3387,
@@ -3733,6 +3751,7 @@ BEGIN
     Net_6183:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => Net_6183,
@@ -3741,10 +3760,19 @@ BEGIN
 
     \UART_RS485:RXInternalInterrupt\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_6117,
             clock => ClockBlock_BUS_CLK);
+
+    __ONE__:macrocell
+        GENERIC MAP(
+            eqn_main => "1'b0",
+            regmode => 0,
+            clken_mode => 1)
+        PORT MAP(
+            q => __ONE__);
 
     \UART_RS485:BUART:sTX:TxShifter:u0\:datapathcell
         GENERIC MAP(
@@ -3787,6 +3815,7 @@ BEGIN
     __ZERO__:macrocell
         GENERIC MAP(
             eqn_main => "1'b0",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => __ZERO__);
@@ -3986,7 +4015,8 @@ BEGIN
 
     ISR_RS485_RX:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_6117,
             clock => ClockBlock_BUS_CLK);
@@ -4067,13 +4097,6 @@ BEGIN
             f0_bus_stat_comb => \COUNTER_ENC:CounterUDB:status_6\,
             f0_blk_stat_comb => \COUNTER_ENC:CounterUDB:status_5\,
             busclk => ClockBlock_BUS_CLK);
-
-    __ONE__:macrocell
-        GENERIC MAP(
-            eqn_main => "1'b0",
-            clken_mode => 1)
-        PORT MAP(
-            q => __ONE__);
 
     \SHIFTREG_ENC_1:bSR:SyncCtl:CtrlReg\:controlcell
         GENERIC MAP(
@@ -5247,6 +5270,7 @@ BEGIN
             resolution => 12)
         PORT MAP(
             aclock => \ClockBlock.aclk_glb_ff_0__sig\,
+            modbitin_udb => open,
             reset_udb => open,
             reset_dec => \ADC:mod_reset\,
             extclk_cp_udb => \ADC:Net_93_local\,
@@ -5266,7 +5290,8 @@ BEGIN
 
     \ADC:IRQ\:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_5118,
             clock => ClockBlock_BUS_CLK);
@@ -5324,7 +5349,8 @@ BEGIN
 
     ISR_WATCHDOG:interrupt
         GENERIC MAP(
-            int_type => "10")
+            int_type => "10",
+            is_nmi => 0)
         PORT MAP(
             interrupt => Net_5984,
             clock => ClockBlock_BUS_CLK);
@@ -5385,6 +5411,7 @@ BEGIN
     \UART_RS485:BUART:txn\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * !main_6) + (main_0 * main_4) + (!main_1 * main_2 * !main_3 * !main_4) + (!main_1 * main_2 * !main_4 * !main_6) + (main_1 * !main_2 * !main_3 * !main_4 * !main_5 * main_6)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5401,6 +5428,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * main_3) + (main_0 * !main_3 * main_4 * main_5) + (main_1 * !main_3 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5416,6 +5444,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3) + (!main_0 * !main_1 * !main_3 * !main_4) + (main_0 * main_1 * main_2 * main_3 * main_4) + (main_1 * !main_4 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5431,6 +5460,7 @@ BEGIN
     \UART_RS485:BUART:tx_state_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3) + (main_0 * main_1 * main_2 * main_3) + (main_0 * main_1 * !main_3 * main_5) + (main_0 * !main_3 * main_4 * main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5446,6 +5476,7 @@ BEGIN
     Net_6020:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5458,6 +5489,7 @@ BEGIN
     \UART_RS485:BUART:tx_bitclk\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_3) + (!main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5471,6 +5503,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_1\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5 * !main_6) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_5) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_6)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5487,6 +5520,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_0\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4 * !main_10) + (!main_0 * !main_1 * main_2 * main_4 * !main_9 * !main_10) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_10)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5507,6 +5541,7 @@ BEGIN
     \UART_RS485:BUART:rx_load_fifo\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5525,6 +5560,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_3\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5543,6 +5579,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_2\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4) + (main_5)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5558,6 +5595,7 @@ BEGIN
     \UART_RS485:BUART:rx_bitclk_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5570,6 +5608,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_stop1_reg\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5583,6 +5622,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_1\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_9)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5602,6 +5642,7 @@ BEGIN
     \UART_RS485:BUART:rx_status_3\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * main_4 * !main_5)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5617,6 +5658,7 @@ BEGIN
     \UART_RS485:BUART:rx_break_detect\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * !main_3 * main_4 * main_9 * !main_10) + (!main_0 * !main_1 * main_2 * main_3 * !main_4 * !main_9 * main_10) + (!main_0 * main_1 * main_2 * !main_3 * !main_4 * !main_9 * main_10) + (main_0 * main_1 * main_2 * !main_3 * main_4 * !main_5 * !main_6 * !main_7 * !main_8 * !main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * !main_9 * main_10)",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5637,6 +5679,7 @@ BEGIN
     \UART_RS485:BUART:rx_last\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5647,6 +5690,7 @@ BEGIN
     \PWM_MOTORS:PWMUDB:runmode_enable\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5657,6 +5701,7 @@ BEGIN
     Net_3086:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1) + (main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5669,6 +5714,7 @@ BEGIN
     Net_3474:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * main_1) + (main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5681,6 +5727,7 @@ BEGIN
     cydff_2:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1)",
+            regmode => 1,
             clk_inv => '1',
             clken_mode => 1)
         PORT MAP(
@@ -5692,6 +5739,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:overflow_reg_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5702,6 +5750,7 @@ BEGIN
     \UART_RS485:BUART:rx_state_2_split\:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * main_2 * main_3 * !main_4) + (!main_0 * !main_1 * main_2 * main_4 * main_9) + (!main_0 * !main_1 * main_2 * main_4 * main_11) + (!main_0 * !main_1 * !main_3 * !main_4 * main_10 * !main_11) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_6) + (!main_0 * main_1 * !main_3 * !main_4 * !main_5 * !main_7 * !main_8) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_9) + (main_0 * main_1 * main_2 * !main_3 * main_4 * main_11)",
+            regmode => 0,
             clken_mode => 1)
         PORT MAP(
             q => \UART_RS485:BUART:rx_state_2_split\,
@@ -5721,6 +5770,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:prevCompare\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5731,6 +5781,7 @@ BEGIN
     \COUNTER_ENC:CounterUDB:count_stored_i\:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5741,6 +5792,7 @@ BEGIN
     B_CLOCK_SHIFTREG:macrocell
         GENERIC MAP(
             eqn_main => "1'b0",
+            regmode => 2,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5777,6 +5829,7 @@ BEGIN
     Net_3018:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_2) + (main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5789,6 +5842,7 @@ BEGIN
     Net_5190_1:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * main_2) + (main_0 * !main_1 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_inv => '0',
             clken_mode => 2)
@@ -5803,6 +5857,7 @@ BEGIN
     Net_5190_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_2) + (main_0 * !main_1 * !main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_inv => '0',
             clken_mode => 2)
@@ -5817,6 +5872,7 @@ BEGIN
     AMuxHw_Decoder_old_id_1:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5827,6 +5883,7 @@ BEGIN
     AMuxHw_Decoder_old_id_0:macrocell
         GENERIC MAP(
             eqn_main => "(main_0)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5837,6 +5894,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_0:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * !main_1 * !main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5850,6 +5908,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_1:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1 * !main_2 * main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5863,6 +5922,7 @@ BEGIN
     AMuxHw_Decoder_one_hot_2:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1 * main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5876,6 +5936,7 @@ BEGIN
     cy_srff_3:macrocell
         GENERIC MAP(
             eqn_main => "(main_0 * !main_1) + (!main_2 * !main_3)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(
@@ -5889,6 +5950,7 @@ BEGIN
     Net_5507:macrocell
         GENERIC MAP(
             eqn_main => "(!main_0 * main_1) + (!main_0 * main_2)",
+            regmode => 1,
             clk_inv => '0',
             clken_mode => 1)
         PORT MAP(

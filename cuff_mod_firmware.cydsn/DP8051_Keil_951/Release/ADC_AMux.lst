@@ -1,11 +1,11 @@
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 1   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC_AMUX
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\ADC_AMux.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\Generated_Source\PSoC3\ADC_AMux.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBU
-                    -G) WL(2) PR(.\DP8051_Keil_951\Release/ADC_AMux.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\ADC_AMux.obj)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -Generated_Source\PSoC3\ADC_AMux.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG)
+                    - WL(2) PR(.\DP8051_Keil_951\Release/ADC_AMux.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\ADC_AMux.obj)
 
 line level    source
 
@@ -62,7 +62,7 @@ line level    source
   50   1          ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
   51   1      }
   52          
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 2   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 2   
 
   53          
   54          #if (!ADC_AMux_ATMOSTONE)
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 3   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 3   
 
  115          #if (ADC_AMux_MUXTYPE == ADC_AMux_MUX_DIFF)
               #if (!ADC_AMux_ATMOSTONE)
@@ -190,7 +190,7 @@ line level    source
                   if(ADC_AMux_lastChannel != ADC_AMux_NULL_CHANNEL) 
                   {
                       ADC_AMux_Disconnect(ADC_AMux_lastChannel);
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 4   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 4   
 
                       ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
                   }
@@ -198,7 +198,7 @@ line level    source
               #endif
  181          
  182          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 5   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -262,7 +262,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 900000      R     MOV     DPTR,#channel
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   ADC_AMUX                                                              06/13/2017 14:44:10 PAGE 6   
+C51 COMPILER V9.51   ADC_AMUX                                                              01/10/2018 10:08:06 PAGE 6   
 
                                            ; SOURCE LINE # 95
                                            ; SOURCE LINE # 97

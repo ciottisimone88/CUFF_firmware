@@ -17,8 +17,16 @@
 #if !defined(CY_STATUS_REG_ADC_STATUS_H) /* CY_STATUS_REG_ADC_STATUS_H */
 #define CY_STATUS_REG_ADC_STATUS_H
 
-#include "cytypes.h"
-#include "CyLib.h"
+#include "cyfitter.h"
+
+#if ((CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) || \
+     (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC4) || \
+     (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC5))
+    #include "cytypes.h"
+    #include "CyLib.h"
+#else
+    #include "syslib/cy_syslib.h"
+#endif
 
     
 /***************************************

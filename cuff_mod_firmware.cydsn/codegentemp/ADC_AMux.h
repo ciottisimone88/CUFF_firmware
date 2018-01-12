@@ -18,9 +18,16 @@
 #if !defined(CY_AMUX_ADC_AMux_H)
 #define CY_AMUX_ADC_AMux_H
 
-#include "cytypes.h"
 #include "cyfitter.h"
 #include "cyfitter_cfg.h"
+
+#if ((CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) || \
+         (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC4) || \
+         (CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC5))    
+    #include "cytypes.h"
+#else
+    #include "syslib/cy_syslib.h"
+#endif /* ((CYDEV_CHIP_FAMILY_USED == CYDEV_CHIP_FAMILY_PSOC3) */
 
 
 /***************************************

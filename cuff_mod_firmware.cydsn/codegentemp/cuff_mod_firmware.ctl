@@ -1,9 +1,9 @@
 -- ======================================================================
 -- cuff_mod_firmware.ctl generated from cuff_mod_firmware
--- 06/13/2017 at 14:43
+-- 01/10/2018 at 10:07
 -- This file is auto generated. ANY EDITS YOU MAKE MAY BE LOST WHEN THIS FILE IS REGENERATED!!!
 -- ======================================================================
 
--- PSoC3/5 Clock Editor
+-- PSoC Clock Editor
 -- Directives Editor
 -- Analog Device Editor

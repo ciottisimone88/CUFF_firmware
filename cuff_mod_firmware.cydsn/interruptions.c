@@ -246,7 +246,7 @@ void interrupt_manager(){
             case  WAIT_ID:
 
                 // packet is for my ID or is broadcast
-                if (rx_data == c_mem.id || rx_data == 0)
+                if (rx_data == c_mem.id || rx_data == 0 || rx_data == c_mem.hand_ID)
                     rx_data_type = FALSE;
                 else                //packet is for others
                     rx_data_type = TRUE;
@@ -412,8 +412,11 @@ void function_scheduler(void) {
         interrupt_manager();
     }
 
-    if(cuff_flag)
+    if(cuff_flag_force)
         drive_cuff();
+        
+    if (cuff_flag_proprio)
+        slide_cuff();
 
     if (interrupt_flag){
         interrupt_flag = FALSE;

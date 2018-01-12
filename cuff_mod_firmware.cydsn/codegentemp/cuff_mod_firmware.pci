@@ -1,10 +1,12 @@
 # cuff_mod_firmware
-# 2017-06-13 12:43:47Z
+# 2018-01-10 09:07:25Z
 
 # IO_2@[IOP=(1)][IoId=(2)] is reserved: XresEnabled
 dont_use_io iocell 1 2
+dont_use_location cancell -1 -1 0
 dont_use_location comparatorcell -1 -1 2
 dont_use_location comparatorcell -1 -1 3
+dont_use_location dfbcell -1 -1 0
 dont_use_location sccell -1 -1 0
 dont_use_location sccell -1 -1 1
 dont_use_location sccell -1 -1 2

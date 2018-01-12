@@ -2,7 +2,7 @@
 --	Conversion of cuff_mod_firmware.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Tue Jun 13 14:43:45 2017
+--	Wed Jan 10 10:07:24 2018
 --
 
 USE cypress.cypress.all;
@@ -30,8 +30,8 @@ SIGNAL tmpIO_1__MOTOR_EN_net_1 : bit;
 SIGNAL tmpIO_1__MOTOR_EN_net_0 : bit;
 TERMINAL tmpSIOVREF__MOTOR_EN_net_0 : bit;
 SIGNAL tmpINTERRUPT_0__MOTOR_EN_net_0 : bit;
-SIGNAL Net_3545 : bit;
 SIGNAL Net_3086 : bit;
+SIGNAL Net_3545 : bit;
 SIGNAL tmpOE__MOTOR_2A_net_0 : bit;
 SIGNAL Net_3388 : bit;
 SIGNAL tmpFB_0__MOTOR_2A_net_0 : bit;
@@ -2846,7 +2846,7 @@ zero <=  ('0') ;
 
 tmpOE__MOTOR_1A_net_0 <=  ('1') ;
 
-Net_3390 <= ((Net_3545 and Net_3086));
+Net_3390 <= ((Net_3086 and Net_3545));
 
 Net_2627 <= (not \UART_RS485:BUART:txn\);
 
@@ -3253,7 +3253,8 @@ MOTOR_2A:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__MOTOR_2A_net_0);
 \UART_RS485:RXInternalInterrupt\:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_6117);
 \UART_RS485:BUART:ClkSync\:cy_psoc3_udb_clock_enable_v1_0
 	GENERIC MAP(sync_mode=>'1')
@@ -4091,7 +4092,8 @@ CURRENT_SENSE_1:cy_psoc3_pins_v1_10
 		out_reset=>zero,
 		interrupt=>tmpINTERRUPT_0__CURRENT_SENSE_1_net_0);
 ISR_RS485_RX:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_6117);
 CLOCK_UART:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -6965,7 +6967,8 @@ ADC_CLK:cy_clock_v1_0
 	PORT MAP(signal1=>\ADC:Net_520\,
 		signal2=>\ADC:Net_20\);
 \ADC:IRQ\:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_5118);
 \ADC:theACLK\:cy_clock_v1_0
 	GENERIC MAP(cy_registers=>"",
@@ -7026,7 +7029,8 @@ WATCHDOG_CLK:cy_clock_v1_0
 	PORT MAP(clock_out=>Net_6285,
 		dig_domain_out=>open);
 ISR_WATCHDOG:cy_isr_v1_0
-	GENERIC MAP(int_type=>"10")
+	GENERIC MAP(int_type=>"10",
+		is_nmi=>'0')
 	PORT MAP(int_signal=>Net_5984);
 \WATCHDOG_COUNTER:CounterHW\:cy_psoc3_timer_v1_0
 	GENERIC MAP(cy_registers=>"")

@@ -19,9 +19,9 @@
 #if !defined(CY_UART_UART_RS485_H)
 #define CY_UART_UART_RS485_H
 
-#include "cytypes.h"
 #include "cyfitter.h"
-#include "CyLib.h"
+#include "cytypes.h"
+#include "CyLib.h" /* For CyEnterCriticalSection() and CyExitCriticalSection() functions */
 
 
 /***************************************

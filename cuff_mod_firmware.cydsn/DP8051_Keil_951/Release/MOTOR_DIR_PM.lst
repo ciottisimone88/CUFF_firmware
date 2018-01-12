@@ -1,12 +1,11 @@
-C51 COMPILER V9.51   MOTOR_DIR_PM                                                          06/13/2017 14:44:09 PAGE 1   
+C51 COMPILER V9.51   MOTOR_DIR_PM                                                          01/10/2018 10:08:00 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MOTOR_DIR_PM
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\MOTOR_DIR_PM.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\3.3\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
-                    -.\Generated_Source\PSoC3\MOTOR_DIR_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(N
-                    -DEBUG) WL(2) PR(.\DP8051_Keil_951\Release/MOTOR_DIR_PM.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\MOTOR_DIR_PM.obj
-                    -)
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -Generated_Source\PSoC3\MOTOR_DIR_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDE
+                    -BUG) WL(2) PR(.\DP8051_Keil_951\Release/MOTOR_DIR_PM.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\MOTOR_DIR_PM.obj)
 
 line level    source
 
@@ -62,9 +61,9 @@ line level    source
   49          *
   50          * Summary:
   51          *  Restores the control register value.
-C51 COMPILER V9.51   MOTOR_DIR_PM                                                          06/13/2017 14:44:09 PAGE 2   
-
   52          *
+C51 COMPILER V9.51   MOTOR_DIR_PM                                                          01/10/2018 10:08:00 PAGE 2   
+
   53          * Parameters:
   54          *  None
   55          *
@@ -122,7 +121,7 @@ line level    source
  107          
  108          
  109          /* [] END OF FILE */
-C51 COMPILER V9.51   MOTOR_DIR_PM                                                          06/13/2017 14:44:09 PAGE 3   
+C51 COMPILER V9.51   MOTOR_DIR_PM                                                          01/10/2018 10:08:00 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -131,7 +130,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 40
                                            ; SOURCE LINE # 41
                                            ; SOURCE LINE # 42
-0000 906477            MOV     DPTR,#06477H
+0000 906478            MOV     DPTR,#06478H
 0003 E0                MOVX    A,@DPTR
 0004 900000      R     MOV     DPTR,#MOTOR_DIR_backup
 0007 F0                MOVX    @DPTR,A
@@ -145,7 +144,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 63
 0000 900000      R     MOV     DPTR,#MOTOR_DIR_backup
 0003 E0                MOVX    A,@DPTR
-0004 906477            MOV     DPTR,#06477H
+0004 906478            MOV     DPTR,#06478H
 0007 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 64
 0008 22                RET     
