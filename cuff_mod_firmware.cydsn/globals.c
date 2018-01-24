@@ -71,6 +71,7 @@ CYBIT reset_last_value_flag;
 CYBIT tension_valid;
 CYBIT cuff_flag_force;
 CYBIT cuff_flag_proprio;
+CYBIT cuff_flag_force_proprio;
 CYBIT interrupt_flag;
 CYBIT watchdog_flag;
 

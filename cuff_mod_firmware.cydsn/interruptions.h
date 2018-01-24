@@ -68,6 +68,8 @@ void pwm_limit_search();
 
 void interrupt_manager();
 
+void pretensioning_process();
+
 // ----------------------------------------------------------------------------
 #endif
 

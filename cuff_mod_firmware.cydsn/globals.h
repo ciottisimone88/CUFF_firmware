@@ -55,12 +55,12 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "CUFF MOD v6.1.1"
+#define VERSION         "CUFF MOD v6.1.2"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
 #define NUM_OF_ANALOG_INPUTS    3
-#define NUM_OF_PARAMS           22
+#define NUM_OF_PARAMS           23
 
 //==============================================================================
 //                                                                       CONTROL
@@ -209,6 +209,8 @@ struct st_mem {
     int32   max_SH_pos;
     uint8   hand_ID;
     
+    uint8   cuff_activation_flag_force_proprio;
+    
     uint16 power_tension;               //                                          2
                                                                                     //TO UPDATE
 };
@@ -253,6 +255,7 @@ extern CYBIT reset_last_value_flag;
 extern CYBIT tension_valid;                         // tension validation bit
 extern CYBIT cuff_flag_force;                             // cuff activation flag
 extern CYBIT cuff_flag_proprio;                             // cuff activation flag
+extern CYBIT cuff_flag_force_proprio;                             // cuff activation flag
 extern CYBIT interrupt_flag;                        // interrupt flag enabler
 extern CYBIT watchdog_flag;                         // watchdog flag enabler
 

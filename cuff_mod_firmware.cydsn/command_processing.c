@@ -330,6 +330,91 @@ void slide_cuff() {
     }
 }
 
+void force_and_slide_cuff(){
+    uint8 packet_data[16];
+    uint8 packet_lenght;
+    int16 curr_diff;
+    int16 SH_pos;
+    int32 aux_val;
+    uint32 t_start, t_end;
+    int32 ref_slide[2];
+    
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_MEASUREMENTS;
+    packet_data[1] = CMD_GET_MEASUREMENTS;
+    commWrite(packet_data, packet_lenght, TRUE);
+
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_GET_MEASUREMENTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){             // 4.5 s timeout
+            cuff_flag_force_proprio = FALSE;
+            break;
+        }
+    }   
+    if(cuff_flag_force_proprio) {
+        SH_pos = *((int16 *) &g_rx.buffer[1]);
+    }
+    
+    packet_lenght = 2;
+    packet_data[0] = CMD_GET_CURR_DIFF;
+    packet_data[1] = CMD_GET_CURR_DIFF;
+    commWrite(packet_data, packet_lenght, TRUE);
+    
+    t_start = (uint32) MY_TIMER_ReadCounter();
+    while(g_rx.buffer[0] != CMD_SET_CUFF_INPUTS) {
+        if (interrupt_flag){
+            interrupt_flag = FALSE;
+            interrupt_manager();
+        }
+        t_end = (uint32) MY_TIMER_ReadCounter();
+        if((t_start - t_end) > 4500000){             // 4.5 s timeout
+            cuff_flag_force_proprio = FALSE;
+            break;
+        }
+    }
+
+    if(cuff_flag_force_proprio) {
+        curr_diff = *((int16 *) &g_rx.buffer[1]);
+        
+        // Current difference saturation
+        if(curr_diff > g_mem.curr_sat)
+            curr_diff = g_mem.curr_sat;
+        //Current difference dead zone
+        if(curr_diff < g_mem.curr_dead_zone)
+            curr_diff = 0;
+        else
+            curr_diff -= g_mem.curr_dead_zone;
+
+        // Sliding
+        aux_val = (int32)SH_pos;       
+        aux_val = (int32)((aux_val * g_mem.max_slide) / (int32)g_mem.max_SH_pos);
+        
+        ref_slide[0] =  (aux_val << g_mem.res[0]);
+        ref_slide[1] =  (aux_val << g_mem.res[1]);
+        
+        // Force
+        aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        
+        g_refNew.pos[0] = ref_slide[0] -(aux_val << g_mem.res[0]);
+        g_refNew.pos[1] = ref_slide[1] +(aux_val << g_mem.res[1]);
+
+        // End
+        if (c_mem.pos_lim_flag) {                      // pos limiting
+            if (g_refNew.pos[0] < c_mem.pos_lim_inf[0]) g_refNew.pos[0] = c_mem.pos_lim_inf[0];
+            if (g_refNew.pos[1] < c_mem.pos_lim_inf[1]) g_refNew.pos[1] = c_mem.pos_lim_inf[1];
+
+            if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
+            if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
+        }
+        
+    }
+}
+
 //==============================================================================
 //                                                              COMMAND GET INFO
 //==============================================================================
@@ -375,8 +460,8 @@ void setZeros()
 void get_param_list(uint16 index)
 {
     //Package to be sent variables
-    uint8 packet_data[1701] = "";
-    uint16 packet_lenght = 1701;
+    uint8 packet_data[1751] = "";
+    uint16 packet_lenght = 1751;
 
     //Auxiliary variables
     uint16 CYDATA i;
@@ -407,6 +492,7 @@ void get_param_list(uint16 index)
     char max_slide_str[35] = "20 - Max slide movement (proprio):";
     char max_SH_pos_str[31] = "21 - Max SH closure (proprio):";
     char hand_ID_str[14] = "22 - Hand ID:";
+    char cuff_activ_force_proprio_str[46] = "23 - Cuff activation flag force+proprio:";
     
     //Parameters menus
     char input_mode_menu[52] = "0 -> Usb\n1 -> Shaft's position controls the motors\n";
@@ -734,19 +820,37 @@ void get_param_list(uint16 index)
             for(i = hand_ID_str_len; i!= 0; i--)
                 packet_data[1055 + hand_ID_str_len - i] = hand_ID_str[hand_ID_str_len - i];
 
+            /*--------CUFF ACTIVATION FLAG FORCE + PROPRIO-------*/
+
+            packet_data[1102] = TYPE_FLAG;
+            packet_data[1103] = 1;
+            packet_data[1104] = c_mem.cuff_activation_flag_force_proprio;
+            if(c_mem.cuff_activation_flag_force_proprio) {
+                strcat(cuff_activ_force_proprio_str, " YES\0");
+                string_lenght = 46;
+            }
+            else {
+                strcat(cuff_activ_force_proprio_str, " NO\0");
+                string_lenght = 45;
+            }
+            for(i = string_lenght; i!=0; i--)
+                packet_data[1105 + string_lenght - i] = cuff_activ_force_proprio_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to send
+            packet_data[1105 + string_lenght] = 4;
+            
             /*-----------PARAMETERS MENU----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1102 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1152 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1252 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
+                packet_data[1302 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
             
             for(i = resolution_menu_len; i != 0; i--)
-                packet_data[1402 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
+                packet_data[1452 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
                
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1552 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1602 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght, FALSE);
@@ -877,7 +981,10 @@ void get_param_list(uint16 index)
 //=================================================     set_cuff_activation_flag
         case 17:
             g_mem.cuff_activation_flag_force = *((uint8*) & g_rx.buffer[3]);
-            g_mem.cuff_activation_flag_proprio = 0;
+            if (g_mem.cuff_activation_flag_force) {
+                g_mem.cuff_activation_flag_proprio = 0;
+                g_mem.cuff_activation_flag_force_proprio = 0;
+            }
         break;
 
 //========================================================     set_power_tension
@@ -888,7 +995,10 @@ void get_param_list(uint16 index)
 //=================================================     set_cuff_activation_flag
         case 19:
             g_mem.cuff_activation_flag_proprio = *((uint8*) & g_rx.buffer[3]);
-            g_mem.cuff_activation_flag_force = 0;
+            if (g_mem.cuff_activation_flag_proprio) {
+                g_mem.cuff_activation_flag_force = 0;
+                g_mem.cuff_activation_flag_force_proprio = 0;
+            }
         break;  
             
 //=============================================================     set_max_slide
@@ -903,6 +1013,14 @@ void get_param_list(uint16 index)
 //=============================================================     set_hand_ID
         case 22: 
             g_mem.hand_ID = *((uint8*) &g_rx.buffer[3]);
+        break;           
+//=================================================     set_cuff_activation_flag
+        case 23:
+            g_mem.cuff_activation_flag_force_proprio = *((uint8*) & g_rx.buffer[3]);
+            if (g_mem.cuff_activation_flag_force_proprio){
+                g_mem.cuff_activation_flag_force = 0;
+                g_mem.cuff_activation_flag_proprio = 0;
+            }
         break;              
     }
 }

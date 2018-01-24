@@ -197,6 +197,7 @@ int main() {
 
     cuff_flag_force = c_mem.cuff_activation_flag_force;             // If cuff startup is active, activate the device
     cuff_flag_proprio = c_mem.cuff_activation_flag_proprio;             // If cuff startup is active, activate the device
+    cuff_flag_force_proprio = c_mem.cuff_activation_flag_force_proprio;             // If cuff startup is active, activate the device
     calibration_flag = STOP;
     reset_last_value_flag = 0;
     

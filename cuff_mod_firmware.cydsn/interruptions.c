@@ -418,6 +418,9 @@ void function_scheduler(void) {
     if (cuff_flag_proprio)
         slide_cuff();
 
+    if (cuff_flag_force_proprio)
+        force_and_slide_cuff();        
+        
     if (interrupt_flag){
         interrupt_flag = FALSE;
         interrupt_manager();
