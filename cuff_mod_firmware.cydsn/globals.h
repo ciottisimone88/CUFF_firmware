@@ -55,12 +55,12 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "CUFF MOD v6.1.2"
+#define VERSION         "CUFF MOD v6.1.3"
 
 #define NUM_OF_MOTORS           2
-#define NUM_OF_SENSORS          3
+#define NUM_OF_SENSORS          2
 #define NUM_OF_ANALOG_INPUTS    3
-#define NUM_OF_PARAMS           23
+#define NUM_OF_PARAMS           25
 
 //==============================================================================
 //                                                                       CONTROL
@@ -75,7 +75,7 @@
 // the code in the motor control function
 #define POS_INTEGRAL_SAT_LIMIT   100000  // Anti wind-up
 #define CURR_INTEGRAL_SAT_LIMIT  100000  // Anti wind-up
-#define CALIB_CURRENT            1000    // Max current for calibration (mA)
+//#define CALIB_CURRENT            1000    // Max current for calibration (mA)
 #define DEFAULT_CURRENT_LIMIT    1500    // Current limit when using CURR_AND_POS_CONTROL
     
 
@@ -212,11 +212,16 @@ struct st_mem {
     uint8   cuff_activation_flag_force_proprio;
     
     uint16 power_tension;               //                                          2
+    
+    int32   SH_rest_pos;
+    
+    uint8 right_left;
+    
                                                                                     //TO UPDATE
 };
 
 
-
+/*
 //=================================================     calibration status
 
 enum calibration_status {
@@ -228,7 +233,7 @@ enum calibration_status {
     PAUSE_1     = 4,
     PAUSE_2     = 5
 
-};
+};*/
 
 //====================================      external global variables declaration
 
@@ -259,6 +264,10 @@ extern CYBIT cuff_flag_force_proprio;                             // cuff activa
 extern CYBIT interrupt_flag;                        // interrupt flag enabler
 extern CYBIT watchdog_flag;                         // watchdog flag enabler
 
+
+extern CYBIT pret_done;                             //Pretensioning done
+
+extern CYBIT pretensioning_flag;
 // DMA Buffer
 
 extern int16 ADC_buf[3];
@@ -266,6 +275,10 @@ extern int16 ADC_buf[3];
 // Sign of pwm_input to calculate current with sign
 
 extern int8 pwm_sign[2];
+
+// Zero position after pretensioning
+
+extern int32 pret_offset_pos[2];
 
 // -----------------------------------------------------------------------------
 

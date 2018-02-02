@@ -362,14 +362,14 @@ void function_scheduler(void) {
         interrupt_manager();
     }
     
-    encoder_reading(2, FALSE);
+    /*encoder_reading(2, FALSE);
     
     // Check Interrupt 
     
     if (interrupt_flag){
         interrupt_flag = FALSE;
         interrupt_manager();
-    }
+    }*/
 
     //---------------------------------- Control Motors
     
@@ -398,33 +398,43 @@ void function_scheduler(void) {
     //---------------------------------- Calibration 
 
     // Divider 100, freq = 10 Hz
-    if (!(calibration_flag == STOP)) {
+    /*if (!(calibration_flag == STOP)) {
         if (counter_calibration == CALIBRATION_DIV) {
             calibration();
             counter_calibration = 0;
         }
         counter_calibration++;
     }
+    
     // Check Interrupt 
     
     if (interrupt_flag){
         interrupt_flag = FALSE;
         interrupt_manager();
-    }
+    }*/
+    
+    if (pretensioning_flag == TRUE) {
+       if (counter_calibration == CALIBRATION_DIV) {
+           pretensioning_process();
+           counter_calibration = 0;
+       }
+    counter_calibration++;
+    } else {
+        if(cuff_flag_force)
+            drive_cuff();
+            
+        if (cuff_flag_proprio)
+            slide_cuff();
 
-    if(cuff_flag_force)
-        drive_cuff();
-        
-    if (cuff_flag_proprio)
-        slide_cuff();
-
-    if (cuff_flag_force_proprio)
-        force_and_slide_cuff();        
-        
+        if (cuff_flag_force_proprio)
+            force_and_slide_cuff();        
+    }   
+    
     if (interrupt_flag){
         interrupt_flag = FALSE;
         interrupt_manager();
     }
+        
    
     //---------------------------------- Update States
     
@@ -1057,7 +1067,7 @@ void encoder_reading(const uint8 idx, const uint8 flag)
     // l_value[i] = value_encoder;
 }
 
-
+/*
 //==============================================================================
 //                                                          CALIBRATION FUNCTION
 //==============================================================================
@@ -1160,7 +1170,7 @@ void calibration()
         default:
             break;
     }
-}
+}*/
 
 
 //==============================================================================
@@ -1205,5 +1215,81 @@ void pwm_limit_search() {
     }
 }
 
+//==============================================================================
+//                                                         PRETENSIONING PROCESS
+//==============================================================================
+
+void pretensioning_process() {
+    
+    static int16 epsilon = 10;
+    static uint8 phase = 0;
+    static uint8 phase_counter = 0;
+    int32 aux;
+    uint8 i = 0;
+    
+    switch(phase) {
+        case 0:     // closing
+                aux = (5 * (220 - g_meas.curr[0])) << g_mem.res[0];
+                g_refNew.pos[0] = g_refOld.pos[0] - aux;
+                
+                aux = (5 * (220 + g_meas.curr[1])) << g_mem.res[1];
+                g_refNew.pos[1] = g_refOld.pos[1] + aux;
+                                
+                if (phase_counter >= 10 && dev_tension <= 0) {
+                    pretensioning_flag = FALSE;
+                    g_refNew.pos[0] = 0;
+                    g_refNew.pos[1] = 0;
+                }
+                
+                phase_counter = phase_counter + 1;
+                               
+                if ( (g_meas.curr[0] > 220-epsilon ) && (g_meas.curr[1] < -220+epsilon )){
+                    phase = 1;
+                    phase_counter = 0;
+                    //g_refNew.pos[0] = g_meas.pos[0];
+                    //g_refNew.pos[1] = g_meas.pos[1];
+                }
+                break;
+        case 1:     // releasing
+                
+                aux = 16 << g_mem.res[0];
+                g_refNew.pos[0] = g_refOld.pos[0] + aux;
+                
+                aux = 16 << g_mem.res[1];
+                g_refNew.pos[1] = g_refOld.pos[1] - aux;
+                    
+                if (phase_counter > 80){//((g_meas.curr[0] > -10) && (g_meas.curr[1] < 10)){
+                    pretensioning_flag = FALSE;
+                    pret_done = TRUE;
+                    phase = 0;
+                    reset_last_value_flag = 1;
+                    for (i = 0; i< NUM_OF_SENSORS; i++) {
+                       pret_offset_pos[i] = g_refNew.pos[i];  // con questo omando funziona sicuramente
+                      // encoder_reading(i, TRUE);
+                      // g_mem.m_off[i] = -g_meas.pos[i];
+                      // g_meas.rot[i] = 0;
+                        
+                      // g_refNew.pos[i] = 0;//<<g_mem.res[i];
+                       
+                    }
+                    
+              //      memStore(0);
+                   
+
+                    
+                 /*   g_refOld.pos[0] = 0;
+                    g_refOld.pos[1] = 0;
+                    g_ref.pos[0] = 0;
+                    g_ref.pos[1] = 0;
+                    
+                   */
+                }
+                
+                phase_counter = phase_counter + 1;
+                break;
+        default:
+                break;
+    }    
+}
 
 /* [] END OF FILE */

@@ -215,12 +215,12 @@ void commProcess(){
             Bootloadable_Load();
             break;
 
-//============================================================     CMD_CALIBRATE
+/*//============================================================     CMD_CALIBRATE
         case CMD_CALIBRATE:
             calibration_flag = START;
             sendAcknowledgment(ACK_OK);
             break;
-
+*/
 //=========================================================== ALL OTHER COMMANDS
         default:
             break;
@@ -272,8 +272,11 @@ void drive_cuff() {
             curr_diff -= g_mem.curr_dead_zone;
 
         aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
-        g_refNew.pos[0] = -(aux_val << g_mem.res[0]);
-        g_refNew.pos[1] =  (aux_val << g_mem.res[1]);
+        g_refNew.pos[0] = pret_offset_pos[0] - (aux_val << g_mem.res[0]);     // questa è la parte funzionante con l'offset settato come variabili aggiuntiva
+        g_refNew.pos[1] = pret_offset_pos[1] + (aux_val << g_mem.res[1]);
+        
+       // g_refNew.pos[0] =  - (aux_val << g_mem.res[0]);
+       // g_refNew.pos[1] =  + (aux_val << g_mem.res[1]);
 
         if (c_mem.pos_lim_flag) {                      // pos limiting
             if (g_refNew.pos[0] < c_mem.pos_lim_inf[0]) g_refNew.pos[0] = c_mem.pos_lim_inf[0];
@@ -283,6 +286,8 @@ void drive_cuff() {
             if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
     }
+    if (!pret_done)
+            pretensioning_flag = TRUE;
 }
 
 void slide_cuff() {
@@ -291,7 +296,6 @@ void slide_cuff() {
     int16 SH_pos;
     int32 aux_val;
     uint32 t_start, t_end;
-    uint8 b_h, b_l;
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_MEASUREMENTS;
@@ -314,11 +318,22 @@ void slide_cuff() {
     if(cuff_flag_proprio) {
         SH_pos = *((int16 *) &g_rx.buffer[1]);
         
-        aux_val = (int32)SH_pos;       
-        aux_val = (int32)((aux_val * g_mem.max_slide) / (int32)g_mem.max_SH_pos);
+        aux_val = (int32)SH_pos - g_mem.SH_rest_pos;       
+        aux_val = (int32)((aux_val * g_mem.max_slide) / (g_mem.max_SH_pos - g_mem.SH_rest_pos));
         
-        g_refNew.pos[0] =  (aux_val << g_mem.res[0]);
-        g_refNew.pos[1] =  (aux_val << g_mem.res[1]);
+        if (c_mem.right_left) {
+            // LEFT
+            g_refNew.pos[0] =  pret_offset_pos[0] + (aux_val << g_mem.res[0]);
+            g_refNew.pos[1] =  pret_offset_pos[1] + (aux_val << g_mem.res[1]);
+        }
+        else {
+            // RIGHT
+            g_refNew.pos[0] =  pret_offset_pos[0] - (aux_val << g_mem.res[0]);
+            g_refNew.pos[1] =  pret_offset_pos[1] - (aux_val << g_mem.res[1]);
+        }
+       
+       // g_refNew.pos[0] = (aux_val << g_mem.res[0]);
+       // g_refNew.pos[1] = (aux_val << g_mem.res[1]);
 
         if (c_mem.pos_lim_flag) {                      // pos limiting
             if (g_refNew.pos[0] < c_mem.pos_lim_inf[0]) g_refNew.pos[0] = c_mem.pos_lim_inf[0];
@@ -327,6 +342,8 @@ void slide_cuff() {
             if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
             if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
+        if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
+            pretensioning_flag = TRUE;
     }
 }
 
@@ -338,14 +355,14 @@ void force_and_slide_cuff(){
     int32 aux_val;
     uint32 t_start, t_end;
     int32 ref_slide[2];
-    
+
     packet_lenght = 2;
-    packet_data[0] = CMD_GET_MEASUREMENTS;
-    packet_data[1] = CMD_GET_MEASUREMENTS;
+    packet_data[0] = CMD_GET_CURR_AND_MEAS;
+    packet_data[1] = CMD_GET_CURR_AND_MEAS;
     commWrite(packet_data, packet_lenght, TRUE);
 
     t_start = (uint32) MY_TIMER_ReadCounter();
-    while(g_rx.buffer[0] != CMD_GET_MEASUREMENTS) {
+    while(g_rx.buffer[0] != CMD_GET_CURR_AND_MEAS) {
         if (interrupt_flag){
             interrupt_flag = FALSE;
             interrupt_manager();
@@ -355,31 +372,11 @@ void force_and_slide_cuff(){
             cuff_flag_force_proprio = FALSE;
             break;
         }
-    }   
-    if(cuff_flag_force_proprio) {
-        SH_pos = *((int16 *) &g_rx.buffer[1]);
-    }
+    } 
     
-    packet_lenght = 2;
-    packet_data[0] = CMD_GET_CURR_DIFF;
-    packet_data[1] = CMD_GET_CURR_DIFF;
-    commWrite(packet_data, packet_lenght, TRUE);
-    
-    t_start = (uint32) MY_TIMER_ReadCounter();
-    while(g_rx.buffer[0] != CMD_SET_CUFF_INPUTS) {
-        if (interrupt_flag){
-            interrupt_flag = FALSE;
-            interrupt_manager();
-        }
-        t_end = (uint32) MY_TIMER_ReadCounter();
-        if((t_start - t_end) > 4500000){             // 4.5 s timeout
-            cuff_flag_force_proprio = FALSE;
-            break;
-        }
-    }
-
     if(cuff_flag_force_proprio) {
-        curr_diff = *((int16 *) &g_rx.buffer[1]);
+        curr_diff = *((int16 *) &g_rx.buffer[3]);
+        SH_pos = *((int16 *) &g_rx.buffer[5]);
         
         // Current difference saturation
         if(curr_diff > g_mem.curr_sat)
@@ -391,7 +388,7 @@ void force_and_slide_cuff(){
             curr_diff -= g_mem.curr_dead_zone;
 
         // Sliding
-        aux_val = (int32)SH_pos;       
+        aux_val = (int32)SH_pos - g_mem.SH_rest_pos;       
         aux_val = (int32)((aux_val * g_mem.max_slide) / (int32)g_mem.max_SH_pos);
         
         ref_slide[0] =  (aux_val << g_mem.res[0]);
@@ -400,8 +397,19 @@ void force_and_slide_cuff(){
         // Force
         aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
         
-        g_refNew.pos[0] = ref_slide[0] -(aux_val << g_mem.res[0]);
-        g_refNew.pos[1] = ref_slide[1] +(aux_val << g_mem.res[1]);
+        if (c_mem.right_left) {
+            // LEFT
+            g_refNew.pos[0] = pret_offset_pos[0] + ref_slide[0] -(aux_val << g_mem.res[0]);
+            g_refNew.pos[1] = pret_offset_pos[1] + ref_slide[1] +(aux_val << g_mem.res[1]);
+        }
+        else {
+            // RIGHT
+            g_refNew.pos[0] = pret_offset_pos[0] - ref_slide[0] -(aux_val << g_mem.res[0]);
+            g_refNew.pos[1] = pret_offset_pos[1] - ref_slide[1] +(aux_val << g_mem.res[1]);
+        }
+        
+        //g_refNew.pos[0] = ref_slide[0] -(aux_val << g_mem.res[0]);
+        //g_refNew.pos[1] = ref_slide[1] +(aux_val << g_mem.res[1]);
 
         // End
         if (c_mem.pos_lim_flag) {                      // pos limiting
@@ -411,6 +419,9 @@ void force_and_slide_cuff(){
             if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
             if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
+        
+        if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
+            pretensioning_flag = TRUE;
         
     }
 }
@@ -460,14 +471,14 @@ void setZeros()
 void get_param_list(uint16 index)
 {
     //Package to be sent variables
-    uint8 packet_data[1751] = "";
-    uint16 packet_lenght = 1751;
+    uint8 packet_data[1901]=""; 
+    uint16 packet_lenght = 1901;
 
     //Auxiliary variables
     uint16 CYDATA i;
     uint8 string_lenght;
     int32 aux_int;
-    char tmp_string[3];
+    //char tmp_string[3];
 
     //Parameters menu string definitions
     char id_str[15]             = "1 - Device ID:";
@@ -476,7 +487,7 @@ void get_param_list(uint16 index)
     char startup_str[28]        = "4 - Startup Activation:";
     char input_str[27]          = "5 - Input mode:";
     char contr_str[39]          = "6 - Control mode:";
-    char res_str[23]            = "7 - Resolutions:";
+    char res_str[21]            = "7 - Resolutions:";
     char m_off_str[25]          = "8 - Measurement Offsets:";
     char mult_str[17]           = "9 - Multipliers:";
     char pos_lim_flag_str[28]   = "10 - Pos. limit active:";
@@ -492,19 +503,22 @@ void get_param_list(uint16 index)
     char max_slide_str[35] = "20 - Max slide movement (proprio):";
     char max_SH_pos_str[31] = "21 - Max SH closure (proprio):";
     char hand_ID_str[14] = "22 - Hand ID:";
-    char cuff_activ_force_proprio_str[46] = "23 - Cuff activation flag force+proprio:";
+    char cuff_activ_force_proprio_str[34] = "23 - Cuff flag force+proprio:";
+    char SH_rest_pos_str[33] = "24 - SH rest pos(proprio):";
+    char right_left_par_str[21] = "25 - Arm side:";
     
     //Parameters menus
     char input_mode_menu[52] = "0 -> Usb\n1 -> Shaft's position controls the motors\n";
-    char resolution_menu[140] = "0 -> [1 turn]\n1 -> [2 turns]\n2 -> [4 turns]\n3 -> [8 turns]\n4 -> [16 turns]\n5 -> [32 turn]\n6 -> [64 turn]\n7 -> [128 turns]\n8 -> [256 turns]\n";
     char control_mode_menu[59] = "0 -> Position\n1 -> PWM\n2 -> Current\n3 -> Position-Current\n";//4 -> Deflection\n5 -> Deflection-Current\n";
     char yes_no_menu[42] = "0 -> Deactivate [NO]\n1 -> Activate [YES]\n";
+    char right_left_menu[22] = "0 -> Right\n1 -> Left\n";
 
     //Strings lenghts
     uint8 CYDATA id_str_len = strlen(id_str);
     uint8 CYDATA pos_pid_str_len = strlen(pos_pid_str);
     uint8 CYDATA curr_pid_str_len = strlen(curr_pid_str);
-
+    
+    uint8 CYDATA res_str_len = strlen(res_str);
     uint8 CYDATA m_off_str_len = strlen(m_off_str);
     uint8 CYDATA mult_str_len = strlen(mult_str);
 
@@ -518,12 +532,13 @@ void get_param_list(uint16 index)
 
     uint8 CYDATA input_mode_menu_len = strlen(input_mode_menu);
     uint8 CYDATA control_mode_menu_len = strlen(control_mode_menu);
-    uint8 CYDATA yes_no_menu_len = strlen(input_mode_menu);
-    uint8 CYDATA resolution_menu_len = strlen(resolution_menu);
+    uint8 CYDATA yes_no_menu_len = strlen(yes_no_menu);
+    uint8 CYDATA right_left_menu_len = strlen(right_left_menu);
     
     uint8 CYDATA max_slide_str_len = strlen(max_slide_str);
     uint8 CYDATA max_SH_pos_str_len = strlen(max_SH_pos_str);
     uint8 CYDATA hand_ID_str_len = strlen(hand_ID_str);
+    uint8 SH_rest_pos_str_len = strlen(SH_rest_pos_str);
 
     packet_data[0] = CMD_GET_PARAM_LIST;
     packet_data[1] = NUM_OF_PARAMS;
@@ -588,7 +603,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i != 0; i--)
                 packet_data[155 + string_lenght - i] = startup_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[155 + string_lenght]  = 4;
+            packet_data[155 + string_lenght]  = 3;
 
             /*--------------INPUT MODE------------*/
             
@@ -646,41 +661,49 @@ void get_param_list(uint16 index)
             //The following byte indicates the number of menus at the end of the packet to send
             packet_data[255 + string_lenght] = 2;
             
-            /*-------------RESOLUTIONS------------*/
+             /*-------------RESOLUTIONS------------*/
             
+            packet_data[302] = TYPE_UINT8;
+            packet_data[303] = 2;
+            for(i = 0; i < NUM_OF_SENSORS; i++)
+                packet_data[i + 304] = c_mem.res[i];
+            for(i = res_str_len; i != 0; i--)
+                packet_data[306 + res_str_len - i] = res_str[res_str_len - i];
+                
+                /*-------------RESOLUTIONS------------*/
+       /*     
             packet_data[302] = TYPE_FLAG;
-            packet_data[303] = 3;
+            packet_data[303] = 2;
             packet_data[304] = 0;   //Fake data used to correctly read string
             packet_data[305] = 0;
-            packet_data[306] = 0;
             for(i = 0; i < NUM_OF_SENSORS; i++) {
                 sprintf(tmp_string, " %d", (int) c_mem.res[i]);
                 strcat(res_str, tmp_string);
             }
             //strcat(res_str, "\0");
-            string_lenght = 23;
+            string_lenght = 21;
             for(i = string_lenght; i != 0; i--)
-                packet_data[307 + string_lenght - i] = res_str[string_lenght - i];
+                packet_data[306 + string_lenght - i] = res_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[307 + string_lenght] = 3;
-            
+            packet_data[306 + string_lenght] = 3;
+         */   
             /*----------MEASUREMENT OFFSET--------*/
             
             packet_data[352] = TYPE_INT16;
-            packet_data[353] = 3;
+            packet_data[353] = 2;
             for(i = 0; i < NUM_OF_SENSORS; i++) 
                 *((int16 *) ( packet_data + 354 + (i * 2) )) = (int16) (c_mem.m_off[i] >> c_mem.res[i]);
             for(i = m_off_str_len; i != 0; i--)
-                packet_data[360 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
+                packet_data[358 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
             
             /*------------MULTIPLIERS-------------*/
             
             packet_data[402] = TYPE_FLOAT;
-            packet_data[403] = 3;
+            packet_data[403] = 2;
             for(i = 0; i < NUM_OF_SENSORS; i++)
                 *((float *) ( packet_data + 404 + (i * 4) )) = c_mem.m_mult[i];
             for(i = 0; i < strlen(mult_str); i++)
-                packet_data[416 + i] = mult_str[i];
+                packet_data[412 + i] = mult_str[i];
 
             /*-----------POS LIMIT FLAG-----------*/
             
@@ -698,7 +721,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i != 0; i--)
                 packet_data[455 + string_lenght - i] = pos_lim_flag_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[455 + string_lenght] = 4;
+            packet_data[455 + string_lenght] = 3;
             
             /*-----------POSITION LIMITS----------*/
             
@@ -768,7 +791,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i!=0; i--)
                 packet_data[805 + string_lenght - i] = cuff_activ_force_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[805 + string_lenght] = 4;
+            packet_data[805 + string_lenght] = 3;
                 
             /*------------POWER TENSION----------*/
 
@@ -794,7 +817,7 @@ void get_param_list(uint16 index)
             for(i = string_lenght; i!=0; i--)
                 packet_data[905 + string_lenght - i] = cuff_activ_proprio_str[string_lenght - i];
             //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[905 + string_lenght] = 4;
+            packet_data[905 + string_lenght] = 3;
 
             /*---------MAX SLIDE---------*/
 
@@ -827,30 +850,57 @@ void get_param_list(uint16 index)
             packet_data[1104] = c_mem.cuff_activation_flag_force_proprio;
             if(c_mem.cuff_activation_flag_force_proprio) {
                 strcat(cuff_activ_force_proprio_str, " YES\0");
-                string_lenght = 46;
+                string_lenght = 34;
             }
             else {
                 strcat(cuff_activ_force_proprio_str, " NO\0");
-                string_lenght = 45;
+                string_lenght = 33;
             }
             for(i = string_lenght; i!=0; i--)
                 packet_data[1105 + string_lenght - i] = cuff_activ_force_proprio_str[string_lenght - i];
-            //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[1105 + string_lenght] = 4;
+            //The following byte indicates the number of menus at the end of the packet to sen
+            packet_data[1105 + string_lenght] = 3;
+
+            
+            /*---------SH REST POS---------*/
+
+            packet_data[1152] = TYPE_INT32;
+            packet_data[1153] = 1;
+            *((int32 *)(packet_data + 1154)) = c_mem.SH_rest_pos;
+            for(i = SH_rest_pos_str_len; i!= 0; i--)
+                packet_data[1158 + SH_rest_pos_str_len - i] = SH_rest_pos_str[SH_rest_pos_str_len - i];
+            
+            /*--------RIGHT LEFT-------*/
+
+            packet_data[1202] = TYPE_FLAG;
+            packet_data[1203] = 1;
+            packet_data[1204] = c_mem.right_left;
+            if(c_mem.right_left) {
+                strcat(right_left_par_str, " Left\0");
+                string_lenght = 20;
+            }
+            else {
+                strcat(right_left_par_str, " Right\0");
+                string_lenght = 21;
+            }
+            for(i = string_lenght; i!=0; i--)
+                packet_data[1205 + string_lenght - i] = right_left_par_str[string_lenght - i];
+            //The following byte indicates the number of menus at the end of the packet to sen
+            packet_data[1205 + string_lenght] = 4;
             
             /*-----------PARAMETERS MENU----------*/
 
             for(i = input_mode_menu_len; i != 0; i--)
-                packet_data[1152 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
+                packet_data[1252 + input_mode_menu_len - i] = input_mode_menu[input_mode_menu_len - i];
 
             for(i = control_mode_menu_len; i != 0; i--)
-                packet_data[1302 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
-            
-            for(i = resolution_menu_len; i != 0; i--)
-                packet_data[1452 + resolution_menu_len - i] = resolution_menu[resolution_menu_len - i];
+                packet_data[1402 + control_mode_menu_len - i] = control_mode_menu[control_mode_menu_len - i];
                
             for(i = yes_no_menu_len; i!= 0; i--)
-                packet_data[1602 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+                packet_data[1552 + yes_no_menu_len - i] = yes_no_menu[yes_no_menu_len - i];
+               
+            for(i = right_left_menu_len; i!= 0; i--)
+                packet_data[1702 + right_left_menu_len - i] = right_left_menu[right_left_menu_len - i];
 
             packet_data[packet_lenght - 1] = LCRChecksum(packet_data,packet_lenght - 1);
             commWrite(packet_data, packet_lenght, FALSE);
@@ -911,7 +961,7 @@ void get_param_list(uint16 index)
 //===========================================================     set_resolution
         case 7:         //Resolution - uint8[3]
             for (i =0; i < NUM_OF_SENSORS; i++)
-                g_mem.res[i] = g_rx.buffer[i+3];
+                g_mem.res[i] = *((uint8 *) &g_rx.buffer[i+3]);
         break;
         
 //===============================================================     set_offset
@@ -1021,6 +1071,14 @@ void get_param_list(uint16 index)
                 g_mem.cuff_activation_flag_force = 0;
                 g_mem.cuff_activation_flag_proprio = 0;
             }
+        break;  
+ //=============================================================     set_SH_rest_pos
+        case 24: 
+            g_mem.SH_rest_pos = *((int32*) &g_rx.buffer[3]);
+        break; 
+//=================================================     set_cuff_activation_flag
+        case 25:
+            g_mem.right_left = *((uint8*) & g_rx.buffer[3]);
         break;              
     }
 }
@@ -1471,6 +1529,7 @@ uint8 memInit(void) {
     {
         g_mem.m_mult[i] = 1;
         g_mem.res[i] = 2;
+        g_mem.m_off[i] = (int32)0 << g_mem.res[i];
     }
 
     g_mem.curr_prop_gain = 0.3;
@@ -1478,12 +1537,19 @@ uint8 memInit(void) {
     g_mem.curr_dead_zone = 75;
     g_mem.cuff_activation_flag_force = 0;
     g_mem.cuff_activation_flag_proprio = 0;
+    g_mem.cuff_activation_flag_force_proprio = 0;
     g_mem.power_tension = 12000;         //mV of needed supply power
     g_mem.hand_ID = 2;
+    
+    g_mem.max_step_neg = 0;
+    g_mem.max_step_pos = 0;
+    
+    g_mem.max_slide = 8400;
+    g_mem.max_SH_pos = 19000;
 
-    g_mem.m_off[0] = (int32)0 << g_mem.res[0];
-    g_mem.m_off[1] = (int32)0 << g_mem.res[1];
-    g_mem.m_off[2] = (int32)0 << g_mem.res[2];
+    g_mem.right_left = 1;       // LEFT CUFF
+    
+    //g_mem.m_off[1] = (int32)0 << g_mem.res[1];
 
     g_mem.max_stiffness = 0; //(int32)3000 << g_mem.res[0];
 
@@ -1491,6 +1557,8 @@ uint8 memInit(void) {
 
     //set the initialized flag to show EEPROM has been populated
     g_mem.flag = TRUE;
+    
+    g_mem.SH_rest_pos = 7000;
 
     //write that configuration to EEPROM
     return ( memStore(0) && memStore(DEFAULT_EEPROM_DISPLACEMENT) );
@@ -1515,6 +1583,9 @@ void cmd_get_measurements(){
     #endif
     #if  (NUM_OF_SENSORS == 3)
         uint8 packet_data[8]; 
+    #endif
+    #if (NUM_OF_SENSORS == 2)
+        uint8 packet_data[6]; 
     #endif
 
     //Header package
@@ -1588,6 +1659,9 @@ void cmd_get_curr_and_meas(){
     #endif
     #if  (NUM_OF_SENSORS == 3)
         uint8 packet_data[12]; 
+    #endif
+    #if (NUM_OF_SENSORS == 2)
+        uint8 packet_data[6]; 
     #endif
 
     //Header package
@@ -1676,7 +1750,10 @@ void cmd_get_velocities(){
         uint8 packet_data[10];
     #endif
     #if (NUM_OF_SENSORS == 3)
-        uint8 packet_data[8]; 
+        uint8 packet_data[8];     
+    #endif
+    #if (NUM_OF_SENSORS == 2)
+        uint8 packet_data[6]; 
     #endif
     
     //Header package
