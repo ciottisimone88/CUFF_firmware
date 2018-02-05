@@ -1,6 +1,6 @@
 /****************************************************************************//**
 * \file Bootloadable.c
-* \version 1.40
+* \version 1.50
 *
 * \brief
 *   Provides an API for the Bootloadable application.

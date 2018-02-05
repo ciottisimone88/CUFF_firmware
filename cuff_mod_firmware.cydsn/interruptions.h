@@ -62,7 +62,7 @@ void encoder_reading(const uint8, const uint8);
 void motor_control(const uint8);
 void analog_read_end();
 
-void calibration(void);
+//void calibration(void);
 
 void pwm_limit_search();
 

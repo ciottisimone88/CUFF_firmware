@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/10/2018 10:08:04 PAGE 1   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE WATCHDOG_COUNTER_PM
@@ -62,7 +62,7 @@ line level    source
                           WATCHDOG_COUNTER_backup.CounterControlRegister = WATCHDOG_COUNTER_ReadControlRegister();
                       #endif /* (!WATCHDOG_COUNTER_ControlRegRemoved) */
               
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/10/2018 10:08:04 PAGE 2   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 2   
 
                   #endif /* (!WATCHDOG_COUNTER_UsingFixedFunction) */
   53   1      }
@@ -126,7 +126,7 @@ line level    source
  111   2                  /* Counter is enabled */
  112   2                  WATCHDOG_COUNTER_backup.CounterEnableState = 1u;
  113   2              }
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/10/2018 10:08:04 PAGE 3   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 3   
 
  114   1              else
  115   1              {
@@ -179,7 +179,7 @@ line level    source
  162          
  163          
  164          /* [] END OF FILE */
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/10/2018 10:08:04 PAGE 4   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -243,7 +243,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 158
                                            ; SOURCE LINE # 161
 000D         ?C0007:
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/10/2018 10:08:04 PAGE 5   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 5   
 
 000D 22                RET     
              ; FUNCTION WATCHDOG_COUNTER_Wakeup (END)

@@ -74,6 +74,8 @@ CYBIT cuff_flag_proprio;
 CYBIT cuff_flag_force_proprio;
 CYBIT interrupt_flag;
 CYBIT watchdog_flag;
+CYBIT pretensioning_flag;
+CYBIT pret_done;
 
 // DMA Buffer
 
@@ -82,3 +84,6 @@ int16 ADC_buf[3];
 // Sign of pwm_input to calculate current with sign
 
 int8 pwm_sign[2];
+
+// Zero position after pretensioning
+int32 pret_offset_pos[2];

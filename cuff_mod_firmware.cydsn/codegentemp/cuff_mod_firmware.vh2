@@ -2,7 +2,7 @@
 --	Conversion of cuff_mod_firmware.v to vh2:
 --
 --	Cypress Semiconductor - WARP Version 6.3 IR 41
---	Fri Jan 19 11:13:39 2018
+--	Mon Feb 05 13:59:00 2018
 --
 
 USE cypress.cypress.all;

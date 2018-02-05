@@ -74,7 +74,7 @@ enum qbmove_command {
                                         ///  or the hand closure and opening calibration
     CMD_GET_PARAM_LIST          = 12,   ///< Command to get the parameters list or to set
                                         ///  a defined value chosen by the use
-    CMD_HAND_CALIBRATE          = 13,   ///< Starts a series of opening and closures of the hand
+    //CMD_HAND_CALIBRATE          = 13,   ///< Starts a series of opening and closures of the hand
 
 //=========================================================     QB Move commands
 

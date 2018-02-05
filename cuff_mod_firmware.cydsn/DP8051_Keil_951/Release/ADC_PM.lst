@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   ADC_PM                                                                01/10/2018 10:08:01 PAGE 1   
+C51 COMPILER V9.51   ADC_PM                                                                01/25/2018 15:12:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC_PM
@@ -62,7 +62,7 @@ line level    source
   50          
   51          
   52          /*******************************************************************************
-C51 COMPILER V9.51   ADC_PM                                                                01/10/2018 10:08:01 PAGE 2   
+C51 COMPILER V9.51   ADC_PM                                                                01/25/2018 15:12:46 PAGE 2   
 
   53          * Function Name: ADC_RestoreConfig
   54          ********************************************************************************
@@ -126,7 +126,7 @@ line level    source
  112   1          else
  113   1          {
  114   2              /* Component is disabled */
-C51 COMPILER V9.51   ADC_PM                                                                01/10/2018 10:08:01 PAGE 3   
+C51 COMPILER V9.51   ADC_PM                                                                01/25/2018 15:12:46 PAGE 3   
 
  115   2              ADC_backup.enableState = ADC_DISABLED;
  116   2          }
@@ -172,7 +172,7 @@ line level    source
  156          
  157          
  158          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC_PM                                                                01/10/2018 10:08:01 PAGE 4   
+C51 COMPILER V9.51   ADC_PM                                                                01/25/2018 15:12:46 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -236,7 +236,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0025 120000      E     LCALL   ADC_Stop
                                            ; SOURCE LINE # 111
 0028 8005              SJMP    ?C0005
-C51 COMPILER V9.51   ADC_PM                                                                01/10/2018 10:08:01 PAGE 5   
+C51 COMPILER V9.51   ADC_PM                                                                01/25/2018 15:12:46 PAGE 5   
 
 002A         ?C0003:
                                            ; SOURCE LINE # 113

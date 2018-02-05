@@ -119,7 +119,7 @@ int main() {
     COUNTER_ENC_Start();
     SHIFTREG_ENC_1_Start();
     SHIFTREG_ENC_2_Start();
-    SHIFTREG_ENC_3_Start();
+    //SHIFTREG_ENC_3_Start();
     
     #if NUM_OF_SENSORS == 4
         SHIFTREG_ENC_4_Start();
@@ -172,7 +172,7 @@ int main() {
     g_rx.ready  = 0;
 
      // Zero position initialization for cuff device
-    g_mem.m_off[0] = g_mem.m_off[1] = g_mem.m_off[2] = 0;
+    g_mem.m_off[0] = g_mem.m_off[1] = 0;
     if ( memStore(0) )
         sendAcknowledgment(ACK_OK);
     else
@@ -198,8 +198,11 @@ int main() {
     cuff_flag_force = c_mem.cuff_activation_flag_force;             // If cuff startup is active, activate the device
     cuff_flag_proprio = c_mem.cuff_activation_flag_proprio;             // If cuff startup is active, activate the device
     cuff_flag_force_proprio = c_mem.cuff_activation_flag_force_proprio;             // If cuff startup is active, activate the device
-    calibration_flag = STOP;
+    calibration_flag = 0;//STOP;
     reset_last_value_flag = 0;
+    
+    pretensioning_flag = FALSE;
+    pret_done = FALSE;
     
     //------------------------------------------------- Initialize WDT
     // Check on disable WTD on startup

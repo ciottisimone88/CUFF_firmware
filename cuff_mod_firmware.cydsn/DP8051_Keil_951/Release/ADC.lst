@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 1   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC
@@ -62,7 +62,7 @@ line level    source
   50          volatile uint8 ADC_Config = 1u;
   51          
   52          volatile int32 ADC_Offset;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 2   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 2   
 
   53          volatile int32 ADC_CountsPerVolt;
   54          
@@ -126,7 +126,7 @@ line level    source
  112   1          ADC_DSM_MISC_REG    = ADC_CFG1_DSM_MISC;
  113   1          ADC_DSM_CLK_REG    |= ADC_CFG1_DSM_CLK;
  114   1          ADC_DSM_REF1_REG    = ADC_CFG1_DSM_REF1;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 3   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 3   
 
  115   1      
  116   1          ADC_DSM_OUT0_REG    = ADC_CFG1_DSM_OUT0;
@@ -190,7 +190,7 @@ line level    source
  174          *  Enables the ADC DelSig block operation.
  175          *
  176          *
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 4   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 4   
 
  177          * Parameters:
  178          *  None
@@ -254,7 +254,7 @@ line level    source
  236   1      
  237   1          #if (((ADC_CFG1_INPUT_RANGE == ADC_IR_VSSA_TO_2VREF) || \
  238   1               ((ADC_DEFAULT_NUM_CONFIGS > 1) && \
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 5   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 5   
 
  239   1                (ADC_CFG2_INPUT_RANGE == ADC_IR_VSSA_TO_2VREF)) || \
  240   1               ((ADC_DEFAULT_NUM_CONFIGS > 2) && \
@@ -318,7 +318,7 @@ line level    source
  298   1          #endif   /* End ADC_IRQ_REMOVE */
  299   1      
  300   1          CyExitCriticalSection(enableInterrupts);
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 6   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 6   
 
  301   1      
  302   1      }
@@ -382,7 +382,7 @@ line level    source
  360          *
  361          *******************************************************************************/
  362          void ADC_Stop(void) 
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 7   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 7   
 
  363          {
  364   1          uint8 enableInterrupts;
@@ -446,7 +446,7 @@ line level    source
  422          * Parameters:
  423          *  gain:  Two bit value to select a gain of 1, 2, 4, or 8.
  424          *
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 8   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 8   
 
  425          * Return:
  426          *  None
@@ -510,7 +510,7 @@ line level    source
  484          *  0x0000 -> 0.000
  485          *  0x8000 -> 1.000
  486          *  0xFFFF -> 1.99997
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 9   
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 9   
 
  487          *  When executing the function, the old GCOR value is multiplied by
  488          *  gainAdjust and reloaded into the GCOR register.
@@ -574,7 +574,7 @@ line level    source
  546          *  None
  547          *
  548          * Return:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 10  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 10  
 
  549          *  uint16:  Normalized GCOR value.
  550          *
@@ -638,7 +638,7 @@ line level    source
  608          *******************************************************************************/
  609          void ADC_StopConvert(void) 
  610          {
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 11  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 11  
 
  611   1          /* Stop all conversions */
  612   1          ADC_DEC_CR_REG &= (uint8)~ADC_DEC_START_CONV;
@@ -702,7 +702,7 @@ line level    source
  670          *
  671          * Summary:
  672          *  This function returns the result of an 8-bit conversion. If the
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 12  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 12  
 
  673          *  resolution is set greater than 8-bits, the LSB of the result will be
  674          *  returned. When the ADC is configured for 8-bit single ended mode,
@@ -766,7 +766,7 @@ line level    source
  732          *  This function supports different coherency settings.
  733          *
  734          * Parameters:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 13  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 13  
 
  735          *   void
  736          *
@@ -830,7 +830,7 @@ line level    source
  794          * Parameters:
  795          *  None
  796          *
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 14  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 14  
 
  797          * Return:
  798          *  int32: Result of the last ADC conversion.
@@ -894,7 +894,7 @@ line level    source
  856   2                  result |= (uint32)tmp << 16u;
  857   2              #else
                           result = CY_GET_REG16(ADC_DEC_SAMP_16B_PTR);
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 15  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 15  
 
                           result |= (uint32)((uint32)CY_GET_REG16(ADC_DEC_SAMPH_16B_PTR) << 16u);
                       #endif /* CY_PSOC3 */
@@ -958,7 +958,7 @@ line level    source
  918          *  int32: ADC gain in counts per volt.
  919          *
  920          * Return:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 16  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 16  
 
  921          *  None
  922          *
@@ -1022,7 +1022,7 @@ line level    source
                       {
                           adcCounts /= ADC_CFG3_DEC_DIV;
                       }
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 17  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 17  
 
                   #endif /* ADC_CFG2_DEC_DIV */
  984   1          #if((ADC_CFG4_DEC_DIV != 0) && (ADC_DEFAULT_NUM_CONFIGS > 3))
@@ -1086,7 +1086,7 @@ line level    source
                           adcCounts /= ADC_CFG3_DEC_DIV;
                       }
                   #endif /* ADC_CFG2_DEC_DIV */
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 18  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 18  
 
 1045   1          #if((ADC_CFG4_DEC_DIV != 0) && (ADC_DEFAULT_NUM_CONFIGS > 3))
                       if(ADC_Config == ADC_CFG4)
@@ -1150,7 +1150,7 @@ line level    source
 1104   1          else if (ADC_Config == ADC_CFG2)
 1105   1          {
 1106   2              resolution = ADC_CFG2_RESOLUTION;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 19  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 19  
 
 1107   2              #if(ADC_CFG2_DEC_DIV != 0)
                           adcCounts /= ADC_CFG2_DEC_DIV;
@@ -1214,7 +1214,7 @@ line level    source
 1166   2                   (ADC_CFG3_RESOLUTION == ADC__BITS_16) || \
 1167   2                   (ADC_CFG4_RESOLUTION == ADC__BITS_16) )
 1168   2                  case (uint8)ADC__BITS_16:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 20  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 20  
 
 1169   2                      coefA = ADC_1UV_COUNTS / ADC_DIVISOR_32;
 1170   2                      coefB = ADC_DIVISOR_32;
@@ -1278,7 +1278,7 @@ line level    source
 1228          *
 1229          * Parameters:
 1230          *   void
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 21  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 21  
 
 1231          *
 1232          * Return:
@@ -1342,7 +1342,7 @@ line level    source
 1290   2              #endif /* ADC_DEFAULT_INPUT_MODE */
 1291   2      
 1292   2              /* Set the Conversion stop if resolution is above 16 bit and conversion
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 22  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 22  
 
 1293   2              *   mode is Single sample
 1294   2              */
@@ -1406,7 +1406,7 @@ line level    source
                           *  the input range selected.
                           */
               
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 23  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 23  
 
                           #if(ADC_DEFAULT_INPUT_MODE)
                               #if (ADC_CFG2_INPUT_RANGE == ADC_IR_VSSA_TO_2VREF)
@@ -1470,7 +1470,7 @@ line level    source
                           ADC_SetDSMRef0Reg(ADC_CFG3_DSM_REF0);
                           ADC_DSM_REF2_REG    = ADC_CFG3_DSM_REF2;
                           ADC_DSM_REF3_REG    = ADC_CFG3_DSM_REF3;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 24  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 24  
 
               
                           ADC_DSM_BUF0_REG    = ADC_CFG3_DSM_BUF0;
@@ -1534,7 +1534,7 @@ line level    source
                           ADC_DSM_CR10_REG    = ADC_CFG4_DSM_CR10;
                           ADC_DSM_CR11_REG    = ADC_CFG4_DSM_CR11;
                           ADC_DSM_CR12_REG    = ADC_CFG4_DSM_CR12;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 25  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 25  
 
                           ADC_DSM_CR14_REG    = ADC_CFG4_DSM_CR14;
                           ADC_DSM_CR15_REG    = ADC_CFG4_DSM_CR15;
@@ -1598,7 +1598,7 @@ line level    source
 1538          *  restart. If the value of this parameter is 1, then ADC will be
 1539          *  restarted. If this value is zero, then user must call ADC_Start
 1540          *  and ADC_StartConvert() to restart the conversion.
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 26  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 26  
 
 1541          *
 1542          * Parameters:
@@ -1662,7 +1662,7 @@ line level    source
 1600          * Summary:
 1601          *  This API calculates the trim value and then store this to gcor structure.
 1602          *
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 27  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 27  
 
 1603          * Parameters:
 1604          *  inputRange:  input range for which trim value is to be calculated.
@@ -1726,7 +1726,7 @@ line level    source
 1662   4                          flash = ADC_DEC_TRIM_VREF_4_DIFF_8_15;
 1663   4                      }
 1664   3                      break;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 28  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 28  
 
 1665   3      
 1666   3                  case ADC_IR_VNEG_VREF_16_DIFF:
@@ -1790,7 +1790,7 @@ line level    source
 1724          static void ADC_SetDSMRef0Reg(uint8 value) 
 1725          {
 1726   1          uint8 enableInterrupts;
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 29  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 29  
 
 1727   1          enableInterrupts = CyEnterCriticalSection();
 1728   1      
@@ -1854,7 +1854,7 @@ line level    source
 1786          *  not return until the result is ready.
 1787          *
 1788          * Parameters:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 30  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 30  
 
 1789          *   void
 1790          *
@@ -1911,7 +1911,7 @@ line level    source
 1841          
 1842          
 1843          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 31  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 31  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1975,7 +1975,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0044 905883            MOV     DPTR,#05883H
 0047 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 126
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 32  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 32  
 
 0048 905888            MOV     DPTR,#05888H
 004B 7412              MOV     A,#012H
@@ -2039,7 +2039,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A5 120000      E     LCALL   _cywrite16_nodpx
                                            ; SOURCE LINE # 165
 00A8 900000      R     MOV     DPTR,#ADC_Config
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 33  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 33  
 
 00AB E0                MOVX    A,@DPTR
 00AC FF                MOV     R7,A
@@ -2103,7 +2103,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003B 7E00              MOV     R6,#00H
 003D 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 274
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 34  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 34  
 
 0040 9046F8            MOV     DPTR,#046F8H
 0043 E0                MOVX    A,@DPTR
@@ -2167,7 +2167,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 E0                MOVX    A,@DPTR
 0004 700F              JNZ     ?C0004
                                            ; SOURCE LINE # 332
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 35  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 35  
 
                                            ; SOURCE LINE # 333
 0006 900000      R     MOV     DPTR,#ADC_started
@@ -2231,7 +2231,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 380
 002C 7F03              MOV     R7,#03H
 002E 7E00              MOV     R6,#00H
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 36  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 36  
 
 0030 120000      E     LCALL   _CyDelayUs
                                            ; SOURCE LINE # 383
@@ -2295,7 +2295,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 411
 007F 900000      R     MOV     DPTR,#enableInterrupts
 0082 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 37  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 37  
 
 0083 FF                MOV     R7,A
 0084 120000      E     LCALL   _CyExitCriticalSection
@@ -2359,7 +2359,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000D A4                MUL     AB
 000E 2400        R     ADD     A,#LOW ADC_gcor+0FFFDH
 0010 F582              MOV     DPL,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 38  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 38  
 
 0012 E4                CLR     A
 0013 3400        R     ADDC    A,#HIGH ADC_gcor+0FFFDH
@@ -2423,7 +2423,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0063 7FB9              MOV     R7,#0B9H
 0065 7EFC              MOV     R6,#0FCH
 0067 7DFF              MOV     R5,#0FFH
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 39  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 39  
 
 0069 7C3F              MOV     R4,#03FH
 006B 900000      R     MOV     DPTR,#tmpValue
@@ -2487,7 +2487,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B3 120000      E     LCALL   ?C?CASTF
 00B6 900000      R     MOV     DPTR,#tmpReg
 00B9 EE                MOV     A,R6
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 40  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 40  
 
 00BA F0                MOVX    @DPTR,A
 00BB FC                MOV     R4,A
@@ -2551,7 +2551,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 000E 120000      E     LCALL   _cyread16_nodpx
 ;---- Variable 'gcorValue' assigned to Register 'R4/R5' ----
 0011 AD07              MOV     R5,AR7
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 41  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 41  
 
 0013 AC06              MOV     R4,AR6
                                            ; SOURCE LINE # 560
@@ -2615,7 +2615,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0007 22                RET     
              ; FUNCTION ADC_StopConvert (END)
 
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 42  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 42  
 
              ; FUNCTION _ADC_IsEndConversion (BEGIN)
                                            ; SOURCE LINE # 644
@@ -2679,7 +2679,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 703
 0010 A3                INC     DPTR
 0011 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 43  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 43  
 
 0012 FD                MOV     R5,A
                                            ; SOURCE LINE # 704
@@ -2743,7 +2743,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 757
 001D E0                MOVX    A,@DPTR
 001E FE                MOV     R6,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 44  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 44  
 
 001F 904E10            MOV     DPTR,#04E10H
 0022 E0                MOVX    A,@DPTR
@@ -2807,7 +2807,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005F 22                RET     
              ; FUNCTION ADC_GetResult16 (END)
 
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 45  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 45  
 
              ; FUNCTION ADC_GetResult32 (BEGIN)
                                            ; SOURCE LINE # 805
@@ -2871,7 +2871,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0049 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 823
 004C         ?C0036:
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 46  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 46  
 
                                            ; SOURCE LINE # 824
 004C 900000      R     MOV     DPTR,#result
@@ -2935,7 +2935,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009F FF                MOV     R7,A
 00A0 EA                MOV     A,R2
 00A1 FE                MOV     R6,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 47  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 47  
 
 00A2 E9                MOV     A,R1
 00A3 FD                MOV     R5,A
@@ -2999,7 +2999,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 838
 00F0         ?C0039:
                                            ; SOURCE LINE # 839
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 48  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 48  
 
 00F0 7B02              MOV     R3,#02H
 00F2 7A4E              MOV     R2,#04EH
@@ -3063,7 +3063,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0148 E0                MOVX    A,@DPTR
 0149 FF                MOV     R7,A
 014A 900000      R     MOV     DPTR,#tmp
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 49  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 49  
 
 014D E4                CLR     A
 014E F0                MOVX    @DPTR,A
@@ -3127,7 +3127,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0192 4C                ORL     A,R4
 0193 FC                MOV     R4,A
 0194 900000      R     MOV     DPTR,#result
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 50  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 50  
 
 0197 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 861
@@ -3191,7 +3191,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 992
 0006 900000      R     MOV     DPTR,#adcCounts
 0009 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 51  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 51  
 
 000A FC                MOV     R4,A
 000B A3                INC     DPTR
@@ -3255,7 +3255,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0052 A3                INC     DPTR
 0053 E0                MOVX    A,@DPTR
 0054 F9                MOV     R1,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 52  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 52  
 
 0055 A3                INC     DPTR
 0056 E0                MOVX    A,@DPTR
@@ -3319,7 +3319,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1055
 0035 900000      R     MOV     DPTR,#ADC_CountsPerVolt
 0038 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 53  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 53  
 
 0039 FC                MOV     R4,A
 003A A3                INC     DPTR
@@ -3383,7 +3383,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1104
 0015 900000      R     MOV     DPTR,#ADC_Config
 0018 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 54  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 54  
 
 0019 B40208            CJNE    A,#02H,?C0050
                                            ; SOURCE LINE # 1105
@@ -3447,7 +3447,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0062 7F12              MOV     R7,#012H
 0064 7E7A              MOV     R6,#07AH
 0066 FD                MOV     R5,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 55  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 55  
 
 0067 FC                MOV     R4,A
 0068 900000      R     MOV     DPTR,#coefA
@@ -3511,7 +3511,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B5 900000      R     MOV     DPTR,#coefB
 00B8 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 1216
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 56  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 56  
 
 00BB 900000      R     MOV     DPTR,#ADC_Offset
 00BE E0                MOVX    A,@DPTR
@@ -3575,7 +3575,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0106 F9                MOV     R1,A
 0107 A3                INC     DPTR
 0108 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 57  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 57  
 
 0109 FA                MOV     R2,A
 010A A3                INC     DPTR
@@ -3639,7 +3639,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0012 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1250
 0013 904E02            MOV     DPTR,#04E02H
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 58  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 58  
 
 0016 7406              MOV     A,#06H
 0018 F0                MOVX    @DPTR,A
@@ -3703,7 +3703,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1267
 0053 90588E            MOV     DPTR,#0588EH
 0056 04                INC     A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 59  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 59  
 
 0057 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 1268
@@ -3767,7 +3767,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009F 7E00              MOV     R6,#00H
 00A1 120000      E     LCALL   _ADC_theACLK_SetDividerRegister
                                            ; SOURCE LINE # 1311
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 60  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 60  
 
 00A4 7C00        E     MOV     R4,#HIGH ADC_ISR1
 00A6 7D00        E     MOV     R5,#LOW ADC_ISR1
@@ -3831,7 +3831,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 003E E4                CLR     A
 003F 3400        R     ADDC    A,#HIGH ADC_gcor+0FFFFH
 0041 F583              MOV     DPH,A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 61  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 61  
 
 0043 E0                MOVX    A,@DPTR
 0044 904E0E            MOV     DPTR,#04E0EH
@@ -3895,7 +3895,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0013 D3                SETB    C
 0014 9400              SUBB    A,#00H
 0016 5003              JNC     $ + 5H
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 62  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 62  
 
 0018 020000      R     LJMP    ?C0085
 001B EE                MOV     A,R6
@@ -3959,7 +3959,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 006C E0                MOVX    A,@DPTR
 006D D3                SETB    C
 006E 940F              SUBB    A,#0FH
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 63  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 63  
 
 0070 4010              JC      ?C0073
                                            ; SOURCE LINE # 1645
@@ -4023,7 +4023,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1668
 00BB 900000      R     MOV     DPTR,#resolution
 00BE E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 64  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 64  
 
 00BF D3                SETB    C
 00C0 940F              SUBB    A,#0FH
@@ -4087,7 +4087,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 010B E0                MOVX    A,@DPTR
 010C FF                MOV     R7,A
 010D E4                CLR     A
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 65  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 65  
 
 010E FC                MOV     R4,A
 010F FD                MOV     R5,A
@@ -4151,7 +4151,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0152         ?C0092:
 0152 CE                XCH     A,R6
 0153 C3                CLR     C
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 66  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 66  
 
 0154 13                RRC     A
 0155 CE                XCH     A,R6
@@ -4215,7 +4215,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1707
 01A0         ?C0085:
 01A0 22                RET     
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 67  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 67  
 
              ; FUNCTION _ADC_GainCompensation (END)
 
@@ -4279,7 +4279,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1768
 0007 120000      R     LCALL   ADC_StartConvert
                                            ; SOURCE LINE # 1769
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 68  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 68  
 
 000A E4                CLR     A
 000B FF                MOV     R7,A
@@ -4343,7 +4343,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1840
 0015         ?C0089:
 0015 22                RET     
-C51 COMPILER V9.51   ADC                                                                   01/10/2018 10:08:01 PAGE 69  
+C51 COMPILER V9.51   ADC                                                                   01/25/2018 15:12:46 PAGE 69  
 
              ; FUNCTION ADC_Read32 (END)
 
