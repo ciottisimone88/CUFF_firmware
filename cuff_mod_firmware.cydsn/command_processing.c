@@ -1301,6 +1301,11 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, "Cuff startup activation (proprioception): YES\r\n");
     else
         strcat(info_string, "Cuff startup activation (proprioception): NO\r\n");
+    
+    if(c_mem.cuff_activation_flag_force_proprio)
+        strcat(info_string, "Cuff startup activation (force + proprio): YES\r\n");
+    else
+        strcat(info_string, "Cuff startup activation (force + proprio): NO\r\n");
         
     if(cuff_flag_force)
         strcat(info_string, "Cuff active (force): YES\r\n");
@@ -1311,6 +1316,16 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, "Cuff active (proprioception): YES\r\n");
     else
         strcat(info_string, "Cuff active (proprioception): NO\r\n");
+    
+    if(cuff_flag_force_proprio)
+        strcat(info_string, "Cuff active (force + proprio): YES\r\n");
+    else
+        strcat(info_string, "Cuff active (force + proprio): NO\r\n");
+        
+    if(c_mem.right_left)
+        strcat(info_string, "Cuff side: RIGHT\r\n");
+    else
+        strcat(info_string, "Cuff side: LEFT\r\n");
     
     sprintf(str, "debug: %ld", (uint32) timer_value0 - (uint32) timer_value);
     strcat(info_string, str);
