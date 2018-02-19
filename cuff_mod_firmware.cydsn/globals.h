@@ -58,7 +58,7 @@
 #define VERSION         "CUFF MOD v6.1.3"
 
 #define NUM_OF_MOTORS           2
-#define NUM_OF_SENSORS          2
+#define NUM_OF_SENSORS          3
 #define NUM_OF_ANALOG_INPUTS    3
 #define NUM_OF_PARAMS           25
 

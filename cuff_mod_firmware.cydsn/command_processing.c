@@ -663,47 +663,37 @@ void get_param_list(uint16 index)
             
              /*-------------RESOLUTIONS------------*/
             
-            packet_data[302] = TYPE_UINT8;
+           /* packet_data[302] = TYPE_UINT8;
             packet_data[303] = 2;
             for(i = 0; i < NUM_OF_SENSORS; i++)
                 packet_data[i + 304] = c_mem.res[i];
             for(i = res_str_len; i != 0; i--)
-                packet_data[306 + res_str_len - i] = res_str[res_str_len - i];
+                packet_data[306 + res_str_len - i] = res_str[res_str_len - i]; */
                 
-                /*-------------RESOLUTIONS------------*/
-       /*     
-            packet_data[302] = TYPE_FLAG;
-            packet_data[303] = 2;
-            packet_data[304] = 0;   //Fake data used to correctly read string
-            packet_data[305] = 0;
-            for(i = 0; i < NUM_OF_SENSORS; i++) {
-                sprintf(tmp_string, " %d", (int) c_mem.res[i]);
-                strcat(res_str, tmp_string);
-            }
-            //strcat(res_str, "\0");
-            string_lenght = 21;
-            for(i = string_lenght; i != 0; i--)
-                packet_data[306 + string_lenght - i] = res_str[string_lenght - i];
-            //The following byte indicates the number of menus at the end of the packet to send
-            packet_data[306 + string_lenght] = 3;
-         */   
+            packet_data[302] = TYPE_UINT8;
+            packet_data[303] = 3;
+            for(i = 0; i < NUM_OF_SENSORS; i++)
+                packet_data[i + 304] = c_mem.res[i];
+            for(i = res_str_len; i != 0; i--)
+                packet_data[307 + res_str_len - i] = res_str[res_str_len - i]; 
+            
             /*----------MEASUREMENT OFFSET--------*/
             
             packet_data[352] = TYPE_INT16;
-            packet_data[353] = 2;
+            packet_data[353] = 3;
             for(i = 0; i < NUM_OF_SENSORS; i++) 
                 *((int16 *) ( packet_data + 354 + (i * 2) )) = (int16) (c_mem.m_off[i] >> c_mem.res[i]);
             for(i = m_off_str_len; i != 0; i--)
-                packet_data[358 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
+                packet_data[360 + m_off_str_len - i] = m_off_str[m_off_str_len - i];
             
             /*------------MULTIPLIERS-------------*/
             
             packet_data[402] = TYPE_FLOAT;
-            packet_data[403] = 2;
+            packet_data[403] = 3;
             for(i = 0; i < NUM_OF_SENSORS; i++)
                 *((float *) ( packet_data + 404 + (i * 4) )) = c_mem.m_mult[i];
             for(i = 0; i < strlen(mult_str); i++)
-                packet_data[412 + i] = mult_str[i];
+                packet_data[416 + i] = mult_str[i];
 
             /*-----------POS LIMIT FLAG-----------*/
             
@@ -1599,9 +1589,9 @@ void cmd_get_measurements(){
     #if  (NUM_OF_SENSORS == 3)
         uint8 packet_data[8]; 
     #endif
-    #if (NUM_OF_SENSORS == 2)
+   /* #if (NUM_OF_SENSORS == 2)
         uint8 packet_data[6]; 
-    #endif
+    #endif  */
 
     //Header package
     packet_data[0] = CMD_GET_MEASUREMENTS;   
