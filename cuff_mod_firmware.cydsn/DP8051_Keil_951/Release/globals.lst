@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   GLOBALS                                                               02/02/2018 17:38:54 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\globals.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051_Keil_
                     -951\Release/globals.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\globals.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // motor variables
   52          struct st_meas  g_meas, g_measOld;          // measurements
-C51 COMPILER V9.51   GLOBALS                                                               02/02/2018 17:38:54 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 2   
 
   53          struct st_data  g_rx;                       // income data
   54          struct st_mem   g_mem, c_mem;               // memory
@@ -101,7 +101,7 @@ line level    source
   87          
   88          // Zero position after pretensioning
   89          int32 pret_offset_pos[2];
-C51 COMPILER V9.51   GLOBALS                                                               02/02/2018 17:38:54 PAGE 3   
+C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -111,7 +111,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    492    ----
+   XDATA SIZE       =    528    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

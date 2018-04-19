@@ -323,13 +323,15 @@ void slide_cuff() {
         
         if (c_mem.right_left) {
             // LEFT
-            g_refNew.pos[0] =  pret_offset_pos[0] + (aux_val << g_mem.res[0]);
-            g_refNew.pos[1] =  pret_offset_pos[1] + (aux_val << g_mem.res[1]);
+            g_refNew.pos[0] =  pret_offset_pos[0] - (aux_val << g_mem.res[0]);
+            g_refNew.pos[1] =  pret_offset_pos[1] - (aux_val << g_mem.res[1]);
+           
         }
         else {
             // RIGHT
-            g_refNew.pos[0] =  pret_offset_pos[0] - (aux_val << g_mem.res[0]);
-            g_refNew.pos[1] =  pret_offset_pos[1] - (aux_val << g_mem.res[1]);
+            g_refNew.pos[0] =  pret_offset_pos[0] + (aux_val << g_mem.res[0]);
+            g_refNew.pos[1] =  pret_offset_pos[1] + (aux_val << g_mem.res[1]);
+     
         }
        
        // g_refNew.pos[0] = (aux_val << g_mem.res[0]);
@@ -342,9 +344,11 @@ void slide_cuff() {
             if (g_refNew.pos[0] > c_mem.pos_lim_sup[0]) g_refNew.pos[0] = c_mem.pos_lim_sup[0];
             if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
-        if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
-            pretensioning_flag = TRUE;
+        /*if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
+            pretensioning_flag = TRUE;*/
     }
+    if (!pret_done)
+            pretensioning_flag = TRUE;
 }
 
 void force_and_slide_cuff(){
@@ -399,13 +403,13 @@ void force_and_slide_cuff(){
         
         if (c_mem.right_left) {
             // LEFT
-            g_refNew.pos[0] = pret_offset_pos[0] + ref_slide[0] -(aux_val << g_mem.res[0]);
-            g_refNew.pos[1] = pret_offset_pos[1] + ref_slide[1] +(aux_val << g_mem.res[1]);
+            g_refNew.pos[0] = pret_offset_pos[0] - ref_slide[0] -(aux_val << g_mem.res[0]);
+            g_refNew.pos[1] = pret_offset_pos[1] - ref_slide[1] +(aux_val << g_mem.res[1]);
         }
         else {
             // RIGHT
-            g_refNew.pos[0] = pret_offset_pos[0] - ref_slide[0] -(aux_val << g_mem.res[0]);
-            g_refNew.pos[1] = pret_offset_pos[1] - ref_slide[1] +(aux_val << g_mem.res[1]);
+            g_refNew.pos[0] = pret_offset_pos[0] + ref_slide[0] -(aux_val << g_mem.res[0]);
+            g_refNew.pos[1] = pret_offset_pos[1] + ref_slide[1] +(aux_val << g_mem.res[1]);
         }
         
         //g_refNew.pos[0] = ref_slide[0] -(aux_val << g_mem.res[0]);
@@ -420,10 +424,12 @@ void force_and_slide_cuff(){
             if (g_refNew.pos[1] > c_mem.pos_lim_sup[1]) g_refNew.pos[1] = c_mem.pos_lim_sup[1];
         }
         
-        if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
-            pretensioning_flag = TRUE;
+        /*if ((((int32)SH_pos >= (g_mem.SH_rest_pos - 50)) && ((int32)SH_pos <= (g_mem.SH_rest_pos + 50)))&&(!pret_done))
+            pretensioning_flag = TRUE;*/
         
     }
+    if (!pret_done)
+            pretensioning_flag = TRUE;
 }
 
 //==============================================================================
@@ -1313,13 +1319,14 @@ void infoPrepare(unsigned char *info_string)
         strcat(info_string, "Cuff active (force + proprio): NO\r\n");
         
     if(c_mem.right_left)
-        strcat(info_string, "Cuff side: RIGHT\r\n");
-    else
         strcat(info_string, "Cuff side: LEFT\r\n");
+    else
+        strcat(info_string, "Cuff side: RIGHT\r\n");
     
     sprintf(str, "debug: %ld", (uint32) timer_value0 - (uint32) timer_value);
     strcat(info_string, str);
     strcat(info_string, "\r\n");
+    
 }
 
 //==============================================================================

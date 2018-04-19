@@ -165,18 +165,18 @@
     <register name="MOTOR_ON_OFF_CONTROL_REG" address="0x647C" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="not_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="and_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="WATCHDOG_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="DigitalComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ISR_WATCHDOG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Sync_ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="cy_srff_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_srff_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="WATCHDOG_REFRESH" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="WATCHDOG_REFRESH_CONTROL_REG" address="0x6579" bitWidth="8" desc="" hidden="false" />
   </block>
   <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="ISR_WATCHDOG" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="WATCHDOG_COUNTER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -239,7 +239,7 @@
   <block name="WATCHDOG_ENABLER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="WATCHDOG_ENABLER_CONTROL_REG" address="0x6479" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="ADC_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC_STATUS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="ADC_STATUS_STATUS_REG" address="0x656A" bitWidth="8" desc="" hidden="false" />
     <register name="ADC_STATUS_MASK_REG" address="0x658A" bitWidth="8" desc="" hidden="false" />
@@ -271,14 +271,6 @@
     </register>
   </block>
   <block name="BasicCounter" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_8" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="MOTOR_DIR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <register name="MOTOR_DIR_CONTROL_REG" address="0x6478" bitWidth="8" desc="" hidden="false" />
-  </block>
-  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="AMuxHw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="cy_analog_virtualmux_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="cy_analog_noconnect_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1100,11 +1092,19 @@
       </field>
     </register>
   </block>
+  <block name="Sync" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="MOTOR_DIR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <register name="MOTOR_DIR_CONTROL_REG" address="0x6478" bitWidth="8" desc="" hidden="false" />
+  </block>
+  <block name="ADC_CLK" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="AMuxHw" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_constant_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="DigitalComp" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="DMA" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ADC_SOC" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="ADC_SOC_CONTROL_REG" address="0x6575" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="Signal_4_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="or_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ISR_RS485_RX" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="CLOCK_UART" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="and_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1250,23 +1250,18 @@
       </field>
     </register>
   </block>
+  <block name="CLOCK_ENCODERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="USB_VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="FTDI_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SHIFTREG_ENC_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="EEPROM" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="USB_VDD" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="SHIFTREG_ENC_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
-    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  </block>
-  <block name="ZeroTerminal_7" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Signal_2_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="SHIFTREG_ENC_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
@@ -1274,19 +1269,25 @@
     <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   </block>
-  <block name="FTDI_ENABLE" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Signal_4_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="CURRENT_SENSE_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Signal_3_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Signal_1_B" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Signal_3_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="or_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="CLOCK_ENCODERS" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ZeroTerminal_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="Signal_2_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cydff_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ZeroTerminal_5" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="not_4" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
-  <block name="not_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="SHIFTREG_ENC_2" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
+    <block name="OneTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="bSR" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="VirtualMux_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+    <block name="ZeroTerminal_3" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  </block>
   <block name="not_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="ZeroTerminal_6" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="Signal_2_C" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
 </blockRegMap>

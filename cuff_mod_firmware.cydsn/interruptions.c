@@ -246,7 +246,7 @@ void interrupt_manager(){
             case  WAIT_ID:
 
                 // packet is for my ID or is broadcast
-                if (rx_data == c_mem.id || rx_data == 0 || rx_data == c_mem.hand_ID)
+                if (rx_data == c_mem.id || rx_data == 0 || (rx_data == c_mem.hand_ID && (c_mem.cuff_activation_flag_force == TRUE ||c_mem.cuff_activation_flag_proprio == TRUE || c_mem.cuff_activation_flag_force_proprio == TRUE)))
                     rx_data_type = FALSE;
                 else                //packet is for others
                     rx_data_type = TRUE;
@@ -1066,113 +1066,6 @@ void encoder_reading(const uint8 idx, const uint8 flag)
     // ll_value[i] = l_value[i];
     // l_value[i] = value_encoder;
 }
-
-/*
-//==============================================================================
-//                                                          CALIBRATION FUNCTION
-//==============================================================================
-
-void calibration()
-{
-    static int32 old_k_p;
-    static int32 old_k_i;
-    static int32 old_k_d;
-
-    static uint8 pause_counter = 0;
-
-    switch(calibration_flag) {
-        case START:
-            ISR_RS485_RX_Disable();
-
-            // save old PID values
-            old_k_p = c_mem.k_p;
-            old_k_i = c_mem.k_i;
-            old_k_d = c_mem.k_d;
-
-            // goto to zero position
-            g_refNew.pos[0] = 0;
-            g_refNew.pos[1] = 0;
-
-            // Activate motors
-            if (!(g_refNew.onoff & 0x03)) {
-                MOTOR_ON_OFF_Write(0x03);
-            }
-
-            // wait for motors to reach zero position
-            calibration_flag = PAUSE_1;
-            break;
-
-        case PAUSE_1:
-            pause_counter++;
-
-            if (pause_counter == 10) {
-                pause_counter = 0;
-
-                // set new temp values for PID parameters
-                c_mem.k_p = 0.1 * 65536;
-                c_mem.k_i = 0;
-                c_mem.k_d = 0.3 * 65536;
-
-                calibration_flag = CONTINUE_1;
-            }
-            break;
-
-        case CONTINUE_1:
-            // increment of 0.5 degree
-            g_refNew.pos[0] += 65536 / 720;
-            g_refNew.pos[1] -= 65536 / 720;
-
-            // check if one of the motors reach the threashold
-            if ((g_meas.curr[0] > CALIB_CURRENT) || (g_meas.curr[1] > CALIB_CURRENT)) {
-                // save current value as MAX_STIFFNESS
-                g_mem.max_stiffness = g_ref.pos[0];
-
-                // reset old values for PID parameters
-                c_mem.k_p = old_k_p;
-                c_mem.k_i = old_k_i;
-                c_mem.k_d = old_k_d;
-
-                // go back to zero position
-                g_refNew.pos[0] = 0;
-                g_refNew.pos[1] = 0;
-
-                // wait for motors to reach zero position
-                calibration_flag = PAUSE_2;
-            }
-            break;
-
-        case PAUSE_2:
-            pause_counter++;
-
-            if (pause_counter == 10) {
-                pause_counter =0;
-
-                calibration_flag = CONTINUE_2;
-            }
-            break;
-
-        case CONTINUE_2:
-            // Deactivate motors
-            if (!(g_refNew.onoff & 0x03)) {
-                MOTOR_ON_OFF_Write(0x00);
-            }
-
-            // store memory to save MAX_STIFFNESS as default value
-            memStore(DEFAULT_EEPROM_DISPLACEMENT);
-            memStore(0);
-
-            calibration_flag = STOP;
-
-            ISR_RS485_RX_Enable();
-            break;
-
-        case STOP:
-        default:
-            break;
-    }
-}*/
-
-
 //==============================================================================
 //                                                              PWM_LIMIT_SEARCH
 //==============================================================================
@@ -1264,16 +1157,16 @@ void pretensioning_process() {
                     phase = 0;
                     reset_last_value_flag = 1;
                     for (i = 0; i< NUM_OF_SENSORS; i++) {
-                       pret_offset_pos[i] = g_refNew.pos[i];  // con questo omando funziona sicuramente
-                      // encoder_reading(i, TRUE);
-                      // g_mem.m_off[i] = -g_meas.pos[i];
-                      // g_meas.rot[i] = 0;
+                       pret_offset_pos[i] = g_refNew.pos[i];  // con questo comando funziona sicuramente
+                       /*encoder_reading(i, TRUE);
+                       g_mem.m_off[i] = -g_meas.pos[i];
+                       g_meas.rot[i] = 0;*/
                         
                       // g_refNew.pos[i] = 0;//<<g_mem.res[i];
                        
                     }
                     
-              //      memStore(0);
+                    //memStore(0);
                    
 
                     

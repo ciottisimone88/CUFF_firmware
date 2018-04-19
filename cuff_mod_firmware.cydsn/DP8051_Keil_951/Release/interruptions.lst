@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 1   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE INTERRUPTIONS
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\interruptions.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -interruptions.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB DF(NDEBUG) WL(2) PR(.\DP8051
                     -_Keil_951\Release/interruptions.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\interruptions.obj)
 
@@ -62,7 +62,7 @@ line level    source
   50          #include "globals.h"
   51          #include "utils.h"
   52          
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 2   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 2   
 
   53          //===================================================================     global
   54          
@@ -126,7 +126,7 @@ line level    source
  112                                                          45,
  113                                                          45,     //25 (20500)
  114                                                          45,
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 3   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 3   
 
  115                                                          44,
  116                                                          44,
@@ -190,7 +190,7 @@ line level    source
  174   1      
  175   1          // Set RS485 flag
  176   1          
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 4   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 4   
 
  177   1          interrupt_flag = TRUE;
  178   1           
@@ -254,7 +254,7 @@ line level    source
  235   4                          rx_queue[1] = 0;
  236   4                          rx_queue[2] = 0;
  237   4                          state       = WAIT_ID;                    
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 5   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 5   
 
  238   4                      }else
  239   3                          if ((rx_queue[0] == 63) &&      //ASCII - ?
@@ -267,7 +267,9 @@ line level    source
  246   3                  case  WAIT_ID:
  247   3      
  248   3                      // packet is for my ID or is broadcast
- 249   3                      if (rx_data == c_mem.id || rx_data == 0 || rx_data == c_mem.hand_ID)
+ 249   3                      if (rx_data == c_mem.id || rx_data == 0 || (rx_data == c_mem.hand_ID && (c_mem.cuff_activa
+             -tion_flag_force == TRUE ||c_mem.cuff_activation_flag_proprio == TRUE || c_mem.cuff_activation_flag_force_proprio == TRUE
+             -)))
  250   3                          rx_data_type = FALSE;
  251   3                      else                //packet is for others
  252   3                          rx_data_type = TRUE;
@@ -316,10 +318,10 @@ line level    source
  295   5                          }
  296   4                          
  297   4                          data_packet_index  = 0;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 6   
+
  298   4                          data_packet_length = 0;
  299   4                          state              = WAIT_START;
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 6   
-
  300   4                          package_count++;
  301   4                      
  302   4                      }
@@ -380,10 +382,10 @@ line level    source
  357   1          
  358   1          // Check Interrupt 
  359   1          
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 7   
+
  360   1          if (interrupt_flag){
  361   2              interrupt_flag = FALSE;
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 7   
-
  362   2              interrupt_manager();
  363   2          }
  364   1          
@@ -444,10 +446,10 @@ line level    source
  419   3                 counter_calibration = 0;
  420   3             }
  421   2          counter_calibration++;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 8   
+
  422   2          } else {
  423   2              if(cuff_flag_force)
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 8   
-
  424   2                  drive_cuff();
  425   2                  
  426   2              if (cuff_flag_proprio)
@@ -508,10 +510,10 @@ line level    source
  481   1          int32 CYDATA k_p_c = c_mem.k_p_c;  
  482   1          int32 CYDATA k_i_c = c_mem.k_i_c; 
  483   1          int32 CYDATA k_d_c = c_mem.k_d_c;   
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 9   
+
  484   1      
  485   1          int32 CYDATA k_p_dl = c_mem.k_p_dl;  
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 9   
-
  486   1          int32 CYDATA k_i_dl = c_mem.k_i_dl; 
  487   1          int32 CYDATA k_d_dl = c_mem.k_d_dl; 
  488   1      
@@ -572,10 +574,10 @@ line level    source
  543   2                  if (k_p != 0) {
  544   3                          
  545   3                      if ((pos_error > 131072) || (pos_error < -131072))  //if grater than 2^17
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 10  
+
  546   3                          pwm_input = (int32)(k_p * (pos_error >> 8)) >> 8;
  547   3                      else
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 10  
-
  548   3                          pwm_input = (int32)(k_p * pos_error) >> 16;
  549   3                  }
  550   2                  
@@ -636,10 +638,10 @@ line level    source
  605   2                  if (interrupt_flag){
  606   3                      interrupt_flag = FALSE;
  607   3                      interrupt_manager();
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 11  
+
  608   3                  }
  609   2      
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 11  
-
  610   2                  // error_sum saturation
  611   2                  if (pos_error_sum[index] > POS_INTEGRAL_SAT_LIMIT)
  612   2                      pos_error_sum[index] = POS_INTEGRAL_SAT_LIMIT;
@@ -700,10 +702,10 @@ line level    source
  667   2      
  668   2                  if (interrupt_flag){
  669   3                      interrupt_flag = FALSE;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 12  
+
  670   3                      interrupt_manager();
  671   3                  }
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 12  
-
  672   2      
  673   2                  // ----- current PID control -----
  674   2      
@@ -764,10 +766,10 @@ line level    source
  729   2      
  730   2                  //anti wind-up
  731   2                  if (curr_error_sum[index] > CURR_INTEGRAL_SAT_LIMIT)
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 13  
+
  732   2                      curr_error_sum[index] = CURR_INTEGRAL_SAT_LIMIT;
  733   2                  else{
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 13  
-
  734   3                      if (curr_error_sum[index] < 0)
  735   3                          curr_error_sum[index] = 0;
  736   3                  }
@@ -828,10 +830,10 @@ line level    source
  791   3                      if (pwm_input >= 0)
  792   3                          dirM1 = 1;
  793   3                         // direction |= 0x02;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 14  
+
  794   3                      else
  795   3                          dirM1 = 0;
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 14  
-
  796   3                          //direction &= 0xFD;
  797   3                  }
  798   2      
@@ -892,10 +894,10 @@ line level    source
  853   1          
  854   1          if (interrupt_flag){
  855   2              interrupt_flag = FALSE;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 15  
+
  856   2              interrupt_manager();
  857   2          }
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 15  
-
  858   1      }
  859          
  860          //==============================================================================
@@ -956,10 +958,10 @@ line level    source
  915   2              g_meas.curr[0] = filter_i1((int16) (((int32)(ADC_buf[1] - 1638) * 25771) >> 13) * pwm_sign[0]);
  916   2              
  917   2              // Check Interrupt 
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 16  
+
  918   2          
  919   2              if (interrupt_flag){
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 16  
-
  920   3                  interrupt_flag = FALSE;
  921   3                  interrupt_manager();
  922   3              }
@@ -1020,10 +1022,10 @@ line level    source
  977   2                  data_encoder = SHIFTREG_ENC_2_ReadData() & 0x3FFFF;
  978   2              else {
  979   3                  if (index == 2)
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 17  
+
  980   3                      data_encoder = SHIFTREG_ENC_3_ReadData() & 0x3FFFF;
  981   3                  else // index == 3
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 17  
-
  982   3                      data_encoder = SHIFTREG_ENC_4_ReadData() & 0x3FFFF;
  983   3              }
  984   2          }    
@@ -1084,10 +1086,10 @@ line level    source
 1036   2              error[index] = 0;
 1037   2              
 1038   2              last_value_encoder[index] = value_encoder;
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 18  
+
 1039   2      
 1040   2              value_encoder += (int32)g_meas.rot[index] << 16;
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 18  
-
 1041   2      
 1042   2              if (c_mem.m_mult[index] != 1.0)
 1043   2                  value_encoder *= c_mem.m_mult[index];
@@ -1119,242 +1121,131 @@ line level    source
 1066   1          // ll_value[i] = l_value[i];
 1067   1          // l_value[i] = value_encoder;
 1068   1      }
-1069          
-1070          /*
+1069          //==============================================================================
+1070          //                                                              PWM_LIMIT_SEARCH
 1071          //==============================================================================
-1072          //                                                          CALIBRATION FUNCTION
-1073          //==============================================================================
-1074          
-1075          void calibration()
-1076          {
-1077              static int32 old_k_p;
-1078              static int32 old_k_i;
-1079              static int32 old_k_d;
-1080          
-1081              static uint8 pause_counter = 0;
-1082          
-1083              switch(calibration_flag) {
-1084                  case START:
-1085                      ISR_RS485_RX_Disable();
-1086          
-1087                      // save old PID values
-1088                      old_k_p = c_mem.k_p;
-1089                      old_k_i = c_mem.k_i;
-1090                      old_k_d = c_mem.k_d;
-1091          
-1092                      // goto to zero position
-1093                      g_refNew.pos[0] = 0;
-1094                      g_refNew.pos[1] = 0;
-1095          
-1096                      // Activate motors
-1097                      if (!(g_refNew.onoff & 0x03)) {
-1098                          MOTOR_ON_OFF_Write(0x03);
-1099                      }
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 19  
+1072          
+1073          void pwm_limit_search() {
+1074   1          
+1075   1          uint8  CYDATA index;
+1076   1          uint16 CYDATA max_tension = 25500;
+1077   1          uint16 CYDATA max_tension_6v_mod = 14750;
+1078   1      
+1079   1          if(g_mem.power_tension < 8000) {
+1080   2              //Mod. 6 Volts
+1081   2              if(dev_tension > max_tension_6v_mod)
+1082   2                  dev_pwm_limit = 0;
+1083   2      
+1084   2              else {
+1085   3                  if(dev_tension < g_mem.power_tension)
+1086   3                      dev_pwm_limit = 100;
+1087   3                  else {
+1088   4                      index = (uint8)((dev_tension - g_mem.power_tension) >> 9);
+1089   4                      dev_pwm_limit = hitech_pwm_preload_values_6v[index];
+1090   4                  }
+1091   3              }
+1092   2          }
+1093   1          else {
+1094   2              // 8 - 12 volts
+1095   2              if (dev_tension > max_tension)    // Max value 
+1096   2                  dev_pwm_limit = 0;
+1097   2              else{ 
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 19  
 
-1100          
-1101                      // wait for motors to reach zero position
-1102                      calibration_flag = PAUSE_1;
-1103                      break;
-1104          
-1105                  case PAUSE_1:
-1106                      pause_counter++;
-1107          
-1108                      if (pause_counter == 10) {
-1109                          pause_counter = 0;
+1098   3                  if (dev_tension < g_mem.power_tension) // Min value
+1099   3                      dev_pwm_limit = 100;
+1100   3                  else {                  
+1101   4                      index = (uint8)((dev_tension - 8000) >> 9);
+1102   4                      if(g_mem.power_tension < 11500)
+1103   4                          dev_pwm_limit = hitech_pwm_preload_values[index];
+1104   4                      else
+1105   4                          dev_pwm_limit = pwm_preload_values[index];
+1106   4                  }
+1107   3              }
+1108   2          }
+1109   1      }
 1110          
-1111                          // set new temp values for PID parameters
-1112                          c_mem.k_p = 0.1 * 65536;
-1113                          c_mem.k_i = 0;
-1114                          c_mem.k_d = 0.3 * 65536;
-1115          
-1116                          calibration_flag = CONTINUE_1;
-1117                      }
-1118                      break;
-1119          
-1120                  case CONTINUE_1:
-1121                      // increment of 0.5 degree
-1122                      g_refNew.pos[0] += 65536 / 720;
-1123                      g_refNew.pos[1] -= 65536 / 720;
-1124          
-1125                      // check if one of the motors reach the threashold
-1126                      if ((g_meas.curr[0] > CALIB_CURRENT) || (g_meas.curr[1] > CALIB_CURRENT)) {
-1127                          // save current value as MAX_STIFFNESS
-1128                          g_mem.max_stiffness = g_ref.pos[0];
-1129          
-1130                          // reset old values for PID parameters
-1131                          c_mem.k_p = old_k_p;
-1132                          c_mem.k_i = old_k_i;
-1133                          c_mem.k_d = old_k_d;
-1134          
-1135                          // go back to zero position
-1136                          g_refNew.pos[0] = 0;
-1137                          g_refNew.pos[1] = 0;
-1138          
-1139                          // wait for motors to reach zero position
-1140                          calibration_flag = PAUSE_2;
-1141                      }
-1142                      break;
-1143          
-1144                  case PAUSE_2:
-1145                      pause_counter++;
-1146          
-1147                      if (pause_counter == 10) {
-1148                          pause_counter =0;
-1149          
-1150                          calibration_flag = CONTINUE_2;
-1151                      }
-1152                      break;
-1153          
-1154                  case CONTINUE_2:
-1155                      // Deactivate motors
-1156                      if (!(g_refNew.onoff & 0x03)) {
-1157                          MOTOR_ON_OFF_Write(0x00);
-1158                      }
-1159          
-1160                      // store memory to save MAX_STIFFNESS as default value
-1161                      memStore(DEFAULT_EEPROM_DISPLACEMENT);
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 20  
+1111          //==============================================================================
+1112          //                                                         PRETENSIONING PROCESS
+1113          //==============================================================================
+1114          
+1115          void pretensioning_process() {
+1116   1          
+1117   1          static int16 epsilon = 10;
+1118   1          static uint8 phase = 0;
+1119   1          static uint8 phase_counter = 0;
+1120   1          int32 aux;
+1121   1          uint8 i = 0;
+1122   1          
+1123   1          switch(phase) {
+1124   2              case 0:     // closing
+1125   2                      aux = (5 * (220 - g_meas.curr[0])) << g_mem.res[0];
+1126   2                      g_refNew.pos[0] = g_refOld.pos[0] - aux;
+1127   2                      
+1128   2                      aux = (5 * (220 + g_meas.curr[1])) << g_mem.res[1];
+1129   2                      g_refNew.pos[1] = g_refOld.pos[1] + aux;
+1130   2                                      
+1131   2                      if (phase_counter >= 10 && dev_tension <= 0) {
+1132   3                          pretensioning_flag = FALSE;
+1133   3                          g_refNew.pos[0] = 0;
+1134   3                          g_refNew.pos[1] = 0;
+1135   3                      }
+1136   2                      
+1137   2                      phase_counter = phase_counter + 1;
+1138   2                                     
+1139   2                      if ( (g_meas.curr[0] > 220-epsilon ) && (g_meas.curr[1] < -220+epsilon )){
+1140   3                          phase = 1;
+1141   3                          phase_counter = 0;
+1142   3                          //g_refNew.pos[0] = g_meas.pos[0];
+1143   3                          //g_refNew.pos[1] = g_meas.pos[1];
+1144   3                      }
+1145   2                      break;
+1146   2              case 1:     // releasing
+1147   2                      
+1148   2                      aux = 16 << g_mem.res[0];
+1149   2                      g_refNew.pos[0] = g_refOld.pos[0] + aux;
+1150   2                      
+1151   2                      aux = 16 << g_mem.res[1];
+1152   2                      g_refNew.pos[1] = g_refOld.pos[1] - aux;
+1153   2                          
+1154   2                      if (phase_counter > 80){//((g_meas.curr[0] > -10) && (g_meas.curr[1] < 10)){
+1155   3                          pretensioning_flag = FALSE;
+1156   3                          pret_done = TRUE;
+1157   3                          phase = 0;
+1158   3                          reset_last_value_flag = 1;
+1159   3                          for (i = 0; i< NUM_OF_SENSORS; i++) {
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 20  
 
-1162                      memStore(0);
-1163          
-1164                      calibration_flag = STOP;
-1165          
-1166                      ISR_RS485_RX_Enable();
-1167                      break;
-1168          
-1169                  case STOP:
-1170                  default:
-1171                      break;
-1172              }
-1173          }*/
-1174          
-1175          
-1176          //==============================================================================
-1177          //                                                              PWM_LIMIT_SEARCH
-1178          //==============================================================================
-1179          
-1180          void pwm_limit_search() {
-1181   1          
-1182   1          uint8  CYDATA index;
-1183   1          uint16 CYDATA max_tension = 25500;
-1184   1          uint16 CYDATA max_tension_6v_mod = 14750;
-1185   1      
-1186   1          if(g_mem.power_tension < 8000) {
-1187   2              //Mod. 6 Volts
-1188   2              if(dev_tension > max_tension_6v_mod)
-1189   2                  dev_pwm_limit = 0;
-1190   2      
-1191   2              else {
-1192   3                  if(dev_tension < g_mem.power_tension)
-1193   3                      dev_pwm_limit = 100;
-1194   3                  else {
-1195   4                      index = (uint8)((dev_tension - g_mem.power_tension) >> 9);
-1196   4                      dev_pwm_limit = hitech_pwm_preload_values_6v[index];
-1197   4                  }
-1198   3              }
-1199   2          }
-1200   1          else {
-1201   2              // 8 - 12 volts
-1202   2              if (dev_tension > max_tension)    // Max value 
-1203   2                  dev_pwm_limit = 0;
-1204   2              else{ 
-1205   3                  if (dev_tension < g_mem.power_tension) // Min value
-1206   3                      dev_pwm_limit = 100;
-1207   3                  else {                  
-1208   4                      index = (uint8)((dev_tension - 8000) >> 9);
-1209   4                      if(g_mem.power_tension < 11500)
-1210   4                          dev_pwm_limit = hitech_pwm_preload_values[index];
-1211   4                      else
-1212   4                          dev_pwm_limit = pwm_preload_values[index];
-1213   4                  }
-1214   3              }
-1215   2          }
-1216   1      }
-1217          
-1218          //==============================================================================
-1219          //                                                         PRETENSIONING PROCESS
-1220          //==============================================================================
-1221          
-1222          void pretensioning_process() {
-1223   1          
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 21  
-
-1224   1          static int16 epsilon = 10;
-1225   1          static uint8 phase = 0;
-1226   1          static uint8 phase_counter = 0;
-1227   1          int32 aux;
-1228   1          uint8 i = 0;
-1229   1          
-1230   1          switch(phase) {
-1231   2              case 0:     // closing
-1232   2                      aux = (5 * (220 - g_meas.curr[0])) << g_mem.res[0];
-1233   2                      g_refNew.pos[0] = g_refOld.pos[0] - aux;
-1234   2                      
-1235   2                      aux = (5 * (220 + g_meas.curr[1])) << g_mem.res[1];
-1236   2                      g_refNew.pos[1] = g_refOld.pos[1] + aux;
-1237   2                                      
-1238   2                      if (phase_counter >= 10 && dev_tension <= 0) {
-1239   3                          pretensioning_flag = FALSE;
-1240   3                          g_refNew.pos[0] = 0;
-1241   3                          g_refNew.pos[1] = 0;
-1242   3                      }
-1243   2                      
-1244   2                      phase_counter = phase_counter + 1;
-1245   2                                     
-1246   2                      if ( (g_meas.curr[0] > 220-epsilon ) && (g_meas.curr[1] < -220+epsilon )){
-1247   3                          phase = 1;
-1248   3                          phase_counter = 0;
-1249   3                          //g_refNew.pos[0] = g_meas.pos[0];
-1250   3                          //g_refNew.pos[1] = g_meas.pos[1];
-1251   3                      }
-1252   2                      break;
-1253   2              case 1:     // releasing
-1254   2                      
-1255   2                      aux = 16 << g_mem.res[0];
-1256   2                      g_refNew.pos[0] = g_refOld.pos[0] + aux;
-1257   2                      
-1258   2                      aux = 16 << g_mem.res[1];
-1259   2                      g_refNew.pos[1] = g_refOld.pos[1] - aux;
-1260   2                          
-1261   2                      if (phase_counter > 80){//((g_meas.curr[0] > -10) && (g_meas.curr[1] < 10)){
-1262   3                          pretensioning_flag = FALSE;
-1263   3                          pret_done = TRUE;
-1264   3                          phase = 0;
-1265   3                          reset_last_value_flag = 1;
-1266   3                          for (i = 0; i< NUM_OF_SENSORS; i++) {
-1267   4                             pret_offset_pos[i] = g_refNew.pos[i];  // con questo omando funziona sicuramente
-1268   4                            // encoder_reading(i, TRUE);
-1269   4                            // g_mem.m_off[i] = -g_meas.pos[i];
-1270   4                            // g_meas.rot[i] = 0;
-1271   4                              
-1272   4                            // g_refNew.pos[i] = 0;//<<g_mem.res[i];
-1273   4                             
-1274   4                          }
-1275   3                          
-1276   3                    //      memStore(0);
-1277   3                         
-1278   3      
-1279   3                          
-1280   3                       /*   g_refOld.pos[0] = 0;
-1281   3                          g_refOld.pos[1] = 0;
-1282   3                          g_ref.pos[0] = 0;
-1283   3                          g_ref.pos[1] = 0;
-1284   3                          
-1285   3                         */
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 22  
-
-1286   3                      }
-1287   2                      
-1288   2                      phase_counter = phase_counter + 1;
-1289   2                      break;
-1290   2              default:
-1291   2                      break;
-1292   2          }    
-1293   1      }
-1294          
-1295          /* [] END OF FILE */
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 23  
+1160   4                             pret_offset_pos[i] = g_refNew.pos[i];  // con questo comando funziona sicuramente
+1161   4                             /*encoder_reading(i, TRUE);
+1162   4                             g_mem.m_off[i] = -g_meas.pos[i];
+1163   4                             g_meas.rot[i] = 0;*/
+1164   4                              
+1165   4                            // g_refNew.pos[i] = 0;//<<g_mem.res[i];
+1166   4                             
+1167   4                          }
+1168   3                          
+1169   3                          //memStore(0);
+1170   3                         
+1171   3      
+1172   3                          
+1173   3                       /*   g_refOld.pos[0] = 0;
+1174   3                          g_refOld.pos[1] = 0;
+1175   3                          g_ref.pos[0] = 0;
+1176   3                          g_ref.pos[1] = 0;
+1177   3                          
+1178   3                         */
+1179   3                      }
+1180   2                      
+1181   2                      phase_counter = phase_counter + 1;
+1182   2                      break;
+1183   2              default:
+1184   2                      break;
+1185   2          }    
+1186   1      }
+1187          
+1188          /* [] END OF FILE */
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 21  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -1385,12 +1276,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 120000      E     LCALL   UART_RS485_GetRxBufferSize
 0006 EF                MOV     A,R7
 0007 7003              JNZ     $ + 5H
-0009 020000      R     LJMP    ?C0026
+0009 020000      R     LJMP    ?C0027
 000C E500        R     MOV     A,package_count
 000E C3                CLR     C
 000F 9406              SUBB    A,#06H
 0011 4003              JC      $ + 5H
-0013 020000      R     LJMP    ?C0026
+0013 020000      R     LJMP    ?C0027
                                            ; SOURCE LINE # 222
 0016 120000      E     LCALL   UART_RS485_GetChar
 0019 8F00        R     MOV     rx_data,R7
@@ -1399,13 +1290,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001D 14                DEC     A
 001E 6049              JZ      ?C0010
 0020 14                DEC     A
-0021 6068              JZ      ?C0014
+0021 607F              JZ      ?C0015
 0023 14                DEC     A
 0024 7003              JNZ     $ + 5H
-0026 020000      R     LJMP    ?C0021
+0026 020000      R     LJMP    ?C0022
 0029 14                DEC     A
 002A 7003              JNZ     $ + 5H
-002C 020000      R     LJMP    ?C0024
+002C 020000      R     LJMP    ?C0025
 002F 2404              ADD     A,#04H
 0031 70D0              JNZ     ?C0003
                                            ; SOURCE LINE # 226
@@ -1418,7 +1309,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0039 850000      R     MOV     rx_queue+02H,rx_data
                                            ; SOURCE LINE # 233
 003C E500        R     MOV     A,rx_queue+01H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 24  
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 22  
 
 003E B43A11            CJNE    A,#03AH,?C0007
 0041 E500        R     MOV     A,rx_queue+02H
@@ -1455,166 +1346,177 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0069 900000      E     MOV     DPTR,#c_mem+01H
 006C E0                MOVX    A,@DPTR
 006D 6500        R     XRL     A,rx_data
-006F 600B              JZ      ?C0012
+006F 6022              JZ      ?C0012
 0071 E500        R     MOV     A,rx_data
-0073 6007              JZ      ?C0012
-0075 900000      E     MOV     DPTR,#c_mem+078H
+0073 601E              JZ      ?C0012
+0075 900000      E     MOV     DPTR,#c_mem+081H
 0078 E0                MOVX    A,@DPTR
-0079 B50004            CJNE    A,rx_data,?C0011
-007C         ?C0012:
+0079 B5001B            CJNE    A,rx_data,?C0011
+007C 900000      E     MOV     DPTR,#c_mem+06FH
+007F E0                MOVX    A,@DPTR
+0080 6401              XRL     A,#01H
+0082 600F              JZ      ?C0012
+0084 900000      E     MOV     DPTR,#c_mem+078H
+0087 E0                MOVX    A,@DPTR
+0088 6401              XRL     A,#01H
+008A 6007              JZ      ?C0012
+008C 900000      E     MOV     DPTR,#c_mem+082H
+008F E0                MOVX    A,@DPTR
+0090 B40104            CJNE    A,#01H,?C0011
+0093         ?C0012:
                                            ; SOURCE LINE # 250
-007C C200        R     CLR     rx_data_type
-007E 8002              SJMP    ?C0013
-0080         ?C0011:
+0093 C200        R     CLR     rx_data_type
+0095 8002              SJMP    ?C0014
+0097         ?C0011:
                                            ; SOURCE LINE # 252
-0080 D200        R     SETB    rx_data_type
-0082         ?C0013:
+0097 D200        R     SETB    rx_data_type
+0099         ?C0014:
                                            ; SOURCE LINE # 254
-0082 E4                CLR     A
-0083 F500        R     MOV     data_packet_length,A
-                                           ; SOURCE LINE # 255
-0085 750002      R     MOV     state,#02H
-                                           ; SOURCE LINE # 256
-0088 020000      R     LJMP    ?C0003
-                                           ; SOURCE LINE # 259
-008B         ?C0014:
-                                           ; SOURCE LINE # 262
-008B 850000      R     MOV     data_packet_length,rx_data
-                                           ; SOURCE LINE # 264
-008E E500        R     MOV     A,data_packet_length
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 25  
+0099 E4                CLR     A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 23  
 
-0090 D3                SETB    C
-0091 9401              SUBB    A,#01H
-0093 5008              JNC     ?C0015
+009A F500        R     MOV     data_packet_length,A
+                                           ; SOURCE LINE # 255
+009C 750002      R     MOV     state,#02H
+                                           ; SOURCE LINE # 256
+009F 020000      R     LJMP    ?C0003
+                                           ; SOURCE LINE # 259
+00A2         ?C0015:
+                                           ; SOURCE LINE # 262
+00A2 850000      R     MOV     data_packet_length,rx_data
+                                           ; SOURCE LINE # 264
+00A5 E500        R     MOV     A,data_packet_length
+00A7 D3                SETB    C
+00A8 9401              SUBB    A,#01H
+00AA 5008              JNC     ?C0016
                                            ; SOURCE LINE # 265
-0095 E4                CLR     A
-0096 F500        R     MOV     data_packet_length,A
-                                           ; SOURCE LINE # 266
-0098 F500        R     MOV     state,A
-                                           ; SOURCE LINE # 267
-009A 020000      R     LJMP    ?C0003
-009D         ?C0015:
-009D E500        R     MOV     A,data_packet_length
-009F D3                SETB    C
-00A0 9480              SUBB    A,#080H
-00A2 4008              JC      ?C0017
-                                           ; SOURCE LINE # 268
-00A4 E4                CLR     A
-00A5 F500        R     MOV     data_packet_length,A
-                                           ; SOURCE LINE # 269
-00A7 F500        R     MOV     state,A
-                                           ; SOURCE LINE # 270
-00A9 020000      R     LJMP    ?C0003
-00AC         ?C0017:
-                                           ; SOURCE LINE # 271
 00AC E4                CLR     A
-00AD F500        R     MOV     data_packet_index,A
+00AD F500        R     MOV     data_packet_length,A
+                                           ; SOURCE LINE # 266
+00AF F500        R     MOV     state,A
+                                           ; SOURCE LINE # 267
+00B1 020000      R     LJMP    ?C0003
+00B4         ?C0016:
+00B4 E500        R     MOV     A,data_packet_length
+00B6 D3                SETB    C
+00B7 9480              SUBB    A,#080H
+00B9 4008              JC      ?C0018
+                                           ; SOURCE LINE # 268
+00BB E4                CLR     A
+00BC F500        R     MOV     data_packet_length,A
+                                           ; SOURCE LINE # 269
+00BE F500        R     MOV     state,A
+                                           ; SOURCE LINE # 270
+00C0 020000      R     LJMP    ?C0003
+00C3         ?C0018:
+                                           ; SOURCE LINE # 271
+00C3 E4                CLR     A
+00C4 F500        R     MOV     data_packet_index,A
                                            ; SOURCE LINE # 273
-00AF 200006            JB      rx_data_type,?C0019
+00C6 200006            JB      rx_data_type,?C0020
                                            ; SOURCE LINE # 274
-00B2 750003      R     MOV     state,#03H
-00B5 020000      R     LJMP    ?C0003
-00B8         ?C0019:
+00C9 750003      R     MOV     state,#03H
+00CC 020000      R     LJMP    ?C0003
+00CF         ?C0020:
                                            ; SOURCE LINE # 276
-00B8 750004      R     MOV     state,#04H
+00CF 750004      R     MOV     state,#04H
                                            ; SOURCE LINE # 277
                                            ; SOURCE LINE # 278
-00BB 020000      R     LJMP    ?C0003
+00D2 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 281
-00BE         ?C0021:
+00D5         ?C0022:
                                            ; SOURCE LINE # 283
-00BE 7400        R     MOV     A,#LOW data_packet_buffer
-00C0 2500        R     ADD     A,data_packet_index
-00C2 F582              MOV     DPL,A
-00C4 E4                CLR     A
-00C5 3400        R     ADDC    A,#HIGH data_packet_buffer
-00C7 F583              MOV     DPH,A
-00C9 E500        R     MOV     A,rx_data
-00CB F0                MOVX    @DPTR,A
+00D5 7400        R     MOV     A,#LOW data_packet_buffer
+00D7 2500        R     ADD     A,data_packet_index
+00D9 F582              MOV     DPL,A
+00DB E4                CLR     A
+00DC 3400        R     ADDC    A,#HIGH data_packet_buffer
+00DE F583              MOV     DPH,A
+00E0 E500        R     MOV     A,rx_data
+00E2 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 284
-00CC 0500        R     INC     data_packet_index
+00E3 0500        R     INC     data_packet_index
                                            ; SOURCE LINE # 287
-00CE E500        R     MOV     A,data_packet_index
-00D0 C3                CLR     C
-00D1 9500        R     SUBB    A,data_packet_length
-00D3 5003              JNC     $ + 5H
-00D5 020000      R     LJMP    ?C0003
-                                           ; SOURCE LINE # 289
-00D8 200025            JB      rx_data_type,?C0023
-                                           ; SOURCE LINE # 291
-00DB AF00        R     MOV     R7,data_packet_length
-00DD 7E00              MOV     R6,#00H
-00DF 7800        E     MOV     R0,#LOW g_rx
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 26  
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 24  
 
-00E1 7C00        E     MOV     R4,#HIGH g_rx
-00E3 7D01              MOV     R5,#01H
-00E5 7B01              MOV     R3,#01H
-00E7 7A00        R     MOV     R2,#HIGH data_packet_buffer
-00E9 7900        R     MOV     R1,#LOW data_packet_buffer
-00EB 120000      E     LCALL   ?C?COPYAMD
+00E5 E500        R     MOV     A,data_packet_index
+00E7 C3                CLR     C
+00E8 9500        R     SUBB    A,data_packet_length
+00EA 5003              JNC     $ + 5H
+00EC 020000      R     LJMP    ?C0003
+                                           ; SOURCE LINE # 289
+00EF 200025            JB      rx_data_type,?C0024
+                                           ; SOURCE LINE # 291
+00F2 AF00        R     MOV     R7,data_packet_length
+00F4 7E00              MOV     R6,#00H
+00F6 7800        E     MOV     R0,#LOW g_rx
+00F8 7C00        E     MOV     R4,#HIGH g_rx
+00FA 7D01              MOV     R5,#01H
+00FC 7B01              MOV     R3,#01H
+00FE 7A00        R     MOV     R2,#HIGH data_packet_buffer
+0100 7900        R     MOV     R1,#LOW data_packet_buffer
+0102 120000      E     LCALL   ?C?COPYAMD
                                            ; SOURCE LINE # 292
-00EE 900000      E     MOV     DPTR,#g_rx+080H
-00F1 E4                CLR     A
-00F2 F0                MOVX    @DPTR,A
-00F3 A3                INC     DPTR
-00F4 E500        R     MOV     A,data_packet_length
-00F6 F0                MOVX    @DPTR,A
+0105 900000      E     MOV     DPTR,#g_rx+080H
+0108 E4                CLR     A
+0109 F0                MOVX    @DPTR,A
+010A A3                INC     DPTR
+010B E500        R     MOV     A,data_packet_length
+010D F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 293
-00F7 900000      E     MOV     DPTR,#g_rx+084H
-00FA 7401              MOV     A,#01H
-00FC F0                MOVX    @DPTR,A
+010E 900000      E     MOV     DPTR,#g_rx+084H
+0111 7401              MOV     A,#01H
+0113 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 294
-00FD 120000      E     LCALL   commProcess
+0114 120000      E     LCALL   commProcess
                                            ; SOURCE LINE # 295
-0100         ?C0023:
+0117         ?C0024:
                                            ; SOURCE LINE # 297
-0100 E4                CLR     A
-0101 F500        R     MOV     data_packet_index,A
+0117 E4                CLR     A
+0118 F500        R     MOV     data_packet_index,A
                                            ; SOURCE LINE # 298
-0103 F500        R     MOV     data_packet_length,A
+011A F500        R     MOV     data_packet_length,A
                                            ; SOURCE LINE # 299
-0105 F500        R     MOV     state,A
+011C F500        R     MOV     state,A
                                            ; SOURCE LINE # 300
-0107 0500        R     INC     package_count
+011E 0500        R     INC     package_count
                                            ; SOURCE LINE # 302
                                            ; SOURCE LINE # 303
-0109 020000      R     LJMP    ?C0003
+0120 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 306
-010C         ?C0024:
+0123         ?C0025:
                                            ; SOURCE LINE # 307
-010C 1500        R     DEC     data_packet_length
-010E E500        R     MOV     A,data_packet_length
-0110 6003              JZ      $ + 5H
-0112 020000      R     LJMP    ?C0003
+0123 1500        R     DEC     data_packet_length
+0125 E500        R     MOV     A,data_packet_length
+0127 6003              JZ      $ + 5H
+0129 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 308
-0115 F500        R     MOV     data_packet_index,A
+012C F500        R     MOV     data_packet_index,A
                                            ; SOURCE LINE # 309
-0117 F500        R     MOV     data_packet_length,A
+012E F500        R     MOV     data_packet_length,A
                                            ; SOURCE LINE # 310
-0119 7F01              MOV     R7,#01H
-011B 120000      E     LCALL   _RS485_CTS_Write
+0130 7F01              MOV     R7,#01H
+0132 120000      E     LCALL   _RS485_CTS_Write
                                            ; SOURCE LINE # 311
-011E E4                CLR     A
-011F FF                MOV     R7,A
-0120 120000      E     LCALL   _RS485_CTS_Write
+0135 E4                CLR     A
+0136 FF                MOV     R7,A
+0137 120000      E     LCALL   _RS485_CTS_Write
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 25  
+
                                            ; SOURCE LINE # 312
-0123 E4                CLR     A
-0124 F500        R     MOV     state,A
+013A E4                CLR     A
+013B F500        R     MOV     state,A
                                            ; SOURCE LINE # 313
-0126 0500        R     INC     package_count
+013D 0500        R     INC     package_count
                                            ; SOURCE LINE # 314
                                            ; SOURCE LINE # 315
-0128 020000      R     LJMP    ?C0003
+013F 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 316
                                            ; SOURCE LINE # 317
-012B 020000      R     LJMP    ?C0003
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 27  
-
+0142 020000      R     LJMP    ?C0003
                                            ; SOURCE LINE # 318
-012E         ?C0026:
-012E 22                RET     
+0145         ?C0027:
+0145 22                RET     
              ; FUNCTION interrupt_manager (END)
 
              ; FUNCTION function_scheduler (BEGIN)
@@ -1627,77 +1529,77 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0009 7F01              MOV     R7,#01H
 000B 120000      E     LCALL   _ADC_SOC_Write
                                            ; SOURCE LINE # 340
-000E 300005            JNB     interrupt_flag,?C0027
+000E 300005            JNB     interrupt_flag,?C0028
                                            ; SOURCE LINE # 341
 0011 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 342
 0013 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 343
-0016         ?C0027:
+0016         ?C0028:
                                            ; SOURCE LINE # 347
 0016 E4                CLR     A
 0017 FD                MOV     R5,A
 0018 FF                MOV     R7,A
 0019 120000      R     LCALL   _encoder_reading
                                            ; SOURCE LINE # 351
-001C 300005            JNB     interrupt_flag,?C0028
+001C 300005            JNB     interrupt_flag,?C0029
                                            ; SOURCE LINE # 352
 001F C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 353
 0021 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 354
-0024         ?C0028:
+0024         ?C0029:
                                            ; SOURCE LINE # 356
 0024 E4                CLR     A
 0025 FD                MOV     R5,A
 0026 7F01              MOV     R7,#01H
 0028 120000      R     LCALL   _encoder_reading
                                            ; SOURCE LINE # 360
-002B 300005            JNB     interrupt_flag,?C0029
+002B 300005            JNB     interrupt_flag,?C0030
                                            ; SOURCE LINE # 361
 002E C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 362
 0030 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 363
-0033         ?C0029:
+0033         ?C0030:
                                            ; SOURCE LINE # 376
 0033 E4                CLR     A
 0034 FF                MOV     R7,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 26  
+
 0035 120000      R     LCALL   _motor_control
                                            ; SOURCE LINE # 380
-0038 300005            JNB     interrupt_flag,?C0030
+0038 300005            JNB     interrupt_flag,?C0031
                                            ; SOURCE LINE # 381
 003B C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 382
 003D 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 383
-0040         ?C0030:
+0040         ?C0031:
                                            ; SOURCE LINE # 385
 0040 7F01              MOV     R7,#01H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 28  
-
 0042 120000      R     LCALL   _motor_control
                                            ; SOURCE LINE # 389
-0045 300005            JNB     interrupt_flag,?C0031
+0045 300005            JNB     interrupt_flag,?C0032
                                            ; SOURCE LINE # 390
 0048 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 391
 004A 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 392
-004D         ?C0031:
+004D         ?C0032:
                                            ; SOURCE LINE # 396
 004D 120000      R     LCALL   analog_read_end
                                            ; SOURCE LINE # 416
-0050 300026            JNB     pretensioning_flag,?C0032
+0050 300026            JNB     pretensioning_flag,?C0033
                                            ; SOURCE LINE # 417
 0053 900000      R     MOV     DPTR,#counter_calibration
 0056 E0                MOVX    A,@DPTR
-0057 7004              JNZ     ?C0195
+0057 7004              JNZ     ?C0196
 0059 A3                INC     DPTR
 005A E0                MOVX    A,@DPTR
 005B 6464              XRL     A,#064H
-005D         ?C0195:
-005D 700A              JNZ     ?C0033
+005D         ?C0196:
+005D 700A              JNZ     ?C0034
                                            ; SOURCE LINE # 418
 005F 120000      R     LCALL   pretensioning_process
                                            ; SOURCE LINE # 419
@@ -1707,47 +1609,47 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0067 A3                INC     DPTR
 0068 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 420
-0069         ?C0033:
+0069         ?C0034:
                                            ; SOURCE LINE # 421
 0069 900000      R     MOV     DPTR,#counter_calibration+01H
 006C E0                MOVX    A,@DPTR
 006D 04                INC     A
 006E F0                MOVX    @DPTR,A
-006F 7006              JNZ     ?C0196
+006F 7006              JNZ     ?C0197
 0071 900000      R     MOV     DPTR,#counter_calibration
 0074 E0                MOVX    A,@DPTR
 0075 04                INC     A
 0076 F0                MOVX    @DPTR,A
-0077         ?C0196:
+0077         ?C0197:
                                            ; SOURCE LINE # 422
-0077 8012              SJMP    ?C0034
-0079         ?C0032:
+0077 8012              SJMP    ?C0035
+0079         ?C0033:
                                            ; SOURCE LINE # 423
-0079 300003            JNB     cuff_flag_force,?C0035
+0079 300003            JNB     cuff_flag_force,?C0036
                                            ; SOURCE LINE # 424
 007C 120000      E     LCALL   drive_cuff
-007F         ?C0035:
+007F         ?C0036:
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 27  
+
                                            ; SOURCE LINE # 426
-007F 300003            JNB     cuff_flag_proprio,?C0036
+007F 300003            JNB     cuff_flag_proprio,?C0037
                                            ; SOURCE LINE # 427
 0082 120000      E     LCALL   slide_cuff
-0085         ?C0036:
+0085         ?C0037:
                                            ; SOURCE LINE # 429
-0085 300003            JNB     cuff_flag_force_proprio,?C0034
+0085 300003            JNB     cuff_flag_force_proprio,?C0035
                                            ; SOURCE LINE # 430
 0088 120000      E     LCALL   force_and_slide_cuff
                                            ; SOURCE LINE # 431
-008B         ?C0034:
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 29  
-
+008B         ?C0035:
                                            ; SOURCE LINE # 433
-008B 300005            JNB     interrupt_flag,?C0038
+008B 300005            JNB     interrupt_flag,?C0039
                                            ; SOURCE LINE # 434
 008E C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 435
 0090 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 436
-0093         ?C0038:
+0093         ?C0039:
                                            ; SOURCE LINE # 442
 0093 7800        E     MOV     R0,#LOW g_measOld
 0095 7C00        E     MOV     R4,#HIGH g_measOld
@@ -1756,7 +1658,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 009B 7A00        E     MOV     R2,#HIGH g_meas
 009D 7900        E     MOV     R1,#LOW g_meas
 009F 7E00              MOV     R6,#00H
-00A1 7F16              MOV     R7,#016H
+00A1 7F1F              MOV     R7,#01FH
 00A3 120000      E     LCALL   ?C?COPYAMD
                                            ; SOURCE LINE # 443
 00A6 7800        E     MOV     R0,#LOW g_refOld
@@ -1779,18 +1681,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C7 7F09              MOV     R7,#09H
 00C9 120000      E     LCALL   ?C?COPYAMD
                                            ; SOURCE LINE # 448
-00CC 300005            JNB     interrupt_flag,?C0039
+00CC 300005            JNB     interrupt_flag,?C0040
                                            ; SOURCE LINE # 449
 00CF C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 450
 00D1 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 451
-00D4         ?C0039:
+00D4         ?C0040:
                                            ; SOURCE LINE # 455
 00D4 120000      E     LCALL   MY_TIMER_ReadCounter
 00D7 900000      E     MOV     DPTR,#timer_value
 00DA 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 456
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 28  
+
 00DD 7F40              MOV     R7,#040H
 00DF 7E4B              MOV     R6,#04BH
 00E1 7D4C              MOV     R5,#04CH
@@ -1802,8 +1706,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
              ; FUNCTION _motor_control (BEGIN)
                                            ; SOURCE LINE # 465
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 30  
-
 ;---- Variable 'idx' assigned to Register 'R7' ----
                                            ; SOURCE LINE # 467
 0000 8F00        R     MOV     index,R7
@@ -1855,6 +1757,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0039 A3                INC     DPTR
 003A E0                MOVX    A,@DPTR
 003B FE                MOV     R6,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 29  
+
 003C A3                INC     DPTR
 003D E0                MOVX    A,@DPTR
 003E F500        R     MOV     k_d+03H,A
@@ -1866,8 +1770,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0047 E0                MOVX    A,@DPTR
 0048 FC                MOV     R4,A
 0049 A3                INC     DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 31  
-
 004A E0                MOVX    A,@DPTR
 004B FD                MOV     R5,A
 004C A3                INC     DPTR
@@ -1919,6 +1821,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0083 E0                MOVX    A,@DPTR
 0084 FD                MOV     R5,A
 0085 A3                INC     DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 30  
+
 0086 E0                MOVX    A,@DPTR
 0087 FE                MOV     R6,A
 0088 A3                INC     DPTR
@@ -1930,8 +1834,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 486
 0092 A3                INC     DPTR
 0093 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 32  
-
 0094 FC                MOV     R4,A
 0095 A3                INC     DPTR
 0096 E0                MOVX    A,@DPTR
@@ -1983,6 +1885,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00CD FC                MOV     R4,A
 00CE A3                INC     DPTR
 00CF E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 31  
+
 00D0 FD                MOV     R5,A
 00D1 A3                INC     DPTR
 00D2 E0                MOVX    A,@DPTR
@@ -1994,8 +1898,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00DA 8D00        R     MOV     k_i_c_dl+01H,R5
 00DC 8C00        R     MOV     k_i_c_dl,R4
                                            ; SOURCE LINE # 491
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 33  
-
 00DE A3                INC     DPTR
 00DF E0                MOVX    A,@DPTR
 00E0 FC                MOV     R4,A
@@ -2016,25 +1918,25 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F3 C3                CLR     C
 00F4 9402              SUBB    A,#02H
 00F6 4003              JC      $ + 5H
-00F8 020000      R     LJMP    ?C0042
-00FB         ?C0041:
+00F8 020000      R     LJMP    ?C0043
+00FB         ?C0042:
                                            ; SOURCE LINE # 506
 00FB 900000      E     MOV     DPTR,#c_mem+036H
 00FE E0                MOVX    A,@DPTR
 00FF 14                DEC     A
 0100 7003              JNZ     $ + 5H
-0102 020000      R     LJMP    ?C0107
+0102 020000      R     LJMP    ?C0108
 0105 14                DEC     A
 0106 7003              JNZ     $ + 5H
-0108 020000      R     LJMP    ?C0092
+0108 020000      R     LJMP    ?C0093
 010B 14                DEC     A
 010C 7003              JNZ     $ + 5H
-010E 020000      R     LJMP    ?C0064
+010E 020000      R     LJMP    ?C0065
 0111 2403              ADD     A,#03H
 0113 6003              JZ      $ + 5H
-0115 020000      R     LJMP    ?C0043
+0115 020000      R     LJMP    ?C0044
                                            ; SOURCE LINE # 507
-0118         ?C0044:
+0118         ?C0045:
                                            ; SOURCE LINE # 518
 0118 E500        R     MOV     A,index
 011A 25E0              ADD     A,ACC
@@ -2047,6 +1949,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0127 E0                MOVX    A,@DPTR
 0128 F8                MOV     R0,A
 0129 A3                INC     DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 32  
+
 012A E0                MOVX    A,@DPTR
 012B F9                MOV     R1,A
 012C A3                INC     DPTR
@@ -2058,8 +1962,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0132 E500        R     MOV     A,index
 0134 25E0              ADD     A,ACC
 0136 25E0              ADD     A,ACC
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 34  
-
 0138 2400        E     ADD     A,#LOW g_ref
 013A F582              MOV     DPL,A
 013C E4                CLR     A
@@ -2088,13 +1990,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0158 98                SUBB    A,R0
 0159 F500        R     MOV     pos_error,A
                                            ; SOURCE LINE # 520
-015B 300005            JNB     interrupt_flag,?C0045
+015B 300005            JNB     interrupt_flag,?C0046
                                            ; SOURCE LINE # 521
 015E C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 522
 0160 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 523
-0163         ?C0045:
+0163         ?C0046:
                                            ; SOURCE LINE # 526
 0163 E500        R     MOV     A,index
 0165 25E0              ADD     A,ACC
@@ -2111,6 +2013,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0178 A3                INC     DPTR
 0179 E0                MOVX    A,@DPTR
 017A FD                MOV     R5,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 33  
+
 017B A3                INC     DPTR
 017C E0                MOVX    A,@DPTR
 017D FE                MOV     R6,A
@@ -2122,8 +2026,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0184 3500        R     ADDC    A,pos_error+02H
 0186 FE                MOV     R6,A
 0187 ED                MOV     A,R5
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 35  
-
 0188 3500        R     ADDC    A,pos_error+01H
 018A FD                MOV     R5,A
 018B EC                MOV     A,R4
@@ -2158,7 +2060,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01B6 7800              MOV     R0,#00H
 01B8 C3                CLR     C
 01B9 120000      E     LCALL   ?C?SLCMP
-01BC 501C              JNC     ?C0046
+01BC 501C              JNC     ?C0047
                                            ; SOURCE LINE # 530
 01BE 7FA0              MOV     R7,#0A0H
 01C0 7E86              MOV     R6,#086H
@@ -2173,8 +2075,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01D1 3400        R     ADDC    A,#HIGH pos_error_sum
 01D3 F583              MOV     DPH,A
 01D5 120000      E     LCALL   ?C?LSTXDATA
-01D8 8042              SJMP    ?C0047
-01DA         ?C0046:
+01D8 8042              SJMP    ?C0048
+01DA         ?C0047:
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 34  
+
                                            ; SOURCE LINE # 531
                                            ; SOURCE LINE # 532
 01DA E500        R     MOV     A,index
@@ -2186,8 +2090,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E5 3400        R     ADDC    A,#HIGH pos_error_sum
 01E7 F583              MOV     DPH,A
 01E9 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 36  
-
 01EA FC                MOV     R4,A
 01EB A3                INC     DPTR
 01EC E0                MOVX    A,@DPTR
@@ -2204,7 +2106,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01FA 78FF              MOV     R0,#0FFH
 01FC D3                SETB    C
 01FD 120000      E     LCALL   ?C?SLCMP
-0200 401A              JC      ?C0047
+0200 401A              JC      ?C0048
                                            ; SOURCE LINE # 533
 0202 7F60              MOV     R7,#060H
 0204 7E79              MOV     R6,#079H
@@ -2220,15 +2122,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0217 F583              MOV     DPH,A
 0219 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 534
-021C         ?C0047:
+021C         ?C0048:
                                            ; SOURCE LINE # 536
-021C 300005            JNB     interrupt_flag,?C0049
+021C 300005            JNB     interrupt_flag,?C0050
                                            ; SOURCE LINE # 537
 021F C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 538
 0221 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 539
-0224         ?C0049:
+0224         ?C0050:
                                            ; SOURCE LINE # 541
 0224 E4                CLR     A
 0225 F500        R     MOV     pwm_input+03H,A
@@ -2239,6 +2141,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 022D FF                MOV     R7,A
 022E FE                MOV     R6,A
 022F FD                MOV     R5,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 35  
+
 0230 FC                MOV     R4,A
 0231 AB00        R     MOV     R3,k_p+03H
 0233 AA00        R     MOV     R2,k_p+02H
@@ -2246,12 +2150,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0237 A800        R     MOV     R0,k_p
 0239 C3                CLR     C
 023A 120000      E     LCALL   ?C?SLCMP
-023D 606A              JZ      ?C0050
+023D 606A              JZ      ?C0051
                                            ; SOURCE LINE # 545
 023F E4                CLR     A
 0240 FF                MOV     R7,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 37  
-
 0241 FE                MOV     R6,A
 0242 7D02              MOV     R5,#02H
 0244 FC                MOV     R4,A
@@ -2261,7 +2163,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 024B A800        R     MOV     R0,pos_error
 024D D3                SETB    C
 024E 120000      E     LCALL   ?C?SLCMP
-0251 500F              JNC     ?C0052
+0251 500F              JNC     ?C0053
 0253 E4                CLR     A
 0254 FF                MOV     R7,A
 0255 FE                MOV     R6,A
@@ -2270,8 +2172,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 025A A800        R     MOV     R0,pos_error
 025C C3                CLR     C
 025D 120000      E     LCALL   ?C?SLCMP
-0260 5027              JNC     ?C0051
-0262         ?C0052:
+0260 5027              JNC     ?C0052
+0262         ?C0053:
                                            ; SOURCE LINE # 546
 0262 AF00        R     MOV     R7,pos_error+03H
 0264 AE00        R     MOV     R6,pos_error+02H
@@ -2290,8 +2192,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0281 8E00        R     MOV     pwm_input+02H,R6
 0283 8D00        R     MOV     pwm_input+01H,R5
 0285 8C00        R     MOV     pwm_input,R4
-0287 8020              SJMP    ?C0050
-0289         ?C0051:
+0287 8020              SJMP    ?C0051
+0289         ?C0052:
                                            ; SOURCE LINE # 548
 0289 AF00        R     MOV     R7,pos_error+03H
 028B AE00        R     MOV     R6,pos_error+02H
@@ -2303,23 +2205,23 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0297 A800        R     MOV     R0,k_p
 0299 120000      E     LCALL   ?C?LMUL
 029C 7810              MOV     R0,#010H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 36  
+
 029E 120000      E     LCALL   ?C?SLSHR
 02A1 8F00        R     MOV     pwm_input+03H,R7
 02A3 8E00        R     MOV     pwm_input+02H,R6
 02A5 8D00        R     MOV     pwm_input+01H,R5
 02A7 8C00        R     MOV     pwm_input,R4
                                            ; SOURCE LINE # 549
-02A9         ?C0050:
+02A9         ?C0051:
                                            ; SOURCE LINE # 551
-02A9 300005            JNB     interrupt_flag,?C0054
+02A9 300005            JNB     interrupt_flag,?C0055
                                            ; SOURCE LINE # 552
 02AC C200        E     CLR     interrupt_flag
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 38  
-
                                            ; SOURCE LINE # 553
 02AE 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 554
-02B1         ?C0054:
+02B1         ?C0055:
                                            ; SOURCE LINE # 557
 02B1 E4                CLR     A
 02B2 FF                MOV     R7,A
@@ -2332,7 +2234,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02BC A800        R     MOV     R0,k_i
 02BE C3                CLR     C
 02BF 120000      E     LCALL   ?C?SLCMP
-02C2 6043              JZ      ?C0055
+02C2 6043              JZ      ?C0056
                                            ; SOURCE LINE # 558
 02C4 AF00        R     MOV     R7,k_i+03H
 02C6 AE00        R     MOV     R6,k_i+02H
@@ -2367,6 +2269,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02F6 F500        R     MOV     pwm_input+03H,A
 02F8 E500        R     MOV     A,pwm_input+02H
 02FA 3E                ADDC    A,R6
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 37  
+
 02FB F500        R     MOV     pwm_input+02H,A
 02FD E500        R     MOV     A,pwm_input+01H
 02FF 3D                ADDC    A,R5
@@ -2374,12 +2278,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0302 E500        R     MOV     A,pwm_input
 0304 3C                ADDC    A,R4
 0305 F500        R     MOV     pwm_input,A
-0307         ?C0055:
+0307         ?C0056:
                                            ; SOURCE LINE # 561
 0307 E4                CLR     A
 0308 FF                MOV     R7,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 39  
-
 0309 FE                MOV     R6,A
 030A FD                MOV     R5,A
 030B FC                MOV     R4,A
@@ -2389,7 +2291,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0312 A800        R     MOV     R0,k_d
 0314 C3                CLR     C
 0315 120000      E     LCALL   ?C?SLCMP
-0318 6063              JZ      ?C0056
+0318 6063              JZ      ?C0057
                                            ; SOURCE LINE # 562
 031A E500        R     MOV     A,index
 031C 25E0              ADD     A,ACC
@@ -2431,6 +2333,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 034D C3                CLR     C
 034E 9B                SUBB    A,R3
 034F FF                MOV     R7,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 38  
+
 0350 EE                MOV     A,R6
 0351 9A                SUBB    A,R2
 0352 FE                MOV     R6,A
@@ -2442,8 +2346,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0358 FC                MOV     R4,A
 0359 AB00        R     MOV     R3,k_d+03H
 035B AA00        R     MOV     R2,k_d+02H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 40  
-
 035D A900        R     MOV     R1,k_d+01H
 035F A800        R     MOV     R0,k_d
 0361 120000      E     LCALL   ?C?LMUL
@@ -2461,18 +2363,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0378 E500        R     MOV     A,pwm_input
 037A 3C                ADDC    A,R4
 037B F500        R     MOV     pwm_input,A
-037D         ?C0056:
+037D         ?C0057:
                                            ; SOURCE LINE # 565
-037D 300005            JNB     interrupt_flag,?C0057
+037D 300005            JNB     interrupt_flag,?C0058
                                            ; SOURCE LINE # 566
 0380 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 567
 0382 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 568
-0385         ?C0057:
+0385         ?C0058:
                                            ; SOURCE LINE # 573
 0385 E500        R     MOV     A,index
-0387 701C              JNZ     ?C0058
+0387 701C              JNZ     ?C0059
                                            ; SOURCE LINE # 574
 0389 FF                MOV     R7,A
 038A FE                MOV     R6,A
@@ -2484,17 +2386,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0393 A800        R     MOV     R0,pwm_input
 0395 C3                CLR     C
 0396 120000      E     LCALL   ?C?SLCMP
-0399 4005              JC      ?C0059
+0399 4005              JC      ?C0060
                                            ; SOURCE LINE # 575
 039B D200        R     SETB    dirM0
-039D 020000      R     LJMP    ?C0043
-03A0         ?C0059:
+039D 020000      R     LJMP    ?C0044
+03A0         ?C0060:
                                            ; SOURCE LINE # 578
 03A0 C200        R     CLR     dirM0
                                            ; SOURCE LINE # 580
-03A2 020000      R     LJMP    ?C0043
-03A5         ?C0058:
+03A2 020000      R     LJMP    ?C0044
+03A5         ?C0059:
                                            ; SOURCE LINE # 581
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 39  
+
 03A5 E4                CLR     A
 03A6 FF                MOV     R7,A
 03A7 FE                MOV     R6,A
@@ -2506,20 +2410,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03B0 A800        R     MOV     R0,pwm_input
 03B2 C3                CLR     C
 03B3 120000      E     LCALL   ?C?SLCMP
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 41  
-
-03B6 4005              JC      ?C0062
+03B6 4005              JC      ?C0063
                                            ; SOURCE LINE # 582
 03B8 D200        R     SETB    dirM1
-03BA 020000      R     LJMP    ?C0043
-03BD         ?C0062:
+03BA 020000      R     LJMP    ?C0044
+03BD         ?C0063:
                                            ; SOURCE LINE # 585
 03BD C200        R     CLR     dirM1
                                            ; SOURCE LINE # 587
                                            ; SOURCE LINE # 589
-03BF 020000      R     LJMP    ?C0043
+03BF 020000      R     LJMP    ?C0044
                                            ; SOURCE LINE # 591
-03C2         ?C0064:
+03C2         ?C0065:
                                            ; SOURCE LINE # 601
 03C2 E500        R     MOV     A,index
 03C4 25E0              ADD     A,ACC
@@ -2559,6 +2461,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 03F3 A3                INC     DPTR
 03F4 E0                MOVX    A,@DPTR
 03F5 C3                CLR     C
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 40  
+
 03F6 9B                SUBB    A,R3
 03F7 F500        R     MOV     pos_error+03H,A
 03F9 EE                MOV     A,R6
@@ -2570,8 +2474,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0401 EC                MOV     A,R4
 0402 98                SUBB    A,R0
 0403 F500        R     MOV     pos_error,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 42  
-
                                            ; SOURCE LINE # 603
 0405 E500        R     MOV     A,index
 0407 25E0              ADD     A,ACC
@@ -2608,13 +2510,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0433 D083              POP     DPH
 0435 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 605
-0438 300005            JNB     interrupt_flag,?C0065
+0438 300005            JNB     interrupt_flag,?C0066
                                            ; SOURCE LINE # 606
 043B C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 607
 043D 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 608
-0440         ?C0065:
+0440         ?C0066:
                                            ; SOURCE LINE # 611
 0440 E500        R     MOV     A,index
 0442 25E0              ADD     A,ACC
@@ -2623,6 +2525,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0448 F582              MOV     DPL,A
 044A E4                CLR     A
 044B 3400        R     ADDC    A,#HIGH pos_error_sum
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 41  
+
 044D F583              MOV     DPH,A
 044F E0                MOVX    A,@DPTR
 0450 FC                MOV     R4,A
@@ -2634,8 +2538,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0456 FE                MOV     R6,A
 0457 A3                INC     DPTR
 0458 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 43  
-
 0459 FF                MOV     R7,A
 045A 7BA0              MOV     R3,#0A0H
 045C 7A86              MOV     R2,#086H
@@ -2643,7 +2545,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0460 7800              MOV     R0,#00H
 0462 C3                CLR     C
 0463 120000      E     LCALL   ?C?SLCMP
-0466 501C              JNC     ?C0066
+0466 501C              JNC     ?C0067
                                            ; SOURCE LINE # 612
 0468 7FA0              MOV     R7,#0A0H
 046A 7E86              MOV     R6,#086H
@@ -2658,8 +2560,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 047B 3400        R     ADDC    A,#HIGH pos_error_sum
 047D F583              MOV     DPH,A
 047F 120000      E     LCALL   ?C?LSTXDATA
-0482 8042              SJMP    ?C0067
-0484         ?C0066:
+0482 8042              SJMP    ?C0068
+0484         ?C0067:
                                            ; SOURCE LINE # 613
                                            ; SOURCE LINE # 614
 0484 E500        R     MOV     A,index
@@ -2687,7 +2589,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04A4 78FF              MOV     R0,#0FFH
 04A6 D3                SETB    C
 04A7 120000      E     LCALL   ?C?SLCMP
-04AA 401A              JC      ?C0067
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 42  
+
+04AA 401A              JC      ?C0068
                                            ; SOURCE LINE # 615
 04AC 7F60              MOV     R7,#060H
 04AE 7E79              MOV     R6,#079H
@@ -2698,14 +2602,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04B8 25E0              ADD     A,ACC
 04BA 2400        R     ADD     A,#LOW pos_error_sum
 04BC F582              MOV     DPL,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 44  
-
 04BE E4                CLR     A
 04BF 3400        R     ADDC    A,#HIGH pos_error_sum
 04C1 F583              MOV     DPH,A
 04C3 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 616
-04C6         ?C0067:
+04C6         ?C0068:
                                            ; SOURCE LINE # 619
 04C6 E4                CLR     A
 04C7 F500        R     MOV     curr_ref+03H,A
@@ -2713,13 +2615,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04CB F500        R     MOV     curr_ref+01H,A
 04CD F500        R     MOV     curr_ref,A
                                            ; SOURCE LINE # 621
-04CF 300005            JNB     interrupt_flag,?C0069
+04CF 300005            JNB     interrupt_flag,?C0070
                                            ; SOURCE LINE # 622
 04D2 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 623
 04D4 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 624
-04D7         ?C0069:
+04D7         ?C0070:
                                            ; SOURCE LINE # 627
 04D7 E4                CLR     A
 04D8 FF                MOV     R7,A
@@ -2732,7 +2634,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 04E2 A800        R     MOV     R0,k_p_dl
 04E4 C3                CLR     C
 04E5 120000      E     LCALL   ?C?SLCMP
-04E8 6026              JZ      ?C0070
+04E8 6026              JZ      ?C0071
                                            ; SOURCE LINE # 628
 04EA AF00        R     MOV     R7,pos_error+03H
 04EC AE00        R     MOV     R6,pos_error+02H
@@ -2751,10 +2653,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0506 E500        R     MOV     A,curr_ref+01H
 0508 3D                ADDC    A,R5
 0509 F500        R     MOV     curr_ref+01H,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 43  
+
 050B E500        R     MOV     A,curr_ref
 050D 3C                ADDC    A,R4
 050E F500        R     MOV     curr_ref,A
-0510         ?C0070:
+0510         ?C0071:
                                            ; SOURCE LINE # 631
 0510 E4                CLR     A
 0511 FF                MOV     R7,A
@@ -2762,14 +2666,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0513 FD                MOV     R5,A
 0514 FC                MOV     R4,A
 0515 AB00        R     MOV     R3,k_i_dl+03H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 45  
-
 0517 AA00        R     MOV     R2,k_i_dl+02H
 0519 A900        R     MOV     R1,k_i_dl+01H
 051B A800        R     MOV     R0,k_i_dl
 051D C3                CLR     C
 051E 120000      E     LCALL   ?C?SLCMP
-0521 6038              JZ      ?C0071
+0521 6038              JZ      ?C0072
                                            ; SOURCE LINE # 632
 0523 E500        R     MOV     A,index
 0525 25E0              ADD     A,ACC
@@ -2806,7 +2708,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0556 E500        R     MOV     A,curr_ref
 0558 3C                ADDC    A,R4
 0559 F500        R     MOV     curr_ref,A
-055B         ?C0071:
+055B         ?C0072:
                                            ; SOURCE LINE # 635
 055B E4                CLR     A
 055C FF                MOV     R7,A
@@ -2815,19 +2717,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 055F FC                MOV     R4,A
 0560 AB00        R     MOV     R3,k_d_dl+03H
 0562 AA00        R     MOV     R2,k_d_dl+02H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 44  
+
 0564 A900        R     MOV     R1,k_d_dl+01H
 0566 A800        R     MOV     R0,k_d_dl
 0568 C3                CLR     C
 0569 120000      E     LCALL   ?C?SLCMP
-056C 6063              JZ      ?C0072
+056C 6063              JZ      ?C0073
                                            ; SOURCE LINE # 636
 056E E500        R     MOV     A,index
 0570 25E0              ADD     A,ACC
 0572 25E0              ADD     A,ACC
 0574 2400        E     ADD     A,#LOW g_meas
 0576 F582              MOV     DPL,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 46  
-
 0578 E4                CLR     A
 0579 3400        E     ADDC    A,#HIGH g_meas
 057B F583              MOV     DPH,A
@@ -2879,6 +2781,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05B5 120000      E     LCALL   ?C?LMUL
 05B8 7810              MOV     R0,#010H
 05BA 120000      E     LCALL   ?C?SLSHR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 45  
+
 05BD E500        R     MOV     A,curr_ref+03H
 05BF 2F                ADD     A,R7
 05C0 F500        R     MOV     curr_ref+03H,A
@@ -2890,18 +2794,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05CA F500        R     MOV     curr_ref+01H,A
 05CC E500        R     MOV     A,curr_ref
 05CE 3C                ADDC    A,R4
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 47  
-
 05CF F500        R     MOV     curr_ref,A
-05D1         ?C0072:
+05D1         ?C0073:
                                            ; SOURCE LINE # 638
-05D1 300005            JNB     interrupt_flag,?C0073
+05D1 300005            JNB     interrupt_flag,?C0074
                                            ; SOURCE LINE # 639
 05D4 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 640
 05D6 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 641
-05D9         ?C0073:
+05D9         ?C0074:
                                            ; SOURCE LINE # 644
 05D9 900000      E     MOV     DPTR,#c_mem+032H
 05DC E0                MOVX    A,@DPTR
@@ -2920,7 +2822,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 05ED A800        R     MOV     R0,curr_ref
 05EF D3                SETB    C
 05F0 120000      E     LCALL   ?C?SLCMP
-05F3 4016              JC      ?C0074
+05F3 4016              JC      ?C0075
                                            ; SOURCE LINE # 645
 05F5 900000      E     MOV     DPTR,#c_mem+032H
 05F8 E0                MOVX    A,@DPTR
@@ -2935,14 +2837,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0603 8E00        R     MOV     curr_ref+02H,R6
 0605 F500        R     MOV     curr_ref+01H,A
 0607 F500        R     MOV     curr_ref,A
-0609 803C              SJMP    ?C0075
-060B         ?C0074:
+0609 803C              SJMP    ?C0076
+060B         ?C0075:
                                            ; SOURCE LINE # 646
                                            ; SOURCE LINE # 647
 060B 900000      E     MOV     DPTR,#c_mem+032H
 060E E0                MOVX    A,@DPTR
 060F FE                MOV     R6,A
 0610 A3                INC     DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 46  
+
 0611 E0                MOVX    A,@DPTR
 0612 FF                MOV     R7,A
 0613 C3                CLR     C
@@ -2954,8 +2858,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0619 FE                MOV     R6,A
 061A 33                RLC     A
 061B 95E0              SUBB    A,ACC
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 48  
-
 061D FD                MOV     R5,A
 061E FC                MOV     R4,A
 061F AB00        R     MOV     R3,curr_ref+03H
@@ -2964,7 +2866,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0625 A800        R     MOV     R0,curr_ref
 0627 C3                CLR     C
 0628 120000      E     LCALL   ?C?SLCMP
-062B 501A              JNC     ?C0075
+062B 501A              JNC     ?C0076
                                            ; SOURCE LINE # 648
 062D 900000      E     MOV     DPTR,#c_mem+032H
 0630 E0                MOVX    A,@DPTR
@@ -2986,27 +2888,29 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0643 F500        R     MOV     curr_ref+01H,A
 0645 F500        R     MOV     curr_ref,A
                                            ; SOURCE LINE # 649
-0647         ?C0075:
+0647         ?C0076:
                                            ; SOURCE LINE # 651
-0647 300005            JNB     interrupt_flag,?C0077
+0647 300005            JNB     interrupt_flag,?C0078
                                            ; SOURCE LINE # 652
 064A C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 653
 064C 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 654
-064F         ?C0077:
+064F         ?C0078:
                                            ; SOURCE LINE # 657
 064F E500        R     MOV     A,index
 0651 25E0              ADD     A,ACC
-0653 2400        E     ADD     A,#LOW g_meas+08H
+0653 2400        E     ADD     A,#LOW g_meas+0CH
 0655 F582              MOV     DPL,A
 0657 E4                CLR     A
-0658 3400        E     ADDC    A,#HIGH g_meas+08H
+0658 3400        E     ADDC    A,#HIGH g_meas+0CH
 065A F583              MOV     DPH,A
 065C E0                MOVX    A,@DPTR
 065D FE                MOV     R6,A
 065E A3                INC     DPTR
 065F E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 47  
+
 0660 FF                MOV     R7,A
 0661 FB                MOV     R3,A
 0662 AA06              MOV     R2,AR6
@@ -3018,8 +2922,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 066A C3                CLR     C
 066B E500        R     MOV     A,curr_ref+03H
 066D 9B                SUBB    A,R3
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 49  
-
 066E F500        R     MOV     curr_error+03H,A
 0670 E500        R     MOV     A,curr_ref+02H
 0672 9A                SUBB    A,R2
@@ -3071,6 +2973,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06B6 25E0              ADD     A,ACC
 06B8 2400        R     ADD     A,#LOW curr_error_sum
 06BA F582              MOV     DPL,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 48  
+
 06BC E4                CLR     A
 06BD 3400        R     ADDC    A,#HIGH curr_error_sum
 06BF F583              MOV     DPH,A
@@ -3082,8 +2986,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06C6 A3                INC     DPTR
 06C7 E0                MOVX    A,@DPTR
 06C8 FE                MOV     R6,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 50  
-
 06C9 A3                INC     DPTR
 06CA E0                MOVX    A,@DPTR
 06CB FF                MOV     R7,A
@@ -3093,7 +2995,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06D2 7800              MOV     R0,#00H
 06D4 C3                CLR     C
 06D5 120000      E     LCALL   ?C?SLCMP
-06D8 501C              JNC     ?C0078
+06D8 501C              JNC     ?C0079
                                            ; SOURCE LINE # 662
 06DA 7FA0              MOV     R7,#0A0H
 06DC 7E86              MOV     R6,#086H
@@ -3108,8 +3010,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 06ED 3400        R     ADDC    A,#HIGH curr_error_sum
 06EF F583              MOV     DPH,A
 06F1 120000      E     LCALL   ?C?LSTXDATA
-06F4 8042              SJMP    ?C0079
-06F6         ?C0078:
+06F4 8042              SJMP    ?C0080
+06F6         ?C0079:
                                            ; SOURCE LINE # 663
                                            ; SOURCE LINE # 664
 06F6 E500        R     MOV     A,index
@@ -3135,9 +3037,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0712 7A79              MOV     R2,#079H
 0714 79FE              MOV     R1,#0FEH
 0716 78FF              MOV     R0,#0FFH
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 49  
+
 0718 D3                SETB    C
 0719 120000      E     LCALL   ?C?SLCMP
-071C 401A              JC      ?C0079
+071C 401A              JC      ?C0080
                                            ; SOURCE LINE # 665
 071E 7F60              MOV     R7,#060H
 0720 7E79              MOV     R6,#079H
@@ -3146,8 +3050,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0726 E500        R     MOV     A,index
 0728 25E0              ADD     A,ACC
 072A 25E0              ADD     A,ACC
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 51  
-
 072C 2400        R     ADD     A,#LOW curr_error_sum
 072E F582              MOV     DPL,A
 0730 E4                CLR     A
@@ -3155,15 +3057,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0733 F583              MOV     DPH,A
 0735 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 666
-0738         ?C0079:
+0738         ?C0080:
                                            ; SOURCE LINE # 668
-0738 300005            JNB     interrupt_flag,?C0081
+0738 300005            JNB     interrupt_flag,?C0082
                                            ; SOURCE LINE # 669
 073B C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 670
 073D 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 671
-0740         ?C0081:
+0740         ?C0082:
                                            ; SOURCE LINE # 675
 0740 E4                CLR     A
 0741 F500        R     MOV     pwm_input+03H,A
@@ -3181,7 +3083,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0753 A800        R     MOV     R0,k_p_c_dl
 0755 C3                CLR     C
 0756 120000      E     LCALL   ?C?SLCMP
-0759 6026              JZ      ?C0082
+0759 6026              JZ      ?C0083
                                            ; SOURCE LINE # 679
 075B AF00        R     MOV     R7,curr_error+03H
 075D AE00        R     MOV     R6,curr_error+02H
@@ -3199,26 +3101,26 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0775 F500        R     MOV     pwm_input+02H,A
 0777 E500        R     MOV     A,pwm_input+01H
 0779 3D                ADDC    A,R5
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 50  
+
 077A F500        R     MOV     pwm_input+01H,A
 077C E500        R     MOV     A,pwm_input
 077E 3C                ADDC    A,R4
 077F F500        R     MOV     pwm_input,A
-0781         ?C0082:
+0781         ?C0083:
                                            ; SOURCE LINE # 682
 0781 E4                CLR     A
 0782 FF                MOV     R7,A
 0783 FE                MOV     R6,A
 0784 FD                MOV     R5,A
 0785 FC                MOV     R4,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 52  
-
 0786 AB00        R     MOV     R3,k_i_c_dl+03H
 0788 AA00        R     MOV     R2,k_i_c_dl+02H
 078A A900        R     MOV     R1,k_i_c_dl+01H
 078C A800        R     MOV     R0,k_i_c_dl
 078E C3                CLR     C
 078F 120000      E     LCALL   ?C?SLCMP
-0792 6038              JZ      ?C0083
+0792 6038              JZ      ?C0084
                                            ; SOURCE LINE # 683
 0794 E500        R     MOV     A,index
 0796 25E0              ADD     A,ACC
@@ -3255,7 +3157,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 07C7 E500        R     MOV     A,pwm_input
 07C9 3C                ADDC    A,R4
 07CA F500        R     MOV     pwm_input,A
-07CC         ?C0083:
+07CC         ?C0084:
                                            ; SOURCE LINE # 686
 07CC E4                CLR     A
 07CD FF                MOV     R7,A
@@ -3263,21 +3165,21 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 07CF FD                MOV     R5,A
 07D0 FC                MOV     R4,A
 07D1 AB00        R     MOV     R3,k_d_c_dl+03H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 51  
+
 07D3 AA00        R     MOV     R2,k_d_c_dl+02H
 07D5 A900        R     MOV     R1,k_d_c_dl+01H
 07D7 A800        R     MOV     R0,k_d_c_dl
 07D9 C3                CLR     C
 07DA 120000      E     LCALL   ?C?SLCMP
-07DD 6064              JZ      ?C0084
+07DD 6064              JZ      ?C0085
                                            ; SOURCE LINE # 687
 07DF E500        R     MOV     A,index
 07E1 25E0              ADD     A,ACC
-07E3 2400        E     ADD     A,#LOW g_meas+08H
+07E3 2400        E     ADD     A,#LOW g_meas+0CH
 07E5 F582              MOV     DPL,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 53  
-
 07E7 E4                CLR     A
-07E8 3400        E     ADDC    A,#HIGH g_meas+08H
+07E8 3400        E     ADDC    A,#HIGH g_meas+0CH
 07EA F583              MOV     DPH,A
 07EC E0                MOVX    A,@DPTR
 07ED FE                MOV     R6,A
@@ -3327,6 +3229,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0825 A800        R     MOV     R0,k_d_c_dl
 0827 120000      E     LCALL   ?C?LMUL
 082A 7810              MOV     R0,#010H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 52  
+
 082C 120000      E     LCALL   ?C?SLSHR
 082F E500        R     MOV     A,pwm_input+03H
 0831 2F                ADD     A,R7
@@ -3338,18 +3242,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 083B 3D                ADDC    A,R5
 083C F500        R     MOV     pwm_input+01H,A
 083E E500        R     MOV     A,pwm_input
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 54  
-
 0840 3C                ADDC    A,R4
 0841 F500        R     MOV     pwm_input,A
-0843         ?C0084:
+0843         ?C0085:
                                            ; SOURCE LINE # 690
 0843 E500        R     MOV     A,index
 0845 25E0              ADD     A,ACC
-0847 2400        E     ADD     A,#LOW g_meas+08H
+0847 2400        E     ADD     A,#LOW g_meas+0CH
 0849 F582              MOV     DPL,A
 084B E4                CLR     A
-084C 3400        E     ADDC    A,#HIGH g_meas+08H
+084C 3400        E     ADDC    A,#HIGH g_meas+0CH
 084E F583              MOV     DPH,A
 0850 E0                MOVX    A,@DPTR
 0851 FE                MOV     R6,A
@@ -3371,16 +3273,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0868 F583              MOV     DPH,A
 086A 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 692
-086D 300005            JNB     interrupt_flag,?C0085
+086D 300005            JNB     interrupt_flag,?C0086
                                            ; SOURCE LINE # 693
 0870 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 694
 0872 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 695
-0875         ?C0085:
+0875         ?C0086:
                                            ; SOURCE LINE # 697
 0875 E500        R     MOV     A,index
-0877 701C              JNZ     ?C0086
+0877 701C              JNZ     ?C0087
                                            ; SOURCE LINE # 698
 0879 FF                MOV     R7,A
 087A FE                MOV     R6,A
@@ -3391,19 +3293,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0881 A900        R     MOV     R1,pwm_input+01H
 0883 A800        R     MOV     R0,pwm_input
 0885 C3                CLR     C
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 53  
+
 0886 120000      E     LCALL   ?C?SLCMP
-0889 4005              JC      ?C0087
+0889 4005              JC      ?C0088
                                            ; SOURCE LINE # 699
 088B D200        R     SETB    dirM0
-088D 020000      R     LJMP    ?C0043
-0890         ?C0087:
+088D 020000      R     LJMP    ?C0044
+0890         ?C0088:
                                            ; SOURCE LINE # 702
 0890 C200        R     CLR     dirM0
                                            ; SOURCE LINE # 704
-0892 020000      R     LJMP    ?C0043
-0895         ?C0086:
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 55  
-
+0892 020000      R     LJMP    ?C0044
+0895         ?C0087:
                                            ; SOURCE LINE # 705
 0895 E4                CLR     A
 0896 FF                MOV     R7,A
@@ -3416,18 +3318,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08A0 A800        R     MOV     R0,pwm_input
 08A2 C3                CLR     C
 08A3 120000      E     LCALL   ?C?SLCMP
-08A6 4005              JC      ?C0090
+08A6 4005              JC      ?C0091
                                            ; SOURCE LINE # 706
 08A8 D200        R     SETB    dirM1
-08AA 020000      R     LJMP    ?C0043
-08AD         ?C0090:
+08AA 020000      R     LJMP    ?C0044
+08AD         ?C0091:
                                            ; SOURCE LINE # 709
 08AD C200        R     CLR     dirM1
                                            ; SOURCE LINE # 711
                                            ; SOURCE LINE # 713
-08AF 020000      R     LJMP    ?C0043
+08AF 020000      R     LJMP    ?C0044
                                            ; SOURCE LINE # 715
-08B2         ?C0092:
+08B2         ?C0093:
                                            ; SOURCE LINE # 718
 08B2 E500        R     MOV     A,index
 08B4 25E0              ADD     A,ACC
@@ -3455,6 +3357,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08D3 3400        E     ADDC    A,#HIGH g_mem+037H
 08D5 F583              MOV     DPH,A
 08D7 E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 54  
+
 08D8 F9                MOV     R1,A
 08D9 F8                MOV     R0,A
 08DA 120000      E     LCALL   ?C?SLSHR
@@ -3466,8 +3370,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08E5 900000      E     MOV     DPTR,#c_mem+032H
 08E8 E0                MOVX    A,@DPTR
 08E9 FE                MOV     R6,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 56  
-
 08EA A3                INC     DPTR
 08EB E0                MOVX    A,@DPTR
 08EC FF                MOV     R7,A
@@ -3482,7 +3384,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 08F9 A800        R     MOV     R0,curr_ref
 08FB D3                SETB    C
 08FC 120000      E     LCALL   ?C?SLCMP
-08FF 4014              JC      ?C0093
+08FF 4014              JC      ?C0094
                                            ; SOURCE LINE # 722
 0901 900000      E     MOV     DPTR,#c_mem+032H
 0904 E0                MOVX    A,@DPTR
@@ -3497,17 +3399,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 090F 8E00        R     MOV     curr_ref+02H,R6
 0911 F500        R     MOV     curr_ref+01H,A
 0913 F500        R     MOV     curr_ref,A
-0915         ?C0093:
+0915         ?C0094:
                                            ; SOURCE LINE # 725
 0915 AE00        R     MOV     R6,curr_ref+02H
 0917 AF00        R     MOV     R7,curr_ref+03H
 0919 120000      E     LCALL   _abs
 091C E500        R     MOV     A,index
 091E 25E0              ADD     A,ACC
-0920 2400        E     ADD     A,#LOW g_meas+08H
+0920 2400        E     ADD     A,#LOW g_meas+0CH
 0922 F582              MOV     DPL,A
 0924 E4                CLR     A
-0925 3400        E     ADDC    A,#HIGH g_meas+08H
+0925 3400        E     ADDC    A,#HIGH g_meas+0CH
 0927 F583              MOV     DPH,A
 0929 E0                MOVX    A,@DPTR
 092A FC                MOV     R4,A
@@ -3519,6 +3421,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0930 9D                SUBB    A,R5
 0931 FF                MOV     R7,A
 0932 EE                MOV     A,R6
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 55  
+
 0933 9C                SUBB    A,R4
 0934 FE                MOV     R6,A
 0935 33                RLC     A
@@ -3530,8 +3434,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 728
 0940 E500        R     MOV     A,index
 0942 25E0              ADD     A,ACC
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 57  
-
 0944 25E0              ADD     A,ACC
 0946 2400        R     ADD     A,#LOW curr_error_sum
 0948 F582              MOV     DPL,A
@@ -3583,6 +3485,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0989 FE                MOV     R6,A
 098A A3                INC     DPTR
 098B E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 56  
+
 098C FF                MOV     R7,A
 098D 7BA0              MOV     R3,#0A0H
 098F 7A86              MOV     R2,#086H
@@ -3590,12 +3494,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0993 7800              MOV     R0,#00H
 0995 C3                CLR     C
 0996 120000      E     LCALL   ?C?SLCMP
-0999 501C              JNC     ?C0094
+0999 501C              JNC     ?C0095
                                            ; SOURCE LINE # 732
 099B 7FA0              MOV     R7,#0A0H
 099D 7E86              MOV     R6,#086H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 58  
-
 099F 7D01              MOV     R5,#01H
 09A1 7C00              MOV     R4,#00H
 09A3 E500        R     MOV     A,index
@@ -3607,8 +3509,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09AE 3400        R     ADDC    A,#HIGH curr_error_sum
 09B0 F583              MOV     DPH,A
 09B2 120000      E     LCALL   ?C?LSTXDATA
-09B5 803C              SJMP    ?C0095
-09B7         ?C0094:
+09B5 803C              SJMP    ?C0096
+09B7         ?C0095:
                                            ; SOURCE LINE # 733
                                            ; SOURCE LINE # 734
 09B7 E500        R     MOV     A,index
@@ -3637,7 +3539,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09D5 F8                MOV     R0,A
 09D6 D3                SETB    C
 09D7 120000      E     LCALL   ?C?SLCMP
-09DA 4017              JC      ?C0095
+09DA 4017              JC      ?C0096
                                            ; SOURCE LINE # 735
 09DC E4                CLR     A
 09DD FF                MOV     R7,A
@@ -3647,6 +3549,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09E1 E500        R     MOV     A,index
 09E3 25E0              ADD     A,ACC
 09E5 25E0              ADD     A,ACC
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 57  
+
 09E7 2400        R     ADD     A,#LOW curr_error_sum
 09E9 F582              MOV     DPL,A
 09EB E4                CLR     A
@@ -3654,12 +3558,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 09EE F583              MOV     DPH,A
 09F0 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 736
-09F3         ?C0095:
+09F3         ?C0096:
                                            ; SOURCE LINE # 739
 09F3 E4                CLR     A
 09F4 F500        R     MOV     pwm_input+03H,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 59  
-
 09F6 F500        R     MOV     pwm_input+02H,A
 09F8 F500        R     MOV     pwm_input+01H,A
 09FA F500        R     MOV     pwm_input,A
@@ -3674,7 +3576,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A06 A800        R     MOV     R0,k_p_c
 0A08 C3                CLR     C
 0A09 120000      E     LCALL   ?C?SLCMP
-0A0C 602C              JZ      ?C0097
+0A0C 602C              JZ      ?C0098
                                            ; SOURCE LINE # 743
 0A0E AF00        R     MOV     R7,curr_error+03H
 0A10 AE00        R     MOV     R6,curr_error+02H
@@ -3699,7 +3601,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A35 E500        R     MOV     A,pwm_input
 0A37 3C                ADDC    A,R4
 0A38 F500        R     MOV     pwm_input,A
-0A3A         ?C0097:
+0A3A         ?C0098:
                                            ; SOURCE LINE # 747
 0A3A E4                CLR     A
 0A3B FF                MOV     R7,A
@@ -3711,8 +3613,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A43 A900        R     MOV     R1,k_i_c+01H
 0A45 A800        R     MOV     R0,k_i_c
 0A47 C3                CLR     C
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 58  
+
 0A48 120000      E     LCALL   ?C?SLCMP
-0A4B 603D              JZ      ?C0098
+0A4B 603D              JZ      ?C0099
                                            ; SOURCE LINE # 748
 0A4D E500        R     MOV     A,index
 0A4F 25E0              ADD     A,ACC
@@ -3722,8 +3626,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A57 E4                CLR     A
 0A58 3400        R     ADDC    A,#HIGH curr_error_sum
 0A5A F583              MOV     DPH,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 60  
-
 0A5C E0                MOVX    A,@DPTR
 0A5D FC                MOV     R4,A
 0A5E A3                INC     DPTR
@@ -3753,7 +3655,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A85 E500        R     MOV     A,pwm_input
 0A87 3C                ADDC    A,R4
 0A88 F500        R     MOV     pwm_input,A
-0A8A         ?C0098:
+0A8A         ?C0099:
                                            ; SOURCE LINE # 751
 0A8A E4                CLR     A
 0A8B FF                MOV     R7,A
@@ -3766,15 +3668,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0A95 A800        R     MOV     R0,k_d_c
 0A97 C3                CLR     C
 0A98 120000      E     LCALL   ?C?SLCMP
-0A9B 6064              JZ      ?C0099
+0A9B 6064              JZ      ?C0100
                                            ; SOURCE LINE # 752
 0A9D E500        R     MOV     A,index
 0A9F 25E0              ADD     A,ACC
-0AA1 2400        E     ADD     A,#LOW g_meas+08H
+0AA1 2400        E     ADD     A,#LOW g_meas+0CH
 0AA3 F582              MOV     DPL,A
 0AA5 E4                CLR     A
-0AA6 3400        E     ADDC    A,#HIGH g_meas+08H
+0AA6 3400        E     ADDC    A,#HIGH g_meas+0CH
 0AA8 F583              MOV     DPH,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 59  
+
 0AAA E0                MOVX    A,@DPTR
 0AAB FE                MOV     R6,A
 0AAC A3                INC     DPTR
@@ -3786,8 +3690,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0AB3 33                RLC     A
 0AB4 95E0              SUBB    A,ACC
 0AB6 F9                MOV     R1,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 61  
-
 0AB7 F8                MOV     R0,A
 0AB8 E500        R     MOV     A,index
 0ABA 25E0              ADD     A,ACC
@@ -3838,7 +3740,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0AFC E500        R     MOV     A,pwm_input
 0AFE 3C                ADDC    A,R4
 0AFF F500        R     MOV     pwm_input,A
-0B01         ?C0099:
+0B01         ?C0100:
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 60  
+
                                            ; SOURCE LINE # 755
 0B01 E4                CLR     A
 0B02 FF                MOV     R7,A
@@ -3850,24 +3754,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B0A A900        R     MOV     R1,pwm_input+01H
 0B0C A800        R     MOV     R0,pwm_input
 0B0E C3                CLR     C
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 62  
-
 0B0F 120000      E     LCALL   ?C?SLCMP
-0B12 5009              JNC     ?C0100
+0B12 5009              JNC     ?C0101
                                            ; SOURCE LINE # 756
 0B14 E4                CLR     A
 0B15 F500        R     MOV     pwm_input+03H,A
 0B17 F500        R     MOV     pwm_input+02H,A
 0B19 F500        R     MOV     pwm_input+01H,A
 0B1B F500        R     MOV     pwm_input,A
-0B1D         ?C0100:
+0B1D         ?C0101:
                                            ; SOURCE LINE # 759
 0B1D E500        R     MOV     A,index
 0B1F 25E0              ADD     A,ACC
-0B21 2400        E     ADD     A,#LOW g_meas+08H
+0B21 2400        E     ADD     A,#LOW g_meas+0CH
 0B23 F582              MOV     DPL,A
 0B25 E4                CLR     A
-0B26 3400        E     ADDC    A,#HIGH g_meas+08H
+0B26 3400        E     ADDC    A,#HIGH g_meas+0CH
 0B28 F583              MOV     DPH,A
 0B2A E0                MOVX    A,@DPTR
 0B2B FE                MOV     R6,A
@@ -3890,7 +3792,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B44 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 761
 0B47 E500        R     MOV     A,index
-0B49 701C              JNZ     ?C0101
+0B49 701C              JNZ     ?C0102
                                            ; SOURCE LINE # 762
 0B4B FF                MOV     R7,A
 0B4C FE                MOV     R6,A
@@ -3902,20 +3804,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B55 A800        R     MOV     R0,pwm_input
 0B57 C3                CLR     C
 0B58 120000      E     LCALL   ?C?SLCMP
-0B5B 4005              JC      ?C0102
+0B5B 4005              JC      ?C0103
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 61  
+
                                            ; SOURCE LINE # 763
 0B5D D200        R     SETB    dirM0
-0B5F 020000      R     LJMP    ?C0043
-0B62         ?C0102:
+0B5F 020000      R     LJMP    ?C0044
+0B62         ?C0103:
                                            ; SOURCE LINE # 766
 0B62 C200        R     CLR     dirM0
                                            ; SOURCE LINE # 768
-0B64 020000      R     LJMP    ?C0043
-0B67         ?C0101:
+0B64 020000      R     LJMP    ?C0044
+0B67         ?C0102:
                                            ; SOURCE LINE # 769
 0B67 E4                CLR     A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 63  
-
 0B68 FF                MOV     R7,A
 0B69 FE                MOV     R6,A
 0B6A FD                MOV     R5,A
@@ -3926,18 +3828,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0B72 A800        R     MOV     R0,pwm_input
 0B74 C3                CLR     C
 0B75 120000      E     LCALL   ?C?SLCMP
-0B78 4004              JC      ?C0105
+0B78 4004              JC      ?C0106
                                            ; SOURCE LINE # 770
 0B7A D200        R     SETB    dirM1
-0B7C 806E              SJMP    ?C0043
-0B7E         ?C0105:
+0B7C 806E              SJMP    ?C0044
+0B7E         ?C0106:
                                            ; SOURCE LINE # 773
 0B7E C200        R     CLR     dirM1
                                            ; SOURCE LINE # 775
                                            ; SOURCE LINE # 777
-0B80 806A              SJMP    ?C0043
+0B80 806A              SJMP    ?C0044
                                            ; SOURCE LINE # 779
-0B82         ?C0107:
+0B82         ?C0108:
                                            ; SOURCE LINE # 781
 0B82 E500        R     MOV     A,index
 0B84 25E0              ADD     A,ACC
@@ -3967,6 +3869,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BA7 E0                MOVX    A,@DPTR
 0BA8 F9                MOV     R1,A
 0BA9 F8                MOV     R0,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 62  
+
 0BAA 120000      E     LCALL   ?C?SLSHR
 0BAD 8F00        R     MOV     pwm_input+03H,R7
 0BAF 8E00        R     MOV     pwm_input+02H,R6
@@ -3974,12 +3878,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BB3 8C00        R     MOV     pwm_input,R4
                                            ; SOURCE LINE # 783
 0BB5 E500        R     MOV     A,index
-0BB7 701A              JNZ     ?C0108
+0BB7 701A              JNZ     ?C0109
                                            ; SOURCE LINE # 784
 0BB9 FF                MOV     R7,A
 0BBA FE                MOV     R6,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 64  
-
 0BBB FD                MOV     R5,A
 0BBC FC                MOV     R4,A
 0BBD AB00        R     MOV     R3,pwm_input+03H
@@ -3988,16 +3890,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BC3 A800        R     MOV     R0,pwm_input
 0BC5 C3                CLR     C
 0BC6 120000      E     LCALL   ?C?SLCMP
-0BC9 4004              JC      ?C0109
+0BC9 4004              JC      ?C0110
                                            ; SOURCE LINE # 785
 0BCB D200        R     SETB    dirM0
-0BCD 801D              SJMP    ?C0043
-0BCF         ?C0109:
+0BCD 801D              SJMP    ?C0044
+0BCF         ?C0110:
                                            ; SOURCE LINE # 788
 0BCF C200        R     CLR     dirM0
                                            ; SOURCE LINE # 790
-0BD1 8019              SJMP    ?C0043
-0BD3         ?C0108:
+0BD1 8019              SJMP    ?C0044
+0BD3         ?C0109:
                                            ; SOURCE LINE # 791
 0BD3 E4                CLR     A
 0BD4 FF                MOV     R7,A
@@ -4010,11 +3912,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BDE A800        R     MOV     R0,pwm_input
 0BE0 C3                CLR     C
 0BE1 120000      E     LCALL   ?C?SLCMP
-0BE4 4004              JC      ?C0112
+0BE4 4004              JC      ?C0113
                                            ; SOURCE LINE # 792
 0BE6 D200        R     SETB    dirM1
-0BE8 8002              SJMP    ?C0043
-0BEA         ?C0112:
+0BE8 8002              SJMP    ?C0044
+0BEA         ?C0113:
                                            ; SOURCE LINE # 795
 0BEA C200        R     CLR     dirM1
                                            ; SOURCE LINE # 797
@@ -4022,15 +3924,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 801
                                            ; SOURCE LINE # 802
                                            ; SOURCE LINE # 803
-0BEC         ?C0043:
+0BEC         ?C0044:
                                            ; SOURCE LINE # 805
-0BEC 300005            JNB     interrupt_flag,?C0115
+0BEC 300005            JNB     interrupt_flag,?C0116
                                            ; SOURCE LINE # 806
 0BEF C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 807
 0BF1 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 808
-0BF4         ?C0115:
+0BF4         ?C0116:
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 63  
+
                                            ; SOURCE LINE # 811
 0BF4 E4                CLR     A
 0BF5 7F64              MOV     R7,#064H
@@ -4042,17 +3946,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0BFE A900        R     MOV     R1,pwm_input+01H
 0C00 A800        R     MOV     R0,pwm_input
 0C02 D3                SETB    C
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 65  
-
 0C03 120000      E     LCALL   ?C?SLCMP
-0C06 400A              JC      ?C0116
+0C06 400A              JC      ?C0117
                                            ; SOURCE LINE # 812
 0C08 E4                CLR     A
 0C09 750064      R     MOV     pwm_input+03H,#064H
 0C0C F500        R     MOV     pwm_input+02H,A
 0C0E F500        R     MOV     pwm_input+01H,A
 0C10 F500        R     MOV     pwm_input,A
-0C12         ?C0116:
+0C12         ?C0117:
                                            ; SOURCE LINE # 813
 0C12 74FF              MOV     A,#0FFH
 0C14 7F9C              MOV     R7,#09CH
@@ -4065,27 +3967,27 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C1F A800        R     MOV     R0,pwm_input
 0C21 C3                CLR     C
 0C22 120000      E     LCALL   ?C?SLCMP
-0C25 500B              JNC     ?C0117
+0C25 500B              JNC     ?C0118
                                            ; SOURCE LINE # 814
 0C27 74FF              MOV     A,#0FFH
 0C29 75009C      R     MOV     pwm_input+03H,#09CH
 0C2C F500        R     MOV     pwm_input+02H,A
 0C2E F500        R     MOV     pwm_input+01H,A
 0C30 F500        R     MOV     pwm_input,A
-0C32         ?C0117:
+0C32         ?C0118:
                                            ; SOURCE LINE # 816
-0C32 300005            JNB     interrupt_flag,?C0118
+0C32 300005            JNB     interrupt_flag,?C0119
                                            ; SOURCE LINE # 817
 0C35 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 818
 0C37 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 819
-0C3A         ?C0118:
+0C3A         ?C0119:
                                            ; SOURCE LINE # 822
 0C3A 900000      E     MOV     DPTR,#c_mem+036H
 0C3D E0                MOVX    A,@DPTR
 0C3E 6401              XRL     A,#01H
-0C40 6037              JZ      ?C0119
+0C40 6037              JZ      ?C0120
                                            ; SOURCE LINE # 823
 0C42 AF00        R     MOV     R7,pwm_input+03H
 0C44 AE00        R     MOV     R6,pwm_input+02H
@@ -4095,6 +3997,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C4C 120000      E     LCALL   ?C?LSHL
 0C4F E4                CLR     A
 0C50 7B64              MOV     R3,#064H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 64  
+
 0C52 FA                MOV     R2,A
 0C53 F9                MOV     R1,A
 0C54 F8                MOV     R0,A
@@ -4106,8 +4010,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C60 900000      E     MOV     DPTR,#dev_pwm_limit
 0C63 E0                MOVX    A,@DPTR
 0C64 FF                MOV     R7,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 66  
-
 0C65 E4                CLR     A
 0C66 FC                MOV     R4,A
 0C67 FD                MOV     R5,A
@@ -4119,47 +4021,49 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0C73 8E00        R     MOV     pwm_input+02H,R6
 0C75 8D00        R     MOV     pwm_input+01H,R5
 0C77 8C00        R     MOV     pwm_input,R4
-0C79         ?C0119:
+0C79         ?C0120:
                                            ; SOURCE LINE # 827
-0C79 300011            JNB     dirM0,?C0120
+0C79 300011            JNB     dirM0,?C0121
                                            ; SOURCE LINE # 828
-0C7C 300007            JNB     dirM1,?C0121
+0C7C 300007            JNB     dirM1,?C0122
                                            ; SOURCE LINE # 829
 0C7F 7F03              MOV     R7,#03H
 0C81 120000      E     LCALL   _MOTOR_DIR_Write
-0C84 8016              SJMP    ?C0123
-0C86         ?C0121:
+0C84 8016              SJMP    ?C0124
+0C86         ?C0122:
                                            ; SOURCE LINE # 831
 0C86 7F01              MOV     R7,#01H
 0C88 120000      E     LCALL   _MOTOR_DIR_Write
                                            ; SOURCE LINE # 832
-0C8B 800F              SJMP    ?C0123
-0C8D         ?C0120:
+0C8B 800F              SJMP    ?C0124
+0C8D         ?C0121:
                                            ; SOURCE LINE # 833
                                            ; SOURCE LINE # 834
-0C8D 300007            JNB     dirM1,?C0124
+0C8D 300007            JNB     dirM1,?C0125
                                            ; SOURCE LINE # 835
 0C90 7F02              MOV     R7,#02H
 0C92 120000      E     LCALL   _MOTOR_DIR_Write
-0C95 8005              SJMP    ?C0123
-0C97         ?C0124:
+0C95 8005              SJMP    ?C0124
+0C97         ?C0125:
                                            ; SOURCE LINE # 837
 0C97 E4                CLR     A
 0C98 FF                MOV     R7,A
 0C99 120000      E     LCALL   _MOTOR_DIR_Write
                                            ; SOURCE LINE # 838
-0C9C         ?C0123:
+0C9C         ?C0124:
                                            ; SOURCE LINE # 840
-0C9C 300005            JNB     interrupt_flag,?C0126
+0C9C 300005            JNB     interrupt_flag,?C0127
                                            ; SOURCE LINE # 841
 0C9F C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 842
 0CA1 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 843
-0CA4         ?C0126:
+0CA4         ?C0127:
                                            ; SOURCE LINE # 845
 0CA4 E500        R     MOV     A,index
-0CA6 7046              JNZ     ?C0127
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 65  
+
+0CA6 7046              JNZ     ?C0128
                                            ; SOURCE LINE # 846
 0CA8 FF                MOV     R7,A
 0CA9 FE                MOV     R6,A
@@ -4170,14 +4074,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CB0 A900        R     MOV     R1,pwm_input+01H
 0CB2 A800        R     MOV     R0,pwm_input
 0CB4 D3                SETB    C
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 67  
-
 0CB5 120000      E     LCALL   ?C?SLCMP
-0CB8 4006              JC      ?C0128
+0CB8 4006              JC      ?C0129
 0CBA 7E00              MOV     R6,#00H
 0CBC 7F01              MOV     R7,#01H
-0CBE 801D              SJMP    ?C0129
-0CC0         ?C0128:
+0CBE 801D              SJMP    ?C0130
+0CC0         ?C0129:
 0CC0 E4                CLR     A
 0CC1 FF                MOV     R7,A
 0CC2 FE                MOV     R6,A
@@ -4189,15 +4091,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CCB A800        R     MOV     R0,pwm_input
 0CCD C3                CLR     C
 0CCE 120000      E     LCALL   ?C?SLCMP
-0CD1 5006              JNC     ?C0130
+0CD1 5006              JNC     ?C0131
 0CD3 7EFF              MOV     R6,#0FFH
 0CD5 7FFF              MOV     R7,#0FFH
-0CD7 8004              SJMP    ?C0131
-0CD9         ?C0130:
+0CD7 8004              SJMP    ?C0132
+0CD9         ?C0131:
 0CD9 7E00              MOV     R6,#00H
 0CDB 7F00              MOV     R7,#00H
-0CDD         ?C0131:
-0CDD         ?C0129:
+0CDD         ?C0132:
+0CDD         ?C0130:
 0CDD 900000      E     MOV     DPTR,#pwm_sign
 0CE0 EF                MOV     A,R7
 0CE1 F0                MOVX    @DPTR,A
@@ -4207,8 +4109,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CE6 120000      E     LCALL   _abs
 0CE9 120000      E     LCALL   _PWM_MOTORS_WriteCompare1
                                            ; SOURCE LINE # 848
-0CEC 8045              SJMP    ?C0132
-0CEE         ?C0127:
+0CEC 8045              SJMP    ?C0133
+0CEE         ?C0128:
                                            ; SOURCE LINE # 849
                                            ; SOURCE LINE # 850
 0CEE E4                CLR     A
@@ -4222,11 +4124,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0CF9 A800        R     MOV     R0,pwm_input
 0CFB D3                SETB    C
 0CFC 120000      E     LCALL   ?C?SLCMP
-0CFF 4006              JC      ?C0133
+0CFF 4006              JC      ?C0134
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 66  
+
 0D01 7E00              MOV     R6,#00H
 0D03 7F01              MOV     R7,#01H
-0D05 801D              SJMP    ?C0134
-0D07         ?C0133:
+0D05 801D              SJMP    ?C0135
+0D07         ?C0134:
 0D07 E4                CLR     A
 0D08 FF                MOV     R7,A
 0D09 FE                MOV     R6,A
@@ -4234,21 +4138,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D0B FC                MOV     R4,A
 0D0C AB00        R     MOV     R3,pwm_input+03H
 0D0E AA00        R     MOV     R2,pwm_input+02H
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 68  
-
 0D10 A900        R     MOV     R1,pwm_input+01H
 0D12 A800        R     MOV     R0,pwm_input
 0D14 C3                CLR     C
 0D15 120000      E     LCALL   ?C?SLCMP
-0D18 5006              JNC     ?C0135
+0D18 5006              JNC     ?C0136
 0D1A 7EFF              MOV     R6,#0FFH
 0D1C 7FFF              MOV     R7,#0FFH
-0D1E 8004              SJMP    ?C0136
-0D20         ?C0135:
+0D1E 8004              SJMP    ?C0137
+0D20         ?C0136:
 0D20 7E00              MOV     R6,#00H
 0D22 7F00              MOV     R7,#00H
-0D24         ?C0136:
-0D24         ?C0134:
+0D24         ?C0137:
+0D24         ?C0135:
 0D24 900000      E     MOV     DPTR,#pwm_sign+01H
 0D27 EF                MOV     A,R7
 0D28 F0                MOVX    @DPTR,A
@@ -4258,36 +4160,38 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0D2D 120000      E     LCALL   _abs
 0D30 120000      E     LCALL   _PWM_MOTORS_WriteCompare2
                                            ; SOURCE LINE # 852
-0D33         ?C0132:
+0D33         ?C0133:
                                            ; SOURCE LINE # 854
-0D33 300005            JNB     interrupt_flag,?C0042
+0D33 300005            JNB     interrupt_flag,?C0043
                                            ; SOURCE LINE # 855
 0D36 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 856
 0D38 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 857
                                            ; SOURCE LINE # 858
-0D3B         ?C0042:
+0D3B         ?C0043:
 0D3B 22                RET     
              ; FUNCTION _motor_control (END)
 
              ; FUNCTION analog_read_end (BEGIN)
                                            ; SOURCE LINE # 864
-0000         ?C0138:
+0000         ?C0139:
                                            ; SOURCE LINE # 885
 0000 120000      E     LCALL   ADC_STATUS_Read
 0003 EF                MOV     A,R7
-0004 700A              JNZ     ?C0139
+0004 700A              JNZ     ?C0140
                                            ; SOURCE LINE # 886
-0006 3000F7            JNB     interrupt_flag,?C0138
+0006 3000F7            JNB     interrupt_flag,?C0139
                                            ; SOURCE LINE # 887
 0009 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 888
 000B 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 889
                                            ; SOURCE LINE # 890
-000E 80F0              SJMP    ?C0138
-0010         ?C0139:
+000E 80F0              SJMP    ?C0139
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 67  
+
+0010         ?C0140:
                                            ; SOURCE LINE # 893
 0010 900000      E     MOV     DPTR,#ADC_buf+01H
 0013 E0                MOVX    A,@DPTR
@@ -4298,8 +4202,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 001B 34F9              ADDC    A,#0F9H
 001D FE                MOV     R6,A
 001E 33                RLC     A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 69  
-
 001F 95E0              SUBB    A,ACC
 0021 FD                MOV     R5,A
 0022 FC                MOV     R4,A
@@ -4314,13 +4216,13 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0032 900000      E     MOV     DPTR,#dev_tension
 0035 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 895
-0038 300005            JNB     interrupt_flag,?C0141
+0038 300005            JNB     interrupt_flag,?C0142
                                            ; SOURCE LINE # 896
 003B C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 897
 003D 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 898
-0040         ?C0141:
+0040         ?C0142:
                                            ; SOURCE LINE # 902
 0040 E4                CLR     A
 0041 FF                MOV     R7,A
@@ -4342,17 +4244,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0053 D3                SETB    C
 0054 120000      E     LCALL   ?C?SLCMP
 0057 5003              JNC     $ + 5H
-0059 020000      R     LJMP    ?C0142
+0059 020000      R     LJMP    ?C0143
                                            ; SOURCE LINE # 905
 005C 120000      R     LCALL   pwm_limit_search
                                            ; SOURCE LINE # 909
-005F 300005            JNB     interrupt_flag,?C0143
+005F 300005            JNB     interrupt_flag,?C0144
                                            ; SOURCE LINE # 910
 0062 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 911
 0064 120000      R     LCALL   interrupt_manager
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 68  
+
                                            ; SOURCE LINE # 912
-0067         ?C0143:
+0067         ?C0144:
                                            ; SOURCE LINE # 915
 0067 900000      E     MOV     DPTR,#ADC_buf+03H
 006A E0                MOVX    A,@DPTR
@@ -4362,8 +4266,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0071 E0                MOVX    A,@DPTR
 0072 34F9              ADDC    A,#0F9H
 0074 FE                MOV     R6,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 70  
-
 0075 33                RLC     A
 0076 95E0              SUBB    A,ACC
 0078 FD                MOV     R5,A
@@ -4389,20 +4291,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0099 FD                MOV     R5,A
 009A FC                MOV     R4,A
 009B 120000      E     LCALL   _filter_i1
-009E 900000      E     MOV     DPTR,#g_meas+08H
+009E 900000      E     MOV     DPTR,#g_meas+0CH
 00A1 EE                MOV     A,R6
 00A2 F0                MOVX    @DPTR,A
 00A3 A3                INC     DPTR
 00A4 EF                MOV     A,R7
 00A5 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 919
-00A6 300005            JNB     interrupt_flag,?C0144
+00A6 300005            JNB     interrupt_flag,?C0145
                                            ; SOURCE LINE # 920
 00A9 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 921
 00AB 120000      R     LCALL   interrupt_manager
                                            ; SOURCE LINE # 922
-00AE         ?C0144:
+00AE         ?C0145:
                                            ; SOURCE LINE # 923
 00AE 900000      E     MOV     DPTR,#ADC_buf+05H
 00B1 E0                MOVX    A,@DPTR
@@ -4415,6 +4317,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00BC 33                RLC     A
 00BD 95E0              SUBB    A,ACC
 00BF FD                MOV     R5,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 69  
+
 00C0 FC                MOV     R4,A
 00C1 E4                CLR     A
 00C2 7BAB              MOV     R3,#0ABH
@@ -4426,8 +4330,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00CD 120000      E     LCALL   ?C?SLSHR
 00D0 900000      E     MOV     DPTR,#pwm_sign+01H
 00D3 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 71  
-
 00D4 FD                MOV     R5,A
 00D5 33                RLC     A
 00D6 95E0              SUBB    A,ACC
@@ -4439,14 +4341,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E0 FD                MOV     R5,A
 00E1 FC                MOV     R4,A
 00E2 120000      E     LCALL   _filter_i2
-00E5 900000      E     MOV     DPTR,#g_meas+0AH
+00E5 900000      E     MOV     DPTR,#g_meas+0EH
 00E8 EE                MOV     A,R6
 00E9 F0                MOVX    @DPTR,A
 00EA A3                INC     DPTR
 00EB EF                MOV     A,R7
 00EC F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 927
-00ED 300011            JNB     interrupt_flag,?C0147
+00ED 300011            JNB     interrupt_flag,?C0148
                                            ; SOURCE LINE # 928
 00F0 C200        E     CLR     interrupt_flag
                                            ; SOURCE LINE # 929
@@ -4454,11 +4356,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 930
                                            ; SOURCE LINE # 931
 00F5 22                RET     
-00F6         ?C0142:
+00F6         ?C0143:
                                            ; SOURCE LINE # 932
                                            ; SOURCE LINE # 933
 00F6 E4                CLR     A
-00F7 900000      E     MOV     DPTR,#g_meas+08H
+00F7 900000      E     MOV     DPTR,#g_meas+0CH
 00FA F0                MOVX    @DPTR,A
 00FB A3                INC     DPTR
 00FC F0                MOVX    @DPTR,A
@@ -4469,7 +4371,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0100 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 935
                                            ; SOURCE LINE # 936
-0101         ?C0147:
+0101         ?C0148:
 0101 22                RET     
              ; FUNCTION analog_read_end (END)
 
@@ -4479,28 +4381,28 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0003 ED                MOV     A,R5
 0004 F0                MOVX    @DPTR,A
 ;---- Variable 'idx' assigned to Register 'R7' ----
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 70  
+
                                            ; SOURCE LINE # 943
                                            ; SOURCE LINE # 944
 0005 8F00        R     MOV     index,R7
                                            ; SOURCE LINE # 962
 0007 E500        R     MOV     A,index
 0009 C3                CLR     C
-000A 9402              SUBB    A,#02H
+000A 9403              SUBB    A,#03H
 000C 4003              JC      $ + 5H
-000E 020000      R     LJMP    ?C0149
-0011         ?C0148:
+000E 020000      R     LJMP    ?C0150
+0011         ?C0149:
                                            ; SOURCE LINE # 965
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 72  
-
-0011 300022            JNB     reset_last_value_flag,?C0150
+0011 300022            JNB     reset_last_value_flag,?C0151
                                            ; SOURCE LINE # 966
 ;---- Variable 'jj' assigned to Register 'R3' ----
-0014 7B02              MOV     R3,#02H
-0016         ?C0151:
+0014 7B03              MOV     R3,#03H
+0016         ?C0152:
 0016 AF03              MOV     R7,AR3
 0018 1B                DEC     R3
 0019 EF                MOV     A,R7
-001A 6018              JZ      ?C0152
+001A 6018              JZ      ?C0153
                                            ; SOURCE LINE # 967
 001C E4                CLR     A
 001D FF                MOV     R7,A
@@ -4517,15 +4419,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002D F583              MOV     DPH,A
 002F 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 968
-0032 80E2              SJMP    ?C0151
-0034         ?C0152:
+0032 80E2              SJMP    ?C0152
+0034         ?C0153:
                                            ; SOURCE LINE # 969
 0034 C200        E     CLR     reset_last_value_flag
                                            ; SOURCE LINE # 970
-0036         ?C0150:
+0036         ?C0151:
                                            ; SOURCE LINE # 973
 0036 E500        R     MOV     A,index
-0038 7013              JNZ     ?C0153
+0038 7013              JNZ     ?C0154
                                            ; SOURCE LINE # 974
 003A 120000      E     LCALL   SHIFTREG_ENC_1_ReadData
 003D EF                MOV     A,R7
@@ -4537,12 +4439,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0044 FC                MOV     R4,A
 0045 900000      R     MOV     DPTR,#data_encoder
 0048 120000      E     LCALL   ?C?LSTXDATA
-004B 8041              SJMP    ?C0154
-004D         ?C0153:
+004B 8041              SJMP    ?C0155
+004D         ?C0154:
                                            ; SOURCE LINE # 975
                                            ; SOURCE LINE # 976
 004D E500        R     MOV     A,index
-004F B40113            CJNE    A,#01H,?C0155
+004F B40113            CJNE    A,#01H,?C0156
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 71  
+
                                            ; SOURCE LINE # 977
 0052 120000      E     LCALL   SHIFTREG_ENC_2_ReadData
 0055 EF                MOV     A,R7
@@ -4554,14 +4458,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 005C FC                MOV     R4,A
 005D 900000      R     MOV     DPTR,#data_encoder
 0060 120000      E     LCALL   ?C?LSTXDATA
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 73  
-
-0063 8029              SJMP    ?C0154
-0065         ?C0155:
+0063 8029              SJMP    ?C0155
+0065         ?C0156:
                                            ; SOURCE LINE # 978
                                            ; SOURCE LINE # 979
 0065 E500        R     MOV     A,index
-0067 B40213            CJNE    A,#02H,?C0157
+0067 B40213            CJNE    A,#02H,?C0158
                                            ; SOURCE LINE # 980
 006A 120000      E     LCALL   SHIFTREG_ENC_3_ReadData
 006D EF                MOV     A,R7
@@ -4573,8 +4475,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0074 FC                MOV     R4,A
 0075 900000      R     MOV     DPTR,#data_encoder
 0078 120000      E     LCALL   ?C?LSTXDATA
-007B 8011              SJMP    ?C0154
-007D         ?C0157:
+007B 8011              SJMP    ?C0155
+007D         ?C0158:
                                            ; SOURCE LINE # 982
 007D 120000      E     LCALL   SHIFTREG_ENC_4_ReadData
 0080 EF                MOV     A,R7
@@ -4588,18 +4490,18 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 008B 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 983
                                            ; SOURCE LINE # 984
-008E         ?C0154:
+008E         ?C0155:
                                            ; SOURCE LINE # 986
 008E 7B01              MOV     R3,#01H
 0090 7A00        R     MOV     R2,#HIGH data_encoder
 0092 7900        R     MOV     R1,#LOW data_encoder
 0094 120000      E     LCALL   _check_enc_data
 0097 4003              JC      $ + 5H
-0099 020000      R     LJMP    ?C0149
+0099 020000      R     LJMP    ?C0150
                                            ; SOURCE LINE # 987
 009C 900000      R     MOV     DPTR,#flag
 009F E0                MOVX    A,@DPTR
-00A0 602D              JZ      ?C0160
+00A0 602D              JZ      ?C0161
                                            ; SOURCE LINE # 988
 00A2 A3                INC     DPTR
 00A3 E0                MOVX    A,@DPTR
@@ -4607,6 +4509,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A5 A3                INC     DPTR
 00A6 E0                MOVX    A,@DPTR
 00A7 FD                MOV     R5,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 72  
+
 00A8 A3                INC     DPTR
 00A9 E0                MOVX    A,@DPTR
 00AA FE                MOV     R6,A
@@ -4618,8 +4522,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00B1 ED                MOV     A,R5
 00B2 5403              ANL     A,#03H
 00B4 FD                MOV     R5,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 74  
-
 00B5 E4                CLR     A
 00B6 FC                MOV     R4,A
 00B7 7802              MOV     R0,#02H
@@ -4637,8 +4539,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00C8 FC                MOV     R4,A
 00C9 A3                INC     DPTR
 00CA 120000      E     LCALL   ?C?LSTXDATA
-00CD 804B              SJMP    ?C0161
-00CF         ?C0160:
+00CD 804B              SJMP    ?C0162
+00CF         ?C0161:
                                            ; SOURCE LINE # 990
 00CF 900000      R     MOV     DPTR,#data_encoder
 00D2 E0                MOVX    A,@DPTR
@@ -4671,10 +4573,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F3 E500        R     MOV     A,index
 00F5 25E0              ADD     A,ACC
 00F7 25E0              ADD     A,ACC
-00F9 2400        E     ADD     A,#LOW g_mem+039H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 73  
+
+00F9 2400        E     ADD     A,#LOW g_mem+03AH
 00FB F582              MOV     DPL,A
 00FD E4                CLR     A
-00FE 3400        E     ADDC    A,#HIGH g_mem+039H
+00FE 3400        E     ADDC    A,#HIGH g_mem+03AH
 0100 F583              MOV     DPH,A
 0102 E0                MOVX    A,@DPTR
 0103 A3                INC     DPTR
@@ -4682,8 +4586,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0105 A3                INC     DPTR
 0106 E0                MOVX    A,@DPTR
 0107 FE                MOV     R6,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 75  
-
 0108 A3                INC     DPTR
 0109 E0                MOVX    A,@DPTR
 010A 2B                ADD     A,R3
@@ -4697,9 +4599,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0113 FC                MOV     R4,A
 0114 900000      R     MOV     DPTR,#value_encoder
 0117 120000      E     LCALL   ?C?LSTXDATA
-011A         ?C0161:
+011A         ?C0162:
                                            ; SOURCE LINE # 993
-011A 300027            JNB     only_first_time,?C0162
+011A 300027            JNB     only_first_time,?C0163
                                            ; SOURCE LINE # 994
 011D 900000      R     MOV     DPTR,#value_encoder
 0120 E0                MOVX    A,@DPTR
@@ -4724,17 +4626,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 013A 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 996
 013D E500        R     MOV     A,index
-013F B40102            CJNE    A,#01H,?C0162
+013F B40202            CJNE    A,#02H,?C0163
                                            ; SOURCE LINE # 997
 0142 C200        R     CLR     only_first_time
                                            ; SOURCE LINE # 998
-0144         ?C0162:
+0144         ?C0163:
                                            ; SOURCE LINE # 1001
 0144 E500        R     MOV     A,index
 0146 25E0              ADD     A,ACC
 0148 25E0              ADD     A,ACC
 014A 2400        R     ADD     A,#LOW last_value_encoder
 014C F582              MOV     DPL,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 74  
+
 014E E4                CLR     A
 014F 3400        R     ADDC    A,#HIGH last_value_encoder
 0151 F583              MOV     DPH,A
@@ -4746,8 +4650,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0158 A3                INC     DPTR
 0159 E0                MOVX    A,@DPTR
 015A FA                MOV     R2,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 76  
-
 015B A3                INC     DPTR
 015C E0                MOVX    A,@DPTR
 015D FB                MOV     R3,A
@@ -4796,22 +4698,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 018E FB                MOV     R3,A
 018F D3                SETB    C
 0190 120000      E     LCALL   ?C?SLCMP
-0193 4010              JC      ?C0164
+0193 4010              JC      ?C0165
                                            ; SOURCE LINE # 1022
-0195 7400        E     MOV     A,#LOW g_meas+0CH
+0195 7400        E     MOV     A,#LOW g_meas+010H
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 75  
+
 0197 2500        R     ADD     A,index
 0199 F582              MOV     DPL,A
 019B E4                CLR     A
-019C 3400        E     ADDC    A,#HIGH g_meas+0CH
+019C 3400        E     ADDC    A,#HIGH g_meas+010H
 019E F583              MOV     DPH,A
 01A0 E0                MOVX    A,@DPTR
 01A1 14                DEC     A
 01A2 F0                MOVX    @DPTR,A
-01A3 8068              SJMP    ?C0165
-01A5         ?C0164:
+01A3 8068              SJMP    ?C0166
+01A5         ?C0165:
                                            ; SOURCE LINE # 1023
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 77  
-
                                            ; SOURCE LINE # 1024
 01A5 7F00              MOV     R7,#00H
 01A7 7E40              MOV     R6,#040H
@@ -4831,19 +4733,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01BA FB                MOV     R3,A
 01BB C3                CLR     C
 01BC 120000      E     LCALL   ?C?SLCMP
-01BF 5010              JNC     ?C0166
+01BF 5010              JNC     ?C0167
                                            ; SOURCE LINE # 1025
-01C1 7400        E     MOV     A,#LOW g_meas+0CH
+01C1 7400        E     MOV     A,#LOW g_meas+010H
 01C3 2500        R     ADD     A,index
 01C5 F582              MOV     DPL,A
 01C7 E4                CLR     A
-01C8 3400        E     ADDC    A,#HIGH g_meas+0CH
+01C8 3400        E     ADDC    A,#HIGH g_meas+010H
 01CA F583              MOV     DPH,A
 01CC E0                MOVX    A,@DPTR
 01CD 04                INC     A
 01CE F0                MOVX    @DPTR,A
-01CF 803C              SJMP    ?C0165
-01D1         ?C0166:
+01CF 803C              SJMP    ?C0166
+01D1         ?C0167:
                                            ; SOURCE LINE # 1026
                                            ; SOURCE LINE # 1027
 01D1 900000      R     MOV     DPTR,#aux
@@ -4863,7 +4765,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E4 EE                MOV     A,R6
 01E5 6480              XRL     A,#080H
 01E7 94C0              SUBB    A,#0C0H
-01E9 4022              JC      ?C0165
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 76  
+
+01E9 4022              JC      ?C0166
                                            ; SOURCE LINE # 1028
 01EB 7400        R     MOV     A,#LOW error
 01ED 2500        R     ADD     A,index
@@ -4874,8 +4778,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01F6 E0                MOVX    A,@DPTR
 01F7 04                INC     A
 01F8 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 78  
-
                                            ; SOURCE LINE # 1029
 01F9 7400        R     MOV     A,#LOW error
 01FB 2500        R     ADD     A,index
@@ -4887,12 +4789,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0205 C3                CLR     C
 0206 940A              SUBB    A,#0AH
 0208 5003              JNC     $ + 5H
-020A 020000      R     LJMP    ?C0149
-020D         ?C0169:
+020A 020000      R     LJMP    ?C0150
+020D         ?C0170:
                                            ; SOURCE LINE # 1032
                                            ; SOURCE LINE # 1033
                                            ; SOURCE LINE # 1034
-020D         ?C0165:
+020D         ?C0166:
                                            ; SOURCE LINE # 1036
 020D 7400        R     MOV     A,#LOW error
 020F 2500        R     ADD     A,index
@@ -4927,6 +4829,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 1040
 023A 900000      R     MOV     DPTR,#value_encoder
 023D E0                MOVX    A,@DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 77  
+
 023E F8                MOV     R0,A
 023F A3                INC     DPTR
 0240 E0                MOVX    A,@DPTR
@@ -4938,13 +4842,11 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0246 E0                MOVX    A,@DPTR
 0247 FB                MOV     R3,A
 0248 C000              PUSH    AR0
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 79  
-
-024A 7400        E     MOV     A,#LOW g_meas+0CH
+024A 7400        E     MOV     A,#LOW g_meas+010H
 024C 2500        R     ADD     A,index
 024E F582              MOV     DPL,A
 0250 E4                CLR     A
-0251 3400        E     ADDC    A,#HIGH g_meas+0CH
+0251 3400        E     ADDC    A,#HIGH g_meas+010H
 0253 F583              MOV     DPH,A
 0255 E0                MOVX    A,@DPTR
 0256 FF                MOV     R7,A
@@ -4974,10 +4876,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0276 E500        R     MOV     A,index
 0278 25E0              ADD     A,ACC
 027A 25E0              ADD     A,ACC
-027C 2400        E     ADD     A,#LOW c_mem+041H
+027C 2400        E     ADD     A,#LOW c_mem+046H
 027E F582              MOV     DPL,A
 0280 E4                CLR     A
-0281 3400        E     ADDC    A,#HIGH c_mem+041H
+0281 3400        E     ADDC    A,#HIGH c_mem+046H
 0283 F583              MOV     DPH,A
 0285 E0                MOVX    A,@DPTR
 0286 FC                MOV     R4,A
@@ -4991,19 +4893,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 028E E0                MOVX    A,@DPTR
 028F FF                MOV     R7,A
 0290 E4                CLR     A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 78  
+
 0291 FB                MOV     R3,A
 0292 FA                MOV     R2,A
 0293 7980              MOV     R1,#080H
 0295 783F              MOV     R0,#03FH
 0297 120000      E     LCALL   ?C?FPCMP3
-029A 6038              JZ      ?C0170
+029A 6038              JZ      ?C0171
                                            ; SOURCE LINE # 1043
 029C 900000      R     MOV     DPTR,#value_encoder
 029F E0                MOVX    A,@DPTR
 02A0 FC                MOV     R4,A
 02A1 A3                INC     DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 80  
-
 02A2 E0                MOVX    A,@DPTR
 02A3 FD                MOV     R5,A
 02A4 A3                INC     DPTR
@@ -5017,10 +4919,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02AE E500        R     MOV     A,index
 02B0 25E0              ADD     A,ACC
 02B2 25E0              ADD     A,ACC
-02B4 2400        E     ADD     A,#LOW c_mem+041H
+02B4 2400        E     ADD     A,#LOW c_mem+046H
 02B6 F582              MOV     DPL,A
 02B8 E4                CLR     A
-02B9 3400        E     ADDC    A,#HIGH c_mem+041H
+02B9 3400        E     ADDC    A,#HIGH c_mem+046H
 02BB F583              MOV     DPH,A
 02BD E0                MOVX    A,@DPTR
 02BE F8                MOV     R0,A
@@ -5037,7 +4939,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02CB 120000      E     LCALL   ?C?CASTF
 02CE 900000      R     MOV     DPTR,#value_encoder
 02D1 120000      E     LCALL   ?C?LSTXDATA
-02D4         ?C0170:
+02D4         ?C0171:
                                            ; SOURCE LINE # 1045
 02D4 900000      R     MOV     DPTR,#value_encoder
 02D7 E0                MOVX    A,@DPTR
@@ -5055,6 +4957,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02E4 25E0              ADD     A,ACC
 02E6 25E0              ADD     A,ACC
 02E8 2400        E     ADD     A,#LOW g_meas
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 79  
+
 02EA F582              MOV     DPL,A
 02EC E4                CLR     A
 02ED 3400        E     ADDC    A,#HIGH g_meas
@@ -5062,30 +4966,28 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 02F1 120000      E     LCALL   ?C?LSTXDATA
                                            ; SOURCE LINE # 1046
                                            ; SOURCE LINE # 1068
-02F4         ?C0149:
+02F4         ?C0150:
 02F4 22                RET     
              ; FUNCTION _encoder_reading (END)
 
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 81  
-
              ; FUNCTION pwm_limit_search (BEGIN)
-                                           ; SOURCE LINE # 1180
-                                           ; SOURCE LINE # 1183
+                                           ; SOURCE LINE # 1073
+                                           ; SOURCE LINE # 1076
 0000 750063      R     MOV     max_tension,#063H
 0003 75009C      R     MOV     max_tension+01H,#09CH
-                                           ; SOURCE LINE # 1184
+                                           ; SOURCE LINE # 1077
 0006 750039      R     MOV     max_tension_6v_mod,#039H
 0009 75009E      R     MOV     max_tension_6v_mod+01H,#09EH
-                                           ; SOURCE LINE # 1186
+                                           ; SOURCE LINE # 1079
 000C C3                CLR     C
-000D 900000      E     MOV     DPTR,#g_mem+07BH
+000D 900000      E     MOV     DPTR,#g_mem+084H
 0010 E0                MOVX    A,@DPTR
 0011 9440              SUBB    A,#040H
-0013 900000      E     MOV     DPTR,#g_mem+07AH
+0013 900000      E     MOV     DPTR,#g_mem+083H
 0016 E0                MOVX    A,@DPTR
 0017 941F              SUBB    A,#01FH
-0019 507E              JNC     ?C0171
-                                           ; SOURCE LINE # 1188
+0019 507E              JNC     ?C0172
+                                           ; SOURCE LINE # 1081
 001B AE00        R     MOV     R6,max_tension_6v_mod
 001D AF00        R     MOV     R7,max_tension_6v_mod+01H
 001F E4                CLR     A
@@ -5104,21 +5006,23 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002E E0                MOVX    A,@DPTR
 002F FB                MOV     R3,A
 0030 120000      E     LCALL   ?C?SLCMP
-0033 4006              JC      ?C0172
-                                           ; SOURCE LINE # 1189
+0033 4006              JC      ?C0173
+                                           ; SOURCE LINE # 1082
 0035 E4                CLR     A
 0036 900000      E     MOV     DPTR,#dev_pwm_limit
 0039 F0                MOVX    @DPTR,A
 003A 22                RET     
-003B         ?C0172:
-                                           ; SOURCE LINE # 1191
-                                           ; SOURCE LINE # 1192
-003B 900000      E     MOV     DPTR,#g_mem+07AH
+003B         ?C0173:
+                                           ; SOURCE LINE # 1084
+                                           ; SOURCE LINE # 1085
+003B 900000      E     MOV     DPTR,#g_mem+083H
 003E E0                MOVX    A,@DPTR
 003F FE                MOV     R6,A
 0040 A3                INC     DPTR
 0041 E0                MOVX    A,@DPTR
 0042 FF                MOV     R7,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 80  
+
 0043 E4                CLR     A
 0044 FC                MOV     R4,A
 0045 FD                MOV     R5,A
@@ -5130,24 +5034,22 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 004D F9                MOV     R1,A
 004E A3                INC     DPTR
 004F E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 82  
-
 0050 FA                MOV     R2,A
 0051 A3                INC     DPTR
 0052 E0                MOVX    A,@DPTR
 0053 FB                MOV     R3,A
 0054 C3                CLR     C
 0055 120000      E     LCALL   ?C?SLCMP
-0058 5007              JNC     ?C0174
-                                           ; SOURCE LINE # 1193
+0058 5007              JNC     ?C0175
+                                           ; SOURCE LINE # 1086
 005A 900000      E     MOV     DPTR,#dev_pwm_limit
 005D 7464              MOV     A,#064H
 005F F0                MOVX    @DPTR,A
 0060 22                RET     
-0061         ?C0174:
-                                           ; SOURCE LINE # 1194
-                                           ; SOURCE LINE # 1195
-0061 900000      E     MOV     DPTR,#g_mem+07AH
+0061         ?C0175:
+                                           ; SOURCE LINE # 1087
+                                           ; SOURCE LINE # 1088
+0061 900000      E     MOV     DPTR,#g_mem+083H
 0064 E0                MOVX    A,@DPTR
 0065 FE                MOV     R6,A
 0066 A3                INC     DPTR
@@ -5182,21 +5084,21 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0088 7809              MOV     R0,#09H
 008A 120000      E     LCALL   ?C?SLSHR
 008D 8F00        R     MOV     index,R7
-                                           ; SOURCE LINE # 1196
+                                           ; SOURCE LINE # 1089
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 81  
+
 008F EF                MOV     A,R7
 0090 900000      R     MOV     DPTR,#hitech_pwm_preload_values_6v
 0093 93                MOVC    A,@A+DPTR
 0094 900000      E     MOV     DPTR,#dev_pwm_limit
 0097 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1197
-                                           ; SOURCE LINE # 1198
-                                           ; SOURCE LINE # 1199
+                                           ; SOURCE LINE # 1090
+                                           ; SOURCE LINE # 1091
+                                           ; SOURCE LINE # 1092
 0098 22                RET     
-0099         ?C0171:
-                                           ; SOURCE LINE # 1200
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 83  
-
-                                           ; SOURCE LINE # 1202
+0099         ?C0172:
+                                           ; SOURCE LINE # 1093
+                                           ; SOURCE LINE # 1095
 0099 AE00        R     MOV     R6,max_tension
 009B AF00        R     MOV     R7,max_tension+01H
 009D E4                CLR     A
@@ -5216,16 +5118,16 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00AD FB                MOV     R3,A
 00AE D3                SETB    C
 00AF 120000      E     LCALL   ?C?SLCMP
-00B2 4006              JC      ?C0177
-                                           ; SOURCE LINE # 1203
+00B2 4006              JC      ?C0178
+                                           ; SOURCE LINE # 1096
 00B4 E4                CLR     A
 00B5 900000      E     MOV     DPTR,#dev_pwm_limit
 00B8 F0                MOVX    @DPTR,A
 00B9 22                RET     
-00BA         ?C0177:
-                                           ; SOURCE LINE # 1204
-                                           ; SOURCE LINE # 1205
-00BA 900000      E     MOV     DPTR,#g_mem+07AH
+00BA         ?C0178:
+                                           ; SOURCE LINE # 1097
+                                           ; SOURCE LINE # 1098
+00BA 900000      E     MOV     DPTR,#g_mem+083H
 00BD E0                MOVX    A,@DPTR
 00BE FE                MOV     R6,A
 00BF A3                INC     DPTR
@@ -5247,19 +5149,19 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D1 E0                MOVX    A,@DPTR
 00D2 FB                MOV     R3,A
 00D3 C3                CLR     C
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 82  
+
 00D4 120000      E     LCALL   ?C?SLCMP
-00D7 5007              JNC     ?C0179
-                                           ; SOURCE LINE # 1206
+00D7 5007              JNC     ?C0180
+                                           ; SOURCE LINE # 1099
 00D9 900000      E     MOV     DPTR,#dev_pwm_limit
 00DC 7464              MOV     A,#064H
 00DE F0                MOVX    @DPTR,A
 00DF 22                RET     
-00E0         ?C0179:
-                                           ; SOURCE LINE # 1207
-                                           ; SOURCE LINE # 1208
+00E0         ?C0180:
+                                           ; SOURCE LINE # 1100
+                                           ; SOURCE LINE # 1101
 00E0 900000      E     MOV     DPTR,#dev_tension
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 84  
-
 00E3 E0                MOVX    A,@DPTR
 00E4 FC                MOV     R4,A
 00E5 A3                INC     DPTR
@@ -5284,58 +5186,58 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00FC 7809              MOV     R0,#09H
 00FE 120000      E     LCALL   ?C?SLSHR
 0101 8F00        R     MOV     index,R7
-                                           ; SOURCE LINE # 1209
+                                           ; SOURCE LINE # 1102
 0103 C3                CLR     C
-0104 900000      E     MOV     DPTR,#g_mem+07BH
+0104 900000      E     MOV     DPTR,#g_mem+084H
 0107 E0                MOVX    A,@DPTR
 0108 94EC              SUBB    A,#0ECH
-010A 900000      E     MOV     DPTR,#g_mem+07AH
+010A 900000      E     MOV     DPTR,#g_mem+083H
 010D E0                MOVX    A,@DPTR
 010E 942C              SUBB    A,#02CH
-0110 500A              JNC     ?C0181
-                                           ; SOURCE LINE # 1210
+0110 500A              JNC     ?C0182
+                                           ; SOURCE LINE # 1103
 0112 EF                MOV     A,R7
 0113 900000      R     MOV     DPTR,#hitech_pwm_preload_values
 0116 93                MOVC    A,@A+DPTR
 0117 900000      E     MOV     DPTR,#dev_pwm_limit
 011A F0                MOVX    @DPTR,A
 011B 22                RET     
-011C         ?C0181:
-                                           ; SOURCE LINE # 1212
+011C         ?C0182:
+                                           ; SOURCE LINE # 1105
 011C E500        R     MOV     A,index
 011E 900000      R     MOV     DPTR,#pwm_preload_values
 0121 93                MOVC    A,@A+DPTR
 0122 900000      E     MOV     DPTR,#dev_pwm_limit
 0125 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1213
-                                           ; SOURCE LINE # 1214
-                                           ; SOURCE LINE # 1215
-                                           ; SOURCE LINE # 1216
-0126         ?C0183:
+                                           ; SOURCE LINE # 1106
+                                           ; SOURCE LINE # 1107
+                                           ; SOURCE LINE # 1108
+                                           ; SOURCE LINE # 1109
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 83  
+
+0126         ?C0184:
 0126 22                RET     
              ; FUNCTION pwm_limit_search (END)
 
              ; FUNCTION pretensioning_process (BEGIN)
-                                           ; SOURCE LINE # 1222
-                                           ; SOURCE LINE # 1228
+                                           ; SOURCE LINE # 1115
+                                           ; SOURCE LINE # 1121
 0000 E4                CLR     A
 0001 900000      R     MOV     DPTR,#i
 0004 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1230
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 85  
-
+                                           ; SOURCE LINE # 1123
 0005 900000      R     MOV     DPTR,#phase
 0008 E0                MOVX    A,@DPTR
 0009 14                DEC     A
 000A 7003              JNZ     $ + 5H
-000C 020000      R     LJMP    ?C0188
+000C 020000      R     LJMP    ?C0189
 000F 04                INC     A
 0010 6003              JZ      $ + 5H
-0012 020000      R     LJMP    ?C0194
-                                           ; SOURCE LINE # 1231
-0015         ?C0185:
-                                           ; SOURCE LINE # 1232
-0015 900000      E     MOV     DPTR,#g_meas+08H
+0012 020000      R     LJMP    ?C0195
+                                           ; SOURCE LINE # 1124
+0015         ?C0186:
+                                           ; SOURCE LINE # 1125
+0015 900000      E     MOV     DPTR,#g_meas+0CH
 0018 E0                MOVX    A,@DPTR
 0019 FE                MOV     R6,A
 001A A3                INC     DPTR
@@ -5357,15 +5259,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0031 EF                MOV     A,R7
 0032 A805              MOV     R0,AR5
 0034 08                INC     R0
-0035 8005              SJMP    ?C0198
-0037         ?C0197:
+0035 8005              SJMP    ?C0199
+0037         ?C0198:
 0037 C3                CLR     C
 0038 33                RLC     A
 0039 CE                XCH     A,R6
 003A 33                RLC     A
 003B CE                XCH     A,R6
-003C         ?C0198:
-003C D8F9              DJNZ    R0,?C0197
+003C         ?C0199:
+003C D8F9              DJNZ    R0,?C0198
 003E FF                MOV     R7,A
 003F EE                MOV     A,R6
 0040 33                RLC     A
@@ -5374,7 +5276,9 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0044 FC                MOV     R4,A
 0045 900000      R     MOV     DPTR,#aux
 0048 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1233
+                                           ; SOURCE LINE # 1126
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 84  
+
 004B 900000      R     MOV     DPTR,#aux
 004E E0                MOVX    A,@DPTR
 004F F8                MOV     R0,A
@@ -5386,8 +5290,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0055 FA                MOV     R2,A
 0056 A3                INC     DPTR
 0057 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 86  
-
 0058 FB                MOV     R3,A
 0059 900000      E     MOV     DPTR,#g_refOld
 005C E0                MOVX    A,@DPTR
@@ -5414,12 +5316,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0071 FC                MOV     R4,A
 0072 900000      E     MOV     DPTR,#g_refNew
 0075 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1235
-0078 900000      E     MOV     DPTR,#g_meas+0BH
+                                           ; SOURCE LINE # 1128
+0078 900000      E     MOV     DPTR,#g_meas+0FH
 007B E0                MOVX    A,@DPTR
 007C 24DC              ADD     A,#0DCH
 007E FF                MOV     R7,A
-007F 900000      E     MOV     DPTR,#g_meas+0AH
+007F 900000      E     MOV     DPTR,#g_meas+0EH
 0082 E0                MOVX    A,@DPTR
 0083 3400              ADDC    A,#00H
 0085 FE                MOV     R6,A
@@ -5432,15 +5334,17 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0092 EF                MOV     A,R7
 0093 A805              MOV     R0,AR5
 0095 08                INC     R0
-0096 8005              SJMP    ?C0200
-0098         ?C0199:
+0096 8005              SJMP    ?C0201
+0098         ?C0200:
 0098 C3                CLR     C
 0099 33                RLC     A
 009A CE                XCH     A,R6
 009B 33                RLC     A
 009C CE                XCH     A,R6
-009D         ?C0200:
-009D D8F9              DJNZ    R0,?C0199
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 85  
+
+009D         ?C0201:
+009D D8F9              DJNZ    R0,?C0200
 009F FF                MOV     R7,A
 00A0 EE                MOV     A,R6
 00A1 33                RLC     A
@@ -5449,9 +5353,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00A5 FC                MOV     R4,A
 00A6 900000      R     MOV     DPTR,#aux
 00A9 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1236
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 87  
-
+                                           ; SOURCE LINE # 1129
 00AC 900000      R     MOV     DPTR,#aux
 00AF E0                MOVX    A,@DPTR
 00B0 FC                MOV     R4,A
@@ -5488,12 +5390,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00D1 FC                MOV     R4,A
 00D2 900000      E     MOV     DPTR,#g_refNew+04H
 00D5 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1238
+                                           ; SOURCE LINE # 1131
 00D8 900000      R     MOV     DPTR,#phase_counter
 00DB E0                MOVX    A,@DPTR
 00DC C3                CLR     C
 00DD 940A              SUBB    A,#0AH
-00DF 4031              JC      ?C0186
+00DF 4031              JC      ?C0187
 00E1 E4                CLR     A
 00E2 FF                MOV     R7,A
 00E3 FE                MOV     R6,A
@@ -5503,6 +5405,8 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00E9 E0                MOVX    A,@DPTR
 00EA F8                MOV     R0,A
 00EB A3                INC     DPTR
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 86  
+
 00EC E0                MOVX    A,@DPTR
 00ED F9                MOV     R1,A
 00EE A3                INC     DPTR
@@ -5513,12 +5417,10 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 00F3 FB                MOV     R3,A
 00F4 D3                SETB    C
 00F5 120000      E     LCALL   ?C?SLCMP
-00F8 5018              JNC     ?C0186
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 88  
-
-                                           ; SOURCE LINE # 1239
+00F8 5018              JNC     ?C0187
+                                           ; SOURCE LINE # 1132
 00FA C200        E     CLR     pretensioning_flag
-                                           ; SOURCE LINE # 1240
+                                           ; SOURCE LINE # 1133
 00FC E4                CLR     A
 00FD FF                MOV     R7,A
 00FE FE                MOV     R6,A
@@ -5526,7 +5428,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0100 FC                MOV     R4,A
 0101 900000      E     MOV     DPTR,#g_refNew
 0104 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1241
+                                           ; SOURCE LINE # 1134
 0107 E4                CLR     A
 0108 FF                MOV     R7,A
 0109 FE                MOV     R6,A
@@ -5534,14 +5436,14 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 010B FC                MOV     R4,A
 010C 900000      E     MOV     DPTR,#g_refNew+04H
 010F 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1242
-0112         ?C0186:
-                                           ; SOURCE LINE # 1244
+                                           ; SOURCE LINE # 1135
+0112         ?C0187:
+                                           ; SOURCE LINE # 1137
 0112 900000      R     MOV     DPTR,#phase_counter
 0115 E0                MOVX    A,@DPTR
 0116 04                INC     A
 0117 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1246
+                                           ; SOURCE LINE # 1139
 0118 900000      R     MOV     DPTR,#epsilon
 011B E0                MOVX    A,@DPTR
 011C FE                MOV     R6,A
@@ -5556,18 +5458,20 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0126 9E                SUBB    A,R6
 0127 FC                MOV     R4,A
 0128 D3                SETB    C
-0129 900000      E     MOV     DPTR,#g_meas+09H
+0129 900000      E     MOV     DPTR,#g_meas+0DH
 012C E0                MOVX    A,@DPTR
 012D 9D                SUBB    A,R5
 012E EC                MOV     A,R4
 012F 6480              XRL     A,#080H
 0131 F8                MOV     R0,A
-0132 900000      E     MOV     DPTR,#g_meas+08H
+0132 900000      E     MOV     DPTR,#g_meas+0CH
 0135 E0                MOVX    A,@DPTR
 0136 6480              XRL     A,#080H
 0138 98                SUBB    A,R0
 0139 5003              JNC     $ + 5H
-013B 020000      R     LJMP    ?C0194
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 87  
+
+013B 020000      R     LJMP    ?C0195
 013E EF                MOV     A,R7
 013F 2424              ADD     A,#024H
 0141 FF                MOV     R7,A
@@ -5575,34 +5479,32 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0143 34FF              ADDC    A,#0FFH
 0145 FE                MOV     R6,A
 0146 C3                CLR     C
-0147 900000      E     MOV     DPTR,#g_meas+0BH
+0147 900000      E     MOV     DPTR,#g_meas+0FH
 014A E0                MOVX    A,@DPTR
 014B 9F                SUBB    A,R7
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 89  
-
 014C EE                MOV     A,R6
 014D 6480              XRL     A,#080H
 014F F8                MOV     R0,A
-0150 900000      E     MOV     DPTR,#g_meas+0AH
+0150 900000      E     MOV     DPTR,#g_meas+0EH
 0153 E0                MOVX    A,@DPTR
 0154 6480              XRL     A,#080H
 0156 98                SUBB    A,R0
 0157 4003              JC      $ + 5H
-0159 020000      R     LJMP    ?C0194
-                                           ; SOURCE LINE # 1247
+0159 020000      R     LJMP    ?C0195
+                                           ; SOURCE LINE # 1140
 015C 900000      R     MOV     DPTR,#phase
 015F 7401              MOV     A,#01H
 0161 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1248
+                                           ; SOURCE LINE # 1141
 0162 E4                CLR     A
 0163 A3                INC     DPTR
 0164 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1251
-                                           ; SOURCE LINE # 1252
+                                           ; SOURCE LINE # 1144
+                                           ; SOURCE LINE # 1145
 0165 22                RET     
-                                           ; SOURCE LINE # 1253
-0166         ?C0188:
-                                           ; SOURCE LINE # 1255
+                                           ; SOURCE LINE # 1146
+0166         ?C0189:
+                                           ; SOURCE LINE # 1148
 0166 900000      E     MOV     DPTR,#g_mem+037H
 0169 E0                MOVX    A,@DPTR
 016A FF                MOV     R7,A
@@ -5610,15 +5512,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 016D 7E00              MOV     R6,#00H
 016F A807              MOV     R0,AR7
 0171 08                INC     R0
-0172 8005              SJMP    ?C0202
-0174         ?C0201:
+0172 8005              SJMP    ?C0203
+0174         ?C0202:
 0174 C3                CLR     C
 0175 33                RLC     A
 0176 CE                XCH     A,R6
 0177 33                RLC     A
 0178 CE                XCH     A,R6
-0179         ?C0202:
-0179 D8F9              DJNZ    R0,?C0201
+0179         ?C0203:
+0179 D8F9              DJNZ    R0,?C0202
 017B FF                MOV     R7,A
 017C EE                MOV     A,R6
 017D 33                RLC     A
@@ -5627,10 +5529,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0181 FC                MOV     R4,A
 0182 900000      R     MOV     DPTR,#aux
 0185 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1256
+                                           ; SOURCE LINE # 1149
 0188 900000      R     MOV     DPTR,#aux
 018B E0                MOVX    A,@DPTR
 018C FC                MOV     R4,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 88  
+
 018D A3                INC     DPTR
 018E E0                MOVX    A,@DPTR
 018F FD                MOV     R5,A
@@ -5642,8 +5546,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0195 FF                MOV     R7,A
 0196 900000      E     MOV     DPTR,#g_refOld
 0199 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 90  
-
 019A F8                MOV     R0,A
 019B A3                INC     DPTR
 019C E0                MOVX    A,@DPTR
@@ -5666,7 +5568,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01AD FC                MOV     R4,A
 01AE 900000      E     MOV     DPTR,#g_refNew
 01B1 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1258
+                                           ; SOURCE LINE # 1151
 01B4 900000      E     MOV     DPTR,#g_mem+038H
 01B7 E0                MOVX    A,@DPTR
 01B8 FF                MOV     R7,A
@@ -5674,15 +5576,15 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01BB 7E00              MOV     R6,#00H
 01BD A807              MOV     R0,AR7
 01BF 08                INC     R0
-01C0 8005              SJMP    ?C0204
-01C2         ?C0203:
+01C0 8005              SJMP    ?C0205
+01C2         ?C0204:
 01C2 C3                CLR     C
 01C3 33                RLC     A
 01C4 CE                XCH     A,R6
 01C5 33                RLC     A
 01C6 CE                XCH     A,R6
-01C7         ?C0204:
-01C7 D8F9              DJNZ    R0,?C0203
+01C7         ?C0205:
+01C7 D8F9              DJNZ    R0,?C0204
 01C9 FF                MOV     R7,A
 01CA EE                MOV     A,R6
 01CB 33                RLC     A
@@ -5691,10 +5593,12 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01CF FC                MOV     R4,A
 01D0 900000      R     MOV     DPTR,#aux
 01D3 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1259
+                                           ; SOURCE LINE # 1152
 01D6 900000      R     MOV     DPTR,#aux
 01D9 E0                MOVX    A,@DPTR
 01DA F8                MOV     R0,A
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 89  
+
 01DB A3                INC     DPTR
 01DC E0                MOVX    A,@DPTR
 01DD F9                MOV     R1,A
@@ -5706,8 +5610,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01E3 FB                MOV     R3,A
 01E4 900000      E     MOV     DPTR,#g_refOld+04H
 01E7 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 91  
-
 01E8 FC                MOV     R4,A
 01E9 A3                INC     DPTR
 01EA E0                MOVX    A,@DPTR
@@ -5731,34 +5633,36 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 01FC FC                MOV     R4,A
 01FD 900000      E     MOV     DPTR,#g_refNew+04H
 0200 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1261
+                                           ; SOURCE LINE # 1154
 0203 900000      R     MOV     DPTR,#phase_counter
 0206 E0                MOVX    A,@DPTR
 0207 D3                SETB    C
 0208 9450              SUBB    A,#050H
-020A 404B              JC      ?C0189
-                                           ; SOURCE LINE # 1262
+020A 404B              JC      ?C0190
+                                           ; SOURCE LINE # 1155
 020C C200        E     CLR     pretensioning_flag
-                                           ; SOURCE LINE # 1263
+                                           ; SOURCE LINE # 1156
 020E D200        E     SETB    pret_done
-                                           ; SOURCE LINE # 1264
+                                           ; SOURCE LINE # 1157
 0210 E4                CLR     A
 0211 900000      R     MOV     DPTR,#phase
 0214 F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1265
+                                           ; SOURCE LINE # 1158
 0215 D200        E     SETB    reset_last_value_flag
-                                           ; SOURCE LINE # 1266
+                                           ; SOURCE LINE # 1159
 0217 900000      R     MOV     DPTR,#i
 021A F0                MOVX    @DPTR,A
-021B         ?C0190:
+021B         ?C0191:
 021B 900000      R     MOV     DPTR,#i
 021E E0                MOVX    A,@DPTR
 021F FB                MOV     R3,A
 0220 C3                CLR     C
-0221 9402              SUBB    A,#02H
-0223 5032              JNC     ?C0189
-                                           ; SOURCE LINE # 1267
+0221 9403              SUBB    A,#03H
+0223 5032              JNC     ?C0190
+                                           ; SOURCE LINE # 1160
 0225 EB                MOV     A,R3
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 90  
+
 0226 25E0              ADD     A,ACC
 0228 25E0              ADD     A,ACC
 022A 2400        E     ADD     A,#LOW g_refNew
@@ -5770,8 +5674,6 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0234 FC                MOV     R4,A
 0235 A3                INC     DPTR
 0236 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   INTERRUPTIONS                                                         02/02/2018 17:45:42 PAGE 92  
-
 0237 FD                MOV     R5,A
 0238 A3                INC     DPTR
 0239 E0                MOVX    A,@DPTR
@@ -5788,34 +5690,34 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0248 3400        E     ADDC    A,#HIGH pret_offset_pos
 024A F583              MOV     DPH,A
 024C 120000      E     LCALL   ?C?LSTXDATA
-                                           ; SOURCE LINE # 1274
+                                           ; SOURCE LINE # 1167
 024F 900000      R     MOV     DPTR,#i
 0252 E0                MOVX    A,@DPTR
 0253 04                INC     A
 0254 F0                MOVX    @DPTR,A
-0255 80C4              SJMP    ?C0190
-                                           ; SOURCE LINE # 1286
-0257         ?C0189:
-                                           ; SOURCE LINE # 1288
+0255 80C4              SJMP    ?C0191
+                                           ; SOURCE LINE # 1179
+0257         ?C0190:
+                                           ; SOURCE LINE # 1181
 0257 900000      R     MOV     DPTR,#phase_counter
 025A E0                MOVX    A,@DPTR
 025B 04                INC     A
 025C F0                MOVX    @DPTR,A
-                                           ; SOURCE LINE # 1289
-                                           ; SOURCE LINE # 1290
-                                           ; SOURCE LINE # 1291
-                                           ; SOURCE LINE # 1292
-                                           ; SOURCE LINE # 1293
-025D         ?C0194:
+                                           ; SOURCE LINE # 1182
+                                           ; SOURCE LINE # 1183
+                                           ; SOURCE LINE # 1184
+                                           ; SOURCE LINE # 1185
+                                           ; SOURCE LINE # 1186
+025D         ?C0195:
 025D 22                RET     
              ; FUNCTION pretensioning_process (END)
 
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =   5846    ----
+   CODE SIZE        =   5869    ----
    CONSTANT SIZE    =     97    ----
-   XDATA SIZE       =    168      18
+   XDATA SIZE       =    173      18
    PDATA SIZE       =   ----    ----
    DATA SIZE        =      6      73
    IDATA SIZE       =   ----    ----
@@ -5823,6 +5725,8 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----
    XDATA CONST SIZE =   ----    ----
+C51 COMPILER V9.51   INTERRUPTIONS                                                         04/19/2018 16:15:14 PAGE 91  
+
    FAR CONST SIZE   =   ----    ----
 END OF MODULE INFORMATION.
 

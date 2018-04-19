@@ -1,9 +1,9 @@
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 1   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   04/19/2018 15:06:51 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE WATCHDOG_COUNTER_PM
 OBJECT MODULE PLACED IN .\DP8051_Keil_951\Release\WATCHDOG_COUNTER_PM.obj
-COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.2\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
                     -Generated_Source\PSoC3\WATCHDOG_COUNTER_PM.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB
                     - DF(NDEBUG) WL(2) PR(.\DP8051_Keil_951\Release/WATCHDOG_COUNTER_PM.lst) CD OT(8,SPEED) OJ(.\DP8051_Keil_951\Release\WATC
                     -HDOG_COUNTER_PM.obj)
@@ -62,7 +62,7 @@ line level    source
                           WATCHDOG_COUNTER_backup.CounterControlRegister = WATCHDOG_COUNTER_ReadControlRegister();
                       #endif /* (!WATCHDOG_COUNTER_ControlRegRemoved) */
               
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 2   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   04/19/2018 15:06:51 PAGE 2   
 
                   #endif /* (!WATCHDOG_COUNTER_UsingFixedFunction) */
   53   1      }
@@ -126,7 +126,7 @@ line level    source
  111   2                  /* Counter is enabled */
  112   2                  WATCHDOG_COUNTER_backup.CounterEnableState = 1u;
  113   2              }
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 3   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   04/19/2018 15:06:51 PAGE 3   
 
  114   1              else
  115   1              {
@@ -179,7 +179,7 @@ line level    source
  162          
  163          
  164          /* [] END OF FILE */
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 4   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   04/19/2018 15:06:51 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -243,7 +243,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 158
                                            ; SOURCE LINE # 161
 000D         ?C0007:
-C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   01/25/2018 15:12:47 PAGE 5   
+C51 COMPILER V9.51   WATCHDOG_COUNTER_PM                                                   04/19/2018 15:06:51 PAGE 5   
 
 000D 22                RET     
              ; FUNCTION WATCHDOG_COUNTER_Wakeup (END)

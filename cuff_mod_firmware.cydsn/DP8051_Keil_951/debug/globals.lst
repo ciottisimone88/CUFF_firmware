@@ -1,0 +1,125 @@
+C51 COMPILER V9.51   GLOBALS                                                               02/13/2018 09:39:25 PAGE 1   
+
+
+C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
+OBJECT MODULE PLACED IN .\DP8051_Keil_951\Debug\globals.obj
+COMPILER INVOKED BY: C:\Program Files (x86)\Cypress\PSoC Creator\4.1\PSoC Creator\import\keil\pk51\9.51\C51\BIN\c51.exe 
+                    -globals.c NOIV LARGE MODDP2 OMF2 VB(1) NOIP INCDIR(.,Generated_Source\PSoC3) FF(3) DB WL(2) PR(.\DP8051_Keil_951\Debug/g
+                    -lobals.lst) CD OT(2,SIZE) OJ(.\DP8051_Keil_951\Debug\globals.obj)
+
+line level    source
+
+   1          // ----------------------------------------------------------------------------
+   2          // BSD 3-Clause License
+   3          
+   4          // Copyright (c) 2016, qbrobotics
+   5          // Copyright (c) 2017, Centro "E.Piaggio"
+   6          // All rights reserved.
+   7          
+   8          // Redistribution and use in source and binary forms, with or without
+   9          // modification, are permitted provided that the following conditions are met:
+  10          
+  11          // * Redistributions of source code must retain the above copyright notice, this
+  12          //   list of conditions and the following disclaimer.
+  13          
+  14          // * Redistributions in binary form must reproduce the above copyright notice,
+  15          //   this list of conditions and the following disclaimer in the documentation
+  16          //   and/or other materials provided with the distribution.
+  17          
+  18          // * Neither the name of the copyright holder nor the names of its
+  19          //   contributors may be used to endorse or promote products derived from
+  20          //   this software without specific prior written permission.
+  21          
+  22          // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  23          // AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  24          // IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+  25          // DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+  26          // FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+  27          // DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+  28          // SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  29          // CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  30          // OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  31          // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  32          // POSSIBILITY OF SUCH DAMAGE.
+  33          // ----------------------------------------------------------------------------
+  34          
+  35          /**
+  36          * \file         globals.c
+  37          *
+  38          * \brief        Global variables.
+  39          * \date         October 01, 2017
+  40          * \author       _Centro "E.Piaggio"_
+  41          * \copyright    (C) 2012-2016 qbrobotics. All rights reserved.
+  42          * \copyright    (C) 2017 Centro "E.Piaggio". All rights reserved.
+  43          */
+  44          
+  45          //=================================================================     includes
+  46          
+  47          #include <globals.h>
+  48          
+  49          //=============================================      global variables definition
+  50          
+  51          struct st_ref   g_ref, g_refNew, g_refOld;  // motor variables
+  52          struct st_meas  g_meas, g_measOld;          // measurements
+  53          struct st_data  g_rx;                       // income data
+C51 COMPILER V9.51   GLOBALS                                                               02/13/2018 09:39:25 PAGE 2   
+
+  54          struct st_mem   g_mem, c_mem;               // memory
+  55          
+  56          // Timer value for debug field
+  57          
+  58          uint32 timer_value;
+  59          uint32 timer_value0;
+  60          
+  61          // Device Data
+  62          
+  63          int32   dev_tension;                // Power supply tension
+  64          uint8   dev_pwm_limit;
+  65          
+  66          uint8 calibration_flag;
+  67          
+  68          // Bit Flag
+  69          
+  70          CYBIT reset_last_value_flag;
+  71          CYBIT tension_valid;
+  72          CYBIT cuff_flag_force;
+  73          CYBIT cuff_flag_proprio;
+  74          CYBIT cuff_flag_force_proprio;
+  75          CYBIT interrupt_flag;
+  76          CYBIT watchdog_flag;
+  77          CYBIT pretensioning_flag;
+  78          CYBIT pret_done;
+  79          
+  80          // DMA Buffer
+  81          
+  82          int16 ADC_buf[3]; 
+  83          
+  84          // Sign of pwm_input to calculate current with sign
+  85          
+  86          int8 pwm_sign[2];
+  87          
+  88          // Zero position after pretensioning
+  89          int32 pret_offset_pos[2];
+C51 COMPILER V9.51   GLOBALS                                                               02/13/2018 09:39:25 PAGE 3   
+
+ASSEMBLY LISTING OF GENERATED OBJECT CODE
+
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =    492    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      9    ----
+   EDATA SIZE       =   ----    ----
+   HDATA SIZE       =   ----    ----
+   XDATA CONST SIZE =   ----    ----
+   FAR CONST SIZE   =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

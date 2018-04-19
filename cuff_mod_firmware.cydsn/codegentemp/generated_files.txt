@@ -192,6 +192,8 @@
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\KeilStart.a51" value="SOURCE_ASM;DP8051;;c659702b-5f69-4783-8160-eb7977f1c97a;;cy_boot" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\PSoC3_8051.h" value="HEADER;;;;;cy_boot" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\PSoC3_8051.inc" value="OTHER;;;;;cy_boot" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\cy_em_eeprom.c" value="SOURCE_C;DP8051;;;;Em_EEPROM_Dynamic" />
+  <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\cy_em_eeprom.h" value="HEADER;;;;;Em_EEPROM_Dynamic" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\project.h" value="OTHER;;;;;" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\cycodeshareimport.ld" value="OTHER;;;;;" />
   <file name="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\codegentemp\cycodeshareexport.ld" value="OTHER;;;;;" />

@@ -3455,18 +3455,6 @@ library (timing) {
                 intrinsic_fall : 8.05;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.40;
-                intrinsic_fall : 7.40;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -3506,18 +3494,6 @@ library (timing) {
                 intrinsic_fall : 4.40;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -3533,18 +3509,6 @@ library (timing) {
                 intrinsic_fall : 4.40;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -3558,18 +3522,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 4.40;
                 intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4012,42 +3964,6 @@ library (timing) {
                 intrinsic_fall : 9.91;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.28;
-                intrinsic_fall : 7.28;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.20;
-                intrinsic_fall : 7.20;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 9.43;
-                intrinsic_fall : 9.43;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -4085,18 +4001,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 8.06;
                 intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4596,32 +4500,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 8.15;
-                intrinsic_fall : 8.15;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 8.16;
                 intrinsic_fall : 8.16;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.50;
-                intrinsic_fall : 7.50;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4659,20 +4539,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4686,20 +4554,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4713,20 +4569,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -4740,20 +4584,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 3.64;
-                intrinsic_fall : 3.64;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 3.65;
                 intrinsic_fall : 3.65;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -5526,30 +5358,6 @@ library (timing) {
                 intrinsic_fall : 8.06;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -5563,30 +5371,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 8.06;
                 intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -5749,18 +5533,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 3.54;
-                intrinsic_fall : 3.54;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.07;
-                intrinsic_fall : 2.07;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 2.07;
                 intrinsic_fall : 2.07;
             }
@@ -5772,18 +5544,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.98;
                 intrinsic_fall : 3.98;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.98;
-                intrinsic_fall : 3.98;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.19;
-                intrinsic_fall : 2.19;
             }
             timing () {
                 timing_type : rising_edge;
@@ -5817,18 +5577,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.52;
                 intrinsic_fall : 3.52;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.52;
-                intrinsic_fall : 3.52;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.16;
-                intrinsic_fall : 2.16;
             }
             timing () {
                 timing_type : rising_edge;
@@ -6381,32 +6129,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 8.06;
-                intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 8.07;
                 intrinsic_fall : 8.07;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -6420,32 +6144,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 8.06;
-                intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 8.07;
                 intrinsic_fall : 8.07;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -6459,32 +6159,8 @@ library (timing) {
             timing () {
                 timing_type : setup_rising;
                 related_pin : "clock";
-                intrinsic_rise : 8.06;
-                intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
                 intrinsic_rise : 8.07;
                 intrinsic_fall : 8.07;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -6647,18 +6323,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 3.54;
-                intrinsic_fall : 3.54;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.07;
-                intrinsic_fall : 2.07;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 2.07;
                 intrinsic_fall : 2.07;
             }
@@ -6691,18 +6355,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.52;
                 intrinsic_fall : 3.52;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.52;
-                intrinsic_fall : 3.52;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.16;
-                intrinsic_fall : 2.16;
             }
             timing () {
                 timing_type : rising_edge;
@@ -7147,20 +6799,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -7174,20 +6814,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.74;
-                intrinsic_fall : 4.74;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.75;
                 intrinsic_fall : 4.75;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -7431,18 +7059,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -7454,18 +7070,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -7515,18 +7119,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -7538,18 +7130,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -7676,20 +7256,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -7790,20 +7358,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -7960,18 +7516,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -7983,18 +7527,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -8056,18 +7588,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -8091,18 +7611,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -8265,20 +7773,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -8379,20 +7875,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -8953,20 +8437,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -8980,20 +8452,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.74;
-                intrinsic_fall : 4.74;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.75;
                 intrinsic_fall : 4.75;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -9237,18 +8697,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -9260,18 +8708,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -9321,18 +8757,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -9344,18 +8768,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -9482,20 +8894,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -9596,20 +8996,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -9766,18 +9154,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -9789,18 +9165,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -9862,18 +9226,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -9897,18 +9249,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -10071,20 +9411,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -10185,20 +9513,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -10759,20 +10075,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -10786,20 +10090,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.74;
-                intrinsic_fall : 4.74;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.75;
                 intrinsic_fall : 4.75;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -11043,18 +10335,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -11066,18 +10346,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -11127,18 +10395,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -11150,18 +10406,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -11288,20 +10532,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -11402,20 +10634,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -11572,18 +10792,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -11595,18 +10803,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -11668,18 +10864,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -11703,18 +10887,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -11877,20 +11049,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -11991,20 +11151,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -12565,20 +11713,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -12592,20 +11728,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.74;
-                intrinsic_fall : 4.74;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.75;
                 intrinsic_fall : 4.75;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -12849,18 +11973,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -12872,18 +11984,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -12933,18 +12033,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -12956,18 +12044,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -13094,20 +12170,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -13208,20 +12272,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -13378,18 +12430,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -13401,18 +12441,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : falling_edge;
@@ -13474,18 +12502,6 @@ library (timing) {
             timing () {
                 timing_type : falling_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -13509,18 +12525,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : falling_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : falling_edge;
@@ -13683,20 +12687,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.40;
-                intrinsic_fall : 4.40;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.41;
                 intrinsic_fall : 4.41;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -13797,20 +12789,8 @@ library (timing) {
             timing () {
                 timing_type : setup_falling;
                 related_pin : "clock";
-                intrinsic_rise : 4.57;
-                intrinsic_fall : 4.57;
-            }
-            timing () {
-                timing_type : setup_falling;
-                related_pin : "clock";
                 intrinsic_rise : 4.58;
                 intrinsic_fall : 4.58;
-            }
-            timing () {
-                timing_type : hold_falling;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_falling;
@@ -14829,30 +13809,6 @@ library (timing) {
                 intrinsic_fall : 8.06;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -14866,30 +13822,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 8.06;
                 intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -15127,18 +14059,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -15150,18 +14070,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : rising_edge;
@@ -15211,18 +14119,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -15234,18 +14130,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : rising_edge;
@@ -15370,30 +14254,6 @@ library (timing) {
                 intrinsic_fall : 8.06;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -15407,30 +14267,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 8.06;
                 intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -15521,18 +14357,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.56;
                 intrinsic_fall : 3.56;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.20;
-                intrinsic_fall : 3.20;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -15704,18 +14528,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.48;
-                intrinsic_fall : 2.48;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.33;
-                intrinsic_fall : 1.33;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.33;
                 intrinsic_fall : 1.33;
             }
@@ -15739,18 +14551,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 2.90;
                 intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 2.90;
-                intrinsic_fall : 2.90;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.50;
-                intrinsic_fall : 1.50;
             }
             timing () {
                 timing_type : rising_edge;
@@ -15836,18 +14636,6 @@ library (timing) {
             timing () {
                 timing_type : rising_edge;
                 related_pin : "clock";
-                intrinsic_rise : 2.46;
-                intrinsic_fall : 2.46;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.42;
-                intrinsic_fall : 1.42;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
                 intrinsic_rise : 1.42;
                 intrinsic_fall : 1.42;
             }
@@ -15871,18 +14659,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.43;
                 intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 3.43;
-                intrinsic_fall : 3.43;
-            }
-            timing () {
-                timing_type : rising_edge;
-                related_pin : "clock";
-                intrinsic_rise : 1.58;
-                intrinsic_fall : 1.58;
             }
             timing () {
                 timing_type : rising_edge;
@@ -16055,30 +14831,6 @@ library (timing) {
                 intrinsic_fall : 8.06;
             }
             timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
                 timing_type : hold_rising;
                 related_pin : "clock";
                 intrinsic_rise : 0.00;
@@ -16092,30 +14844,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 8.06;
                 intrinsic_fall : 8.06;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.72;
-                intrinsic_fall : 3.72;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 7.68;
-                intrinsic_fall : 7.68;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
@@ -16206,18 +14934,6 @@ library (timing) {
                 related_pin : "clock";
                 intrinsic_rise : 3.56;
                 intrinsic_fall : 3.56;
-            }
-            timing () {
-                timing_type : setup_rising;
-                related_pin : "clock";
-                intrinsic_rise : 3.20;
-                intrinsic_fall : 3.20;
-            }
-            timing () {
-                timing_type : hold_rising;
-                related_pin : "clock";
-                intrinsic_rise : 0.00;
-                intrinsic_fall : 0.00;
             }
             timing () {
                 timing_type : hold_rising;
