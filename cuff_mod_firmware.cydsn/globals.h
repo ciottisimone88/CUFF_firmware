@@ -55,7 +55,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "CUFF MOD v6.1.3"
+#define VERSION         "CUFF MOD v6.1.4"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -114,7 +114,7 @@
 #define FALSE           0
 #define TRUE            1
 
-#define DEFAULT_EEPROM_DISPLACEMENT 8   // in pages
+#define DEFAULT_EEPROM_DISPLACEMENT 10   // in pages
     
 #define MAX_WATCHDOG_TIMER 250          // num * 2 [cs]
 
