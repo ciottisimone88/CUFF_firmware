@@ -1666,15 +1666,7 @@ void cmd_get_curr_and_meas(){
    
     //Packet: header + curr_meas(int16) + pos_meas(int16) + CRC
     
-    #if (NUM_OF_SENSORS == 4)
-        uint8 packet_data[14];
-    #endif
-    #if  (NUM_OF_SENSORS == 3)
-        uint8 packet_data[12]; 
-    #endif
-    #if (NUM_OF_SENSORS == 2)
-        uint8 packet_data[6]; 
-    #endif
+    uint8 packet_data[12]; 
 
     //Header package
     packet_data[0] = CMD_GET_CURR_AND_MEAS;
@@ -1685,18 +1677,12 @@ void cmd_get_curr_and_meas(){
 
     // Positions
     for (index = NUM_OF_SENSORS; index--;) 
-        *((int16 *) &packet_data[(index << 2) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
+        *((int16 *) &packet_data[(index << 1) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
         
     // Calculate Checksum and send message to UART 
         
-    #if (NUM_OF_SENSORS == 4)
-        packet_data[13] = LCRChecksum (packet_data, 13);
-        commWrite(packet_data, 14, FALSE);
-    #endif
-    #if  (NUM_OF_SENSORS == 3)
-        packet_data[11] = LCRChecksum (packet_data, 11);
-        commWrite(packet_data, 12, FALSE);
-    #endif
+    packet_data[11] = LCRChecksum (packet_data, 11);
+    commWrite(packet_data, 12, FALSE);
 }
 
 void cmd_set_inputs(){

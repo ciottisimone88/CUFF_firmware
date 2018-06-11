@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\Header Files\globals.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\Source Files\command_processing.c">
 <ExpandedNodeIds>
 <v>firmware</v>
 <v>firmware\cuff_mod_firmware</v>
@@ -682,6 +682,7 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\cuff_mod_firmware.cydsn\globals.h" />
+<name v=".\cuff_mod_firmware.cydsn\command_processing.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -689,7 +690,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1584, 593" SelectedTabbedMdiWindow="63a073ff-34b7-4815-8833-2a9262f0b8cf"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\globals.h" Guid="63a073ff-34b7-4815-8833-2a9262f0b8cf" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Vertical"><TabbedMdiContainer Size="1583, 675" SelectedTabbedMdiWindow="6c018a5e-0aa6-45f5-90bd-277f5416bc04"><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\globals.h" Guid="63a073ff-34b7-4815-8833-2a9262f0b8cf" /><DocumentWindow Key="C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\command_processing.c" Guid="6c018a5e-0aa6-45f5-90bd-277f5416bc04" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
