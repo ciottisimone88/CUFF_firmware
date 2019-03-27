@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 1   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE ADC_AMUX
@@ -62,7 +62,7 @@ line level    source
   50   1          ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
   51   1      }
   52          
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 2   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 2   
 
   53          
   54          #if (!ADC_AMux_ATMOSTONE)
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 3   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 3   
 
  115          #if (ADC_AMux_MUXTYPE == ADC_AMux_MUX_DIFF)
               #if (!ADC_AMux_ATMOSTONE)
@@ -190,7 +190,7 @@ line level    source
                   if(ADC_AMux_lastChannel != ADC_AMux_NULL_CHANNEL) 
                   {
                       ADC_AMux_Disconnect(ADC_AMux_lastChannel);
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 4   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 4   
 
                       ADC_AMux_lastChannel = ADC_AMux_NULL_CHANNEL;
                   }
@@ -198,7 +198,7 @@ line level    source
               #endif
  181          
  182          /* [] END OF FILE */
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 5   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 5   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -262,7 +262,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 900000      R     MOV     DPTR,#channel
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
-C51 COMPILER V9.51   ADC_AMUX                                                              04/19/2018 15:06:53 PAGE 6   
+C51 COMPILER V9.51   ADC_AMUX                                                              03/12/2019 16:37:17 PAGE 6   
 
                                            ; SOURCE LINE # 95
                                            ; SOURCE LINE # 97

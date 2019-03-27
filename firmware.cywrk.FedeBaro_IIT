@@ -13,7 +13,7 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\Header Files\commands.h">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="firmware\cuff_mod_firmware\Source Files\interruptions.c">
 <ExpandedNodeIds>
 <v>firmware</v>
 <v>firmware\cuff_mod_firmware</v>
@@ -93,6 +93,12 @@
 <v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\FF_STATUS</v>
 <v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\FTDI_ENABLE</v>
 <v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\FTDI_ENABLE_REG</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\ISR_RS485_RX</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\ISR_WATCHDOG</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\MOTOR_1A</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\MOTOR_1B</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\MOTOR_2A</v>
+<v>firmware\cuff_mod_firmware\Generated_Source\PSoC3\MOTOR_2B</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -438,12 +444,11 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
+<name v=".\cuff_mod_firmware.cydsn\command_processing.h" />
 <name v=".\cuff_mod_firmware.cydsn\command_processing.c" />
-<name v=".\cuff_mod_firmware.cydsn\interruptions.c" />
-<name v=".\cuff_mod_firmware.cydsn\globals.h" />
 <name v=".\cuff_mod_firmware.cydsn\globals.c" />
-<name v=".\cuff_mod_firmware.cydsn\main.c" />
-<name v=".\cuff_mod_firmware.cydsn\commands.h" />
+<name v=".\cuff_mod_firmware.cydsn\globals.h" />
+<name v=".\cuff_mod_firmware.cydsn\interruptions.c" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -451,7 +456,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1615, 705" SelectedTabbedMdiWindow="6866fdb1-e982-4688-8c11-bb8667e6b3b9"><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\command_processing.c" Guid="6866fdb1-e982-4688-8c11-bb8667e6b3b9" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\interruptions.c" Guid="3dd503bd-d190-4f6d-b525-6d9a8029d27d" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\globals.h" Guid="b099be2e-1b67-4cf9-82de-031f4f4f1c88" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\globals.c" Guid="fe356ab8-80a0-42f5-9242-88a47fc42aa3" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\main.c" Guid="d15f255e-ca36-4f7b-bb40-e279ca3ae5f9" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="c38ac204-98be-4840-8120-ea4ad43277cf" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\firmware_cuff_6_1_4\cuff_mod_firmware.cydsn\commands.h" Guid="cc151341-62cb-4c88-b6c2-8b7b02992327" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1615, 825" SelectedTabbedMdiWindow="b873fcc9-cb45-476d-aca6-237a39dfd75a"><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\CUFF 6.1.4_modificato\CUFF-master\cuff_mod_firmware.cydsn\command_processing.h" Guid="863e8a36-290b-4e58-ac30-4b8085fe09b8" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\CUFF 6.1.4_modificato\CUFF-master\cuff_mod_firmware.cydsn\command_processing.c" Guid="b873fcc9-cb45-476d-aca6-237a39dfd75a" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\CUFF 6.1.4_modificato\CUFF-master\cuff_mod_firmware.cydsn\globals.c" Guid="d17c55d7-47d9-497e-b09a-83347dfb9e89" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\CUFF 6.1.4_modificato\CUFF-master\cuff_mod_firmware.cydsn\globals.h" Guid="2259b401-70c1-45e1-a183-04c18a78c5a8" /><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="c38ac204-98be-4840-8120-ea4ad43277cf" /><DocumentWindow Key="C:\Users\FedeBaro_IIT\Desktop\Centro piaggio\firmware_diversi\CUFF 6.1.4_modificato\CUFF-master\cuff_mod_firmware.cydsn\interruptions.c" Guid="e3f18d7f-bfb7-446f-93d6-e5707330aca0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="Release" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>

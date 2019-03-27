@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   MY_TIMER_PM                                                           04/19/2018 15:06:44 PAGE 1   
+C51 COMPILER V9.51   MY_TIMER_PM                                                           03/12/2019 16:37:08 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE MY_TIMER_PM
@@ -62,7 +62,7 @@ line level    source
                       #endif /* Back Up capture counter register  */
   51   1      
   52   1              #if(!MY_TIMER_UDB_CONTROL_REG_REMOVED)
-C51 COMPILER V9.51   MY_TIMER_PM                                                           04/19/2018 15:06:44 PAGE 2   
+C51 COMPILER V9.51   MY_TIMER_PM                                                           03/12/2019 16:37:08 PAGE 2   
 
   53   1                  MY_TIMER_backup.TimerControlRegister = MY_TIMER_ReadControlRegister();
   54   1              #endif /* Backup the enable state of the Timer component */
@@ -126,7 +126,7 @@ line level    source
  111          *******************************************************************************/
  112          void MY_TIMER_Sleep(void) 
  113          {
-C51 COMPILER V9.51   MY_TIMER_PM                                                           04/19/2018 15:06:44 PAGE 3   
+C51 COMPILER V9.51   MY_TIMER_PM                                                           03/12/2019 16:37:08 PAGE 3   
 
  114   1          #if(!MY_TIMER_UDB_CONTROL_REG_REMOVED)
  115   1              /* Save Counter's enable state */
@@ -177,7 +177,7 @@ line level    source
  160          
  161          
  162          /* [] END OF FILE */
-C51 COMPILER V9.51   MY_TIMER_PM                                                           04/19/2018 15:06:44 PAGE 4   
+C51 COMPILER V9.51   MY_TIMER_PM                                                           03/12/2019 16:37:08 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -241,7 +241,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0000 90647A            MOV     DPTR,#0647AH
 0003 E0                MOVX    A,@DPTR
 0004 30E708            JNB     ACC.7,?C0003
-C51 COMPILER V9.51   MY_TIMER_PM                                                           04/19/2018 15:06:44 PAGE 5   
+C51 COMPILER V9.51   MY_TIMER_PM                                                           03/12/2019 16:37:08 PAGE 5   
 
                                            ; SOURCE LINE # 117
                                            ; SOURCE LINE # 119

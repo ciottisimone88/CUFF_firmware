@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   USB_VDD                                                               04/19/2018 15:06:39 PAGE 1   
+C51 COMPILER V9.51   USB_VDD                                                               03/12/2019 16:37:03 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE USB_VDD
@@ -62,7 +62,7 @@ line level    source
   50          *  mode:  Change the pins to one of the following drive modes.
   51          *
   52          *  USB_VDD_DM_STRONG     Strong Drive 
-C51 COMPILER V9.51   USB_VDD                                                               04/19/2018 15:06:39 PAGE 2   
+C51 COMPILER V9.51   USB_VDD                                                               03/12/2019 16:37:03 PAGE 2   
 
   53          *  USB_VDD_DM_OD_HI      Open Drain, Drives High 
   54          *  USB_VDD_DM_OD_LO      Open Drain, Drives Low 
@@ -126,7 +126,7 @@ line level    source
  112   1      }
  113          
  114          
-C51 COMPILER V9.51   USB_VDD                                                               04/19/2018 15:06:39 PAGE 3   
+C51 COMPILER V9.51   USB_VDD                                                               03/12/2019 16:37:03 PAGE 3   
 
  115          /* If Interrupts Are Enabled for this Pins component */ 
  116          #if defined(USB_VDD_INTSTAT) 
@@ -155,7 +155,7 @@ line level    source
  139          
  140          
  141          /* [] END OF FILE */
-C51 COMPILER V9.51   USB_VDD                                                               04/19/2018 15:06:39 PAGE 4   
+C51 COMPILER V9.51   USB_VDD                                                               03/12/2019 16:37:03 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -219,7 +219,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 92
 0014         ?C0003:
 0014 22                RET     
-C51 COMPILER V9.51   USB_VDD                                                               04/19/2018 15:06:39 PAGE 5   
+C51 COMPILER V9.51   USB_VDD                                                               03/12/2019 16:37:03 PAGE 5   
 
              ; FUNCTION USB_VDD_Read (END)
 

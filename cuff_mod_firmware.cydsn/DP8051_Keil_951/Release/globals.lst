@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 1   
+C51 COMPILER V9.51   GLOBALS                                                               03/27/2019 09:24:45 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE GLOBALS
@@ -62,7 +62,7 @@ line level    source
   50          
   51          struct st_ref   g_ref, g_refNew, g_refOld;  // motor variables
   52          struct st_meas  g_meas, g_measOld;          // measurements
-C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 2   
+C51 COMPILER V9.51   GLOBALS                                                               03/27/2019 09:24:45 PAGE 2   
 
   53          struct st_data  g_rx;                       // income data
   54          struct st_mem   g_mem, c_mem;               // memory
@@ -101,7 +101,7 @@ line level    source
   87          
   88          // Zero position after pretensioning
   89          int32 pret_offset_pos[2];
-C51 COMPILER V9.51   GLOBALS                                                               04/19/2018 16:15:12 PAGE 3   
+C51 COMPILER V9.51   GLOBALS                                                               03/27/2019 09:24:45 PAGE 3   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -111,7 +111,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 MODULE INFORMATION:   STATIC OVERLAYABLE
    CODE SIZE        =   ----    ----
    CONSTANT SIZE    =   ----    ----
-   XDATA SIZE       =    528    ----
+   XDATA SIZE       =    536    ----
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----    ----
    IDATA SIZE       =   ----    ----

@@ -100,6 +100,7 @@
 #include "ADC_Ext_CP_Clk.h"
 #include "ADC_IRQ.h"
 #include "ADC_theACLK.h"
+#include "cy_em_eeprom.h"
 #include "CyDmac.h"
 #include "CyFlash.h"
 #include "CyLib.h"
@@ -108,7 +109,6 @@
 #include "CySpc.h"
 #include "cytypes.h"
 #include "PSoC3_8051.h"
-#include "cy_em_eeprom.h"
 
 /*[]*/
 

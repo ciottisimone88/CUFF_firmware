@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 1   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE WATCHDOG_COUNTER
@@ -62,7 +62,7 @@ line level    source
   49   1                  /* Clear all bits but the enable bit (if it's already set for Timer operation */
   50   1                  WATCHDOG_COUNTER_CONTROL &= WATCHDOG_COUNTER_CTRL_ENABLE;
   51   1                  
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 2   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 2   
 
   52   1                  /* Clear the mode bits for continuous run mode */
   53   1                  #if (CY_PSOC5A)
@@ -126,7 +126,7 @@ line level    source
                           /* Use the interrupt output of the status register for IRQ output */
                           
                           /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 3   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 3   
 
                           /* Enter Critical Region*/
                           WATCHDOG_COUNTER_interruptState = CyEnterCriticalSection();
@@ -190,7 +190,7 @@ line level    source
  173          * Global variables:
  174          *  WATCHDOG_COUNTER_initVar: Is modified when this function is called for the  
  175          *   first time. Is used to ensure that initialization happens only once.
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 4   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 4   
 
  176          *
  177          *******************************************************************************/
@@ -254,7 +254,7 @@ line level    source
  235          *
  236          *******************************************************************************/
  237          void WATCHDOG_COUNTER_SetInterruptMode(uint8 interruptsMask) 
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 5   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 5   
 
  238          {
  239   1          WATCHDOG_COUNTER_STATUS_MASK = interruptsMask;
@@ -318,7 +318,7 @@ line level    source
  297          * Parameters:  
  298          *  void
  299          *
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 6   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 6   
 
  300          * Return: 
  301          *  (uint8) The contents of the control register
@@ -382,7 +382,7 @@ line level    source
  359   1          /* Force capture by reading Accumulator */
  360   1          /* Must first do a software capture to be able to read the counter */
  361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 7   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 7   
 
  362   1          #if(WATCHDOG_COUNTER_UsingFixedFunction)
  363   1                      (void)CY_GET_REG16(WATCHDOG_COUNTER_COUNTER_LSB_PTR);
@@ -446,7 +446,7 @@ line level    source
                   #endif /* (WATCHDOG_COUNTER_UsingFixedFunction) */
  422   1      }
  423          
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 8   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 8   
 
  424          
  425          /*******************************************************************************
@@ -510,7 +510,7 @@ line level    source
               *  void:
               *
               * Return: 
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 9   
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 9   
 
               *  (uint8) Present compare value.
               *
@@ -574,7 +574,7 @@ line level    source
               /*******************************************************************************
               * Function Name: WATCHDOG_COUNTER_ClearFIFO
               ********************************************************************************
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 10  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 10  
 
               * Summary:
               *   This function clears all capture data from the capture FIFO
@@ -600,7 +600,7 @@ line level    source
  569          
  570          /* [] END OF FILE */
  571          
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 11  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -664,7 +664,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 148
 0007 9043B3            MOV     DPTR,#043B3H
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 12  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 12  
 
 000A E0                MOVX    A,@DPTR
 000B 4402              ORL     A,#02H
@@ -728,7 +728,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 238
                                            ; SOURCE LINE # 239
 0000 904F0F            MOV     DPTR,#04F0FH
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 13  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 13  
 
 0003 EF                MOV     A,R7
 0004 F0                MOVX    @DPTR,A
@@ -792,7 +792,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 335
 0014 9043A3            MOV     DPTR,#043A3H
 0017 E0                MOVX    A,@DPTR
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 14  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 14  
 
 0018 54FD              ANL     A,#0FDH
 001A F0                MOVX    @DPTR,A
@@ -856,7 +856,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 7910              MOV     R1,#010H
 0006 120000      E     LCALL   _cyread16_nodpx
                                            ; SOURCE LINE # 445
-C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      04/19/2018 15:06:51 PAGE 15  
+C51 COMPILER V9.51   WATCHDOG_COUNTER                                                      03/12/2019 16:37:15 PAGE 15  
 
 0009         ?C0014:
 0009 22                RET     

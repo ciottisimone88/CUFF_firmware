@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 1   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE COUNTER_ENC
@@ -62,7 +62,7 @@ line level    source
                           COUNTER_ENC_CONTROL &= COUNTER_ENC_CTRL_ENABLE;
                           
                           /* Clear the mode bits for continuous run mode */
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 2   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 2   
 
                           #if (CY_PSOC5A)
                               COUNTER_ENC_CONTROL2 &= ((uint8)(~COUNTER_ENC_CTRL_MODE_MASK));
@@ -126,7 +126,7 @@ line level    source
  112   1                  
  113   1                  /* CyEnterCriticalRegion and CyExitCriticalRegion are used to mark following region critical*/
  114   1                  /* Enter Critical Region*/
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 3   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 3   
 
  115   1                  COUNTER_ENC_interruptState = CyEnterCriticalSection();
  116   1                  
@@ -190,7 +190,7 @@ line level    source
  174          *  COUNTER_ENC_initVar: Is modified when this function is called for the  
  175          *   first time. Is used to ensure that initialization happens only once.
  176          *
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 4   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 4   
 
  177          *******************************************************************************/
  178          void COUNTER_ENC_Start(void) 
@@ -254,7 +254,7 @@ line level    source
  236          *******************************************************************************/
  237          void COUNTER_ENC_SetInterruptMode(uint8 interruptsMask) 
  238          {
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 5   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 5   
 
  239   1          COUNTER_ENC_STATUS_MASK = interruptsMask;
  240   1      }
@@ -318,7 +318,7 @@ line level    source
  298          *  void
  299          *
  300          * Return: 
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 6   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 6   
 
  301          *  (uint8) The contents of the control register
  302          *
@@ -382,7 +382,7 @@ line level    source
  360   1          /* Must first do a software capture to be able to read the counter */
  361   1          /* It is up to the user code to make sure there isn't already captured data in the FIFO */
  362   1          #if(COUNTER_ENC_UsingFixedFunction)
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 7   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 7   
 
                               (void)CY_GET_REG16(COUNTER_ENC_COUNTER_LSB_PTR);
                       #else
@@ -446,7 +446,7 @@ line level    source
  422   1      }
  423          
  424          
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 8   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 8   
 
  425          /*******************************************************************************
  426          * Function Name: COUNTER_ENC_ReadPeriod
@@ -510,7 +510,7 @@ line level    source
  484          *
  485          * Return: 
  486          *  (uint8) Present compare value.
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 9   
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 9   
 
  487          *
  488          *******************************************************************************/
@@ -574,7 +574,7 @@ line level    source
  546          * Function Name: COUNTER_ENC_ClearFIFO
  547          ********************************************************************************
  548          * Summary:
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 10  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 10  
 
  549          *   This function clears all capture data from the capture FIFO
  550          *
@@ -599,7 +599,7 @@ line level    source
  569          
  570          /* [] END OF FILE */
  571          
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 11  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 11  
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -663,7 +663,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0004 4480              ORL     A,#080H
 0006 F0                MOVX    @DPTR,A
                                            ; SOURCE LINE # 158
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 12  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 12  
 
 0007 22                RET     
              ; FUNCTION COUNTER_ENC_Enable (END)
@@ -727,7 +727,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
              ; FUNCTION COUNTER_ENC_ReadStatusRegister (END)
 
              ; FUNCTION COUNTER_ENC_ReadControlRegister (BEGIN)
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 13  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 13  
 
                                            ; SOURCE LINE # 283
                                            ; SOURCE LINE # 284
@@ -791,7 +791,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0005         ?C0012:
 0005 22                RET     
              ; FUNCTION COUNTER_ENC_ReadCapture (END)
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 14  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 14  
 
 
              ; FUNCTION _COUNTER_ENC_WritePeriod (BEGIN)
@@ -855,7 +855,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 0007 120000      R     LCALL   COUNTER_ENC_ReadCapture
                                            ; SOURCE LINE # 564
 000A 80F4              SJMP    ?C0017
-C51 COMPILER V9.51   COUNTER_ENC                                                           04/19/2018 15:06:35 PAGE 15  
+C51 COMPILER V9.51   COUNTER_ENC                                                           03/12/2019 16:36:59 PAGE 15  
 
                                            ; SOURCE LINE # 566
 000C         ?C0019:

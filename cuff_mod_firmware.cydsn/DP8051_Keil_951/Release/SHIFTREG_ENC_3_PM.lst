@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     04/19/2018 15:06:38 PAGE 1   
+C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     03/12/2019 16:37:02 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE SHIFTREG_ENC_3_PM
@@ -62,7 +62,7 @@ line level    source
   49          *******************************************************************************/
   50          void SHIFTREG_ENC_3_SaveConfig(void) 
   51          {
-C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     04/19/2018 15:06:38 PAGE 2   
+C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     03/12/2019 16:37:02 PAGE 2   
 
   52   1          /* Store working registers A0 and A1 */
   53   1          SHIFTREG_ENC_3_backup.saveSrA0Reg   = CY_GET_REG24(SHIFTREG_ENC_3_SHIFT_REG_LSB_PTR);
@@ -126,7 +126,7 @@ line level    source
  111   1      }
  112          
  113          
-C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     04/19/2018 15:06:38 PAGE 3   
+C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     03/12/2019 16:37:02 PAGE 3   
 
  114          /*******************************************************************************
  115          * Function Name: SHIFTREG_ENC_3_Wakeup
@@ -154,7 +154,7 @@ line level    source
  137          
  138          
  139          /* [] END OF FILE */
-C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     04/19/2018 15:06:38 PAGE 4   
+C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     03/12/2019 16:37:02 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -218,7 +218,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
 002A FF                MOV     R7,A
 002B 120000      E     LCALL   _cywrite24_nodpx
                                            ; SOURCE LINE # 85
-C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     04/19/2018 15:06:38 PAGE 5   
+C51 COMPILER V9.51   SHIFTREG_ENC_3_PM                                                     03/12/2019 16:37:02 PAGE 5   
 
 002E 22                RET     
              ; FUNCTION SHIFTREG_ENC_3_RestoreConfig (END)

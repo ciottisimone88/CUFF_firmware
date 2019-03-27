@@ -271,7 +271,16 @@ void drive_cuff() {
         else
             curr_diff -= g_mem.curr_dead_zone;
 
-        aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        //aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        
+        //horner, sei tutti noi
+        aux_val = P1;
+        aux_val = ((aux_val * curr_diff)/1024) + P2;
+        aux_val = ((aux_val * curr_diff)/1024) + P3;
+        aux_val = ((aux_val * curr_diff)/1024) + P4;
+        aux_val = ((aux_val * curr_diff)/1024) + P5;
+        aux_val = ((aux_val * curr_diff)/1024) + P6;      
+        
         g_refNew.pos[0] = pret_offset_pos[0] - (aux_val << g_mem.res[0]);     // questa è la parte funzionante con l'offset settato come variabili aggiuntiva
         g_refNew.pos[1] = pret_offset_pos[1] + (aux_val << g_mem.res[1]);
         
@@ -296,6 +305,8 @@ void slide_cuff() {
     int16 SH_pos;
     int32 aux_val;
     uint32 t_start, t_end;
+    float var;
+    
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_MEASUREMENTS;
@@ -319,7 +330,19 @@ void slide_cuff() {
         SH_pos = *((int16 *) &g_rx.buffer[1]);
         
         aux_val = (int32)SH_pos - g_mem.SH_rest_pos;       
-        aux_val = (int32)((aux_val * g_mem.max_slide) / (g_mem.max_SH_pos - g_mem.SH_rest_pos));
+        //aux_val = (int32)((aux_val * g_mem.max_slide) / (g_mem.max_SH_pos - g_mem.SH_rest_pos));          // vecchia mappatura lineare
+        var = (((float)(SH_pos - g_mem.SH_rest_pos)* g_mem.max_slide)/ ((float)(g_mem.max_SH_pos - g_mem.SH_rest_pos)));
+        
+        if(var < 0.45) {
+           // parte della curva dove non ho variazioni significative
+           var = 0;
+           aux_val = (int32)var;
+        }
+        else {
+        aux_val = (int32)var;
+        aux_val = (int32)P1_TERZO*(aux_val^3) + P2_TERZO*(aux_val^2) + P3_TERZO*(aux_val) + P4_TERZO;                 // polinomiale di terzo grado
+        
+        }
         
         if (c_mem.right_left) {
             // LEFT
@@ -359,6 +382,7 @@ void force_and_slide_cuff(){
     int32 aux_val;
     uint32 t_start, t_end;
     int32 ref_slide[2];
+    float var;
 
     packet_lenght = 2;
     packet_data[0] = CMD_GET_CURR_AND_MEAS;
@@ -392,14 +416,32 @@ void force_and_slide_cuff(){
             curr_diff -= g_mem.curr_dead_zone;
 
         // Sliding
-        aux_val = (int32)SH_pos - g_mem.SH_rest_pos;       
-        aux_val = (int32)((aux_val * g_mem.max_slide) / (int32)g_mem.max_SH_pos);
+         aux_val = (int32)SH_pos - g_mem.SH_rest_pos;       
+        //aux_val = (int32)((aux_val * g_mem.max_slide) / (g_mem.max_SH_pos - g_mem.SH_rest_pos));          // vecchia mappatura lineare
+        var = (((float)(SH_pos - g_mem.SH_rest_pos)* g_mem.max_slide)/ ((float)(g_mem.max_SH_pos - g_mem.SH_rest_pos)));
+        
+        if(var < 0.45) {
+           // parte della curva dove non ho variazioni significative
+           var = 0;
+           aux_val = (int32)var;
+        }
+        else {
+        aux_val = (int32)var;
+        aux_val = (int32)P1_TERZO*(aux_val^3) + P2_TERZO*(aux_val^2) + P3_TERZO*(aux_val) + P4_TERZO;                 // polinomiale di terzo grado
+        
+        }
         
         ref_slide[0] =  (aux_val << g_mem.res[0]);
         ref_slide[1] =  (aux_val << g_mem.res[1]);
         
         // Force
-        aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        //aux_val = ((curr_diff * g_mem.curr_prop_gain) * 65535 / 1440);
+        aux_val = P1;
+        aux_val = ((aux_val * curr_diff)/1024) + P2;
+        aux_val = ((aux_val * curr_diff)/1024) + P3;
+        aux_val = ((aux_val * curr_diff)/1024) + P4;
+        aux_val = ((aux_val * curr_diff)/1024) + P5;
+        aux_val = ((aux_val * curr_diff)/1024) + P6; 
         
         if (c_mem.right_left) {
             // LEFT
@@ -1556,7 +1598,7 @@ uint8 memInit(void) {
     g_mem.max_step_neg = 0;
     g_mem.max_step_pos = 0;
     
-    g_mem.max_slide = 8400;
+    g_mem.max_slide = 2100;
     g_mem.max_SH_pos = 19000;
 
     g_mem.right_left = 1;       // LEFT CUFF
@@ -1666,7 +1708,15 @@ void cmd_get_curr_and_meas(){
    
     //Packet: header + curr_meas(int16) + pos_meas(int16) + CRC
     
-    uint8 packet_data[12]; 
+    #if (NUM_OF_SENSORS == 4)
+        uint8 packet_data[14];
+    #endif
+    #if  (NUM_OF_SENSORS == 3)
+        uint8 packet_data[12]; 
+    #endif
+    #if (NUM_OF_SENSORS == 2)
+        uint8 packet_data[6]; 
+    #endif
 
     //Header package
     packet_data[0] = CMD_GET_CURR_AND_MEAS;
@@ -1677,12 +1727,18 @@ void cmd_get_curr_and_meas(){
 
     // Positions
     for (index = NUM_OF_SENSORS; index--;) 
-        *((int16 *) &packet_data[(index << 1) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
+        *((int16 *) &packet_data[(index << 2) + 5]) = (int16) (g_measOld.pos[index] >> g_mem.res[index]);
         
     // Calculate Checksum and send message to UART 
         
-    packet_data[11] = LCRChecksum (packet_data, 11);
-    commWrite(packet_data, 12, FALSE);
+    #if (NUM_OF_SENSORS == 4)
+        packet_data[13] = LCRChecksum (packet_data, 13);
+        commWrite(packet_data, 14, FALSE);
+    #endif
+    #if  (NUM_OF_SENSORS == 3)
+        packet_data[11] = LCRChecksum (packet_data, 11);
+        commWrite(packet_data, 12, FALSE);
+    #endif
 }
 
 void cmd_set_inputs(){

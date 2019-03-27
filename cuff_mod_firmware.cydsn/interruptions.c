@@ -720,20 +720,31 @@ void motor_control(const uint8 idx) {
             // saturate max current
             if (curr_ref > c_mem.current_limit)
                 curr_ref = c_mem.current_limit;
+            else {
+                    if (curr_ref < -c_mem.current_limit)
+                        curr_ref = -c_mem.current_limit;
+                }
             
             // Current error
-            curr_error = abs(curr_ref) - g_meas.curr[index];
-
+            //curr_error = abs(curr_ref) - g_meas.curr[index];
+            curr_error = curr_ref - g_meas.curr[index];
+            
             // Error sum for integral
             curr_error_sum[index] += curr_error;
 
             //anti wind-up
             if (curr_error_sum[index] > CURR_INTEGRAL_SAT_LIMIT)
                 curr_error_sum[index] = CURR_INTEGRAL_SAT_LIMIT;
-            else{
+            else {
+                    if (curr_error_sum[index] < -CURR_INTEGRAL_SAT_LIMIT) 
+                        curr_error_sum[index] = -CURR_INTEGRAL_SAT_LIMIT;
+                }
+            /*
+                else{
                 if (curr_error_sum[index] < 0)
                     curr_error_sum[index] = 0;
             }
+                */
 
             // pwm_input init
             pwm_input = 0;
@@ -752,8 +763,8 @@ void motor_control(const uint8 idx) {
                 pwm_input += (int32)(k_d_c * (prev_curr[index] - g_meas.curr[index])) >> 16;
 
             // Saturate pwm_input
-            if (pwm_input < 0)
-                pwm_input = 0;
+            //if (pwm_input < 0)
+            //    pwm_input = 0;
 
             // Update measure
             prev_curr[index] = g_meas.curr[index];
@@ -929,7 +940,8 @@ void analog_read_end() {
             interrupt_manager();
         }
     }
-    else {
+    else
+    {
         g_meas.curr[0] = 0;
         g_meas.curr[1] = 0;
     }
@@ -1116,7 +1128,7 @@ void pretensioning_process() {
     
     static int16 epsilon = 10;
     static uint8 phase = 0;
-    static uint8 phase_counter = 0;
+    static uint32 phase_counter = 0;
     int32 aux;
     uint8 i = 0;
     
@@ -1151,7 +1163,7 @@ void pretensioning_process() {
                 aux = 16 << g_mem.res[1];
                 g_refNew.pos[1] = g_refOld.pos[1] - aux;
                     
-                if (phase_counter > 80){//((g_meas.curr[0] > -10) && (g_meas.curr[1] < 10)){
+                if (phase_counter >  80){//((g_meas.curr[0] > -10) && (g_meas.curr[1] < 10)){
                     pretensioning_flag = FALSE;
                     pret_done = TRUE;
                     phase = 0;

@@ -175,8 +175,8 @@
   <block name="WATCHDOG_REFRESH" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <register name="WATCHDOG_REFRESH_CONTROL_REG" address="0x6579" bitWidth="8" desc="" hidden="false" />
   </block>
-  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="Em_EEPROM_Dynamic" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
+  <block name="cy_boot" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
   <block name="WATCHDOG_COUNTER" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false">
     <block name="ZeroTerminal_1" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />
     <block name="TC_vm" BASE="0x0" SIZE="0x0" desc="" visible="true" hidden="false" />

@@ -1,5 +1,5 @@
--- Project:   C:\Users\MattiaCP\Documents\GITHUB\CUFF\cuff_mod_firmware.cydsn\cuff_mod_firmware.cyprj
--- Generated: 04/19/2018 16:11:13
+-- Project:   C:\Users\MattiaCP\Desktop\CUFF-6.1.4_modificato\cuff_mod_firmware.cydsn\cuff_mod_firmware.cyprj
+-- Generated: 03/21/2019 14:34:26
 -- PSoC Creator  4.2
 
 ENTITY cuff_mod_firmware IS

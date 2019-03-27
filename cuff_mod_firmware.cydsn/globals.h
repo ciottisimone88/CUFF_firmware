@@ -55,7 +55,7 @@
 //                                                                        DEVICE
 //==============================================================================
 
-#define VERSION         "CUFF MOD v6.1.4"
+#define VERSION         "CUFF MOD v6.1.5"
 
 #define NUM_OF_MOTORS           2
 #define NUM_OF_SENSORS          3
@@ -118,6 +118,57 @@
     
 #define MAX_WATCHDOG_TIMER 250          // num * 2 [cs]
 
+    
+//==============================================================================
+//     funzione polinomiale quarto grado al posto della logaritmica
+//==============================================================================
+    
+#define P1             53100
+#define P2             (-90980)
+#define P3             57310
+#define P4             (-11980) 
+#define P5              4552
+#define P6              (-3)
+    
+//==============================================================================
+//     funzione polinomiale quinto grado al posto della logaritmica
+//==============================================================================
+    
+#define P1_QUINTO              0.00000004717
+#define P2_QUINTO              -0.0008275
+#define P3_QUINTO              0.5337
+#define P4_QUINTO              -114.3
+#define P5_QUINTO              44460
+#define P6_QUINTO              -35270
+
+//==============================================================================
+//    funzione polinomiale quarto grado normalizzata al posto della logaritmica
+//==============================================================================
+    
+//#define P1_QUARTO              31760
+//#define P2_QUARTO              -42240
+//#define P3_QUARTO              20160
+//#define P4_QUARTO              1085
+//#define P5_QUARTO              27.63
+    
+//==============================================================================
+//    funzione polinomiale quinto grado normalizzata al posto della logaritmica
+//==============================================================================
+    
+//#define P1_QUINTO              47170
+//#define P2_QUINTO              -82750
+//#define P3_QUINTO              53370
+//#define P4_QUINTO              -11430
+//#define P5_QUINTO              4446
+//#define P6_QUINTO              -3.527
+//==============================================================================
+//     funzione polinomiale terzo grado al posto dell'esponenziale
+//==============================================================================
+    
+#define P1_TERZO              22.15
+#define P2_TERZO              -47.13
+#define P3_TERZO              34.49
+#define P4_TERZO              -8.53
 
 //==============================================================================
 //                                                        structures definitions
@@ -206,6 +257,7 @@ struct st_mem {
 
     uint8   cuff_activation_flag_proprio;       //                                          1
     int32   max_slide;
+    int32   max_force;
     int32   max_SH_pos;
     uint8   hand_ID;
     

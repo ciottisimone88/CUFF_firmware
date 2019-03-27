@@ -1,4 +1,4 @@
-C51 COMPILER V9.51   COUNTER_ENC_PM                                                        04/19/2018 15:06:35 PAGE 1   
+C51 COMPILER V9.51   COUNTER_ENC_PM                                                        03/12/2019 16:36:59 PAGE 1   
 
 
 C51 COMPILER V9.51, COMPILATION OF MODULE COUNTER_ENC_PM
@@ -62,7 +62,7 @@ line level    source
   49   1                  COUNTER_ENC_backup.CounterControlRegister = COUNTER_ENC_ReadControlRegister();
   50   1              #endif /* (!COUNTER_ENC_ControlRegRemoved) */
   51   1      
-C51 COMPILER V9.51   COUNTER_ENC_PM                                                        04/19/2018 15:06:35 PAGE 2   
+C51 COMPILER V9.51   COUNTER_ENC_PM                                                        03/12/2019 16:36:59 PAGE 2   
 
   52   1          #endif /* (!COUNTER_ENC_UsingFixedFunction) */
   53   1      }
@@ -126,7 +126,7 @@ line level    source
  111   2                  /* Counter is enabled */
  112   2                  COUNTER_ENC_backup.CounterEnableState = 1u;
  113   2              }
-C51 COMPILER V9.51   COUNTER_ENC_PM                                                        04/19/2018 15:06:35 PAGE 3   
+C51 COMPILER V9.51   COUNTER_ENC_PM                                                        03/12/2019 16:36:59 PAGE 3   
 
  114   1              else
  115   1              {
@@ -179,7 +179,7 @@ line level    source
  162          
  163          
  164          /* [] END OF FILE */
-C51 COMPILER V9.51   COUNTER_ENC_PM                                                        04/19/2018 15:06:35 PAGE 4   
+C51 COMPILER V9.51   COUNTER_ENC_PM                                                        03/12/2019 16:36:59 PAGE 4   
 
 ASSEMBLY LISTING OF GENERATED OBJECT CODE
 
@@ -243,7 +243,7 @@ ASSEMBLY LISTING OF GENERATED OBJECT CODE
                                            ; SOURCE LINE # 127
 0014 120000      E     LCALL   COUNTER_ENC_Stop
                                            ; SOURCE LINE # 128
-C51 COMPILER V9.51   COUNTER_ENC_PM                                                        04/19/2018 15:06:35 PAGE 5   
+C51 COMPILER V9.51   COUNTER_ENC_PM                                                        03/12/2019 16:36:59 PAGE 5   
 
 0017 120000      R     LCALL   COUNTER_ENC_SaveConfig
                                            ; SOURCE LINE # 129
