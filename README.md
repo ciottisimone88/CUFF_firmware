@@ -44,6 +44,9 @@ command_processing.h
   - void commProcess() 
   - void infoPrepare(unsigned char \*info_string)
 
+interruptions.h
+  - void function_scheduler(void) the last part from line 416
+
 ## VARIABLES TO CHECK
 
 main.c
