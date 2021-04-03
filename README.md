@@ -46,10 +46,12 @@ command_processing.h
 
 interruptions.h
   - void function_scheduler(void) the last part from line 416
+  - void pretensioning_process()
 
 ## VARIABLES TO CHECK
 
-main.c
-  - cuff_flag_force
-  - cuff_flag_proprio
-  - cuff_flag_force_proprio
+- cuff_flag_force
+- cuff_flag_proprio
+- cuff_flag_force_proprio
+- pretensioning_flag
+- pret_done
