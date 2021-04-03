@@ -42,3 +42,11 @@ Just open it with PSoC Creator and upload it onto the board
 
 command_processing.h
   - void commProcess() 
+  - void infoPrepare(unsigned char \*info_string)
+
+## VARIABLES TO CHECK
+
+main.c
+  - cuff_flag_force
+  - cuff_flag_proprio
+  - cuff_flag_force_proprio
