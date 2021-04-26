@@ -487,9 +487,11 @@
 </CyGuid_fdba8dfd-b15b-4469-9bbb-9e40c3e70997>
 <Unloaded />
 <OpenDocs>
+<name v=".\cuff_mod_firmware.cydsn\interruptions.c" />
 <name v=".\cuff_mod_firmware.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" />
-<name v=".\cuff_mod_firmware.cydsn\command_processing.h" />
+<name v=".\cuff_mod_firmware.cydsn\command_processing.c" />
+<name v=".\cuff_mod_firmware.cydsn\main.c" />
+<name v=".\cuff_mod_firmware.cydsn\interruptions.h" />
 </OpenDocs>
 <OpenDocsLayout><![CDATA[<?xml version="1.0"?><!--
 
@@ -497,7 +499,7 @@
   Copyright (c) 2001-2016 Actipro Software LLC.  All rights reserved.
   http://www.actiprosoftware.com
 
---><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1205, 711" SelectedTabbedMdiWindow="4167195b-3070-4623-a8c6-f1023ef54daf"><ToolWindow Key="Start Page:bd4649ab-da6b-4d04-a663-c722b8bf99db:Start Page" Guid="7dbd36ee-3d48-4aeb-8ed7-b97fc637f5e7" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\TopDesign\TopDesign.cysch" Guid="3efc9fbd-67e3-4f9c-a780-5087f7433e0f" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\cuff_mod_firmware.cydwr" Guid="4c5a423b-dfff-474b-941b-dffaef24777e" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\command_processing.h" Guid="4167195b-3070-4623-a8c6-f1023ef54daf" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
+--><DocumentLayout Version="1.0"><LayoutData><TabbedMdiRootContainer Orientation="Horizontal"><TabbedMdiContainer Size="1205, 676" SelectedTabbedMdiWindow="3e8fd592-dc1e-44f8-8de6-bcbfa089592d"><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\interruptions.c" Guid="3e8fd592-dc1e-44f8-8de6-bcbfa089592d" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\TopDesign\TopDesign.cysch" Guid="5b9a0418-f30f-4933-a3aa-906930a5dea9" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\command_processing.c" Guid="d6370ca7-92e5-46be-af91-b8236f43d69c" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\main.c" Guid="7bfbb6be-697e-47a0-bfac-2013c33cb7e3" /><DocumentWindow Key="D:\Program Files\Google Drive\HapticLab\3_Utils\qbrobotics\CUFF_firmware\cuff_mod_firmware.cydsn\interruptions.h" Guid="ac90599f-b442-40b3-9351-6bc68cb3c4b0" /></TabbedMdiContainer></TabbedMdiRootContainer><FloatingContainers /></LayoutData></DocumentLayout>]]></OpenDocsLayout>
 <config v="" />
 <AutoUpdate v="true" />
 </CyGuid_843a90a4-0c4b-4e44-991d-05e7fb117a21>
